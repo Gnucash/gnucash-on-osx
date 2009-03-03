@@ -1,0 +1,301 @@
+# -*- mode: python -*-
+#
+# Copyright (C) 2006, 2007, 2008 Imendio AB
+#
+# Default setup for building GTK+ on Mac OS X. Note that you should
+# normally never need to edit this file. Any custom settings should be
+# done in ~/.jhbuildrc-custom.
+#
+# Specific builds can be set up by creating files named
+# ~/.jhbuildrc-<build>. When setting the environment variable JHB to
+# such a name, the corresponding rc file will be read (e.g.:
+# JHB=mybuild jhbuild shell).
+#
+# Use .jhbuildrc-custom to override the moduleset, modules to build,
+# the source checkout location, installation prefix, or svn usernames
+# etc.
+#
+# Please email richard@imendio.com if you have suggestions for
+# improving this setup, or have any patches that you would like to get
+# included.
+
+import sys
+import errno
+
+# Some utitily functions used here and in custom files:
+#
+def environ_append(key, value, separator=' '):
+    old_value = os.environ.get(key)
+    if old_value is not None:
+        value = old_value + separator + value
+    os.environ[key] = value
+
+def environ_prepend(key, value, separator=' '):
+    old_value = os.environ.get(key)
+    if old_value is not None:
+        value = value + separator + old_value
+    os.environ[key] = value
+
+def parse_custom_argument(key):
+    for i, arg in enumerate(sys.argv[:-1]):
+        if arg == key:
+            return sys.argv[i+1]
+    return None
+
+def set_branch(module, branch):
+    # Keep any overriden repo name here to keep custom usernames set
+    # up in a custom setup.
+    #
+    repo = repos.get("svn.gnome.org", "http://svn.gnome.org/svn")
+    if repo.endswith("/"):
+        repo = repo[:-1]
+
+    branches[module] = repo + "/" + module + "/" + branch
+
+def append_autogenargs(module, args):
+    old_value = module_autogenargs.get(module, autogenargs)
+    module_autogenargs[module] = old_value + " " + args
+
+# Set up the environment for building against 10.4 SDK.
+#
+sdkdir = None
+def setup_sdk_10_4():
+    target = "10.4"
+    sdk = "MacOSX10.4u.sdk"
+    sdkdir = os.path.join("/Developer/SDKs", sdk)
+
+    # To pick up cups-config from the right place. NOTE: Change this as
+    # soon as GTK+ is fixed, and only set CUPS_CONFIG instead (GTK+ 2.13
+    # is fixed).
+    #
+    prependpath("PATH", os.path.join(sdkdir, "usr/bin"))
+
+    os.environ["MACOSX_DEPLOYMENT_TARGET"] = target
+
+    # Seems like we need this since many libraries otherwise only look for
+    # various dependencies (e.g. libiconv) in /usr/lib, hence pulling in
+    # the wrong -L that doesn't have fat binaries on pre-10.5.
+    #
+    environ_prepend("LDFLAGS", "-L" + sdkdir + "/usr/lib")
+    environ_prepend("CPPFLAGS", "-I" + sdkdir + "/usr/include")
+
+    # It looks like -isysroot is broken on 10.4, causing link
+    # problems. But we don't really need to set it for 10.4 so just
+    # skip that.
+    #
+    if not osx_version.startswith("8."):
+        environ_append("CFLAGS", "-isysroot " + sdkdir)
+        environ_append("CXXFLAGS", "-isysroot " + sdkdir)
+        environ_append("LDFLAGS", "-isysroot " + sdkdir)
+
+    environ_append("CFLAGS", "-mmacosx-version-min=" + target)
+    environ_append("LDFLAGS", "-mmacosx-version-min=" + target)
+
+    return sdkdir
+
+def autogenargs_for_arch(root, arch, original_cflags, original_cxxflags, original_ldflags):
+    if root is not None and not osx_version.startswith("8."):
+        rootstr = " -isysroot " + root
+    else:
+        rootstr = ""
+    archstr = " -arch " + arch 
+    return \
+        'CFLAGS="' + original_cflags + rootstr + archstr + '" ' + \
+        'CXXFLAGS="' + original_cxxflags + rootstr + archstr + '" ' + \
+        'LDFLAGS="' + original_ldflags + archstr + '"'
+
+osx_version = os.popen("uname -r").read().strip()
+
+# Moduleset to use.
+#
+moduleset = 'http://people.imendio.com/richard/gtk-osx-build/modulesets/gtk-osx.modules'
+
+# A list of the modules to build.
+#
+modules = [ 'meta-gtk-osx-core' ]
+
+# A list of modules to skip.
+#
+skip.append('gmp')
+skip.append('guile')
+
+# Source and installation locations.
+#
+root = os.path.expanduser("~/gtk")
+checkoutroot = os.path.join(root, "source")
+prefix = os.path.join(root, "inst")
+
+# Extra arguments to pass to all autogen.sh scripts.
+#
+autogenargs='--disable-static --disable-gtk-doc --disable-docs --disable-scrollkeeper'
+alwaysautogen = True
+
+# Set debugging format to the old one from Tiger and earlier since the new
+# default in Leopard breaks many things. Also set gnu89 as the new default
+# gnu99 changes how extern inline works, breaking, glib's inline setup,
+# until glib is fixed.
+#
+os.environ['CFLAGS'] = '-O -gstabs+3 -std=gnu89'
+os.environ['CXXFLAGS'] = '-O -gstabs+3'
+
+# Use the included install-check program if available. It won't update
+# timestamps if the header hasn't changed, which speeds up builds.
+#
+path = os.path.expanduser('~/bin/install-check')
+if os.path.exists(path):
+    os.environ['INSTALL'] = path
+
+# When building on intel, force build to be 486, since glib won't
+# enable asm atomic operations otherwise.
+#
+try:
+    f = os.popen("uname -p")
+    if f.read().startswith("i386"):
+        append_autogenargs("glib", "--build=i486-apple-darwin")
+except:
+    pass
+
+# Prefix to use in the shell, can be overridden in the custom rc file
+# or in specific setups. Can be set to None to be removed.
+#
+prompt_prefix = "JH"
+
+default_build = ""
+
+if osx_version.startswith("7."):
+    print "Error: Mac OS X 10.4 or newer is required, exiting."
+    raise SystemExit
+elif osx_version.startswith("8."):
+    # Tiger, we want to use the python version from jhbuild.
+    want_jhbuild_python = True
+else:
+    # Leopard or newer.
+    want_jhbuild_python = False
+
+# Import optional user RC for further customization. You can override
+# the prefix or default build setup for example, or CFLAGS or
+# module_autogenargs, etc.
+#
+userrc = os.path.join(os.environ['HOME'], '.jhbuildrc-custom')
+if os.path.exists(userrc):
+    execfile(userrc)
+
+# Allow including different variants depending on the environment
+# variable JHB. This can be used to have different setups for SDK
+# builds, for example.
+#
+build = os.environ.get('JHB', default_build)
+
+# Check and warn if jhbuild is started from within jhbuild, since that
+# will mess up environment variables, especially if different build
+# setups are used.
+#
+old_prefix = os.environ.get('JHBUILD_PREFIX', "")
+old_build = os.environ.get('JHBUILD_CONFIG', "")
+ran_recursively = old_prefix != ""
+if ran_recursively:
+    if old_build != build:
+        print "Error: jhbuild is already running with a different build setup, exiting."
+        raise SystemExit
+
+    print "Warning: jhbuild is started from within a jhbuild session."
+
+if build != "":
+    try:
+        execfile(os.path.join(os.environ['HOME'], '.jhbuildrc-' + build))
+    except EnvironmentError, e:
+        print "Couldn't find the file '.jhbuildrc-" + build + "', exiting."
+        raise SystemExit
+
+tarballdir = os.path.join(checkoutroot, 'pkgs')
+
+os.environ['PREFIX'] = prefix # Deprecated, please move to JHBUILD_PREFIX.
+os.environ['JHBUILD_PREFIX'] = prefix
+os.environ['JHBUILD_SOURCE'] = checkoutroot
+
+os.environ['LIBTOOLIZE'] = prefix + '/bin/libtoolize'
+
+# By default, we want the system perl and python, not from macports or
+# so.
+#
+os.environ["PERL"] = "/usr/bin/perl"
+os.environ["INTLTOOL_PERL"] = "/usr/bin/perl"
+if not want_jhbuild_python:
+    skip.append('python')
+    os.environ["PYTHON"] = "/usr/bin/python"
+
+# Use libxml/libxslt from the system. Append to the pkg-config path to
+# get the system versions picked up.
+#
+skip.append("libxml2")
+skip.append("libxslt")
+addpath("PKG_CONFIG_PATH", "/usr/lib/pkgconfig")
+
+# The option "headerpad_max_install_names" is there to leave some room for
+# changing the library locations with install_name_tool. Note that GNU
+# libtool seems to drop the option if we don't use -W here.
+#
+environ_append('LDFLAGS', '-Wl,-headerpad_max_install_names')
+
+# Make sure we find our installed modules, and before other versions.
+environ_prepend('LDFLAGS', '-L' + prefix + '/lib')
+environ_prepend('CPPFLAGS', '-I' + prefix + '/include')
+
+# Add additional Python/Perl paths so that our modules can be found.
+#
+version = 'python' + str(sys.version_info[0]) + '.' + str(sys.version_info[1])
+environ_append('PYTHONPATH', prefix + '/lib/' + version + '/site-packages/gtk-2.0', ':')
+environ_append('PERL5LIB', prefix + '/lib/perl5/vendor_perl', ':')
+environ_append('PERL5LIB', prefix + '/lib/perl5/site_perl', ':')
+
+# Point gtk-doc and other xlstproc users to our XML catalog.
+#
+os.environ['XML_CATALOG_FILES'] = prefix + '/etc/xml/catalog'
+
+# Speed up gettext build by disabling unneeded stuff.
+#
+append_autogenargs("gettext", "--without-emacs --disable-java --disable-native-java --disable-libasprintf --disable-csharp")
+
+# Support prepending frameworks to the PKG_CONFIG_PATH, CFLAGS,
+# LDFLAGS and ACLOCAL_FLAGS variables.
+#
+frameworks = os.environ.get("JHB_PREPEND_FRAMEWORKS", "")
+for framework in frameworks.split(":"):
+    if framework != "" and os.path.exists(framework):
+        # Use prependpath where possible to ensure our paths are added
+        # in front of the ones jhbuild sets up.
+        if os.path.exists(framework + "/Headers"):
+            environ_prepend("CPPFLAGS", "-I" + framework + "/Headers", " ")
+        if os.path.exists(framework + "/Resources/dev/bin"):
+            prependpath("PATH", framework + "/Resources/dev/bin")
+        if os.path.exists(framework + "/Resources/dev/lib/pkgconfig"):
+            prependpath("PKG_CONFIG_PATH", framework + "/Resources/dev/lib/pkgconfig")
+        if os.path.exists(framework + "/Resources/dev/lib"):
+            environ_prepend("LDFLAGS", "-L" + framework + "/Resources/dev/lib", " ")
+        if os.path.exists(framework + "/Resources/dev/share/aclocal"):
+            prependpath("ACLOCAL_FLAGS", framework + "/Resources/dev/share/aclocal")
+
+# We do some crude extra argument parsing just to add support for
+# getting environment variables. Used in framework creation to pick up
+# the jhbuild prefix.
+#
+value = parse_custom_argument("getenv")
+if value:
+    print os.environ.get(value, "")
+    raise SystemExit
+
+if build:
+    print "Build setup: %s, prefix: %s" % (build, prefix)
+    os.environ["JHBUILD_CONFIG"] = build
+else:
+    print "Prefix: %s" % (prefix)
+
+if not ran_recursively and prompt_prefix:
+    os.environ["JHBUILD_PROMPT"] = "[" + prompt_prefix + "] "
+
+# Unset this se we don't mess with the check for not starting
+# recursively.
+os.unsetenv("JHB")
+
+if "shell" in sys.argv:
+    print "Entered jhbuild shell, type 'exit' to return."

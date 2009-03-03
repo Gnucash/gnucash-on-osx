@@ -1,0 +1,50 @@
+# -*- mode: python -*-
+
+checkoutroot = '/usr/local/src/gnome2'
+prefix = '/usr/local/gtk2'
+
+#This somehow fell out of jhbuildrc:
+environ_prepend("PATH", prefix + "/bin")
+
+autogenargs='--disable-static --enable-shared --disable-gtk-doc --disable-docs --disable-scrollkeeper --disable-xlib'
+
+#environ_append("LDFLAGS", "-Wl,-dylib_file,/System/Library/Frameworks/OpenGL.framework/Versions/A/Libraries/libGL.dylib:/System/Library/Frameworks/OpenGL.framework/Versions/A/Libraries/libGL.dylib -Wl,-dylib_file,/System/Library/Frameworks/ApplicationServices.framework/Versions/A/Frameworks/ImageIO.framework/Versions/A/Resources/libJPEG.dylib:/System/Library/Frameworks/ApplicationServices.framework/Versions/A/Frameworks/ImageIO.framework/Versions/A/Resources/libJPEG.dylib -Wl,-dylib_file,/System/Library/Frameworks/ApplicationServices.framework/Versions/A/Frameworks/ImageIO.framework/Versions/A/Resources/libTIFF.dylib:/System/Library/Frameworks/ApplicationServices.framework/Versions/A/Frameworks/ImageIO.framework/Versions/A/Resources/libTIFF.dylib -Wl,-dylib_file,/System/Library/Frameworks/ApplicationServices.framework/Versions/A/Frameworks/ImageIO.framework/Versions/A/Resources/libPng.dylib:/System/Library/Frameworks/ApplicationServices.framework/Versions/A/Frameworks/ImageIO.framework/Versions/A/Resources/libPng.dylib")
+
+
+module_autogenargs={}
+module_autogenargs["gconf"]="--enable-static --enable-shared --disable-scrollkeeper --disable-xlib"
+module_autogenargs["libofx"]="--with-opensp-includes=" + prefix + "/include/OpenSP --with-opensp-libs=" + prefix + "/lib"
+module_autogenargs["libgnomeui"]="--disable-static --enable-shared --disable-scrollkeeper --disable-xlib --without-x"
+module_autogenargs["guile"]="ABI=32"
+#module_autogenargs["dbus"]="--localstatedir=/var"
+module_autogenargs["libxslt"]="--with-libxml-prefix=${prefix}"
+
+#NB: to compile libgnomeprint, one must repair a defect in
+#/usr/share/aclocal/libtool.m4, because libgnomeprint abuses it a bit:
+#Find the defun for AC_CHECK_LIBM, and for the $host case for darwin,
+#add
+#LIBM=" "
+#before the ";;"
+
+module_makeargs = {}
+module_makeargs["perl-xml-parser"]="EXPATLIBPATH=" + prefix + "/lib EXPATINCPATH=${prefix}/include "
+
+
+path = prefix + '/bin/install-check'
+if os.path.exists(path):
+    os.environ['INSTALL'] = path
+#Comment this out if you want to build with your default sdk; make a
+#similar function (it's in .jhbuildrc) if you want to set a different
+#sdk altogether. 
+#setup_sdk_10_4()
+
+
+moduleset = os.path.expanduser("~/gnucash.modules")
+
+modules = ['meta-gtk-osx-bootstrap', 'meta-gtk-osx-core', 'meta-gtk-osx-freetype', 'gnucash']
+
+build_policy = "updated-deps"
+
+
+
+

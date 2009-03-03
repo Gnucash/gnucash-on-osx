@@ -1,0 +1,589 @@
+
+==Overview==
+GnuCash can be built to run more or less natively on OSX -- meaning without X11. Better yet, the build is almost automatic.
+
+To pull this off, you'll need Developer Tools installed. The instructions which follow assume that you're comfortable building programs from the command line and editing text files.
+
+I've succeeded in building this under various incarnations of Leopard while perfecting the modulesets, always on a Mac Pro... but it ought to work on any Mac running Tiger or Leopard.
+
+The default configuration builds in your home folder. On my system, I build in /usr/local/src/gnome and install to /usr/local/gtk. If you want to do that, uncomment the checkoutroot and prefix lines in .jhbuildrc-custom, then create the folders up front and give yourself ownership. If you don't know how to do that, then you should probably leave it the way it is.
+
+==Preliminaries==
+
+Go to http://developer.imendio.com/projects/gtk-macosx/build-instructions and follow the instructions. '''''Don't run jhbuild build yet!'''''
+
+If you have set <tt>$MACOSX_DEPLOYMENT_TARGET</tt> to something other than your running version of OSX, you may get an error during jhbuld bootstrap.
+
+You may get an error about <tt>$PREFIX/inst/man/man1/cjpeg.1</tt> not existing. What this really means is that install wasn't set to make the directory, so select '[4] start shell" and mkdir -p $PREFIX/inst/man/man1, quit the shell, and select '[1] rerun stage install'.
+
+Paste the code from [[#Customize jhbuildrc]] into a file named ".jhbuildrc-custom" in your home folder.
+Do likewise for [[#Gnucash Moduleset]], with a filename "gnucash.modules".
+
+==Building==
+
+Once all of the preliminaries are complete, do:
+<tt>
+$> jhbuild build
+</tt>
+
+You'll get a few errors:
+
+'''libgnomeprint''' has a defective configure.ac which fails when libm isn't found. I've filed a bug report (Bug 540837) with a patch, but a similar bug report (Bug 471730) has been sitting for a year, so there's no telling when the developers will get around to fixing this (and libgnomeprint is deprecated anyway). Here's the patch:
+
+<pre>
+--- configure.in        2008-07-03 14:18:44.000000000 -0700
++++ configure.in.mod    2008-07-03 14:17:11.000000000 -0700
+@@ -148,9 +148,17 @@
+ dnl Checking for libm
+ dnl =================================
+ AC_CHECK_LIBM
+-if test "x$LIBM" = "x"; then
+-       AC_MSG_ERROR(You need -lm(mathematic library) for this version of libgnomeprint.)
+-fi
++case $host in
++*-*-beos* | *-*-cygwin* | *-*-pw32* | *-*-darwin*)
++  # These system don't have libm, or don't need it
++  ;;
++*)
++  if test "x$LIBM" = "x"; then
++       AC_MSG_ERROR(You need -lm(mathematic library) for this version of
++libgnomeprint.)
++  fi
++  ;;
++esac
+ LDFLAGS="$LDFLAGS $LIBM"
+ 
+ dnl =================================
+</pre>
+
+Select '[4] start shell', apply the patch (you probably will need to use <tt>patch -l</tt>) , quit the shell, and select "[6] go to stage configure"
+
+'''goffice''' will complain about a misconfiguration of gtk-doc. It doesn't matter, so select "[2] ignore error".
+
+'''libgnomeui''' Another configure.in bug (Bug 535958). The patch:
+<pre>
+Index: configure.in
+===================================================================
+--- configure.in        (revision 5608)
++++ configure.in        (working copy)
+@@ -116,7 +116,7 @@
+     gnome_keyring_requirement="gnome-keyring-1 >= gnome_keyring_required_version"
+     GNOME_KEYRING="gnome-keyring-1"
+
+-    if test x$GNOME_HAVE_X11 != xyes ; then
++    if test x$have_x != xdisabled && test x$GNOME_HAVE_X11 != xyes ; then
+         AC_MSG_ERROR([libX11 not found])
+     fi
+     ;;
+
+
+</pre>
+
+Select "[4] start shell", apply the patch, quit the shell, and select "[1] rerun configure"
+
+'''slib''' will fail because it wants to install to /usr/local, and you'd have to be building with root authority for that to work. We don't want to install there anyway, so select "[4] start shell" and:
+<tt>
+$> mkdir $PREFIX/lib/slib
+$> cp *.scm $PREFIX/lib/slib/
+$> cp guile.init $PREFIX/lib/slib
+$> cd $PREFIX/share/guile/1.6/
+$> ln -s ../../../lib/slib .
+$> $PREFIX/bin/guile
+guile> (use-modules (ice-9 slib))
+guile> (require 'new-catalog)
+guile> (quit)
+</tt>
+Quit the shell and select "[2] ignore error and continue to done".
+
+You'll have to stop the build (control-c will do it) after the gnucash tarball unpacks to apply the following patch. '''''Make sure to do it before configure finishes!''''' 
+Select "[4] start shell", apply the patch, exit the shell, and select "[1]" rerun configure'''.
+
+Here's the patch:
+<pre>
+--- configure   2008-05-31 16:07:04.000000000 -0700
++++ configure   2008-04-27 03:21:24.000000000 -0700
+@@ -23798,7 +23798,7 @@
+ # These are unavailable on windows/mingw32
+ 
+ 
+-for ac_header in X11/Xlib.h glob.h
++for ac_header in glob.h
+ do
+ as_ac_Header=`echo "ac_cv_header_$ac_header" | $as_tr_sh`
+ if { as_var=$as_ac_Header; eval "test \"\${$as_var+set}\" = set"; }; then
+</pre>
+
+
+==Running from the commandline==
+There's a few more things to fix before we can run GnuCash. GnuCash uses dbus to find its configuration data. First we need to fix up dbus's config file. Open $PREFIX/etc/dbus-1/session.conf in your editor. Quite near the top you'll see a line that looks something like
+<pre>
+ <listen>unix:tmpdir=/var/folders/8Z/8ZMrxptP2RW3+U+8ZNMZY++++TI/-Tmp-/</listen>
+</pre>
+That's a perfectly valid temp directory... but dbus itself can't handle those +s, so change the spec to <code>unix:tmpdir=$PREFIX/tmp</code> and save the file. 
+
+:Run <tt>$PREFIX/bin/dbus-uuidgen --ensure=$PREFIX/var/lib/dbus/machine-id</tt>
+
+:Rename <code>$PREFIX/lib/libjpeg.dylib, $PREFIX/lib/libtiff.dylib</code>, and <code>$PREFIX/lib/libpng.dylib</code> to something else (I use names like <code>$PREFIX/lib/libjpeg.dylib.hidden</code>).
+
+:Replace <code>$PREFIX/bin/gnucash</code> with the code from [[#GnuCash Start Script (commandline)]].
+
+Now you're ready to try it out:
+<tt>
+$> $PREFIX/bin/gnucash
+</tt>
+
+==Making a Bundle==
+So far so good, but you don't really want to have to open a Terminal window every time you want to use GnuCash, now do you? Of course not. You want a nice icon in your Applications folder (and maybe in the Dock) to click on when you run GnuCash. Here's how to do this:
+
+:Install the bundler from http://developer.imendio.com/projects/gtk-macosx/creating-app-bundles.
+:I like to create a subfolder called gnucash-bundler and keep everything in there, but you don't have to.
+:Paste the contents of [[#GnuCash Bundle Description]] into a file called "gnucash.bundle", [[#Gnucash Info.Plist]] into "Info.Plist", and [[#Gnucash Start Script (Bundler)]] into "gnucash-launcher", all in the same folder.
+:Look through both files and adjust the paths to match your installation.
+:make gnucash-launcher executable (<tt>chmod +x gnucash-launcher</tt>)
+:execute <tt>jhbuild shell</tt> to set up the environment for the bundler
+:while in the shell, execute <tt> ige-mac-bundler gnucash.bundle</tt>.
+
+And your bundle should be ready to go.
+Try <tt>GnuCash.app/Contents/MacOSX/GnuCash</tt> from the command-line so that you can see any error messages. If that works, try <tt>open GnuCash.app</tt>. If that works, then you can move GnuCash.app to your Applications folder and it's ready to use. '''''Don't move or remove the installation directory (~/gtk/inst by default): Both dbus and GnuCash have links pointing into it which can't at present be changed.'''''
+
+==Files==
+===Customize jhbuildrc===
+Paste this into .jhbuildrc-custom in your home folder:
+<pre>
+# -*- mode: python -*-
+
+#You can override the build and install directories by uncommenting
+#and editing the next two lines. Be sure to create these directories
+#and change their ownership to you before you try to build!
+#checkoutroot = '/usr/local/src/gnome' 
+#prefix = '/usr/local/gtk'
+
+autogenargs='--disable-static --enable-shared --disable-gtk-doc --disable-docs --disable-scrollkeeper --disable-xlib'
+
+module_autogenargs={}
+module_autogenargs["gconf"]="--enable-static --enable-shared --disable-scrollkeeper --disable-xlib"
+module_autogenargs["libofx"]="--with-opensp-includes=" + prefix + "/include/OpenSP --with-opensp-libs=" + prefix + "/lib"
+module_autogenargs["libgnomeui"]="--disable-static --enable-shared --disable-scrollkeeper --disable-xlib --without-x"
+
+module_makeargs = {}
+module_makeargs["perl-xml-parser"]="EXPATLIBPATH=" + prefix + "/lib EXPATINCPATH=${prefix}/include "
+
+
+path = prefix + '/bin/install-check'
+if os.path.exists(path):
+    os.environ['INSTALL'] = path
+#Comment this out if you want to build with your default sdk; make a
+#similar function (it's in .jhbuildrc) if you want to set a different
+#sdk altogether. 
+#setup_sdk_10_4()
+
+
+moduleset = os.path.expanduser("~/gnucash.modules")
+
+modules = ['meta-gtk-osx-bootstrap', 'meta-gtk-osx-core', 'meta-gtk-osx-freetype', 'gnucash']
+
+build_policy = "updated-deps"
+</pre>
+
+===Gnucash Moduleset===
+Paste the following into a file named gnucash.modules in your home folder:
+<pre>
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE moduleset SYSTEM "moduleset.dtd">
+<?xml-stylesheet type="text/xsl" href="moduleset.xsl"?>
+<moduleset>
+  <repository type="svn" name="svn.gnome.org" default="yes" 
+	      href="http://svn.gnome.org/svn/"/>
+  <repository type="tarball" name="kernel.org"
+      href="http://www.kernel.org/pub/linux/"/>
+  <repository type='tarball' name='ftp.gnu.org'
+	      href="ftp://ftp.gnu.org/gnu/"/>
+  <repository type='tarball' name='sourceforge'
+	      href="http://downloads.sourceforge.net/"/>
+  <repository type="cvs" name="slib.savannah.gnu.org"
+	      cvsroot=":pserver:anonymous@cvs.savannah.gnu.org:/sources/slib"
+	      password=""/>
+  <repository type="tarball" name="gnucash.org"
+	      href="http://www.gnucash.org/pub/gnucash/sources/stable/"/>
+
+
+
+  <include 
+      href="http://people.imendio.com/richard/gtk-osx-build/modulesets/gtk-osx.modules"/>
+
+
+  <tarball id='readline' autogen-sh='configure'>
+    <source href='ftp://ftp.gnu.org/gnu/readline/readline-5.2.tar.gz'/>
+      <patches>
+	<patch file='ftp://ftp.gnu.org/gnu/readline/readline-5.2-patches/readline52-001' strip='2' />
+	<patch file='ftp://ftp.gnu.org/gnu/readline/readline-5.2-patches/readline52-002' strip='2' />
+	<patch file='ftp://ftp.gnu.org/gnu/readline/readline-5.2-patches/readline52-003' strip='2' />
+	<patch file='ftp://ftp.gnu.org/gnu/readline/readline-5.2-patches/readline52-004' strip='2' />
+	<patch file='ftp://ftp.gnu.org/gnu/readline/readline-5.2-patches/readline52-005' strip='2' />
+	<patch file='ftp://ftp.gnu.org/gnu/readline/readline-5.2-patches/readline52-006' strip='2' />
+	<patch file='ftp://ftp.gnu.org/gnu/readline/readline-5.2-patches/readline52-007' strip='2' />
+	<patch file='ftp://ftp.gnu.org/gnu/readline/readline-5.2-patches/readline52-008' strip='2' />
+	<patch file='ftp://ftp.gnu.org/gnu/readline/readline-5.2-patches/readline52-009' strip='2' />
+	<patch file='ftp://ftp.gnu.org/gnu/readline/readline-5.2-patches/readline52-010' strip='2' />
+	<patch file='ftp://ftp.gnu.org/gnu/readline/readline-5.2-patches/readline52-011' strip='2' />
+	<patch file='ftp://ftp.gnu.org/gnu/readline/readline-5.2-patches/readline52-012' strip='2' />
+      </patches>
+  </tarball>
+
+  <autotools id="OpenSP" autogen-sh='configure'
+	     autogenargs="--disable-static --enable-shared --disable-doc-build">
+    <branch repo="sourceforge" module="openjade/OpenSP-1.5.2.tar.gz" 
+	    version='1.5.2'/>>
+  </autotools>
+
+  <autotools id="libofx" autogen-sh='configure'>
+    <branch repo="sourceforge" module="libofx/libofx-0.9.0.tar.gz"
+	    version='0.9.0'/>
+    <dependencies>
+      <dep package='guile-1.6'/>
+      <dep package="OpenSP"/>
+    </dependencies>
+  </autotools>
+
+  <autotools id="guile-1.6" autogen-sh="configure"
+	     autogenargs="--disable-static --enable-shared 
+			  --disable-scrollkeeper --disable-xlib">
+    <branch repo="ftp.gnu.org" module="guile/guile-1.6.8.tar.gz" 
+	    version="1.6.7" size="3114052" />
+    <dependencies>
+      <dep package='readline'/>
+    </dependencies>
+  </autotools>
+
+  <autotools id="Slib" skip-autogen="true">
+    <branch repo="slib.savannah.gnu.org"
+	    module="slib"/>
+    <dependencies>
+      <dep package="guile-1.6"/>
+    </dependencies>
+  </autotools>
+
+  <autotools id="gnucash" autogen-sh="configure"
+	     autogenargs="--enable-ofx">
+    <branch module="gnucash-2.2.5.tar.gz" version="2.2.5"
+	    repo="gnucash.org"/>
+	
+    <dependencies>
+      <dep package="goffice"/>
+      <dep package="libofx"/>
+      <dep package="gtkhtml"/>
+      <dep package="Slib"/>
+    </dependencies>
+
+  </autotools>
+
+</moduleset>
+</pre>
+
+===GnuCash Start Script (commandline)===
+Replace $PREFIX/bin/gnucash with this:
+<pre>
+PREFIX="~/gtk/inst/" #You'll have to fix this up if you changed it
+export PREFIX
+PATH="$PREFIX/bin:${PATH}"
+export PATH
+
+GUILE_WARN_DEPRECATED="no"
+export GUILE_WARN_DEPRECATED
+
+if test -z "$DBUS_SESSION_BUS_ADDRESS"; then
+    eval `dbus-launch --sh-syntax --exit-with-session --config-file=$PREFIX/etc/dbus-1/session.conf`
+fi
+
+GNC_MODULE_PATH="$PREFIX/lib/gnucash:${GNC_MODULE_PATH}"
+
+EXTRA_PATH="${EXTRA_PATH}:$PREFIX/share/gnucash/guile-modules"
+EXTRA_PATH="${EXTRA_PATH}:$PREFIX/share/gnucash/scm"
+GUILE_LOAD_PATH="${EXTRA_PATH}:${GUILE_LOAD_PATH}"
+
+EXTRA_LIBS="${GNC_MODULE_PATH}"
+EXTRA_LIBS="${EXTRA_LIBS}:/System/Library/Frameworks/ApplicationServices.framework/Versions/A/Frameworks/ImageIO.framework/Versions/A/Resources/"
+EXTRA_LIBS="${EXTRA_LIBS}:$PREFIX/lib"
+EXTRA_LIBS="${EXTRA_LIBS}:$PREFIX/lib/gnucash"
+
+LD_LIBRARY_PATH="${EXTRA_LIBS}:${LD_LIBRARY_PATH}"
+DYLD_LIBRARY_PATH="${EXTRA_LIBS}:${DYLD_LIBRARY_PATH}"
+
+export GNC_MODULE_PATH
+export GUILE_LOAD_PATH
+export LD_LIBRARY_PATH
+export DYLD_LIBRARY_PATH
+
+exec gnucash-bin "$@"
+</pre>
+===Gnucash Start Script (Bundler)===
+If you're going to use the bundler, paste this file into your bundle directory named gnucash-launcher; to run from the command line, put this in $PREFIX/bin/gnucash.
+<pre>
+#!/bin/sh
+
+if test "x$IGE_DEBUG_LAUNCHER" != x; then
+    set -x
+fi
+
+if test "x$IGE_DEBUG_GDB" != x; then
+    EXEC="gdb --args"
+else
+    EXEC=exec
+fi
+
+name="`basename $0`"
+tmp="`pwd`/$0"
+tmp=`dirname "$tmp"`
+tmp=`dirname "$tmp"`
+bundle=`dirname "$tmp"`
+bundle_contents="$bundle"/Contents
+bundle_res="$bundle_contents"/Resources
+bundle_lib="$bundle_res"/lib
+bundle_bin="$bundle_res"/bin
+bundle_data="$bundle_res"/share
+bundle_etc="$bundle_res"/etc
+
+export DYLD_LIBRARY_PATH="$bundle_lib"
+export XDG_CONFIG_DIRS="$bundle_etc"/xdg
+export XDG_DATA_DIRS="$bundle_data"
+export GTK_DATA_PREFIX="$bundle_data"
+export GTK_EXE_PREFIX="$bundle_res"
+export GTK_PATH="$bundle_res"
+
+export GTK2_RC_FILES="$bundle_etc/gtk-2.0/gtkrc"
+export GTK_IM_MODULE_FILE="$bundle_etc/gtk-2.0/gtk.immodules"
+export GDK_PIXBUF_MODULE_FILE="$bundle_etc/gtk-2.0/gdk-pixbuf.loaders"
+export PANGO_RC_FILE="$bundle_etc/pango/pangorc"
+
+# We need a UTF-8 locale.
+export LANG="`grep \`defaults read .GlobalPreferences AppleCollationOrder 2>&1\`_ /usr/share/locale/locale.alias  | tail -n1 | sed 's/\./ /' | awk '{print $2}'`.UTF-8"
+
+if test -f "$bundle_lib/charset.alias"; then
+    export CHARSETALIASDIR="$bundle_lib"
+fi
+
+# Extra arguments can be added in environment.sh.
+EXTRA_ARGS="--config-path $bundle_etc/gnucash --share-path $bundle_data/gnucash --debug"
+
+if test -f "$bundle_res/environment.sh"; then
+  source "$bundle_res/environment.sh"
+fi
+
+# Strip out the argument added by the OS.
+if [ x`echo "x$1" | sed -e "s/^x-psn_.*//"` == x ]; then
+    shift 1
+fi
+
+PFX=${bundle_res}
+export PFX
+PATH="${PFX}/bin:${PATH}"
+export PATH
+
+GUILE_WARN_DEPRECATED="no"
+export GUILE_WARN_DEPRECATED
+
+if test -z "$DBUS_SESSION_BUS_ADDRESS"; then
+    eval `dbus-launch --sh-syntax --exit-with-session --config-file=$bundle_res/etc/dbus-1/session.conf`
+fi
+
+GNC_MODULE_PATH="${PFX}/lib/gnucash:${GNC_MODULE_PATH}"
+
+EXTRA_PATH="${EXTRA_PATH}:${PFX}/share/gnucash/guile-modules"
+EXTRA_PATH="${EXTRA_PATH}:${PFX}/share/gnucash/scm"
+GUILE_LOAD_PATH="${EXTRA_PATH}:${GUILE_LOAD_PATH}"
+
+EXTRA_LIBS="${GNC_MODULE_PATH}"
+EXTRA_LIBS="${EXTRA_LIBS}:/System/Library/Frameworks/ApplicationServices.framework/Versions/A/Frameworks/ImageIO.framework/Versions/A/Resources/"
+EXTRA_LIBS="${EXTRA_LIBS}:${PFX}/lib"
+EXTRA_LIBS="${EXTRA_LIBS}:${PFX}/lib/gnucash"
+
+LD_LIBRARY_PATH="${LD_LIBRARY_PATH}:${EXTRA_LIBS}:"
+DYLD_LIBRARY_PATH="${DYLD_LIBRARY_PATH}:${EXTRA_LIBS}"
+
+export GNC_MODULE_PATH
+export GUILE_LOAD_PATH
+export LD_LIBRARY_PATH
+export DYLD_LIBRARY_PATH
+
+$EXEC "$bundle_contents/MacOS/$name-bin" $* $EXTRA_ARGS
+</pre>
+
+===GnuCash Info.Plist===
+This is the Info.Plist required of all App Bundles. Paste into "Info.Plist" in the bundle directory.
+<pre>
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>CFBundleDevelopmentRegion</key>
+	<string>English</string>
+	<key>CFBundleExecutable</key>
+	<string>GnuCash</string>
+	<key>CFBundleGetInfoString</key>
+	<string>GnuCash version 2.2.5 Å© 2007 Free Software Foundation</string>
+	<key>CFBundleIconFile</key>
+	<string>gnucash.icns</string>
+	<key>CFBundleIdentifier</key>
+	<string>org.gnucash.GnuCash</string>
+	<key>CFBundleInfoDictionaryVersion</key>
+	<string>6.0</string>
+	<key>CFBundleLongVersionString</key>
+	<string>2.2.5 Å© 2007 Free Software Foundation</string>
+	<key>CFBundleName</key>
+	<string>GnuCash</string>
+	<key>CFBundlePackageType</key>
+	<string>APPL</string>
+	<key>CFBundleShortVersionString</key>
+	<string>2.2.5</string>
+	<key>CFBundleSignature</key>
+	<string>????</string>
+	<key>CFBundleVersion</key>
+	<string>2.2.5</string>
+	<key>CSResourcesFileMapped</key>
+	<true/>
+	<key>LSRequiresCarbon</key>
+	<true/>
+	<key>NSHumanReadableCopyright</key>
+	<string>Copyright 2007 Free Software Foundation</string>
+</dict>
+</plist>
+
+</pre>
+
+===GnuCash Bundle Description===
+This one configures the bundler to create the app bundle. Paste it into the bundler directory and name it 'gnucash.bundle':
+<pre>
+<?xml version="1.0" standalone="no"?> <!--*- mode: xml -*-->
+<app-bundle>
+
+  <meta>
+    <!-- Where to pick up the GTK+ installation, icon themes,
+         etc. Note that "${env:PREFIX}" is evaluated to the value of
+         the environment variable PREFIX, and likewise with HOME. You
+         can define additional prefixes and refer to them in paths
+         throughout this file on the form "${prefix:name}". This is
+         useful for installing certain libraries or even the
+         application itself separately.
+    -->
+    <prefix name="default">${env:PREFIX}</prefix>
+
+    <!-- The project directory is the default location of the created
+         app. If you leave out the path, the current directory is
+         used.
+    -->
+    <destination overwrite="yes">${env:HOME}/gnucash-bundler</destination>
+
+    <image>
+      <!-- Not implemented yet (DMG image). -->
+    </image>
+    <run-install-name-tool/>
+
+    <!-- Optionally specify a launcher script to use. If the
+         application sets up everything needed itself, like
+         environment variable, linker paths, etc, a launcher script is
+         not needed. If the source path is left out, the default
+         script will be used.
+    -->
+    <launcher-script>${project}/gnucash-launcher</launcher-script>
+
+    <!-- Not implemented: Optional runtime, could be python or mono
+         for example.
+    -->
+    <!--runtime copy="yes">/usr/bin/python</runtime-->
+  </meta>
+
+  <!-- The special macro "${project}" refers to the directory where
+       this bundle file is located. The application name and bundle
+       identifier are taken from the plist file.
+  -->
+  <plist>${project}/Info.plist</plist>
+
+  <main-binary>${prefix}/bin/gnucash-bin</main-binary>
+
+  <!-- Copy in GTK+ and Pango modules. Note the use of the
+       "${pkg:module:variable}" macro, which evaluates to a pkg-config
+       variable in the specified module. Note that any libraries that
+       binaries link to are also copied in automatically. 
+  -->
+  <binary>
+    ${prefix}/lib/gtk-2.0/${pkg:gtk+-2.0:gtk_binary_version}/loaders/*.so
+  </binary>
+  <binary>
+    ${prefix}/lib/pango/${pkg:pango:pango_module_version}/modules/pango-basic-fc.so
+  </binary>
+
+  <binary>
+    ${prefix}/lib/GConf/2/*.so
+  </binary>
+
+  <binary>
+    ${prefix}/lib/gnucash
+  </binary>
+  <binary>
+    ${prefix}/libexec
+  </binary>
+
+  <binary>
+    ${prefix}/bin/dbus-launch
+  </binary>
+
+  <binary>
+    ${prefix}/bin/dbus-daemon
+  </binary>
+
+  <!-- Data to copy in, usually Glade/UI files, images, sounds files
+       etc. The destination inside the bundle can be specified if the
+       files should end up at a different location, by using the
+       "dest" property. The destination must then start with the macro
+       "${bundle}", which refers to the bundle root directory.
+  -->
+  <data>
+    ${prefix}/share/gnucash
+  </data>
+
+  <data>
+    ${prefix}/share/guile
+  </data>
+
+  <data>
+    ${prefix}/share/gnome
+  </data>
+
+  <!--data dest="${bundle}/Contents/Resources/slib"-->
+  <data>
+    ${prefix}/lib/slib
+  </data>
+
+  <data dest="${bundle}/Contents/Resources">
+    ${prefix}/share/gnucash/pixmaps/gnucash.icns
+  </data>
+
+  <data dest='${bundle}/Contents/Resources/lib/'>
+    ${prefix}/lib/*.la
+  </data>
+
+  <data dest='${bundle}/Contents/Resources/var/lib/dbus/machine-id'>
+    ${prefix}/var/lib/dbus/machine-id
+  </data>
+
+  <data dest='${bundle}/Contents/Resources/etc/dbus-1/'>
+    ${prefix}/etc/dbus-1/
+  </data>
+
+
+  <!-- Icon themes to copy. The "icons" property can be either of
+       "auto", "all", or "none". All or none should be
+       self-explanatory, while auto means that the script will try to
+       figure out which icons are needed. This is done by getting all
+       the strings from all copied binaries, and matching them against
+       icon names. To be safe, you should use "all". "none" is useful
+       if you want just the index.theme file but no icons, mostly
+       needed for the "hicolor" base theme.
+  -->
+  <!-- icon-theme icons="auto"/>
+    Tango
+  </icon-theme -->
+
+</app-bundle>
+</pre>
+
