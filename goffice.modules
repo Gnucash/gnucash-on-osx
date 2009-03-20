@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Moduleset for building goffice libraries needed for GnuCash -->
+
+<moduleset>
+  <repository type="svn" name="svn.gnome.org" default="yes" 
+	      href="http://svn.gnome.org/svn/"/>
+
+  <metamodule id="meta-goffice">
+    <dependencies>
+      <dep package="goffice"/> 
+      <dep package="libart_lgpl"/> 
+      <dep package="libgsf"/> 
+    </dependencies>
+  </metamodule>
+
+  <autotools id="goffice">
+ <!--
+You need:                               Debian package name
+        glib            >= 2.8.0        libglib2.0-dev
+        gtk+            >= 2.6.0        libgtk2.0-dev
+        pango           >= 1.8.1        libpango1.0-dev
+        libgsf          >= 1.13.3       libgsf-1-dev
+        libglade        >= 2.3.6        libglade2-dev
+        gnome-xml       >= 2.4.12       libxml2-dev
+        NOTE: gnome-xml is also known as libxml
+        libart          >= 2.3.11       libart-2.0-dev
+-->
+   <branch revision="goffice-0-6"/>
+    <dependencies>
+      <dep package="glib"/>
+      <dep package="libgsf"/>
+      <dep package="libxml2"/>
+      <dep package="pango"/>
+      <dep package="libglade"/>
+      <dep package="libart_lgpl"/>
+<!--      <dep package="gtk-doc"/> -->
+      <dep package="libxml2"/>
+    </dependencies>
+  </autotools>
+
+  <autotools id="libgsf">
+    <branch/>
+    <dependencies>
+      <dep package="glib"/>
+      <dep package="gnome-vfs"/>
+      <dep package="libbonobo"/>
+    </dependencies>
+  </autotools>
+
+  <autotools id="libart_lgpl">
+    <branch/>
+    <after>
+      <dep package="meta-gtk-osx-bootstrap"/>
+      <dep package="meta-gtk-osx-core"/>
+    </after>
+  </autotools>
+
+
+
+</moduleset>

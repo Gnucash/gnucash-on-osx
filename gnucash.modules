@@ -21,26 +21,15 @@
 
 
   <include 
-      href="http://people.imendio.com/richard/gtk-osx-build/modulesets/gtk-osx.modules"/>
+      href="/usr/local/src/jhbuild/jhbuild/modulesets/gtk-osx.modules"/>
+  <include href="gtkhtml.modules"/>
+  <include href="goffice.modules"/>
 
 
-  <tarball id='readline' autogen-sh='configure'>
-    <source href='ftp://ftp.gnu.org/gnu/readline/readline-5.2.tar.gz'/>
-      <patches>
-	<patch file='ftp://ftp.gnu.org/gnu/readline/readline-5.2-patches/readline52-001' strip='2' />
-	<patch file='ftp://ftp.gnu.org/gnu/readline/readline-5.2-patches/readline52-002' strip='2' />
-	<patch file='ftp://ftp.gnu.org/gnu/readline/readline-5.2-patches/readline52-003' strip='2' />
-	<patch file='ftp://ftp.gnu.org/gnu/readline/readline-5.2-patches/readline52-004' strip='2' />
-	<patch file='ftp://ftp.gnu.org/gnu/readline/readline-5.2-patches/readline52-005' strip='2' />
-	<patch file='ftp://ftp.gnu.org/gnu/readline/readline-5.2-patches/readline52-006' strip='2' />
-	<patch file='ftp://ftp.gnu.org/gnu/readline/readline-5.2-patches/readline52-007' strip='2' />
-	<patch file='ftp://ftp.gnu.org/gnu/readline/readline-5.2-patches/readline52-008' strip='2' />
-	<patch file='ftp://ftp.gnu.org/gnu/readline/readline-5.2-patches/readline52-009' strip='2' />
-	<patch file='ftp://ftp.gnu.org/gnu/readline/readline-5.2-patches/readline52-010' strip='2' />
-	<patch file='ftp://ftp.gnu.org/gnu/readline/readline-5.2-patches/readline52-011' strip='2' />
-	<patch file='ftp://ftp.gnu.org/gnu/readline/readline-5.2-patches/readline52-012' strip='2' />
-      </patches>
-  </tarball>
+  <autotools id='readline' >
+    <branch repo="ftp.gnu.org" module="readline/readline-6.0.tar.gz"
+	    version="6.0"/>
+  </autotools>
 
 <!--
   <autotools id="desktop-file-utils">
@@ -90,14 +79,29 @@
 
   <autotools id="gnucash" autogen-sh="configure"
 	     autogenargs="--enable-ofx">
-    <branch module="gnucash-2.2.8.tar.gz" version="2.2.8"
-	    repo="gnucash.org"/>
-	
+    <branch module="gnucash-2.2.9.tar.gz" version="2.2.9"
+	    repo="gnucash.org">
+      <patches>
+	<patch>
+ --- src/gnome-utils/Makefile.in 2009-02-23 12:25:26.000000000 -0800
+ +++ src/gnome-utils/Makefile.in 2009-03-06 16:24:45.000000000 -0800
+ @@ -34,7 +34,7 @@
+  POST_UNINSTALL = :
+  build_triplet = @build@
+  host_triplet = @host@
+ -@HAVE_X11_XLIB_H_TRUE@am__append_1 = -lX11
+ +#@HAVE_X11_XLIB_H_TRUE@am__append_1 = -lX11
+  @GTKHTML_USES_GTKPRINT_TRUE@am__append_2 = print-session.c
+  @GTKHTML_USES_GTKPRINT_FALSE@am__append_3 = ${GNOME_PRINT_CFLAGS}
+  @GTKHTML_USES_GTKPRINT_FALSE@am__append_4 = ${GNOME_PRINT_LIBS}
+	</patch>
+      </patches>
+    </branch>
     <dependencies>
-      <dep package="goffice"/>
+      <dep package="meta-goffice"/>
       <dep package="libofx"/>
 <!--      <dep package="libgnomeprint"/> -->
-      <dep package="gtkhtml"/>
+      <dep package="meta-gtkhtml"/>
       <dep package="Slib"/>
     </dependencies>
 

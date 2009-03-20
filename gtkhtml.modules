@@ -1,0 +1,229 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<!-- Modules required to build gtkhtml required by GnuCash -->
+
+<moduleset>
+
+  <repository type="svn" name="svn.gnome.org" default="yes" 
+	      href="http://svn.gnome.org/svn/"/>
+  <repository type='tarball' name='rpm5.org' 
+	      href="http://rpm5.org/files/"/>
+  <repository type="tarball" name="abisource/enchant" 
+	      href="http://www.abisource.com/downloads/enchant/" />
+  <repository type='tarball' name='michael.68k.org' 
+	      href="http://www.68k.org/~michael/"/>
+  <repository type="tarball" name="ftp.gnu.org"
+	      href="ftp://ftp.gnu.org/gnu/"/>
+
+  <metamodule id="meta-gtkhtml">
+    <dependencies>
+      <dep package="gtkhtml"/>
+      <dep package="libgnomeui"/>
+      <dep package="libbonoboui"/>
+      <dep package="libgnome"/>
+      <dep package="libgnomeprint"/>
+      <dep package="libgnomeprintui"/> 
+      <dep package="libgnomecups"/> 
+      <dep package="libgnomecanvas"/>
+      <dep package="gnome-vfs"/>
+      <dep package="libbonobo"/>
+<!--      <dep package="esound"/> -->
+      <dep package="enchant"/> 
+<!--      <dep package="audiofile"/> -->
+      <dep package="dbus"/>
+      <dep package="dbus-glib"/>
+      <dep package="gnome-keyring"/>
+      <dep package="libtasn1"/>
+    </dependencies>
+  </metamodule>
+
+  <autotools id="gtkhtml" >
+ <!--
+In order to compile GtkHTML, you need libgnome[ui] 1.112.1 (or later),
+Bonobo 1.112.1 (or later), gnome-print 2.2.0 (or later) and GAL 2.1.0 (or
+later).
+
+Optionally you may want to install GConf 1.0.7 (or later).
+-->
+   <branch/>
+    <dependencies>
+      <dep package="gtk+"/>
+      <dep package="libgnomeui"/>
+      <dep package="libbonoboui"/>
+      <dep package="libglade"/>
+      <dep package="libgnomeprint"/>
+      <dep package="libgnomeprintui"/> 
+      <dep package="iso-codes"/>
+      <dep package="enchant"/> 
+    </dependencies>
+  </autotools>
+
+  <autotools id="libgnomecups">
+    <branch/>
+    <dependencies>
+      <dep package="glib"/>
+      <dep package="gnome-common"/>
+    </dependencies>
+  </autotools>
+
+  <autotools id="libgnomeprint">
+    <branch/>
+    <dependencies>
+      <dep package="intltool"/>
+      <dep package="libart_lgpl"/>
+      <dep package="glib"/>
+      <dep package="gnome-common"/>
+      <dep package="pango"/>
+      <dep package="libgnomecups"/>
+      <dep package="freetype"/>
+    </dependencies>
+  </autotools>
+
+ <autotools id="libgnomeprintui">
+    <branch/>
+    <dependencies>
+      <dep package="libgnomeprint"/>
+      <dep package="gtk+"/>
+      <dep package="libgnomecanvas"/>
+      <dep package="gnome-icon-theme"/>
+    </dependencies>
+  </autotools>
+
+
+<!-- Audiofile hasn't been actively developed since 2004 -->
+<!--
+  <autotools id='audiofile' autogen-sh="configure">
+    <branch module='audiofile/audiofile-0.2.6.tar.gz'
+            repo='michael.68k.org' version='0.2.6'
+            size="374688" md5sum="9c1049876cd51c0f1b12c2886cce4d42"/>
+  </autotools>
+
+  <autotools id="esound">
+    <branch/>
+    <dependencies>
+      <dep package="audiofile"/>
+    </dependencies>
+  </autotools>
+-->
+  <autotools id="popt">
+    <branch module="popt/popt-1.14.tar.gz" version="1.14"
+	    repo="rpm5.org"/>
+  </autotools>
+
+  <!--gnome-vfs in  gnome-suites-2.24.modules includes the following 
+      <dep package="desktop-file-utils"/>
+      <dep package="avahi"/>
+      <dep package="hal"/>
+      <dep package="gamin"/>
+      but building them on OS-X proved problematic and gnome-vfs builds well 
+      without them -->
+  <autotools id="gnome-vfs">
+    <branch/>
+    <dependencies>
+      <dep package="gconf"/>
+      <dep package="shared-mime-info"/>
+      <dep package="gnome-mime-data"/>
+      <dep package="dbus-glib"/>
+    </dependencies>
+  </autotools>
+
+
+  <autotools id="enchant" autogen-sh="configure" >
+    <branch module="1.4.2/enchant-1.4.2.tar.gz" version="1.4.2"
+	    repo="abisource/enchant" size='595192'
+	    md5sum="fe4558269ff59f569ab9581c907d58cb" />
+    <dependencies>
+      <dep package="glib"/>
+    </dependencies>
+  </autotools>
+
+  <autotools id="libgnomeui">
+    <branch/>
+    <dependencies>
+      <dep package="libbonoboui"/>
+      <dep package="libglade"/>
+      <dep package="gnome-icon-theme"/>
+      <dep package="gnome-keyring"/>
+    </dependencies>
+  </autotools>
+
+  <autotools id="gnome-keyring">
+    <branch/>
+    <dependencies>
+      <dep package="gtk+"/>
+      <dep package="libgcrypt"/>
+      <dep package="libtasn1"/>
+    </dependencies>
+  </autotools>
+
+   <autotools id="libbonobo">
+<!-- DEPENDS says "ORBit" -->
+    <branch/>
+    <dependencies>
+      <dep package="popt"/>
+      <dep package="ORBit2"/>
+      <dep package="intltool"/>
+      <dep package="gnome-common"/>
+      <dep package="libxml2"/>
+      <dep package="dbus-glib"/>
+    </dependencies>
+  </autotools>
+
+  <autotools id="libbonoboui">
+    <branch/>
+    <dependencies>
+      <dep package="libgnome"/>
+      <dep package="libbonobo"/>
+      <dep package="libgnomecanvas"/>
+      <dep package="libglade"/>
+    </dependencies>
+  </autotools>
+
+ <autotools id="libgnome" autogenargs="--disable-esd" >
+    <branch/>
+    <dependencies>
+      <dep package="libxml2"/>
+      <dep package="libxslt"/>
+      <dep package="libbonobo"/>
+      <dep package="gnome-vfs"/>
+      <dep package="gconf"/>
+<!--      <dep package="esound"/> -->
+    </dependencies>
+  </autotools>
+
+  <tarball id="dbus" version="1.2.12" 
+	   autogenargs="--disable-selinux --without-x">
+    <source href="http://dbus.freedesktop.org/releases/dbus/dbus-1.2.12.tar.gz"/>
+    <after>
+      <dep package="gtk+"/>
+    </after>
+  </tarball>
+
+  <tarball id="dbus-glib"  version="0.80" autogenargs="--disable-selinux">
+    <source href="http://dbus.freedesktop.org/releases/dbus-glib/dbus-glib-0.80.tar.gz"/>
+    <dependencies>
+      <dep package="libxml2"/>
+      <dep package="dbus"/>
+    </dependencies>
+    <after>
+      <dep package="meta-gtk-osx-bootstrap"/>
+      <dep package="meta-gtk-osx-core"/>
+    </after>
+  </tarball>
+
+  <autotools id="libgnomecanvas">
+    <branch/>
+    <after>
+      <dep package="meta-gtk-osx-bootstrap"/>
+      <dep package="meta-gtk-osx-core"/>
+    </after>
+  </autotools>
+
+  <autotools id="libtasn1"  supports-non-srcdir-builds="no">
+    <branch module="gnutls/libtasn1-1.8.tar.gz" version="1.8" 
+	    repo="ftp.gnu.org"/>
+  </autotools>
+
+
+
+</moduleset>

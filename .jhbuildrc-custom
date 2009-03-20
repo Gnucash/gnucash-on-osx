@@ -1,7 +1,7 @@
 # -*- mode: python -*-
 
-checkoutroot = '/usr/local/src/gnome2'
-prefix = '/usr/local/gtk2'
+checkoutroot = '/usr/local/src/gnome3'
+prefix = '/usr/local/gtk3'
 
 #This somehow fell out of jhbuildrc:
 environ_prepend("PATH", prefix + "/bin")
@@ -30,16 +30,15 @@ module_makeargs = {}
 module_makeargs["perl-xml-parser"]="EXPATLIBPATH=" + prefix + "/lib EXPATINCPATH=${prefix}/include "
 
 
-path = prefix + '/bin/install-check'
-if os.path.exists(path):
-    os.environ['INSTALL'] = path
+if os.path.exists(prefix + '/bin/install-check'):
+    os.environ['INSTALL'] = prefix + '/bin/install-check'
 #Comment this out if you want to build with your default sdk; make a
 #similar function (it's in .jhbuildrc) if you want to set a different
 #sdk altogether. 
 #setup_sdk_10_4()
 
 
-moduleset = os.path.expanduser("~/gnucash.modules")
+moduleset = os.path.join(os.environ['CONFIG_DIR'], "gnucash.modules")
 
 modules = ['meta-gtk-osx-bootstrap', 'meta-gtk-osx-core', 'meta-gtk-osx-freetype', 'gnucash']
 
