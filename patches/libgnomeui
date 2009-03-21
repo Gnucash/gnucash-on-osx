@@ -1,0 +1,13 @@
+Index: configure.in
+===================================================================
+--- configure.in        (revision 5608)
++++ configure.in        (working copy)
+@@ -116,7 +116,7 @@
+     gnome_keyring_requirement="gnome-keyring-1 >= gnome_keyring_required_version"
+     GNOME_KEYRING="gnome-keyring-1"
+
+-    if test x$GNOME_HAVE_X11 != xyes ; then
++    if test x$have_x != xdisabled && test x$GNOME_HAVE_X11 != xyes ; then
+         AC_MSG_ERROR([libX11 not found])
+     fi
+     ;;

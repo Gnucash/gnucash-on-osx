@@ -1,0 +1,23 @@
+--- configure.in        2008-07-03 14:18:44.000000000 -0700
++++ configure.in.mod    2008-07-03 14:17:11.000000000 -0700
+@@ -148,9 +148,17 @@
+ dnl Checking for libm
+ dnl =================================
+ AC_CHECK_LIBM
+-if test "x$LIBM" = "x"; then
+-       AC_MSG_ERROR(You need -lm(mathematic library) for this version of libgnomeprint.)
+-fi
++case $host in
++*-*-beos* | *-*-cygwin* | *-*-pw32* | *-*-darwin*)
++  # These system don't have libm, or don't need it
++  ;;
++*)
++  if test "x$LIBM" = "x"; then
++       AC_MSG_ERROR(You need -lm(mathematic library) for this version of
++libgnomeprint.)
++  fi
++  ;;
++esac
+ LDFLAGS="$LDFLAGS $LIBM"
+ 
+ dnl =================================
