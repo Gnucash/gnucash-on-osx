@@ -1,0 +1,10 @@
+--- /dev/null   2009-03-22 11:30:58.000000000 -0700
++++ install.sh  2009-03-22 12:54:40.000000000 -0700
+@@ -0,0 +1,7 @@
++#!/bin/sh
++mkdir $PREFIX/lib/slib
++cp *.scm $PREFIX/lib/slib/
++cp guile.init $PREFIX/lib/slib
++cd $PREFIX/share/guile/1.6/
++ln -s ../../../lib/slib .
++$PREFIX/bin/guile -c "(use-modules (ice-9 slib)) (require 'new-catalog)"
