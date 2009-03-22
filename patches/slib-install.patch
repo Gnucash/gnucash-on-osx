@@ -9,3 +9,12 @@
 +mkdir ../site
 +ln -s ../../../lib/slib .
 +$PREFIX/bin/guile -c "(use-modules (ice-9 slib)) (require 'new-catalog)"
+--- /dev/null   2009-03-22 11:30:58.000000000 -0700
++++ Makefile.gnucash  2009-03-22 12:54:40.000000000 -0700
+@@ -0,0 +1,4 @@
++all:
++
++install
++
+
+
