@@ -1,56 +1,42 @@
---- src/bin/gnucash.in
-+++ src/bin/gnucash.in
+--- src/bin/gnucash.in  2008-01-07 17:05:50.000000000 -0800
++++ src/bin/gnucash.in  2009-03-22 22:33:05.000000000 -0700
 @@ -2,6 +2,11 @@
  
  PATH="@-BIN_DIR-@:${PATH}"
  export PATH
-+XDG_CONFIG_DIRS=@-PREFIX-@@-PATH_SEPARATOR-@etc@-PATH_SEPARATOR-@xdg
++XDG_CONFIG_DIRS=@-PREFIX-@/etc/xdg
 +export XDG_CONFIG_DIRS
-+XDG_DATA_DIRS=@-PREFIX-@@-PATH_SEPARATOR-@share
++XDG_DATA_DIRS=@-PREFIX-@/share
 +export XDG_DATA_DIRS
 +
  
  GUILE_WARN_DEPRECATED="no"
  export GUILE_WARN_DEPRECATED
-@@ -13,6 +18,7 @@ EXTRA_PATH="${EXTRA_PATH}@-PATH_SEPARATOR-@@-GNC_SCM_INSTALL_DIR-@"
+@@ -13,6 +18,7 @@
  GUILE_LOAD_PATH="${EXTRA_PATH}@-PATH_SEPARATOR-@${GUILE_LOAD_PATH}"
  
  EXTRA_LIBS="${GNC_MODULE_PATH}"
-+EXTRA_LIBS="${EXTRA_LIBS}:@-PATH_SEPARATOR-@System@-PATH_SEPARATOR-@Library@-PATH_SEPARATOR-@Frameworks@-PATH_SEPARATOR-@ApplicationServices.framework@-PATH_SEPARATOR-@Versions@-PATH_SEPARATOR-@A@-PATH_SEPARATOR-@Frameworks@-PATH_SEPARATOR-@ImageIO.framework@-PATH_SEPARATOR-@Versions@-PATH_SEPARATOR-@A@-PATH_SEPARATOR-@Resources@-PATH_SEPARATOR-@"
++EXTRA_LIBS="${EXTRA_LIBS}:/System/Library/Frameworks/ApplicationServices.framework/Versions/A/Frameworks/ImageIO.framework/Versions/A/Resources/"
  EXTRA_LIBS="${EXTRA_LIBS}@-PATH_SEPARATOR-@@-GNC_LIB_INSTALLDIR-@"
  EXTRA_LIBS="${EXTRA_LIBS}@-PATH_SEPARATOR-@@-GNC_PKGLIB_INSTALLDIR-@"
  
-@@ -26,4 +32,8 @@ export LD_LIBRARY_PATH
+@@ -24,4 +30,8 @@
+ export LD_LIBRARY_PATH
  export DYLD_LIBRARY_PATH
- export GNC_DBD_DIR
  
 +if test -z "$DBUS_SESSION_BUS_ADDRESS"; then
-+    eval `dbus-launch --sh-syntax --exit-with-session --config-file=@-PREFIX-@@-PATH_SEPARATOR-@etc@-PATH_SEPARATOR-@dbus-1@-PATH_SEPARATOR-@session.conf`
++    eval `dbus-launch --sh-syntax --exit-with-session --config-file=@-PREFIX-@/etc/dbus-1/session.conf`
 +fi
 +
  exec gnucash-bin "$@"
 
--@@-GNC_LIB_INSTALLDIR-@"
- EXTRA_LIBS="${EXTRA_LIBS}@-PATH_SEPARATOR-@@-GNC_PKGLIB_INSTALLDIR-@"
- 
-@@ -26,4 +32,8 @@ export LD_LIBRARY_PATH
- export DYLD_LIBRARY_PATH
- export GNC_DBD_DIR
- 
-+if test -z "$DBUS_SESSION_BUS_ADDRESS"; then
-+    eval `dbus-launch --sh-syntax --exit-with-session --config-file=@-PREFIX-@@-PATH_SEPARATOR-@etc@-PATH_SEPARATOR-@dbus-1@-PATH_SEPARATOR-@session.conf`
-+fi
-+
- exec gnucash-bin "$@"
-*** src/bin/Makefile~	Mon Mar  9 16:44:41 2009
---- src/bin/Makefile	Sun Mar 22 15:45:23 2009
-***************
-*** 800,805 ****
---- 800,806 ----
-  gnucash: gnucash.in ${top_builddir}/config.status Makefile
-  	rm -f $@.tmp
-  	sed < $< > $@.tmp \
-+             -e 's#@-PREFIX-@#${prefix}#g' \
-  	    -e 's#@-BIN_DIR-@#${bindir}#g' \
-  		-e 's#@-GNC_DBD_DIR-@#${GNC_DBD_DIR}#g' \
-  	    -e 's#@-GNC_GUILE_MODULE_DIR-@#${GNC_SHAREDIR}/guile-modules#g' \
+--- src/bin/Makefile.in 2009-02-23 12:25:48.000000000 -0700
++++ src/bin/Makefile.in 2009-03-22 22:32:32.000000000 -0700
+@@ -804,6 +804,7 @@
+ gnucash: gnucash.in ${top_builddir}/config.status Makefile
+	rm -f $@.tmp
+	sed < $< > $@.tmp \
++	    -e 's#@-PREFIX-@#${prefix}#g' \
+	    -e 's#@-BIN_DIR-@#${bindir}#g' \
+	    -e 's#@-GNC_GUILE_MODULE_DIR-@#${GNC_SHAREDIR}/guile-modules#g' \
+	    -e 's#@-GNC_SCM_INSTALL_DIR-@#${GNC_SCM_INSTALL_DIR}#g' \

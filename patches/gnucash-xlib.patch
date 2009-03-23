@@ -1,12 +1,11 @@
-
---- src/gnome-utils/Makefile.in 2009-02-23 12:25:26.000000000 -0800
-+++ src/gnome-utils/Makefile.in 2009-03-06 16:24:45.000000000 -0800
-@@ -34,7 +34,7 @@
- POST_UNINSTALL = :
- build_triplet = @build@
- host_triplet = @host@
--@HAVE_X11_XLIB_H_TRUE@am__append_1 = -lX11
-+#@HAVE_X11_XLIB_H_TRUE@am__append_1 = -lX11
- @GTKHTML_USES_GTKPRINT_TRUE@am__append_2 = print-session.c
- @GTKHTML_USES_GTKPRINT_FALSE@am__append_3 = ${GNOME_PRINT_CFLAGS}
- @GTKHTML_USES_GTKPRINT_FALSE@am__append_4 = ${GNOME_PRINT_LIBS}
+--- configure   2009-02-23 12:25:34.000000000 -0800
++++ configure   2009-03-23 11:37:40.000000000 -0700
+@@ -24912,7 +24912,7 @@
+ # These are unavailable on windows/mingw32
+ 
+ 
+-for ac_header in X11/Xlib.h glob.h
++for ac_header in glob.h
+ do
+ as_ac_Header=`$as_echo "ac_cv_header_$ac_header" | $as_tr_sh`
+ if { as_var=$as_ac_Header; eval "test \"\${$as_var+set}\" = set"; }; then

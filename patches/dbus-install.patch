@@ -1,0 +1,19 @@
+--- bus/Makefile.in     2009-01-06 16:30:41.000000000 -0800
++++ bus/Makefile.in     2009-03-23 12:35:39.000000000 -0700
+@@ -1295,6 +1295,7 @@
+        $(mkinstalldirs) $(DESTDIR)$(datadir)/dbus-1/services
+        $(mkinstalldirs) $(DESTDIR)$(datadir)/dbus-1/system-services
+        $(mkinstalldirs) $(DESTDIR)$(libexecdir)/dbus-1
++       $(mkinstalldirs) $(DESTDIR)/tmp
+        $(INSTALL_PROGRAM) dbus-daemon-launch-helper $(DESTDIR)$(libexecdir)
+        if test `id -u` -eq 0; then \
+                chown root:$(DBUS_USER) $(DESTDIR)$(libexecdir)/dbus-daemon-launch-helper; \
+@@ -1303,6 +1304,8 @@
+                echo "Not installing $(DESTDIR)$(libexecdir)/dbus-daemon-launch-helper binary setuid!"; \
+                echo "You'll need to manually set permissions to root:$(DBUS_USER) and permissions 4750"; \
+        fi
++       $(DESTDIR)$(bindir)/dbus-uuidgen --ensure=$(DESTDIR)$(localstatedir)/lib/dbus/machine-id
++
+ # Tell versions [3.59,3.63) of GNU make to not export all variables.
+ # Otherwise a system limit (for SysV at least) may be exceeded.
+ .NOEXPORT:
