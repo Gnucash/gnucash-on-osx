@@ -12,16 +12,17 @@
 	      href="http://www.freedesktop.org/software/" /-->
   <repository type='tarball' name='sourceforge'
 	      href="http://downloads.sourceforge.net/"/>
-  <repository type="cvs" name="slib.savannah.gnu.org"
+  <!--  <repository type="cvs" name="slib.savannah.gnu.org"
 	      cvsroot=":pserver:anonymous@cvs.savannah.gnu.org:/sources/slib"
-	      password=""/>
+	      password=""/> -->
+  <repository type="tarball" name="csail" 
+	      href="http://groups.csail.mit.edu/mac/ftpdir/"/>
   <repository type="tarball" name="gnucash.org"
 	      href="http://www.gnucash.org/pub/gnucash/sources/stable/"/>
 
 
 
-  <include 
-      href="/usr/local/src/jhbuild/jhbuild/modulesets/gtk-osx.modules"/>
+  <include href="http://github.com/rhult/gtk-osx-build/raw/master/modulesets/gtk-osx.modules"/>
   <include href="gtkhtml.modules"/>
   <include href="goffice.modules"/>
 
@@ -31,18 +32,20 @@
 	    version="6.0"/>
   </autotools>
 
-<!--
-  <autotools id="desktop-file-utils">
-    <branch repo="www.freedesktop.org" 
-	    module="desktop-file-utils/releases/desktop-file-utils-0.10.tar.gz"
-            md5sum="8b930e9ad08ac6b8205dd00a1d694b0c" size="341508"/>
+  <autotools id="gwenhywfar" autogen-sh="configure">
+    <branch module="gwenhywfar/gwenhywfar-2.6.2.tar.gz" version="2.6.2"
+	    repo="sourceforge"/>
+  </autotools>
+
+  <autotools id="aqbanking" autogen-sh="configure" 
+	     autogenargs='--enable-ofx=yes --disable-qt3 --disable-kde --disable-chipcard-client --with-backends="aqhbci aqdtaus aqofxconnect" --with-frontends="cbanking g2banking"' >
+    <branch module="aqbanking/aqbanking-2.3.3.tar.gz" version="2.3.3"
+	    repo="sourceforge"/>
     <dependencies>
-      <dep package="glib"/>
-      <dep package="intltool"/>
+      <dep package="libofx"/>
+      <dep package="gwenhywfar"/>
     </dependencies>
   </autotools>
--->
-
 
   <autotools id="OpenSP" autogen-sh='configure'
 	     autogenargs="--disable-static --enable-shared --disable-doc-build">
@@ -51,8 +54,8 @@
   </autotools>
 
   <autotools id="libofx" autogen-sh='configure'>
-    <branch repo="sourceforge" module="libofx/libofx-0.9.0.tar.gz"
-	    version='0.9.0'/>
+    <branch repo="sourceforge" module="libofx/libofx-0.8.3.tar.gz"
+	    version='0.8.3'/>
     <dependencies>
       <dep package='guile-1.6'/>
       <dep package="OpenSP"/>
@@ -69,38 +72,30 @@
     </dependencies>
   </autotools>
 
-  <autotools id="Slib" skip-autogen="true">
-    <branch repo="slib.savannah.gnu.org"
-	    module="slib"/>
+  <autotools id="Slib" autogen-sh="install.sh"  makeargs="-f Makefile.gnucash" 
+	     makeinstallargs="-f Makefile.gnucash">
+    <!-- <branch repo="slib.savannah.gnu.org"
+	    module="slib"/> -->
+    <branch repo="csail" module="scm/slib-3b1.zip" version="3b1"
+	    checkoutdir="slib">
+      <patch file="http://github.com/jralls/gnucash-on-osx/raw/master/patches/slib-install.patch"/>
+    </branch>
     <dependencies>
       <dep package="guile-1.6"/>
     </dependencies>
   </autotools>
 
   <autotools id="gnucash" autogen-sh="configure"
-	     autogenargs="--enable-ofx">
+	     autogenargs="--enable-ofx --enable-aqbanking">
     <branch module="gnucash-2.2.9.tar.gz" version="2.2.9"
 	    repo="gnucash.org">
-      <patches>
-	<patch>
- --- src/gnome-utils/Makefile.in 2009-02-23 12:25:26.000000000 -0800
- +++ src/gnome-utils/Makefile.in 2009-03-06 16:24:45.000000000 -0800
- @@ -34,7 +34,7 @@
-  POST_UNINSTALL = :
-  build_triplet = @build@
-  host_triplet = @host@
- -@HAVE_X11_XLIB_H_TRUE@am__append_1 = -lX11
- +#@HAVE_X11_XLIB_H_TRUE@am__append_1 = -lX11
-  @GTKHTML_USES_GTKPRINT_TRUE@am__append_2 = print-session.c
-  @GTKHTML_USES_GTKPRINT_FALSE@am__append_3 = ${GNOME_PRINT_CFLAGS}
-  @GTKHTML_USES_GTKPRINT_FALSE@am__append_4 = ${GNOME_PRINT_LIBS}
-	</patch>
-      </patches>
+	<patch file="http://github.com/jralls/gnucash-on-osx/raw/master/patches/gnucash-xlib.patch" skip="0"/>
+	<patch file="http://github.com/jralls/gnucash-on-osx/raw/master/patches/gnucash-in.patch" skip="0"/>
     </branch>
     <dependencies>
       <dep package="meta-goffice"/>
       <dep package="libofx"/>
-<!--      <dep package="libgnomeprint"/> -->
+      <dep package="aqbanking"/>
       <dep package="meta-gtkhtml"/>
       <dep package="Slib"/>
     </dependencies>

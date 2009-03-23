@@ -6,6 +6,8 @@
 
   <repository type="svn" name="svn.gnome.org" default="yes" 
 	      href="http://svn.gnome.org/svn/"/>
+  <repository type="tarball" name="ftp.gnome.org"
+	      href="http://ftp.gnome.org/pub/GNOME/sources/"/>
   <repository type='tarball' name='rpm5.org' 
 	      href="http://rpm5.org/files/"/>
   <repository type="tarball" name="abisource/enchant" 
@@ -14,6 +16,10 @@
 	      href="http://www.68k.org/~michael/"/>
   <repository type="tarball" name="ftp.gnu.org"
 	      href="ftp://ftp.gnu.org/gnu/"/>
+  <repository type="tarball" name="xmlsoft"
+	      href="ftp://xmlsoft.org/libxml2/python/"/>
+  <repository type="tarball" name="freedesktop.org"
+	      href="http://dbus.freedesktop.org/releases/"/>
 
   <metamodule id="meta-gtkhtml">
     <dependencies>
@@ -36,6 +42,11 @@
       <dep package="libtasn1"/>
     </dependencies>
   </metamodule>
+
+  <distutils id="libxml-py" suports-non-srcdir-builds="no">
+    <branch module="libxml2-python-2.6.15.tar.gz" version="2.6.15"
+	    repo="xmlsoft"/>
+  </distutils>
 
   <autotools id="gtkhtml" >
  <!--
@@ -66,8 +77,12 @@ Optionally you may want to install GConf 1.0.7 (or later).
     </dependencies>
   </autotools>
 
-  <autotools id="libgnomeprint">
-    <branch/>
+  <autotools id="libgnomeprint" autogen.sh="autoreconf">
+    <branch module="libgnomeprint/2.18/libgnomeprint-2.18.6.tar.gz"
+	    repo="ftp.gnome.org" version="2.18.6"
+	    md5sum="10a9e58aabecf541bc6852f64b3a9294">
+	<patch file="http://github.com/jralls/gnucash-on-osx/raw/master/patches/libgnomeprint.patch" skip="0"/> 
+    </branch>
     <dependencies>
       <dep package="intltool"/>
       <dep package="libart_lgpl"/>
@@ -105,7 +120,7 @@ Optionally you may want to install GConf 1.0.7 (or later).
     </dependencies>
   </autotools>
 -->
-  <autotools id="popt">
+  <autotools id="popt" autogen-sh='configure'>
     <branch module="popt/popt-1.14.tar.gz" version="1.14"
 	    repo="rpm5.org"/>
   </autotools>
@@ -137,8 +152,11 @@ Optionally you may want to install GConf 1.0.7 (or later).
     </dependencies>
   </autotools>
 
-  <autotools id="libgnomeui">
-    <branch/>
+  <autotools id="libgnomeui" >
+    <branch module="libgnomeui/2.24/libgnomeui-2.24.1.tar.gz" version="2.24.1"
+	    repo="ftp.gnome.org" md5sum="4494a9e25eebd33fdf66ef30069179ee">
+	<patch file="http://github.com/jralls/gnucash-on-osx/raw/master/patches/libgnomeui.patch" skip="0"/> 
+    </branch>
     <dependencies>
       <dep package="libbonoboui"/>
       <dep package="libglade"/>
@@ -191,16 +209,21 @@ Optionally you may want to install GConf 1.0.7 (or later).
     </dependencies>
   </autotools>
 
-  <tarball id="dbus" version="1.2.12" 
-	   autogenargs="--disable-selinux --without-x">
-    <source href="http://dbus.freedesktop.org/releases/dbus/dbus-1.2.12.tar.gz"/>
+  <autotools id="dbus" autogen-sh='configure'
+	   autogenargs="--disable-selinux --without-x 
+	   --with-session-socket-dir=$PREFIX/tmp">
+    <branch module=" dbus/dbus-1.2.12.tar.gz"  version="1.2.12" 
+	    repo="freedesktop.org">
+      <patch file="http://github.com/jralls/gnucash-on-osx/raw/master/patches/dbus-install.patch"/>
+    </branch>
     <after>
       <dep package="gtk+"/>
     </after>
-  </tarball>
+  </autotools>
 
-  <tarball id="dbus-glib"  version="0.80" autogenargs="--disable-selinux">
-    <source href="http://dbus.freedesktop.org/releases/dbus-glib/dbus-glib-0.80.tar.gz"/>
+  <autotools id="dbus-glib" autogenargs="--disable-selinux">
+    <branch module="dbus-glib/dbus-glib-0.80.tar.gz"   version="0.80" 
+	    repo="freedesktop.org"/>
     <dependencies>
       <dep package="libxml2"/>
       <dep package="dbus"/>
@@ -209,7 +232,7 @@ Optionally you may want to install GConf 1.0.7 (or later).
       <dep package="meta-gtk-osx-bootstrap"/>
       <dep package="meta-gtk-osx-core"/>
     </after>
-  </tarball>
+  </autotools>
 
   <autotools id="libgnomecanvas">
     <branch/>
@@ -221,7 +244,9 @@ Optionally you may want to install GConf 1.0.7 (or later).
 
   <autotools id="libtasn1"  supports-non-srcdir-builds="no">
     <branch module="gnutls/libtasn1-1.8.tar.gz" version="1.8" 
-	    repo="ftp.gnu.org"/>
+	    repo="ftp.gnu.org">
+	<patch file="http://github.com/jralls/gnucash-on-osx/raw/master/patches/libtasn1.patch" skip="0"/>
+    </branch>
   </autotools>
 
 

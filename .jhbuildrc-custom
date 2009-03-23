@@ -1,48 +1,46 @@
 # -*- mode: python -*-
+import sys
+if sys.hexversion < 0x2050000:
+    print "Python version %s, version 2.5 required" % sys.version
+    sys.exit
 
-checkoutroot = '/usr/local/src/gnome3'
-prefix = '/usr/local/gtk3'
+#checkoutroot = '/usr/local/src/gnome'
+#prefix = '/usr/local/gtk'
 
 #This somehow fell out of jhbuildrc:
 environ_prepend("PATH", prefix + "/bin")
+if _osx_version.startswith("8."):
+    os.environ["MACOSX_DEPLOYMENT_TARGET"] = "10.4"
+else:
+    os.environ["MACOSX_DEPLOYMENT_TARGET"] = "10.5"
 
 autogenargs='--disable-static --enable-shared --disable-gtk-doc --disable-docs --disable-scrollkeeper --disable-xlib'
-
-#environ_append("LDFLAGS", "-Wl,-dylib_file,/System/Library/Frameworks/OpenGL.framework/Versions/A/Libraries/libGL.dylib:/System/Library/Frameworks/OpenGL.framework/Versions/A/Libraries/libGL.dylib -Wl,-dylib_file,/System/Library/Frameworks/ApplicationServices.framework/Versions/A/Frameworks/ImageIO.framework/Versions/A/Resources/libJPEG.dylib:/System/Library/Frameworks/ApplicationServices.framework/Versions/A/Frameworks/ImageIO.framework/Versions/A/Resources/libJPEG.dylib -Wl,-dylib_file,/System/Library/Frameworks/ApplicationServices.framework/Versions/A/Frameworks/ImageIO.framework/Versions/A/Resources/libTIFF.dylib:/System/Library/Frameworks/ApplicationServices.framework/Versions/A/Frameworks/ImageIO.framework/Versions/A/Resources/libTIFF.dylib -Wl,-dylib_file,/System/Library/Frameworks/ApplicationServices.framework/Versions/A/Frameworks/ImageIO.framework/Versions/A/Resources/libPng.dylib:/System/Library/Frameworks/ApplicationServices.framework/Versions/A/Frameworks/ImageIO.framework/Versions/A/Resources/libPng.dylib")
 
 
 module_autogenargs={}
 module_autogenargs["gconf"]="--enable-static --enable-shared --disable-scrollkeeper --disable-xlib"
 module_autogenargs["libofx"]="--with-opensp-includes=" + prefix + "/include/OpenSP --with-opensp-libs=" + prefix + "/lib"
 module_autogenargs["libgnomeui"]="--disable-static --enable-shared --disable-scrollkeeper --disable-xlib --without-x"
-module_autogenargs["guile"]="ABI=32"
-#module_autogenargs["dbus"]="--localstatedir=/var"
-module_autogenargs["libxslt"]="--with-libxml-prefix=${prefix}"
 
-#NB: to compile libgnomeprint, one must repair a defect in
-#/usr/share/aclocal/libtool.m4, because libgnomeprint abuses it a bit:
-#Find the defun for AC_CHECK_LIBM, and for the $host case for darwin,
-#add
-#LIBM=" "
-#before the ";;"
+
 
 module_makeargs = {}
 module_makeargs["perl-xml-parser"]="EXPATLIBPATH=" + prefix + "/lib EXPATINCPATH=${prefix}/include "
 
 
-if os.path.exists(prefix + '/bin/install-check'):
-    os.environ['INSTALL'] = prefix + '/bin/install-check'
+
+if os.path.exists( prefix + '/bin/install-check'):
+    os.environ['INSTALL'] =  prefix + '/bin/iinstall-check'
+
 #Comment this out if you want to build with your default sdk; make a
 #similar function (it's in .jhbuildrc) if you want to set a different
 #sdk altogether. 
 #setup_sdk_10_4()
 
-
-moduleset = os.path.join(os.environ['CONFIG_DIR'], "gnucash.modules")
-
+moduleset = "http://github.com/jralls/gnucash-on-osx/raw/master/modulesets/gnucash.modules"
 modules = ['meta-gtk-osx-bootstrap', 'meta-gtk-osx-core', 'meta-gtk-osx-freetype', 'gnucash']
 
-build_policy = "updated-deps"
+#build_policy = "updated-deps"
 
 
 
