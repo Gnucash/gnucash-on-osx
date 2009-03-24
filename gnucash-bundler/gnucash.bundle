@@ -87,6 +87,14 @@
        "${bundle}", which refers to the bundle root directory.
   -->
   <data>
+    ${prefix}/etc/gnucash
+  </data>
+
+  <data>
+    ${prefix}/etc/xdg
+  </data>
+
+  <data>
     ${prefix}/share/gnucash
   </data>
 
@@ -108,7 +116,7 @@
   </data>
 
   <data dest="${bundle}/Contents/Resources">
-    ${prefix}/share/gnucash/pixmaps/gnucash.icns
+    ${project}/gnucash.icns
   </data>
 
   <data dest='${bundle}/Contents/Resources/lib/'>
