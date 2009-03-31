@@ -212,7 +212,7 @@ Optionally you may want to install GConf 1.0.7 (or later).
   <autotools id="dbus" autogen-sh='configure'
 	   autogenargs="--disable-selinux --without-x 
 	   --with-session-socket-dir=$PREFIX/tmp">
-    <branch module=" dbus/dbus-1.2.12.tar.gz"  version="1.2.12" 
+    <branch module="dbus/dbus-1.2.12.tar.gz"  version="1.2.12" 
 	    repo="freedesktop.org">
       <patch file="http://github.com/jralls/gnucash-on-osx/raw/master/patches/dbus-install.patch"/>
     </branch>
