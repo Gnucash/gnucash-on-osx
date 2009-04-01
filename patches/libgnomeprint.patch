@@ -1,5 +1,5 @@
-*** /usr/local/src/gnome3/libgnomeprint-2.18.6/configure~	Fri Mar  6 02:31:09 2009
---- /usr/local/src/gnome3/libgnomeprint-2.18.6/configure	Sun Mar 22 10:38:33 2009
+*** configure	Fri Mar  6 02:31:09 2009
+--- configure	Sun Mar 22 10:38:33 2009
 ***************
 *** 20084,20090 ****
   esac
