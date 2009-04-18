@@ -20,6 +20,8 @@
 	      href="ftp://xmlsoft.org/libxml2/python/"/>
   <repository type="tarball" name="freedesktop.org"
 	      href="http://dbus.freedesktop.org/releases/"/>
+  <repository type="tarball" name="sourceforge.net"
+	      href ="http://downloads.sourceforge.net/"/>
 
   <metamodule id="meta-gtkhtml">
     <dependencies>
@@ -56,7 +58,7 @@ later).
 
 Optionally you may want to install GConf 1.0.7 (or later).
 -->
-   <branch/>
+   <branch revision="gnome-2-26"/>
     <dependencies>
       <dep package="gtk+"/>
       <dep package="libgnomeui"/>
@@ -69,9 +71,15 @@ Optionally you may want to install GConf 1.0.7 (or later).
     </dependencies>
   </autotools>
 
+  <autotools id="cups-1.2.12">
+    <branch module="cups/cups-1.2.12-source.tar.gz" version="1.2.12"
+	    repo="sourceforge.net"/>
+  </autotools>
+
   <autotools id="libgnomecups">
-    <branch/>
+    <branch revision="236"/>
     <dependencies>
+      <dep package="cups-1.2.12"/>
       <dep package="glib"/>
       <dep package="gnome-common"/>
     </dependencies>
@@ -84,7 +92,7 @@ Optionally you may want to install GConf 1.0.7 (or later).
 	<patch file="http://github.com/jralls/gnucash-on-osx/raw/master/patches/libgnomeprint.patch" skip="0"/> 
     </branch>
     <dependencies>
-      <dep package="intltool"/>
+       <dep package="intltool"/>
       <dep package="libart_lgpl"/>
       <dep package="glib"/>
       <dep package="gnome-common"/>
@@ -95,7 +103,7 @@ Optionally you may want to install GConf 1.0.7 (or later).
   </autotools>
 
  <autotools id="libgnomeprintui">
-    <branch/>
+    <branch revision="2716"/>
     <dependencies>
       <dep package="libgnomeprint"/>
       <dep package="gtk+"/>
@@ -133,7 +141,7 @@ Optionally you may want to install GConf 1.0.7 (or later).
       but building them on OS-X proved problematic and gnome-vfs builds well 
       without them -->
   <autotools id="gnome-vfs">
-    <branch/>
+    <branch revision="5547"/>
     <dependencies>
       <dep package="gconf"/>
       <dep package="shared-mime-info"/>
@@ -166,7 +174,7 @@ Optionally you may want to install GConf 1.0.7 (or later).
   </autotools>
 
   <autotools id="gnome-keyring">
-    <branch/>
+    <branch revision="gnome-2-26"/>
     <dependencies>
       <dep package="gtk+"/>
       <dep package="libgcrypt"/>
@@ -176,7 +184,7 @@ Optionally you may want to install GConf 1.0.7 (or later).
 
    <autotools id="libbonobo">
 <!-- DEPENDS says "ORBit" -->
-    <branch/>
+    <branch revision="3527"/>
     <dependencies>
       <dep package="popt"/>
       <dep package="ORBit2"/>
@@ -188,7 +196,7 @@ Optionally you may want to install GConf 1.0.7 (or later).
   </autotools>
 
   <autotools id="libbonoboui">
-    <branch/>
+    <branch revision="2665"/>
     <dependencies>
       <dep package="libgnome"/>
       <dep package="libbonobo"/>
@@ -198,7 +206,7 @@ Optionally you may want to install GConf 1.0.7 (or later).
   </autotools>
 
  <autotools id="libgnome" autogenargs="--disable-esd" >
-    <branch/>
+    <branch revision="3912"/>
     <dependencies>
       <dep package="libxml2"/>
       <dep package="libxslt"/>
@@ -235,7 +243,7 @@ Optionally you may want to install GConf 1.0.7 (or later).
   </autotools>
 
   <autotools id="libgnomecanvas">
-    <branch/>
+    <branch revision="1349"/>
     <after>
       <dep package="meta-gtk-osx-bootstrap"/>
       <dep package="meta-gtk-osx-core"/>
