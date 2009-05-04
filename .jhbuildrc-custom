@@ -1,43 +1,25 @@
 # -*- mode: python -*-
-import sys
-if sys.hexversion < 0x2050000:
-    print "Python version %s, version 2.5 required" % sys.version
-    sys.exit
 
 #checkoutroot = '/usr/local/src/gnome'
 #prefix = '/usr/local/gtk'
-
-#This somehow fell out of jhbuildrc:
-environ_prepend("PATH", prefix + "/bin")
 if _osx_version.startswith("8."):
     os.environ["MACOSX_DEPLOYMENT_TARGET"] = "10.4"
+    module_makeargs["gtk+"]="LDFLAGS='-framework AppKit -framework Carbon -framework CoreFoundation -framework ApplicationServices -lobjc'"
+    module_makeargs["ige-mac-integration"]="LDFLAGS='-framework AppKit -lobjc'"
+    module_makeargs["aqbanking"]="LDFLAGS='-liconv'"
+   # setup_sdk_10_4()
+    pass
 else:
     os.environ["MACOSX_DEPLOYMENT_TARGET"] = "10.5"
+    skip.append("bison")
 
-autogenargs='--disable-static --enable-shared --disable-gtk-doc --disable-docs --disable-scrollkeeper --disable-xlib'
-
-
-module_autogenargs={}
+autogenargs=autogenargs + ' --disable-xlib'
 module_autogenargs["gconf"]="--enable-static --enable-shared --disable-scrollkeeper --disable-xlib"
 module_autogenargs["libofx"]="--with-opensp-includes=" + prefix + "/include/OpenSP --with-opensp-libs=" + prefix + "/lib"
-module_autogenargs["libgnomeui"]="--disable-static --enable-shared --disable-scrollkeeper --disable-xlib --without-x"
+#module_autogenargs["libgnomeui"]="--disable-static --enable-shared --disable-scrollkeeper --disable-xlib --without-x"
 
 
-
-module_makeargs = {}
-module_makeargs["perl-xml-parser"]="EXPATLIBPATH=" + prefix + "/lib EXPATINCPATH=${prefix}/include "
-
-
-
-if os.path.exists( prefix + '/bin/install-check'):
-    os.environ['INSTALL'] =  prefix + '/bin/iinstall-check'
-
-#Comment this out if you want to build with your default sdk; make a
-#similar function (it's in .jhbuildrc) if you want to set a different
-#sdk altogether. 
-#setup_sdk_10_4()
-
-moduleset = "http://github.com/jralls/gnucash-on-osx/raw/master/modulesets/gnucash.modules"
+#moduleset = "http://github.com/jralls/gnucash-on-osx/raw/master/modulesets/gnucash.modules"
 modules = ['meta-gtk-osx-bootstrap', 'meta-gtk-osx-core', 'meta-gtk-osx-freetype', 'gnucash']
 
 #build_policy = "updated-deps"
