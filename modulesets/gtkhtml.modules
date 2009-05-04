@@ -70,19 +70,17 @@ Optionally you may want to install GConf 1.0.7 (or later).
       <dep package="enchant"/> 
     </dependencies>
   </autotools>
-
-  <autotools id="cups-1.2.12">
-    <branch module="cups/cups-1.2.12-source.tar.gz" version="1.2.12"
-	    repo="sourceforge.net"/>
-  </autotools>
-
   <autotools id="libgnomecups">
     <branch revision="236"/>
     <dependencies>
-      <dep package="cups-1.2.12"/>
       <dep package="glib"/>
       <dep package="gnome-common"/>
     </dependencies>
+  </autotools>
+
+  <autotools id="bison">
+    <branch module="bison/bison-2.3.tar.gz" version="2.3"
+	    repo="ftp.gnu.org"/>
   </autotools>
 
   <autotools id="libgnomeprint" autogen.sh="autoreconf">
@@ -92,7 +90,8 @@ Optionally you may want to install GConf 1.0.7 (or later).
 	<patch file="http://github.com/jralls/gnucash-on-osx/raw/master/patches/libgnomeprint.patch" skip="0"/> 
     </branch>
     <dependencies>
-       <dep package="intltool"/>
+      <dep package="bison"/>
+      <dep package="intltool"/>
       <dep package="libart_lgpl"/>
       <dep package="glib"/>
       <dep package="gnome-common"/>
