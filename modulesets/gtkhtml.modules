@@ -81,6 +81,7 @@ Optionally you may want to install GConf 1.0.7 (or later).
     <branch module="libgnomeprint/2.18/libgnomeprint-2.18.6.tar.gz"
 	    repo="ftp.gnome.org" version="2.18.6"
 	    md5sum="10a9e58aabecf541bc6852f64b3a9294">
+      <!-- Note: A fix was committed to SVN 9APR2009, so this patch should be removed when this module is upgraded to the next release. -->
 	<patch file="http://github.com/jralls/gnucash-on-osx/raw/master/patches/libgnomeprint.patch" skip="0"/> 
     </branch>
     <dependencies>
