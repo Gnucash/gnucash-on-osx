@@ -16,7 +16,7 @@
          app. If you leave out the path, the current directory is
          used.
     -->
-    <destination overwrite="yes">${env:HOME}/gnucash-bundler</destination>
+    <!--destination overwrite="yes">${env:HOME}/gnucash-bundler</destination-->
 
     <image>
       <!-- Not implemented yet (DMG image). -->

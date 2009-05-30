@@ -39,7 +39,7 @@ You need:                               Debian package name
   </autotools>
 
   <autotools id="libgsf">
-    <branch/>
+    <branch revision="1034"/>
     <dependencies>
       <dep package="glib"/>
       <dep package="gnome-vfs"/>
@@ -48,7 +48,7 @@ You need:                               Debian package name
   </autotools>
 
   <autotools id="libart_lgpl">
-    <branch/>
+    <branch revision="280"/>
     <after>
       <dep package="meta-gtk-osx-bootstrap"/>
       <dep package="meta-gtk-osx-core"/>
