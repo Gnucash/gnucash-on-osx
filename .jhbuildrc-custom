@@ -19,7 +19,7 @@ module_autogenargs["libofx"]="--with-opensp-includes=" + prefix + "/include/Open
 #module_autogenargs["libgnomeui"]="--disable-static --enable-shared --disable-scrollkeeper --disable-xlib --without-x"
 
 
-#moduleset = "http://github.com/jralls/gnucash-on-osx/raw/master/modulesets/gnucash.modules"
+moduleset = "http://github.com/jralls/gnucash-on-osx/raw/master/modulesets/gnucash.modules"
 modules = ['meta-gtk-osx-bootstrap', 'meta-gtk-osx-core', 'meta-gtk-osx-freetype', 'gnucash']
 
 #build_policy = "updated-deps"
