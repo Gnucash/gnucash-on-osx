@@ -13,7 +13,7 @@ diff --git a/configure.in b/configure.in
 @@ -351,5 +351,17 @@
 		AC_MSG_RESULT(no)
 		;;	
-esac
+ esac
 +
 +### --------------------------------------------------------------------------
 +### Check to see if GDK uses the quartz backend and if we can use 
