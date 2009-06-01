@@ -16,7 +16,7 @@ else:
 autogenargs=autogenargs + ' --disable-xlib'
 module_autogenargs["gconf"]="--enable-static --enable-shared --disable-scrollkeeper --disable-xlib"
 module_autogenargs["libofx"]="--with-opensp-includes=" + prefix + "/include/OpenSP --with-opensp-libs=" + prefix + "/lib"
-#module_autogenargs["libgnomeui"]="--disable-static --enable-shared --disable-scrollkeeper --disable-xlib --without-x"
+module_autogenargs["libgnomeui"]="--disable-static --enable-shared --disable-scrollkeeper --without-x"
 
 
 moduleset = "http://github.com/jralls/gnucash-on-osx/raw/master/modulesets/gnucash.modules"
