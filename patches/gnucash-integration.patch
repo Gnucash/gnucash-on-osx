@@ -10,10 +10,10 @@ diff --git a/configure.in b/configure.in
  AM_CONDITIONAL(HAVE_X11_XLIB_H, test "x$ac_cv_header_X11_Xlib_h" = "xyes")
  AC_CHECK_FUNCS(chown gethostname getppid getuid gettimeofday gmtime_r)
  AC_CHECK_FUNCS(gethostid link)
-@@ -361,5 +361,17 @@
-    AC_SUBST(IGE_MAC_CFLAGS)
- fi
- 
+@@ -351,5 +351,17 @@
+		AC_MSG_RESULT(no)
+		;;	
+esac
 +
 +### --------------------------------------------------------------------------
 +### Check to see if GDK uses the quartz backend and if we can use 
@@ -25,7 +25,7 @@ diff --git a/configure.in b/configure.in
 +   AC_SUBST(IGE_MAC_LIBS)
 +   AC_SUBST(IGE_MAC_CFLAGS)
 +fi
-+
+
  ### --------------------------------------------------------------------------
  ### Guile version checks (should this be something other than the Gnome check?)
 --- a/configure   2009-02-23 12:25:34.000000000 -0800
@@ -41,7 +41,7 @@ diff --git a/configure.in b/configure.in
  GLIB_MKENUMS
  GOBJECT_QUERY
  GLIB_GENMARSHAL
-@@ -26750,5 +26763,124 @@
+@@ -26750,5 +26754,124 @@
  esac
  
  
@@ -166,14 +166,12 @@ diff --git a/configure.in b/configure.in
 +
  ### --------------------------------------------------------------------------
  ### Guile version checks (should this be something other than the Gnome check? 
-@@ -33564,4 +33690,6 @@
+@@ -33564,6 +33692,13 @@
  Usually this means the macro was only invoked conditionally." >&2;}
     { (exit 1); exit 1; }; }
  fi
-+if test -z "${GDK_TARGET_QUARTZ_TRUE}" && test -z "${GDK_TARGET_QUARTZ_FALSE}";
- then
-+  { { $as_echo "$as_me:$LINENO: error: conditional \"GDK_TARGET_QUARTZ\" was ne
-ver defined.
++if test -z "${GDK_TARGET_QUARTZ_TRUE}" && test -z "${GDK_TARGET_QUARTZ_FALSE}";then
++  { { $as_echo "$as_me:$LINENO: error: conditional \"GDK_TARGET_QUARTZ\" was never defined.
 +Usually this means the macro was only invoked conditionally." >&5
 +$as_echo "$as_me: error: conditional \"GDK_TARGET_QUARTZ\" was never defined.
 +Usually this means the macro was only invoked conditionally." >&2;}
@@ -193,15 +191,15 @@ ver defined.
  INSTALL = @INSTALL@
  INSTALL_DATA = @INSTALL_DATA@
  INSTALL_PROGRAM = @INSTALL_PROGRAM@
-@@ -374,6 +375,7 @@
-        -I${top_srcdir}/src/gnc-module \
-        ${QOF_CFLAGS} \
-        ${GLIB_CFLAGS} \
-+       ${IGE_MAC_CFLAGS} \
-        ${GUILE_INCS}
+@@ -374,4 +376,5 @@
+	-I${top_srcdir}/src/gnc-module \
+	${QOF_CFLAGS} \
+	${GLIB_CFLAGS} \
++	${IGE_MAC_CFLAGS} \
+	${GUILE_INCS}
 
  libgncmod_engine_la_SOURCES = \
-@@ -477,6 +479,7 @@
+@@ -477,6 +480,7 @@
    ${REGEX_LIBS} \
    ${GLIB_LIBS} \
    ${BINRELOC_LIBS} \
@@ -221,23 +219,23 @@ ver defined.
  INSTALL_DATA = @INSTALL_DATA@
  INSTALL_PROGRAM = @INSTALL_PROGRAM@
 @@ -439,7 +441,8 @@
-        -I${top_srcdir}/src -I${top_builddir}/src \
-        -I${top_srcdir}/lib/libc ${GLIB_CFLAGS} ${GLADE_CFLAGS} \
-        ${GTK_CFLAGS} ${GNOME_CFLAGS} ${GTKHTML_CFLAGS} ${GUILE_INCS} \
--       ${QOF_CFLAGS} ${GOFFICE_CFLAGS} $(am__append_3)
-+       ${QOF_CFLAGS} ${GOFFICE_CFLAGS} $(IGE_MAC_CFLAGS) \
-+       $(am__append_3)
+	-I${top_srcdir}/src -I${top_builddir}/src \
+	-I${top_srcdir}/lib/libc ${GLIB_CFLAGS} ${GLADE_CFLAGS} \
+	${GTK_CFLAGS} ${GNOME_CFLAGS} ${GTKHTML_CFLAGS} ${GUILE_INCS} \
+-	${QOF_CFLAGS} ${GOFFICE_CFLAGS} $(am__append_3)
++	${QOF_CFLAGS} ${GOFFICE_CFLAGS} $(IGE_MAC_CFLAGS) \
++	$(am__append_3)
  libgncmod_gnome_utils_la_SOURCES = QuickFill.c account-quickfill.c \
-        cursors.c dialog-account.c dialog-book-close.c \
-        dialog-commodity.c dialog-options.c dialog-preferences.c \
+	cursors.c dialog-account.c dialog-book-close.c \
+	dialog-commodity.c dialog-options.c dialog-preferences.c \
 @@ -557,8 +560,8 @@
-        $(top_builddir)/lib/libc/libc-missing.la ${GNOME_LIBS} \
-        ${GTKHTML_LIBS} ${GUILE_LIBS} ${GDK_PIXBUF_LIBS} ${GLADE_LIBS} \
-        ${GUILE_LIBS} ${GLIB_LIBS} ${DB_LIBS} ${QOF_LIBS} \
--       ${GOFFICE_LIBS} ${REGEX_LIBS} ${LIBXML2_LIBS} $(am__append_1) \
--       $(am__append_4)
-+       ${GOFFICE_LIBS} ${REGEX_LIBS} ${LIBXML2_LIBS} ${IGE_MAC_LIBS} \
-+       $(am__append_1) $(am__append_4)
+	$(top_builddir)/lib/libc/libc-missing.la ${GNOME_LIBS} \
+	${GTKHTML_LIBS} ${GUILE_LIBS} ${GDK_PIXBUF_LIBS} ${GLADE_LIBS} \
+	${GUILE_LIBS} ${GLIB_LIBS} ${DB_LIBS} ${QOF_LIBS} \
+-	${GOFFICE_LIBS} ${REGEX_LIBS} ${LIBXML2_LIBS} $(am__append_1) \
+-	$(am__append_4)
++	${GOFFICE_LIBS} ${REGEX_LIBS} ${LIBXML2_LIBS} ${IGE_MAC_LIBS} \
++	$(am__append_1) $(am__append_4)
  gncmoddir = ${GNC_SHAREDIR}/guile-modules/gnucash
  gncmod_DATA = gnome-utils.scm 
  gncscmdir = ${GNC_SHAREDIR}/scm
