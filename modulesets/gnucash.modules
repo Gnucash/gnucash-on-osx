@@ -89,9 +89,9 @@
 	     autogenargs="--enable-ofx --enable-aqbanking ">
     <branch module="gnucash-2.2.9.tar.gz" version="2.2.9"
 	    repo="gnucash.org">
-	<patch file="http://github.com/jralls/gnucash-on-osx/raw/master/patches/gnucash-xlib.patch" skip="0"/>
-	<patch file="http://github.com/jralls/gnucash-on-osx/raw/master/patches/gnucash-in.patch" skip="0"/>
-	<patch file="http://github.com/jralls/gnucash-on-osx/raw/master/patches/gnucash-integration.patch" skip="1"/>
+	<patch file="http://github.com/jralls/gnucash-on-osx/raw/master/patches/gnucash-xlib.patch" strip="0"/>
+	<patch file="http://github.com/jralls/gnucash-on-osx/raw/master/patches/gnucash-in.patch" strip="0"/>
+	<patch file="http://github.com/jralls/gnucash-on-osx/raw/master/patches/gnucash-integration.patch" strip="1"/>
     </branch>
     <dependencies>
       <dep package="meta-goffice"/>
