@@ -16,7 +16,7 @@
          app. If you leave out the path, the current directory is
          used.
     -->
-    <!--destination overwrite="yes">${env:HOME}/gnucash-bundler</destination-->
+    <destination overwrite="yes">${env:HOME}/gnucash-bundler</destination>
 
     <image>
       <!-- Not implemented yet (DMG image). -->
@@ -53,6 +53,11 @@
   <binary>
     ${prefix}/lib/gtk-2.0/${pkg:gtk+-2.0:gtk_binary_version}/loaders/*.so
   </binary>
+<!-- Copy in the theme engines. -->
+  <binary>
+    ${prefix}/lib/gtk-2.0/${pkg:gtk+-2.0:gtk_binary_version}/engines/*.so
+  </binary>
+
   <binary>
     ${prefix}/lib/pango/${pkg:pango:pango_module_version}/modules/pango-basic-fc.so
   </binary>
@@ -110,13 +115,17 @@
     ${prefix}/share/mime
   </data>
 
+  <data>
+    ${prefix}/share/themes
+  </data>
+
   <!--data dest="${bundle}/Contents/Resources/slib"-->
   <data>
     ${prefix}/lib/slib
   </data>
 
   <data dest="${bundle}/Contents/Resources">
-    ${project}/gnucash.icns
+    ${prefix}/share/gnucash/pixmaps/gnucash.icns
   </data>
 
   <data dest='${bundle}/Contents/Resources/lib/'>
@@ -131,6 +140,11 @@
     ${prefix}/etc/dbus-1/
   </data>
 
+<!-- This takes the Quartz theme instructions from the package and puts them in the bundle gtkrc file. You may want to cusomize the source path if you want a different theme, or if you want other stuff in your gtkrc. -->
+
+  <data dest='${bundle}/Contents/Resources/etc/gtk-2.0/gtkrc'>
+    ${prefix}/share/themes/Quartz/gtk-2.0/gtkrc
+  </data>
 
   <!-- Icon themes to copy. The "icons" property can be either of
        "auto", "all", or "none". All or none should be
