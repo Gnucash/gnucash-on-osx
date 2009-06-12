@@ -22,7 +22,7 @@
 
 
 
-  <include href="http://github.com/jralls/gtk-osx-build/raw/master/modulesets/gtk-osx.modules"/>
+  <include href="http://github.com/jralls/gtk-osx-build/raw/master/modulesets-stable/gtk-osx.modules"/>
   <include href="gtkhtml.modules"/>
   <include href="goffice.modules"/>
 
