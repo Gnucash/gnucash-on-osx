@@ -4,9 +4,7 @@
 
 <moduleset>
 
-  <repository type="svn" name="svn.gnome.org" default="yes" 
-	      href="http://svn.gnome.org/svn/"/>
-  <repository type="tarball" name="ftp.gnome.org"
+  <repository type="tarball" name="ftp.gnome.org" default="yes"
 	      href="http://ftp.gnome.org/pub/GNOME/sources/"/>
   <repository type='tarball' name='rpm5.org' 
 	      href="http://rpm5.org/files/"/>
@@ -58,7 +56,8 @@ later).
 
 Optionally you may want to install GConf 1.0.7 (or later).
 -->
-   <branch revision="gnome-2-26"/>
+   <branch module="gtkhtml/3.26/gtkhtml-3.26.2.tar.bz2" version="3.26.2"
+	   md5sum="5b109d47aaa95898a169fa9ae572c763"/>
     <dependencies>
       <dep package="gtk+"/>
       <dep package="libgnomeui"/>
@@ -70,17 +69,14 @@ Optionally you may want to install GConf 1.0.7 (or later).
       <dep package="enchant"/> 
     </dependencies>
   </autotools>
+  
   <autotools id="libgnomecups">
-    <branch revision="236"/>
+    <branch module="libgnomecups/0.2/libgnomecups-0.2.3.tar.bz2" version="0.2.3"
+	    md5sum="dc4920c15c9f886f73ea74fbff0ae48b"/>
     <dependencies>
       <dep package="glib"/>
       <dep package="gnome-common"/>
     </dependencies>
-  </autotools>
-
-  <autotools id="bison">
-    <branch module="bison/bison-2.3.tar.gz" version="2.3"
-	    repo="ftp.gnu.org"/>
   </autotools>
 
   <autotools id="libgnomeprint" autogen.sh="autoreconf">
@@ -103,7 +99,8 @@ Optionally you may want to install GConf 1.0.7 (or later).
   </autotools>
 
  <autotools id="libgnomeprintui">
-    <branch revision="2716"/>
+    <branch module="libgnomeprintui/2.18/libgnomeprintui-2.18.4.tar.bz2"
+	    version="2.18.4" md5sum="e76d763f6279b900a63e5fb2909f8810"/>
     <dependencies>
       <dep package="libgnomeprint"/>
       <dep package="gtk+"/>
@@ -113,7 +110,8 @@ Optionally you may want to install GConf 1.0.7 (or later).
   </autotools>
 
 
-<!-- Audiofile hasn't been actively developed since 2004 -->
+  <!-- Audiofile hasn't been actively developed since 2004 and doesn't
+       really seem necessary. -->
 <!--
   <autotools id='audiofile' autogen-sh="configure">
     <branch module='audiofile/audiofile-0.2.6.tar.gz'
@@ -129,8 +127,7 @@ Optionally you may want to install GConf 1.0.7 (or later).
   </autotools>
 -->
   <autotools id="popt" autogen-sh='configure'>
-    <branch module="popt/popt-1.14.tar.gz" version="1.14"
-	    repo="rpm5.org"/>
+    <branch module="popt/popt-1.14.tar.gz" version="1.14" repo="rpm5.org"/>
   </autotools>
 
   <!--gnome-vfs in  gnome-suites-2.24.modules includes the following 
@@ -141,22 +138,13 @@ Optionally you may want to install GConf 1.0.7 (or later).
       but building them on OS-X proved problematic and gnome-vfs builds well 
       without them -->
   <autotools id="gnome-vfs">
-    <branch revision="5547"/>
+    <branch module="gnome-vfs/2.24/gnome-vfs-2.24.1.tar.bz2" version="2/24/1"
+	    md5sum="100f9af16dc659e375ee8da45175a28d"/>
     <dependencies>
       <dep package="gconf"/>
       <dep package="shared-mime-info"/>
       <dep package="gnome-mime-data"/>
       <dep package="dbus-glib"/>
-    </dependencies>
-  </autotools>
-
-
-  <autotools id="enchant" autogen-sh="configure" >
-    <branch module="1.4.2/enchant-1.4.2.tar.gz" version="1.4.2"
-	    repo="abisource/enchant" size='595192'
-	    md5sum="fe4558269ff59f569ab9581c907d58cb" />
-    <dependencies>
-      <dep package="glib"/>
     </dependencies>
   </autotools>
 
@@ -174,7 +162,8 @@ Optionally you may want to install GConf 1.0.7 (or later).
   </autotools>
 
   <autotools id="gnome-keyring">
-    <branch revision="gnome-2-26"/>
+    <branch module="gnome-keyring/2.26/gnome-keyring-2.26.1.tar.bz2" 
+	    version="2.26.1" md5sum="060b349a0aae130fdd3cd0a9827258c6"/>
     <dependencies>
       <dep package="gtk+"/>
       <dep package="libgcrypt"/>
@@ -184,7 +173,8 @@ Optionally you may want to install GConf 1.0.7 (or later).
 
    <autotools id="libbonobo">
 <!-- DEPENDS says "ORBit" -->
-    <branch revision="3527"/>
+    <branch module="libbonobo/2.24/libbonobo-2.24.1.tar.bz2" version="2.24.1"
+	    md5sum="8868b6083392964a6969547ceb8d7cd1"/>
     <dependencies>
       <dep package="popt"/>
       <dep package="ORBit2"/>
@@ -196,7 +186,8 @@ Optionally you may want to install GConf 1.0.7 (or later).
   </autotools>
 
   <autotools id="libbonoboui">
-    <branch revision="2665"/>
+    <branch module="libbonoboui/2.24/libbonoboui-2.24.1.tar.bz2" 
+	    version="2.24.1" md5sum="9ff3ec1c7aefd0b1a15a5b21ecc7b4e4"/>
     <dependencies>
       <dep package="libgnome"/>
       <dep package="libbonobo"/>
@@ -206,7 +197,8 @@ Optionally you may want to install GConf 1.0.7 (or later).
   </autotools>
 
  <autotools id="libgnome" autogenargs="--disable-esd" >
-    <branch revision="3912"/>
+    <branch module="libgnome/2.26/libgnome-2.26.0.tar.bz2" version="2.26.0"
+	    md5sum="a5634fe9ddc54bbb726cbaaa35abc0b9"/>
     <dependencies>
       <dep package="libxml2"/>
       <dep package="libxslt"/>
@@ -217,46 +209,13 @@ Optionally you may want to install GConf 1.0.7 (or later).
     </dependencies>
   </autotools>
 
-  <autotools id="dbus" autogen-sh='configure'
-	   autogenargs="--disable-selinux --without-x 
-	   --with-session-socket-dir=$PREFIX/tmp">
-    <branch module="dbus/dbus-1.2.12.tar.gz"  version="1.2.12" 
-	    repo="freedesktop.org">
-      <patch file="http://github.com/jralls/gnucash-on-osx/raw/master/patches/dbus-install.patch"/>
-    </branch>
-    <after>
-      <dep package="gtk+"/>
-    </after>
-  </autotools>
-
-  <autotools id="dbus-glib" autogenargs="--disable-selinux">
-    <branch module="dbus-glib/dbus-glib-0.80.tar.gz"   version="0.80" 
-	    repo="freedesktop.org"/>
-    <dependencies>
-      <dep package="libxml2"/>
-      <dep package="dbus"/>
-    </dependencies>
-    <after>
-      <dep package="meta-gtk-osx-bootstrap"/>
-      <dep package="meta-gtk-osx-core"/>
-    </after>
-  </autotools>
-
   <autotools id="libgnomecanvas">
-    <branch revision="1349"/>
+    <branch module="libgnomecanvas/2.26/libgnomecanvas-2.26.0.tar.bz2" 
+	    version="2.26.0" md5sum="9bbc635e5ae70e63af071af74ba7e72f"/>
     <after>
       <dep package="meta-gtk-osx-bootstrap"/>
       <dep package="meta-gtk-osx-core"/>
     </after>
   </autotools>
-
-  <autotools id="libtasn1"  supports-non-srcdir-builds="no">
-    <branch module="gnutls/libtasn1-1.8.tar.gz" version="1.8" 
-	    repo="ftp.gnu.org">
-	<patch file="http://github.com/jralls/gnucash-on-osx/raw/master/patches/libtasn1.patch" skip="0"/>
-    </branch>
-  </autotools>
-
-
 
 </moduleset>

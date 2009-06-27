@@ -2,9 +2,9 @@
 <!-- Moduleset for building goffice libraries needed for GnuCash -->
 
 <moduleset>
-  <repository type="svn" name="svn.gnome.org" default="yes" 
-	      href="http://svn.gnome.org/svn/"/>
-
+  <repository type="tarball" name="ftp.gnome.org" default="yes"
+	      href="http://ftp.gnome.org/pub/GNOME/sources/"/>
+ 
   <metamodule id="meta-goffice">
     <dependencies>
       <dep package="goffice"/> 
@@ -14,7 +14,7 @@
   </metamodule>
 
   <autotools id="goffice">
- <!--
+    <!--
 You need:                               Debian package name
         glib            >= 2.8.0        libglib2.0-dev
         gtk+            >= 2.6.0        libgtk2.0-dev
@@ -24,8 +24,10 @@ You need:                               Debian package name
         gnome-xml       >= 2.4.12       libxml2-dev
         NOTE: gnome-xml is also known as libxml
         libart          >= 2.3.11       libart-2.0-dev
--->
-   <branch revision="goffice-0-6"/>
+    -->
+    <!-- gnucash 2.2.9 won't build against newer GOffice. -->
+   <branch module="goffice/0.7/goffice-0.7.4.tar.bz2" version="0.7.4"
+	   md5sum="8fe65cb6a60e6064025fa465da99d31e"/>
     <dependencies>
       <dep package="glib"/>
       <dep package="libgsf"/>
@@ -39,7 +41,8 @@ You need:                               Debian package name
   </autotools>
 
   <autotools id="libgsf">
-    <branch revision="1034"/>
+    <branch  module="libgsf/1.14/libgsf-1.14.15.tar.bz2" version="1.14.15"
+	     md5sum="5118e971b4257f50b6914404593f63cf"/>
     <dependencies>
       <dep package="glib"/>
       <dep package="gnome-vfs"/>
@@ -48,7 +51,8 @@ You need:                               Debian package name
   </autotools>
 
   <autotools id="libart_lgpl">
-    <branch revision="280"/>
+    <branch   module="libart_lgpl/2.3/libart_lgpl-2.3.20.tar.bz2" 
+	      version="2.3.20" md5sum="d0ce67f2ebcef1e51a83136c69242a73"/>
     <after>
       <dep package="meta-gtk-osx-bootstrap"/>
       <dep package="meta-gtk-osx-core"/>
