@@ -4,16 +4,9 @@
 GnuCash can be built to run more or less natively on OSX -- meaning
 without X11. Better yet, the build is almost automatic.
 
-I've succeeded in building this under various incarnations of Leopard
-while perfecting the modulesets, always on a Mac Pro... but it ought
-to work on any Mac running Tiger or Leopard.
-
-The default configuration builds in your home folder. On my system, I
-build in /usr/local/src/gnome and install to /usr/local/gtk. If you
-want to do that, uncomment the checkoutroot and prefix lines in
-.jhbuildrc-custom, then create the folders up front and give yourself
-ownership. If you don't know how to do that, then you should probably
-leave it the way it is.
+This is tested and works for Macinstosh OSX Versions 10.4 (Tiger) and
+10.5 (Leopard) on both PowerPC and Intel. It does not create universal
+binaries.
 
 ##Preliminaries##
 Tiger or newer is <em>required</em> for gtk-osx.
@@ -32,25 +25,26 @@ find commented out settings to do it that way at the top of
 .jhbuildrc-custom. You can uncomment these and change them to whatever
 you like -- or leave them as they are.
 
-Go to http://live.gnome.org/GTK%2B/OSX/BuildInstructions and follow
+Go to http://sourceforge.net/apps/trac/gtk-osx/wiki//Build and follow
 the instructions. <b><em>Don't run jhbuild build yet!</em></b>
 
-At the moment, in order to build gtk-doc (which is required by a bunch
-of packages), you need python bindings for libxml2. For Leopard users,
-if you don't have this installed somewhere on your $PYTHONPATH, and
-for all Tiger users, run
-
-	$> jhbuild buildone libxml-py
+Tiger users will need to retrieve and install
+http://downloads.sourceforge.net/cups/cups-1.2.12.dmg
 
 ##Building##
 
 Once all of the preliminaries are complete, run:
 	$> jhbuild build
 
+You also need to 
+    	 $> mkdir $PREFIX/tmp 
+
 ##Running from the commandline##
 
 Now you're ready to try it out:
 	$> $PREFIX/bin/gnucash
+
+($PREFIX is the path to where you've built gtk; you can fill it in yourself or use jhbuild shell to set it for you.) 
 
 ##Making a Bundle##
 
@@ -59,19 +53,20 @@ window every time you want to use GnuCash, now do you? Of course
 not. You want a nice icon in your Applications folder (and maybe in
 the Dock) to click on when you run GnuCash. Here's how to do this:
 
- * Download the bundler from http://github.com/jralls/gnucash-on-osx/raw/master/ige-mac-bundler.tar.gz, unpack it, cd into the ige-mac-bundler directory, and
+ * Download the bundler from http://downloads.sourceforge.net/sourceforge/gtk-osx/ige-mac-bundler-0.5.tar.gz unpack it, cd into the ige-mac-bundler directory, and
+
 	make install
- * Download http://github.com/jralls/gnucash-on-osx/raw/master/gnucash-bundler.tar.gz and unpack it.
+ * Download http://downloads.sourceforge.net/sourceforge/gtk-osx/gnucash-bundler-1.0.tar.gz and unpack it.
  * 
-	cd gnucash-bundler</tt> 
+	<tt>$> cd gnucash-bundler</tt>
  * Look through gnucash-launcher and gnucash.bundle and adjust the paths to match your installation.
  * make gnucash-launcher executable :
-	chmod +x gnucash-launcher
+	<tt>$> chmod +x gnucash-launcher</tt>
  * execute 
-	jhbuild shell
+ 	<tt>jhbuild shell</tt>
    to set up the environment for the bundler
  * while in the shell, execute 
-	ige-mac-bundler gnucash.bundle
+	<tt>ige-mac-bundler gnucash.bundle</tt>
  * exit the shell
 
 And your bundle should be ready to go.
