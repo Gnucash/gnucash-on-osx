@@ -140,11 +140,12 @@
     ${prefix}/etc/dbus-1/
   </data>
 
-<!-- This takes the Quartz theme instructions from the package and puts them in the bundle gtkrc file. You may want to cusomize the source path if you want a different theme, or if you want other stuff in your gtkrc. -->
+<!-- This takes the Quartz theme instructions from the package and puts them in the bundle gtkrc file. You may want to cusomize the source path if you want a different theme, or if you want other stuff in your gtkrc. 
 
   <data dest='${bundle}/Contents/Resources/etc/gtk-2.0/gtkrc'>
-    ${prefix}/share/themes/Quartz/gtk-2.0/gtkrc
-  </data>
+    ${prefix}/share/themes/Quartz/gtk-2.0/gtkrc 
+  </data> 
+-->
 
   <!-- Icon themes to copy. The "icons" property can be either of
        "auto", "all", or "none". All or none should be
