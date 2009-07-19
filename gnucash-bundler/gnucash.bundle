@@ -102,6 +102,10 @@
     ${prefix}/etc/gnucash
   </data>
 
+   <data dest="${bundle}/Contents/Resources/lib/">
+    ${prefix}/lib/libguile-srfi-srfi-*.la
+  </data>
+
   <data>
     ${prefix}/etc/xdg
   </data>
@@ -147,9 +151,6 @@
     ${project}/gnucash.icns
   </data>
 
-  <data dest='${bundle}/Contents/Resources/lib/'>
-    ${prefix}/lib/*.la
-  </data>
 
   <data dest='${bundle}/Contents/Resources/var/lib/dbus/machine-id'>
     ${prefix}/var/lib/dbus/machine-id
