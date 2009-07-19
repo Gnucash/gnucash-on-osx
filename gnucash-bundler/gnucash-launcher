@@ -10,10 +10,10 @@ else
     EXEC=exec
 fi
 
-export PREFIX=/usr/local/gtk
+export PREFIX=~/gtk/inst
 
 name="`basename $0`"
-tmp="`pwd`/$0"
+tmp="$0"
 tmp=`dirname "$tmp"`
 tmp=`dirname "$tmp"`
 bundle=`dirname "$tmp"`
