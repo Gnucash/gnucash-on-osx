@@ -88,7 +88,7 @@
   </autotools>
 
   <autotools id="gnucash" autogen-sh="configure"
-	     autogenargs="--enable-ofx --enable-aqbanking ">
+	     autogenargs="--enable-ofx --enable-aqbanking --enable-binreloc">
     <branch module="gnucash-2.2.9.tar.gz" version="2.2.9"
 	    repo="gnucash.org">
 	<patch file="http://github.com/jralls/gnucash-on-osx/raw/master/patches/gnucash-xlib.patch" strip="0"/>
@@ -108,7 +108,7 @@
  <autotools id="gnucash-svn" 
 	    autogen-template="%(srcdir)s/%(autogen-sh)s &amp;&amp; %(srcdir)s/configure --prefix %(prefix)s --libdir %(libdir)s %(autogenargs)s"
 
-	     autogenargs="--enable-ofx --enable-aqbanking ">
+	     autogenargs="--enable-ofx --enable-aqbanking --enable-binreloc ">
    <branch repo="svn.gnucash.org" module="gnucash"/>
    <dependencies>
       <dep package="meta-goffice"/>
