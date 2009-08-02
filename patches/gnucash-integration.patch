@@ -337,12 +337,13 @@ index d582a5d..032f2af 100644
  
  /** @internal
   * Find the canonical filename of the executable. Returns the filename
-@@ -61,6 +66,23 @@ _br_find_exe (GbrInitError *error)
+@@ -61,6 +66,24 @@ _br_find_exe (GbrInitError *error)
  				   (char*)NULL);
  	g_free (prefix);
  	return result;
 +#elif MAC_INTEGRATION
 +	gchar *prefix = NULL, *result = NULL;
++       g_type_init();
 +	bundle = ige_mac_bundle_get_default();
 +	if (!bundle) {
 +	    *error = GBR_INIT_ERROR_DISABLED;
