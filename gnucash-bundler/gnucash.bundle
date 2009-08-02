@@ -76,6 +76,15 @@
   <binary>
     ${prefix}/lib/gnucash
   </binary>
+
+  <binary>
+    ${prefix}/lib/aqbanking
+  </binary>
+
+  <binary>
+    ${prefix}/lib/libglade
+  </binary>
+
   <binary>
     ${prefix}/libexec
   </binary>
@@ -132,6 +141,14 @@
 
   <data>
     ${prefix}/share/dbus-1/
+  </data>
+
+  <data>
+    ${prefix}/share/aqbanking
+  </data>
+
+  <data>
+    ${prefix}/share/aqhbci
   </data>
 
   <data>
