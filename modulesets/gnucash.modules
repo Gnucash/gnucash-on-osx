@@ -120,5 +120,22 @@
 
   </autotools>
 
+  <autotools id="gnucash-docs" makeargs=" html" >
+    <branch repo="gnucash.org" module="gnucash-docs-2.2.0.tar.gz"
+	    version="2.2.0"/>
+    <dependencies>
+      <dep package="scrollkeeper"/>
+    </dependencies>
+  </autotools>
+
+  <autotools id="scrollkeeper">
+    <branch repo="sourceforge" module="scrollkeeper/scrollkeeper-0.3.14.tar.gz"
+	    version="0.3.14"/>
+    <dependencies>
+      <dep package="libxml2"/>
+      <dep package="libxslt"/>
+       <dep package="gtk-osx-docbook"/>
+    </dependencies>
+  </autotools>
 
 </moduleset>
