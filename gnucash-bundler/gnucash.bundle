@@ -177,6 +177,14 @@
     ${prefix}/etc/dbus-1/
   </data>
 
+  <data dest="${bundle}/Contents/Resources/English.lproj/GnuCash Help/">
+    /usr/local/src/gnome/gnucash-docs-2.2.0/help/C/gnucash-help/
+  </data>
+
+  <data dest="${bundle}/Contents/Resources/English.lproj/GnuCash Guide/">
+    /usr/local/src/gnome/gnucash-docs-2.2.0/guide/C/gnucash-guide/
+  </data>
+
 <!-- This takes the Quartz theme instructions from the package and puts them in the bundle gtkrc file. You may want to cusomize the source path if you want a different theme, or if you want other stuff in your gtkrc. 
 
   <data dest='${bundle}/Contents/Resources/etc/gtk-2.0/gtkrc'>
