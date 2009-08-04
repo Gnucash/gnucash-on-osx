@@ -97,6 +97,7 @@
     </branch>
     <dependencies>
       <dep package="meta-goffice"/>
+      <dep package="meta-gtk-osx-core"/>
       <dep package="libofx"/>
       <dep package="aqbanking"/>
       <dep package="meta-gtkhtml"/>
@@ -111,6 +112,7 @@
 	     autogenargs="--enable-ofx --enable-aqbanking --enable-binreloc ">
    <branch repo="svn.gnucash.org" module="gnucash"/>
    <dependencies>
+      <dep package="meta-gtk-osx-core"/>
       <dep package="meta-goffice"/>
       <dep package="libofx"/>
       <dep package="aqbanking"/>
