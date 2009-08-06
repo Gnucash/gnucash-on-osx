@@ -1,0 +1,42 @@
+This bundle provides GnuCash, an accounting program. See the file
+"LICENSE" in the Contents folder of the bundle for the licensing
+terms. Sources are available at http://www.gnucash.org.
+
+Also provided in this app bundle are a variety of libraries, most of
+which are provided under the terms of the Gnu General Public
+License. To comply with the redistribution requirements of that
+license, the current list of dependencies and the World Wide Web
+addresses at which you can find the source code and the exact license
+terms for each are provided below. Note that this list is only of
+those dpendencies provided here in binary form. Other programs may be
+required to successfully build GnuCash from source. Additional
+information on that may be found at http://www.gnucash.org.
+
+GConf: http://projects.gnome.org/gconf
+AQBanking: http://www.aquamania.de/aqbanking
+Gettext: http://www.gnu.org/software/gettext
+Gtk+-2.0: http://www.gtk.org
+ORBit: http://orbit-resource.sourceforge.net/
+bonobo: http://ftp.acc.umu.se/pub/GNOME/sources/libbonobo/
+cairo: http://cairographics.org/
+dbus: http://dbus.freedesktop.org
+enchant: http://www.abisource.com/projects/enchant/
+expat: http://expat.sourceforge.net/
+fontconfig: http://www.fontconfig.org/wiki/
+freetype: http://www.freetype.org/
+Glade: http://glade.gnome.org/
+Guile: http://www.gnu.org/software/guile/guile.html
+Ige-mac-integration: http://gtk-osx.sourceforge.net
+libart_lgpl: http://www.linuxfromscratch.org/blfs/view/cvs/general/libart_lgpl.html
+libgnome: http://www.gnome.org
+libgoffice: http://ftp.gnome.org/pub/GNOME/sources/goffice/
+libjpeg: http://www.ijg.org/
+libofx: http://libofx.sourceforge.net
+libpng: http://www.libpng.org/pub/png/
+libtiff: http://www.libtiff.org/index.html
+OpenSP: http://openjade.sourceforge.net/
+Pango: http://www.pango.org
+Popt: http://rpm5.org/files/popt/
+Python: http://www.python.org
+readline: http://www.gnu.org/software/readline
+Slib: http://groups.csail.mit.edu/slib

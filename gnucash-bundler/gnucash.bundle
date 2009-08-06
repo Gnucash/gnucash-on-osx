@@ -177,6 +177,14 @@
     ${prefix}/etc/dbus-1/
   </data>
 
+  <data dest="${bundle}/Contents/Resources/License">
+    ${prefix}/share/gnucash/doc/LICENSE
+  </data>
+
+  <data dest="${bundle}/Contents/Resources/Sources">
+    ${project}/Sources
+  </data>
+
   <data dest="${bundle}/Contents/Resources/English.lproj/GnuCash Help/">
     /usr/local/src/gnome/gnucash-docs-2.2.0/help/C/gnucash-help/
   </data>
