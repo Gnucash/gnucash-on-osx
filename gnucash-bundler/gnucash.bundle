@@ -111,8 +111,12 @@
     ${prefix}/etc/gnucash
   </data>
 
-   <data dest="${bundle}/Contents/Resources/lib/">
+  <data dest="${bundle}/Contents/Resources/lib/">
     ${prefix}/lib/libguile-srfi-srfi-*.la
+  </data>
+
+  <data dest="${bundle}/Contents/Resources/lib/">
+    ${prefix}/lib/libgnc-*.la
   </data>
 
   <data>
