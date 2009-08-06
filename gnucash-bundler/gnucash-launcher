@@ -64,17 +64,10 @@ GUILE_WARN_DEPRECATED="no"
 export GUILE_WARN_DEPRECATED
 
 if [ -d "$PREFIX" ] && [ ! "$PREFIX" -ef "$bundle_res" ]; then
-    if [ -h "$PREFIX" ]; then
-	echo "Deleting Old Link"
-	osascript -e 'do shell script "rm $PREFIX" with administrator priviliges';
-    else
-	echo "Moving existing directory out of the way"
-	osascript -e 'do shell script "mv $PREFIX $PREFIX.Save" with administrator privileges';
-    fi
-fi
-if [ ! -d "$PREFIX" ] ; then
+	osascript -e 'do shell script " if [ -h $PREFIX ]; then rm $PREFIX; else mv $PREFIX $PREFIX.Save; fi; ln -s $PFX $PREFIX"  with administrator privileges '
+elif [ ! -d "$PREFIX" ] ; then
     echo "Linking $PFX to $PREFIX"
-    osascript -e 'do shell script "ln -s $PFX $PREFIX" with administrator privileges';
+    osascript -e 'do shell script "ln -s $PFX $PREFIX" with administrator privileges ';
 fi
 
 if test -z "$DBUS_SESSION_BUS_ADDRESS"; then
