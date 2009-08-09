@@ -11,6 +11,7 @@ else
 fi
 
 export PREFIX=/opt/gnucash-2.2.9
+export PREFIXDIR="`dirname $PREFIX`"
 
 name="`basename $0`"
 tmp="$0"
@@ -67,7 +68,7 @@ if [ -d "$PREFIX" ] && [ ! "$PREFIX" -ef "$bundle_res" ]; then
 	osascript -e 'do shell script " if [ -h $PREFIX ]; then rm $PREFIX; else mv $PREFIX $PREFIX.Save; fi; ln -s $PFX $PREFIX"  with administrator privileges '
 elif [ ! -d "$PREFIX" ] ; then
     echo "Linking $PFX to $PREFIX"
-    osascript -e 'do shell script "ln -s $PFX $PREFIX" with administrator privileges ';
+    osascript -e 'do shell script "if [ ! -d $PREFIXDIR ]; then mkdir -p $PREFIXDIR; fi; ln -s $PFX $PREFIX" with administrator privileges ';
 fi
 
 if test -z "$DBUS_SESSION_BUS_ADDRESS"; then
