@@ -87,6 +87,21 @@
     </dependencies>
   </autotools>
 
+  <autotools id="libdbi" autogen-sh="configure">
+    <branch repo="sourceforge" module="libdbi/libdbi-0.8.3.tar.gz" 
+	    version="0.8.3"/>
+  </autotools>
+
+  <autotools id="libdbi-drivers" autogen-sh="configure">
+    <branch repo="sourceforge" version="0.8.3-1"
+	    module="libdbi-drivers/libdbi-drivers-0.8.3-1.tar.gz" />
+    <dependencies>
+      <dep package="libdbi"/>
+    </dependencies>
+  </autotools>
+
+
+
   <autotools id="gnucash" autogen-sh="configure"
 	     autogenargs="--enable-ofx --enable-aqbanking --enable-binreloc">
     <branch module="gnucash-2.2.9.tar.gz" version="2.2.9"
