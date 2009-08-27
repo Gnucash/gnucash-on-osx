@@ -346,11 +346,11 @@ index d582a5d..032f2af 100644
 +       g_type_init();
 +	bundle = ige_mac_bundle_get_default();
 +	if (!bundle) {
-+	    *error = GBR_INIT_ERROR_DISABLED;
++	    *error = GBR_INIT_ERROR_MAC_NOT_BUNDLE;
 +	    return NULL;
 +	}
 +	if (!ige_mac_bundle_get_is_app_bundle (bundle)) {
-+	    *error = GBR_INIT_ERROR_OPEN_MAPS;
++	    *error = GBR_INIT_ERROR_MAC_NOT_APP_BUNDLE;
 +	    return NULL;
 +	}
 +	ige_mac_bundle_setup_environment(bundle);
@@ -371,6 +371,20 @@ index d582a5d..032f2af 100644
  	g_warning ("_br_find_exe_for_symbol not implemented on win32.");
  	if (error)
  		*error = GBR_INIT_ERROR_DISABLED;
+@@ -414,6 +414,12 @@ set_gerror (GError **error, GbrInitError errcode)
+ 	case GBR_INIT_ERROR_INVALID_MAPS:
+ 		error_message = "The file format of /proc/self/maps is invalid.";
+ 		break;
++        case GBR_INIT_ERROR_MAC_NOT_BUNDLE:
++	    error_message = "Binreloc did not find a bundle";
++	    break;
++	case GBR_INIT_ERROR_MAC_NOT_APP_BUNDLE:
++	    error_message = "Binreloc found that the bundle is not an app bundle";
++          break;
+ 	case GBR_INIT_ERROR_DISABLED:
+ 		error_message = "Binary relocation support is disabled.";
+ 		break;
+
 @@ -474,18 +496,33 @@ gbr_find_prefix (const gchar *default_prefix)
  {
  	gchar *dir1, *dir2;
