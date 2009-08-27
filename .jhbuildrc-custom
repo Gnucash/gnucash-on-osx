@@ -20,7 +20,7 @@ module_autogenargs["libgnomeui"]="--disable-static --enable-shared --disable-scr
 module_autogenargs["libdbi-drivers"]="--with-dbi-incdir=" + prefix + "/include --with-dbi-libdir=" + prefix + "/lib"
 append_autogenargs("aqbanking-qt", 'qt3_libs="-framework QtCore -framework QtGui -framework Qt3Support" qt3_includes="-I/Library/Frameworks/QtCore.framework/Headers -I/Library/Frameworks/QtGui.framework/Headers -I/Library/Frameworks/Qt3Support.framework/Headers"')
 
-moduleset = os.environ["HOME"] + "/gnucash-on-osx/raw/master/modulesets/gnucash.modules"
+moduleset = os.environ["HOME"] + "/gnucash-on-osx/master/modulesets/gnucash.modules"
 modules = ['meta-gtk-osx-bootstrap', 'meta-gtk-osx-core', 'meta-gtk-osx-freetype', 'gnucash']
 
 #build_policy = "updated-deps"
