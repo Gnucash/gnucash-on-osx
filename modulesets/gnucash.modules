@@ -18,7 +18,7 @@
   <repository type="tarball" name="csail" 
 	      href="http://groups.csail.mit.edu/mac/ftpdir/"/>
   <repository type="tarball" name="gnucash.org"
-	      href="http://www.gnucash.org/pub/gnucash/sources/stable/"/>
+	      href="http://www.gnucash.org/pub/gnucash/sources/"/>
   <repository type="svn" name="svn.gnucash.org" 
 	      href="http://svn.gnucash.org/repo/"/>
 
@@ -104,7 +104,8 @@
 	    version="0.8.3"/>
   </autotools>
 
-  <autotools id="libdbi-drivers" autogen-sh="configure">
+  <autotools id="libdbi-drivers" autogen-sh="configure"
+	     autogenargs='--with-sqlite3 --with-sqlite3-incdir="/usr/include" --with-sqlite3-libdir="/usr/lib"'>
     <branch repo="sourceforge" version="0.8.3-1"
 	    module="libdbi-drivers/libdbi-drivers-0.8.3-1.tar.gz" />
     <dependencies>
@@ -116,7 +117,7 @@
 
   <autotools id="gnucash" autogen-sh="configure"
 	     autogenargs="--enable-ofx --enable-aqbanking --enable-binreloc">
-    <branch module="gnucash-2.2.9.tar.gz" version="2.2.9"
+    <branch module="stable/gnucash-2.2.9.tar.gz" version="2.2.9"
 	    repo="gnucash.org">
 	<patch file="http://github.com/jralls/gnucash-on-osx/raw/master/patches/gnucash-xlib.patch" strip="0"/>
 	<patch file="http://github.com/jralls/gnucash-on-osx/raw/master/patches/gnucash-in.patch" strip="0"/>
