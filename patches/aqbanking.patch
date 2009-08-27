@@ -1,8 +1,8 @@
 --- src/frontends/qbanking/lib/Makefile.in     2007-10-15 12:47:51 -0700
 +++ src/frontends/qbanking/lib/Makefile.in     2009-08-25 13:27:27 -0700
 @@ -556,9 +556,9 @@
-        dialogs/libdialogs.la views/libviews.la \
-        $(aqbanking_internal_libs) $(am__append_1)
+ 	dialogs/libdialogs.la views/libviews.la \
+ 	$(aqbanking_internal_libs) $(am__append_1)
  testlib_SOURCES = testlib.cpp
 -testlib_LDADD = libqbanking.la $(aqbanking_internal_libs)
 +testlib_LDADD = libqbanking.la $(aqbanking_internal_libs) $(qt3_libs)
@@ -11,7 +11,7 @@
 +checklib_LDADD = libqbanking.la $(aqbanking_internal_libs) $(qt3_libs)
  TESTS = checklib
  all: $(BUILT_SOURCES)
-        $(MAKE) $(AM_MAKEFLAGS) all-recursive
+ 	$(MAKE) $(AM_MAKEFLAGS) all-recursive
 --- src/frontends/qbanking/lib/dialogs/qbimporter.cpp  2009-08-23 15:11:25 -0700
 +++ src/frontends/qbanking/lib/dialogs/qbimporter.cpp  2009-08-25 12:53:25 -0700
 @@ -835,7 +835,7 @@
@@ -27,13 +27,13 @@
 +++ Makefile.in        2009-08-25 14:01:07.000000000 -0700
 @@ -551,6 +551,11 @@
  all: $(BUILT_SOURCES) config.h
-        $(MAKE) $(AM_MAKEFLAGS) all-recursive
+ 	$(MAKE) $(AM_MAKEFLAGS) all-recursive
  
 +qt4-all: $(BUILT_SOURCES) config.h
-+       $(MAKE) $(AM_MAKEFLAGS) clean
-+       $(MAKE) $(AM_MAKEFLAGS) qt4-port
-+       $(MAKE) $(AM_MAKEFLAGS) all-recursive
++	$(MAKE) $(AM_MAKEFLAGS) clean
++	$(MAKE) $(AM_MAKEFLAGS) qt4-port
++	$(MAKE) $(AM_MAKEFLAGS) all-recursive
 +
  .SUFFIXES:
  am--refresh:
-        @:
+ 	@:
