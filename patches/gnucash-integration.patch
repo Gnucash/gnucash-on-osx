@@ -440,11 +440,22 @@ index d582a5d..032f2af 100644
  
  	prefix = gbr_find_prefix (NULL);
  	if (prefix == NULL) {
-@@ -519,6 +569,7 @@ gbr_find_bin_dir (const gchar *default_bin_dir)
+@@ -519,4 +569,5 @@ gbr_find_bin_dir (const gchar *default_bin_dir)
  	dir = g_build_filename (prefix, "bin", NULL);
  	g_free (prefix);
  	return dir;
 +#endif //ENABLE_BINRELOC && MAC_INTEGRATION
  }
- 
- 
+--- a/src/engine/binreloc.h      2008-01-07 17:06:44.000000000 -0800
++++ b/src/engine/binreloc.h       2009-08-27 14:50:44.000000000 -0700
+@@ -28,6 +28,10 @@
+ 	GBR_INIT_ERROR_READ_MAPS,
+ 	/** The file format of /proc/self/maps is invalid; kernel bug? */
+ 	GBR_INIT_ERROR_INVALID_MAPS,
++	/** BinReloc determined that gnucash is not running from a bundle */
++	GBR_INIT_ERROR_MAC_NOT_BUNDLE,
++	/** Binreloc determined that the bundle is not an app bundle */
++	GBR_INIT_ERROR_MAC_NOT_APP_BUNDLE,
+ 	/** BinReloc is disabled (the ENABLE_BINRELOC macro is not defined). */
+ 	GBR_INIT_ERROR_DISABLED
+ } GbrInitError;
