@@ -384,7 +384,6 @@ index d582a5d..032f2af 100644
  	case GBR_INIT_ERROR_DISABLED:
  		error_message = "Binary relocation support is disabled.";
  		break;
-
 @@ -474,18 +496,33 @@ gbr_find_prefix (const gchar *default_prefix)
  {
  	gchar *dir1, *dir2;
@@ -446,6 +445,7 @@ index d582a5d..032f2af 100644
  	return dir;
 +#endif //ENABLE_BINRELOC && MAC_INTEGRATION
  }
+diff -u src/engine/binreloc.h
 --- a/src/engine/binreloc.h      2008-01-07 17:06:44.000000000 -0800
 +++ b/src/engine/binreloc.h       2009-08-27 14:50:44.000000000 -0700
 @@ -28,6 +28,10 @@
