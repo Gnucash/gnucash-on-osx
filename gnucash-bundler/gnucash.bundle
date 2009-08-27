@@ -101,7 +101,7 @@
     ${prefix}/bin/gnc-*
   </binary>
 
-  <framework>
+  <!--framework>
     /Library/Frameworks/QtCore.framework
   </framework>
 
@@ -115,7 +115,7 @@
 
    <framework>
     /Library/Frameworks/QtSql.framework
-  </framework>
+  </framework -->
 
  <!-- Data to copy in, usually Glade/UI files, images, sounds files
        etc. The destination inside the bundle can be specified if the
