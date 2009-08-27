@@ -1,6 +1,6 @@
 #Building GnuCash with GTK-OSX#
-##Overview##
 
+##Overview##
 GnuCash can be built to run more or less natively on OSX -- meaning
 without X11. Better yet, the build is almost automatic.
 
@@ -8,16 +8,25 @@ This is tested and works for Macinstosh OSX Versions 10.4 (Tiger) and
 10.5 (Leopard) on both PowerPC and Intel. It does not create universal
 binaries.
 
+##Binaries available for download##
+
+Precompiled app bundles are available from
+http://gnucash.sourceforge.net, and users who are simply interested in
+running Gnucash on their Macs should obtain the latest stable release
+from there.
+
 ##Preliminaries##
 Tiger or newer is <em>required</em> for gtk-osx.
 
 You need Python 2.5 to run jhbuild. This is already part of Leopard
 (OSX 10.5), but Tiger (10.4) provided Python 2.3, so the gtk-osx
 maintainer has included logic to make a new python for Tiger users.
+You will also need Git (http://metastatic.org/source/git-osx.html) and Tiger users will need Subversion (http://www.open.collab.net/downloads/community/)
 
-Download
-	http://github.com/jralls/gnucash-on-osx/raw/master/.jhbuildrc-custom
-into your home directory.
+If you haven't already done so, retrieve this package:
+    git clone git://github.com/jralls/gnucash-on-osx.git
+
+Copy the .jhbuildrc-custom into your home directory.
 
 Note that by default, jhbuild will put everything into your home
 directory. I prefer to build and install into /usr/local, so you'll
@@ -30,6 +39,25 @@ the instructions. <b><em>Don't run jhbuild build yet!</em></b>
 
 Tiger users will need to retrieve and install
 http://downloads.sourceforge.net/cups/cups-1.2.12.dmg
+
+##Alternate Versions##
+
+There are modules provided for building the latest stable release (gnucash), the latest unstable (development) release (gnucash-unstable), and the current subversion trunk (gnucash-svn). Just edit the "modules = " line in .jhbuildrc-custom to point at the one you want.
+
+##AQBanking and Qt##
+
+With an additional dependency, you can build in the setup wizard for
+AQBanking. This depends on Nokia's Qt library (the same one that KDE
+uses). First, you must download and install the latest MacOSX Qt4
+package from https://qt.nokia.com/downloads/downloads#lgpl
+
+Edit gnucash-on-osx/modulesets/gnucash-modules so that the dependency
+for aqbanking in the gnucash module that you want to build is
+aqbanking-qt. There's a commented out dependency; just uncomment it
+and comment out the plain aqbanking one.
+
+Edit gnucash-on-osx/gnucash-bundler/gnucash.bundle and uncomment the 4
+Qt framework elements.
 
 ##Building##
 
@@ -56,10 +84,10 @@ the Dock) to click on when you run GnuCash. Here's how to do this:
  * Download the bundler from http://downloads.sourceforge.net/sourceforge/gtk-osx/ige-mac-bundler-0.5.tar.gz unpack it, cd into the ige-mac-bundler directory, and
 
 	make install
- * Download http://downloads.sourceforge.net/sourceforge/gtk-osx/gnucash-bundler-1.0.tar.gz and unpack it.
  * 
-	<tt>$> cd gnucash-bundler</tt>
+	<tt>$> cd gnucash-on-osx/gnucash-bundler</tt>
  * Look through gnucash-launcher and gnucash.bundle and adjust the paths to match your installation.
+ * If you built a gnucash-unstable or gnucash-svn, edit Info.plist to have the right version information.
  * make gnucash-launcher executable :
 	<tt>$> chmod +x gnucash-launcher</tt>
  * execute 
