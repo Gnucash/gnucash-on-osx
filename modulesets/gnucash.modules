@@ -170,7 +170,7 @@
   </autotools>
 
   <autotools id="gnucash-docs" makeargs=" html" >
-    <branch repo="gnucash.org" module="gnucash-docs-2.2.0.tar.gz"
+    <branch repo="gnucash.org" module="stable/gnucash-docs-2.2.0.tar.gz"
 	    version="2.2.0"/>
     <dependencies>
       <dep package="scrollkeeper"/>
