@@ -337,7 +337,7 @@ index d582a5d..032f2af 100644
  
  /** @internal
   * Find the canonical filename of the executable. Returns the filename
-@@ -61,6 +66,24 @@ _br_find_exe (GbrInitError *error)
+@@ -61,6 +66,25 @@ _br_find_exe (GbrInitError *error)
  				   (char*)NULL);
  	g_free (prefix);
  	return result;
@@ -351,6 +351,7 @@ index d582a5d..032f2af 100644
 +	}
 +	if (!ige_mac_bundle_get_is_app_bundle (bundle)) {
 +	    *error = GBR_INIT_ERROR_MAC_NOT_APP_BUNDLE;
++	    bundle = NULL;
 +	    return NULL;
 +	}
 +	ige_mac_bundle_setup_environment(bundle);
