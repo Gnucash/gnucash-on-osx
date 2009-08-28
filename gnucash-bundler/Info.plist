@@ -5,19 +5,19 @@
 	<key>CFBundleDevelopmentRegion</key>
 	<string>English</string>
 	<key>CFBundleExecutable</key>
-	<string>GnuCash</string>
+	<string>Gnucash</string>
 	<key>CFBundleGetInfoString</key>
-	<string>GnuCash version 2.2.9 © 2009 Free Software Foundation</string>
+	<string>Gnucash version 2.2.9 © 2009 Free Software Foundation</string>
 	<key>CFBundleIconFile</key>
 	<string>gnucash.icns</string>
 	<key>CFBundleIdentifier</key>
-	<string>org.gnucash.GnuCash</string>
+	<string>org.gnucash.Gnucash</string>
 	<key>CFBundleInfoDictionaryVersion</key>
 	<string>6.0</string>
 	<key>CFBundleLongVersionString</key>
 	<string>2.2.9 © 2009 Free Software Foundation</string>
 	<key>CFBundleName</key>
-	<string>GnuCash</string>
+	<string>Gnucash</string>
 	<key>CFBundlePackageType</key>
 	<string>APPL</string>
 	<key>CFBundleShortVersionString</key>
