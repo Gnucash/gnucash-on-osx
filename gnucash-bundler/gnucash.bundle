@@ -115,19 +115,19 @@
 
    <framework>
     /Library/Frameworks/Qt3Support.framework
-  </framework>
+   </framework>
 
    <framework>
     /Library/Frameworks/QtSql.framework
-  </framework>
+   </framework>
 
    <framework>
     /Library/Frameworks/QtXml.framework
-  </framework>
+   </framework>
 
-    <framework>
+   <framework>
     /Library/Frameworks/QtNetwork.framework
-  </framework>
+   </framework>
 
 <!-- Data to copy in, usually Glade/UI files, images, sounds files
        etc. The destination inside the bundle can be specified if the
