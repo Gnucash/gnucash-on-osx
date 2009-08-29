@@ -101,7 +101,11 @@
     ${prefix}/bin/gnc-*
   </binary>
 
-  <!--framework>
+  <binary>
+    ${prefix}/lib/goffice
+  </binary>
+
+  <!-- framework>
     /Library/Frameworks/QtCore.framework
   </framework>
 
