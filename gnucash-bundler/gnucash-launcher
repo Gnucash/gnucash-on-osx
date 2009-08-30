@@ -20,6 +20,7 @@ tmp=`dirname "$tmp"`
 bundle=`dirname "$tmp"`
 bundle_contents="$bundle"/Contents
 bundle_res="$bundle_contents"/Resources
+bundle_fw="$bundle_contents"/Frameworks
 bundle_lib="$bundle_res"/lib
 bundle_bin="$bundle_res"/bin
 bundle_data="$bundle_res"/share
@@ -56,38 +57,38 @@ if [ x`echo "x$1" | sed -e "s/^x-psn_.*//"` == x ]; then
     shift 1
 fi
 
-PFX=${bundle_res}
-export PFX
-PATH="${PFX}/bin:${PATH}"
+export RESPFX=${bundle_res}
+PATH="${RESPFX}/bin:${PATH}"
 export PATH
 
 GUILE_WARN_DEPRECATED="no"
 export GUILE_WARN_DEPRECATED
 
 if [ -d "$PREFIX" ] && [ ! "$PREFIX" -ef "$bundle_res" ]; then
-	osascript -e 'do shell script " if [ -h $PREFIX ]; then rm $PREFIX; else mv $PREFIX $PREFIX.Save; fi; ln -s $PFX $PREFIX"  with administrator privileges '
+	osascript -e 'do shell script " if [ -h $PREFIX ]; then rm $PREFIX; else mv $PREFIX $PREFIX.Save; fi; ln -s $RESPFX $PREFIX"  with administrator privileges '
 elif [ ! -d "$PREFIX" ] ; then
-    echo "Linking $PFX to $PREFIX"
-    osascript -e 'do shell script "if [ ! -d $PREFIXDIR ]; then mkdir -p $PREFIXDIR; fi; ln -s $PFX $PREFIX" with administrator privileges ';
+    echo "Linking $RESPFX to $PREFIX"
+    osascript -e 'do shell script "if [ ! -d $PREFIXDIR ]; then mkdir -p $PREFIXDIR; fi; ln -s $RESPFX $PREFIX" with administrator privileges ';
 fi
 
 if test -z "$DBUS_SESSION_BUS_ADDRESS"; then
     eval `dbus-launch --sh-syntax --exit-with-session --config-file=$bundle_res/etc/dbus-1/session.conf`
 fi
 
-GNC_MODULE_PATH="${PFX}/lib/gnucash:${GNC_MODULE_PATH}"
+GNC_MODULE_PATH="${RESPFX}/lib/gnucash:${GNC_MODULE_PATH}"
 
-EXTRA_PATH="${EXTRA_PATH}:${PFX}/share/gnucash/guile-modules"
-EXTRA_PATH="${EXTRA_PATH}:${PFX}/share/gnucash/scm"
+EXTRA_PATH="${EXTRA_PATH}:${RESPFX}/share/gnucash/guile-modules"
+EXTRA_PATH="${EXTRA_PATH}:${RESPFX}/share/gnucash/scm"
 GUILE_LOAD_PATH="${EXTRA_PATH}:${GUILE_LOAD_PATH}"
 
 EXTRA_LIBS="${GNC_MODULE_PATH}"
 EXTRA_LIBS="${EXTRA_LIBS}:/System/Library/Frameworks/ApplicationServices.framework/Versions/A/Frameworks/ImageIO.framework/Versions/A/Resources/"
-EXTRA_LIBS="${EXTRA_LIBS}:${PFX}/lib"
-EXTRA_LIBS="${EXTRA_LIBS}:${PFX}/lib/gnucash"
+EXTRA_LIBS="${EXTRA_LIBS}:${RESPFX}/lib"
+EXTRA_LIBS="${EXTRA_LIBS}:${RESPFX}/lib/gnucash"
 
 LD_LIBRARY_PATH="${LD_LIBRARY_PATH}:${EXTRA_LIBS}:"
 DYLD_LIBRARY_PATH="${DYLD_LIBRARY_PATH}:${EXTRA_LIBS}"
+export DYLD_FRAMEWORK_PATH="${bundle_fw}
 
 export GNC_MODULE_PATH
 export GUILE_LOAD_PATH
