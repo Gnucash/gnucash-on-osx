@@ -64,9 +64,9 @@ export PATH
 GUILE_WARN_DEPRECATED="no"
 export GUILE_WARN_DEPRECATED
 
-if [ -d "$PREFIX" ] && [ ! "$PREFIX" -ef "$bundle_res" ]; then
-	osascript -e 'do shell script " if [ -h $PREFIX ]; then rm $PREFIX; else mv $PREFIX $PREFIX.Save; fi; ln -s $RESPFX $PREFIX"  with administrator privileges '
-elif [ ! -d "$PREFIX" ] ; then
+if [ -e "$PREFIX" ] || [ -L "$PREFIX" ]  && [ ! "$PREFIX" -ef "$bundle_res" ]; then
+	osascript -e 'do shell script " if [ ! -d $PREFIX ]; then rm $PREFIX; else mv $PREFIX $PREFIX.Save; fi; ln -s $RESPFX $PREFIX"  with administrator privileges '
+elif [ ! -e "$PREFIX" ] ; then
     echo "Linking $RESPFX to $PREFIX"
     osascript -e 'do shell script "if [ ! -d $PREFIXDIR ]; then mkdir -p $PREFIXDIR; fi; ln -s $RESPFX $PREFIX" with administrator privileges ';
 fi
