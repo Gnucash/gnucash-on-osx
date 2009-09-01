@@ -67,6 +67,7 @@ Optionally you may want to install GConf 1.0.7 (or later).
       <dep package="libgnomeprintui"/> 
       <dep package="iso-codes"/>
       <dep package="enchant"/> 
+      <dep package="libsoup"/>
     </dependencies>
   </autotools>
   
