@@ -1,0 +1,268 @@
+<?xml version="1.0" standalone="no"?> <!--*- mode: xml -*-->
+<app-bundle>
+
+  <meta>
+    <!-- Where to pick up the GTK+ installation, icon themes,
+         etc. Note that "${env:PREFIX}" is evaluated to the value of
+         the environment variable PREFIX, and likewise with HOME. You
+         can define additional prefixes and refer to them in paths
+         throughout this file on the form "${prefix:name}". This is
+         useful for installing certain libraries or even the
+         application itself separately.
+    -->
+    <prefix name="default">${env:PREFIX}</prefix>
+
+    <!-- The project directory is the default location of the created
+         app. If you leave out the path, the current directory is
+         used.
+    -->
+    <destination overwrite="yes">${env:HOME}</destination>
+
+    <image>
+      <!-- Not implemented yet (DMG image). -->
+    </image>
+    <!-- Comment this out to keep the install names in binaries -->
+    <run-install-name-tool/>
+
+
+    <!-- Optionally specify a launcher script to use. If the
+         application sets up everything needed itself, like
+         environment variable, linker paths, etc, a launcher script is
+         not needed. If the source path is left out, the default
+         script will be used.
+    -->
+    <launcher-script>${project}/gnucash-unstable-launcher</launcher-script>
+
+    <!-- Not implemented: Optional runtime, could be python or mono
+         for example.
+    -->
+    <!--runtime copy="yes">/usr/bin/python</runtime-->
+  </meta>
+
+  <!-- The special macro "${project}" refers to the directory where
+       this bundle file is located. The application name and bundle
+       identifier are taken from the plist file.
+  -->
+  <plist>${project}/Info-unstable.plist</plist>
+
+  <main-binary>${prefix}/bin/gnucash-bin</main-binary>
+
+  <!-- Copy in GTK+ and Pango modules. Note the use of the
+       "${pkg:module:variable}" macro, which evaluates to a pkg-config
+       variable in the specified module. Note that any libraries that
+       binaries link to are also copied in automatically. 
+  -->
+  <binary>
+    ${prefix}/lib/gtk-2.0/${pkg:gtk+-2.0:gtk_binary_version}/loaders/*.so
+  </binary>
+<!-- Copy in the theme engines. -->
+  <binary>
+    ${prefix}/lib/gtk-2.0/${pkg:gtk+-2.0:gtk_binary_version}/engines/*.so
+  </binary>
+
+  <binary>
+    ${prefix}/lib/pango/${pkg:pango:pango_module_version}/modules/pango-basic-fc.so
+  </binary>
+
+  <binary>
+    ${prefix}/lib/GConf/2/*.so
+  </binary>
+
+  <!-- Seems to get missed by the dependency resolver -->
+  <binary>
+    ${prefix}/lib/libguile-srfi*
+  </binary>
+
+  <binary>
+    ${prefix}/lib/gnucash
+  </binary>
+
+  <binary>
+    ${prefix}/lib/aqbanking
+  </binary>
+
+  <binary>
+    ${prefix}/lib/libglade
+  </binary>
+
+  <binary>
+    ${prefix}/libexec
+  </binary>
+
+  <binary>
+    ${prefix}/bin/dbus-launch
+  </binary>
+
+  <binary>
+    ${prefix}/bin/dbus-daemon
+  </binary>
+
+  <binary>
+    ${prefix}/bin/gnc-*
+  </binary>
+
+  <binary>
+    ${prefix}/lib/goffice
+  </binary>
+
+  <binary>
+    ${prefix}/lib/dbd
+  </binary>
+
+  <framework>
+    /Library/Frameworks/Stripped/QtCore.framework
+  </framework>
+
+  <framework>
+    /Library/Frameworks/Stripped/QtGui.framework
+  </framework>
+
+   <framework>
+    /Library/Frameworks/Stripped/Qt3Support.framework
+   </framework>
+
+   <framework>
+    /Library/Frameworks/Stripped/QtSql.framework
+   </framework>
+
+   <framework>
+    /Library/Frameworks/Stripped/QtXml.framework
+   </framework>
+
+   <framework>
+    /Library/Frameworks/Stripped/QtNetwork.framework
+   </framework>
+
+<!-- Data to copy in, usually Glade/UI files, images, sounds files
+       etc. The destination inside the bundle can be specified if the
+       files should end up at a different location, by using the
+       "dest" property. The destination must then start with the macro
+       "${bundle}", which refers to the bundle root directory.
+  -->
+  <data>
+    ${prefix}/etc/gnucash
+  </data>
+
+  <data dest="${bundle}/Contents/Resources/lib/">
+    ${prefix}/lib/libguile-srfi-srfi-*.la
+  </data>
+
+  <data dest="${bundle}/Contents/Resources/lib/">
+    ${prefix}/lib/libgnc-*.la
+  </data>
+
+  <data dest="${bundle}/Contents/Resources/lib/">
+    ${prefix}/lib/libofx.la
+  </data>
+
+  <data>
+    ${prefix}/etc/xdg
+  </data>
+
+  <data>
+    ${prefix}/etc/gconf
+  </data>
+
+  <data>
+    ${prefix}/share/gnucash
+  </data>
+
+  <data>
+    ${prefix}/share/guile
+  </data>
+
+  <data>
+    ${prefix}/share/gnome
+  </data>
+
+  <data>
+    ${prefix}/share/GConf
+  </data>
+
+  <data>
+    ${prefix}/share/dbus-1/
+  </data>
+
+  <data>
+    ${prefix}/share/aqbanking
+  </data>
+
+  <data>
+    ${prefix}/share/libofx
+  </data>
+
+  <data>
+    ${prefix}/share/aqhbci
+  </data>
+
+  <data>
+    ${prefix}/share/mime
+  </data>
+
+  <data>
+    ${prefix}/share/themes
+  </data>
+
+  <!--data dest="${bundle}/Contents/Resources/slib"-->
+  <data>
+    ${prefix}/lib/slib
+  </data>
+
+  <data dest="${bundle}/Contents/Resources">
+    ${project}/gnucash.icns
+  </data>
+
+
+  <data dest='${bundle}/Contents/Resources/var/lib/dbus/machine-id'>
+    ${prefix}/var/lib/dbus/machine-id
+  </data>
+
+  <data dest='${bundle}/Contents/Resources/etc/dbus-1/'>
+    ${prefix}/etc/dbus-1/
+  </data>
+
+  <data dest="${bundle}/Contents/Resources/License">
+    ${prefix}/share/gnucash/doc/LICENSE
+  </data>
+
+  <data dest="${bundle}/Contents/Resources/Sources">
+    ${project}/Sources
+  </data>
+
+  <data dest="${bundle}/Contents/Resources/English.lproj/GnuCash Help/">
+    /usr/local/src/gnome/gnucash-docs-2.2.0/help/C/gnucash-help/
+  </data>
+
+  <data dest="${bundle}/Contents/Resources/English.lproj/GnuCash Guide/">
+    /usr/local/src/gnome/gnucash-docs-2.2.0/guide/C/gnucash-guide/
+  </data>
+
+  <translations name="gnucash">
+    ${prefix}/share/locale
+  </translations>
+
+  <translations name="aqbanking">
+    ${prefix}/share/locale
+  </translations>
+
+<!-- This takes the Quartz theme instructions from the package and puts them in the bundle gtkrc file. You may want to cusomize the source path if you want a different theme, or if you want other stuff in your gtkrc. 
+
+  <data dest='${bundle}/Contents/Resources/etc/gtk-2.0/gtkrc'>
+    ${prefix}/share/themes/Quartz/gtk-2.0/gtkrc
+  </data>
+-->
+
+  <!-- Icon themes to copy. The "icons" property can be either of
+       "auto", "all", or "none". All or none should be
+       self-explanatory, while auto means that the script will try to
+       figure out which icons are needed. This is done by getting all
+       the strings from all copied binaries, and matching them against
+       icon names. To be safe, you should use "all". "none" is useful
+       if you want just the index.theme file but no icons, mostly
+       needed for the "hicolor" base theme.
+  -->
+  <!-- icon-theme icons="auto"/>
+    Tango
+  </icon-theme -->
+
+</app-bundle>
