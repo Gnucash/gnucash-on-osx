@@ -233,6 +233,14 @@
     /usr/local/src/gnome/gnucash-docs-2.2.0/guide/C/gnucash-guide/
   </data>
 
+  <translations name="gnucash">
+    ${prefix}/share/locale
+  </translations>
+
+  <translations name="aqbanking">
+    ${prefix}/share/locale
+  </translations>
+
 <!-- This takes the Quartz theme instructions from the package and puts them in the bundle gtkrc file. You may want to cusomize the source path if you want a different theme, or if you want other stuff in your gtkrc. 
 
   <data dest='${bundle}/Contents/Resources/etc/gtk-2.0/gtkrc'>
