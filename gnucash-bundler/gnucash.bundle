@@ -106,27 +106,27 @@
   </binary>
 
   <framework>
-    /Library/Frameworks/QtCore.framework
+    /Library/Frameworks/Stripped/QtCore.framework
   </framework>
 
   <framework>
-    /Library/Frameworks/QtGui.framework
+    /Library/Frameworks/Stripped/QtGui.framework
   </framework>
 
    <framework>
-    /Library/Frameworks/Qt3Support.framework
+    /Library/Frameworks/Stripped/Qt3Support.framework
    </framework>
 
    <framework>
-    /Library/Frameworks/QtSql.framework
+    /Library/Frameworks/Stripped/QtSql.framework
    </framework>
 
    <framework>
-    /Library/Frameworks/QtXml.framework
+    /Library/Frameworks/Stripped/QtXml.framework
    </framework>
 
    <framework>
-    /Library/Frameworks/QtNetwork.framework
+    /Library/Frameworks/Stripped/QtNetwork.framework
    </framework>
 
 <!-- Data to copy in, usually Glade/UI files, images, sounds files
