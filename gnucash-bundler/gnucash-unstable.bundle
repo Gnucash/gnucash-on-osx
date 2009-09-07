@@ -31,7 +31,7 @@
          not needed. If the source path is left out, the default
          script will be used.
     -->
-    <launcher-script>${project}/gnucash-launcher</launcher-script>
+    <launcher-script>${project}/gnucash-unstable-launcher</launcher-script>
 
     <!-- Not implemented: Optional runtime, could be python or mono
          for example.
@@ -43,7 +43,7 @@
        this bundle file is located. The application name and bundle
        identifier are taken from the plist file.
   -->
-  <plist>${project}/Info.plist</plist>
+  <plist>${project}/Info-unstable.plist</plist>
 
   <main-binary>${prefix}/bin/gnucash-bin</main-binary>
 
@@ -105,6 +105,10 @@
     ${prefix}/lib/goffice
   </binary>
 
+  <binary>
+    ${prefix}/lib/dbd
+  </binary>
+
   <framework>
     /Library/Frameworks/Stripped/QtCore.framework
   </framework>
@@ -128,7 +132,6 @@
    <framework>
     /Library/Frameworks/Stripped/QtNetwork.framework
    </framework>
-
 
 <!-- Data to copy in, usually Glade/UI files, images, sounds files
        etc. The destination inside the bundle can be specified if the

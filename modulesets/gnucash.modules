@@ -127,8 +127,8 @@
       <dep package="meta-goffice"/>
       <dep package="meta-gtk-osx-core"/>
       <dep package="libofx"/>
-      <dep package="aqbanking"/>
-      <!-- dep package="aqbanking-qt"/ -->
+      <!--dep package="aqbanking"/-->
+      <dep package="aqbanking-qt"/>
       <dep package="meta-gtkhtml"/>
       <dep package="Slib"/>
     </dependencies>
@@ -144,8 +144,8 @@
       <dep package="meta-gtk-osx-core"/>
       <dep package="meta-goffice"/>
       <dep package="libofx"/>
-      <dep package="aqbanking"/>
-      <!-- dep package="aqbanking-qt"/ -->
+      <!--dep package="aqbanking"/ -->
+      <dep package="aqbanking-qt"/>
       <dep package="meta-gtkhtml"/>
       <dep package="Slib"/>
     </dependencies>
@@ -161,8 +161,8 @@
       <dep package="meta-gtk-osx-core"/>
       <dep package="meta-goffice"/>
       <dep package="libofx"/>
-      <dep package="aqbanking"/>
-      <!-- dep package="aqbanking-qt"/ -->
+      <!-- dep package="aqbanking"/ -->
+      <dep package="aqbanking-qt"/>
      <dep package="meta-gtkhtml"/>
       <dep package="Slib"/>
     </dependencies>
