@@ -157,6 +157,10 @@
   </data>
 
   <data>
+    ${prefix}/etc/gwen-public-ca.crt
+  </data>
+
+  <data>
     ${prefix}/etc/gconf
   </data>
 
