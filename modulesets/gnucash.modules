@@ -153,7 +153,7 @@
   </autotools>
 
  <autotools id="gnucash-unstable" 
-	     autogenargs="--enable-ofx --enable-aqbanking --enable-binreloc --enable-dbi ">
+	    autogenargs='--enable-ofx --enable-aqbanking --enable-binreloc --enable-dbi --with-html-engine="webkit"'>
    <branch module="unstable/2.3.x/gnucash-2.3.5.tar.gz" version="2.3.5"
 	    repo="gnucash.org"/>
    <dependencies>
@@ -162,8 +162,11 @@
       <dep package="libofx"/>
       <!-- dep package="aqbanking"/ -->
       <dep package="aqbanking-qt"/>
-     <dep package="meta-gtkhtml"/>
+      <!-- dep package="meta-gtkhtml"/ -->
+      <dep package="WebKit"/>
+      <dep package="libgnomeui"/>
       <dep package="Slib"/>
+      <dep package="libdbi-drivers"/>
     </dependencies>
 
   </autotools>
