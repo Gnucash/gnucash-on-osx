@@ -50,7 +50,7 @@
   </autotools>
 
   <autotools id="aqbanking-qt" autogen-sh="configure" 
-	     autogenargs='--enable-ofx=yes --disable-kde --disable-chipcard-client --with-backends="aqhbci aqdtaus aqofxconnect" --with-frontends="cbanking g2banking qbanking"' makeargs="qt4-all" >
+	     autogenargs='--enable-ofx=yes --disable-kde --disable-chipcard-client --with-backends="aqhbci aqdtaus aqofxconnect" --with-frontends="cbanking g2banking qbanking"'  >
     <branch module="aqbanking/aqbanking-2.3.3.tar.gz" version="2.3.3"
 	    repo="sourceforge">
 	<patch file="http://github.com/jralls/gnucash-on-osx/raw/master/patches/aqbanking.patch" strip="0"/>    
