@@ -153,7 +153,6 @@
   </autotools>
 
  <autotools id="gnucash-unstable" 
-	    autogen-template="%(srcdir)s/%(autogen-sh)s &amp;&amp; %(srcdir)s/configure --prefix %(prefix)s --libdir %(libdir)s %(autogenargs)s"
 	     autogenargs="--enable-ofx --enable-aqbanking --enable-binreloc --enable-dbi ">
    <branch module="unstable/gnucash-2.3.4.tar.gz" version="2.3.4"
 	    repo="gnucash.org"/>
