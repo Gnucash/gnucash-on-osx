@@ -160,6 +160,10 @@
   </data>
 
   <data>
+    ${prefix}/etc/fonts
+  </data>
+
+  <data>
     ${prefix}/etc/gconf
   </data>
 
