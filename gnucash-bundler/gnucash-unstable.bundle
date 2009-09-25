@@ -230,11 +230,11 @@
   </data>
 
   <data dest="${bundle}/Contents/Resources/English.lproj/GnuCash Help/">
-    /usr/local/src/gnome/gnucash-docs-2.2.0/help/C/gnucash-help/
+    /Users/john/gtk/source/gnucash-docs-svn/help/C/gnucash-help/
   </data>
 
   <data dest="${bundle}/Contents/Resources/English.lproj/GnuCash Guide/">
-    /usr/local/src/gnome/gnucash-docs-2.2.0/guide/C/gnucash-guide/
+    /Users/john/gtk/source/gnucash-docs-svn/guide/C/gnucash-guide/
   </data>
 
   <translations name="gnucash">
