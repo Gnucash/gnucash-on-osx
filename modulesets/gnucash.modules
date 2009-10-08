@@ -171,22 +171,20 @@
 
   </autotools>
 
-  <autotools id="gnucash-docs-svn" 
+  <autotools id="gnucash-docs-svn" autogenargs="--disable-scrollkeeper"
 	    autogen-template="%(srcdir)s/%(autogen-sh)s &amp;&amp; %(srcdir)s/configure --prefix %(prefix)s --libdir %(libdir)s %(autogenargs)s"
 	    makeargs=" html" >
     <branch repo="svn.gnucash.org" module="gnucash-docs"/>
     <dependencies>
-      <dep package="scrollkeeper"/>
+      <!-- dep package="scrollkeeper"/ -->
     </dependencies>
   </autotools>
 
-  <autotools id="gnucash-docs" makeargs=" html" >
+  <autotools id="gnucash-docs" autogenargs="--disable-scrollkeeper"
+	     makeargs=" html" >
     <branch repo="gnucash.org" module="stable/gnucash-docs-2.2.0.tar.gz"
 	    version="2.2.0"/>
-    <dependencies>
-      <dep package="scrollkeeper"/>
-    </dependencies>
-  </autotools>
+   </autotools>
 
   <autotools id="scrollkeeper">
     <branch repo="sourceforge" module="scrollkeeper/scrollkeeper-0.3.14.tar.gz"
