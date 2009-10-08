@@ -146,6 +146,18 @@ elif [ ! -e "$PREFIX" ] ; then
 fi
 
 if test -z "$DBUS_SESSION_BUS_ADDRESS"; then
+    # If we get here without a way to connect to an instance of dbus-daemon,
+    # then we can kill any existing instances of dbus-daemon that originate
+    # in this copy of Gnucash.
+ 
+    DBUS_PIDS=`ps ux | grep dbus-daemon | grep "${PREFIX}" | awk '{print $2}'`
+ 
+    if /bin/test "$DBUS_PIDS"; then
+	for DBUS_PID in ${DBUS_PIDS}
+        do
+            /bin/kill "${DBUS_PID}"
+        done
+fi
     eval `dbus-launch --sh-syntax --exit-with-session --config-file=$bundle_res/etc/dbus-1/session.conf`
 fi
 
