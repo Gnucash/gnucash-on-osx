@@ -80,7 +80,8 @@ Optionally you may want to install GConf 1.0.7 (or later).
     </dependencies>
   </autotools>
 
-  <autotools id="libgnomeprint" autogen.sh="autoreconf">
+  <autotools id="libgnomeprint" autogen.sh="autoreconf" 
+	     autogenargs="--disable-gtk-doc" >
     <branch module="libgnomeprint/2.18/libgnomeprint-2.18.6.tar.gz"
 	    repo="ftp.gnome.org" version="2.18.6"
 	    md5sum="10a9e58aabecf541bc6852f64b3a9294">
@@ -186,7 +187,7 @@ Optionally you may want to install GConf 1.0.7 (or later).
     </dependencies>
   </autotools>
 
-  <autotools id="libbonoboui">
+  <autotools id="libbonoboui" autogenargs="--without-x">
     <branch module="libbonoboui/2.24/libbonoboui-2.24.1.tar.bz2" 
 	    version="2.24.1" md5sum="9ff3ec1c7aefd0b1a15a5b21ecc7b4e4"/>
     <dependencies>

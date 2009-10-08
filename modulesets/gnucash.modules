@@ -99,13 +99,13 @@
     </dependencies>
   </autotools>
 
-  <autotools id="libdbi" autogen-sh="configure">
+  <autotools id="libdbi" autogen-sh="configure"  autogenargs='--disable-docs GCC="gcc"'>
     <branch repo="sourceforge" module="libdbi/libdbi-0.8.3.tar.gz" 
 	    version="0.8.3"/>
   </autotools>
 
   <autotools id="libdbi-drivers" autogen-sh="configure"
-	     autogenargs='--with-sqlite3 --with-sqlite3-incdir="/usr/include" --with-sqlite3-libdir="/usr/lib"'>
+	     autogenargs='--with-sqlite3 --disable-docs --with-sqlite3-incdir="/usr/include" --with-sqlite3-libdir="/usr/lib" '>
     <branch repo="sourceforge" version="0.8.3-1"
 	    module="libdbi-drivers/libdbi-drivers-0.8.3-1.tar.gz" />
     <dependencies>
