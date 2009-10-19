@@ -56,8 +56,8 @@ later).
 
 Optionally you may want to install GConf 1.0.7 (or later).
 -->
-   <branch module="gtkhtml/3.26/gtkhtml-3.26.2.tar.bz2" version="3.26.2"
-	   md5sum="5b109d47aaa95898a169fa9ae572c763"/>
+   <branch module="gtkhtml/3.28/gtkhtml-3.28.0.tar.bz2" version="3.28.0"
+	   hash="sha2556:6290424e51770fc09701ebaf89b7089214bbb9c81223430800160beee6f42288"/>
     <dependencies>
       <dep package="gtk+"/>
       <dep package="libgnomeui"/>
@@ -140,8 +140,8 @@ Optionally you may want to install GConf 1.0.7 (or later).
       but building them on OS-X proved problematic and gnome-vfs builds well 
       without them -->
   <autotools id="gnome-vfs">
-    <branch module="gnome-vfs/2.24/gnome-vfs-2.24.1.tar.bz2" version="2/24/1"
-	    md5sum="100f9af16dc659e375ee8da45175a28d"/>
+    <branch module="gnome-vfs/2.24/gnome-vfs-2.24.2.tar.bz2" version="2.24.2"
+	    hash="sha256:50ecf5f37d377492e8943a3c359ffe64176d4e7f045e9980790eca999a1c6856"/>
     <dependencies>
       <dep package="gconf"/>
       <dep package="shared-mime-info"/>
@@ -151,8 +151,8 @@ Optionally you may want to install GConf 1.0.7 (or later).
   </autotools>
 
   <autotools id="libgnomeui" >
-    <branch module="libgnomeui/2.24/libgnomeui-2.24.1.tar.gz" version="2.24.1"
-	    repo="ftp.gnome.org" md5sum="4494a9e25eebd33fdf66ef30069179ee">
+    <branch module="libgnomeui/2.24/libgnomeui-2.24.2.tar.bz2" version="2.24.2"
+	    repo="ftp.gnome.org" hash="sha256:ae7459b3ddee78258bb2d619fd199b0b24647f1df45fc397fee83d659c354910">
 	<patch file="http://github.com/jralls/gnucash-on-osx/raw/master/patches/libgnomeui.patch" skip="0"/> 
     </branch>
     <dependencies>
@@ -163,20 +163,11 @@ Optionally you may want to install GConf 1.0.7 (or later).
     </dependencies>
   </autotools>
 
-  <autotools id="gnome-keyring">
-    <branch module="gnome-keyring/2.26/gnome-keyring-2.26.1.tar.bz2" 
-	    version="2.26.1" md5sum="060b349a0aae130fdd3cd0a9827258c6"/>
-    <dependencies>
-      <dep package="gtk+"/>
-      <dep package="libgcrypt"/>
-      <dep package="libtasn1"/>
-    </dependencies>
-  </autotools>
 
    <autotools id="libbonobo">
 <!-- DEPENDS says "ORBit" -->
-    <branch module="libbonobo/2.24/libbonobo-2.24.1.tar.bz2" version="2.24.1"
-	    md5sum="8868b6083392964a6969547ceb8d7cd1"/>
+    <branch module="libbonobo/2.24/libbonobo-2.24.2.tar.bz2" version="2.24.2"
+	    hash="sha256:95c0230a31a657e1873fc601318bbaa16722986699219317053f1cd1aa2a28bf"/>
     <dependencies>
       <dep package="popt"/>
       <dep package="ORBit2"/>
@@ -188,8 +179,8 @@ Optionally you may want to install GConf 1.0.7 (or later).
   </autotools>
 
   <autotools id="libbonoboui" autogenargs="--without-x">
-    <branch module="libbonoboui/2.24/libbonoboui-2.24.1.tar.bz2" 
-	    version="2.24.1" md5sum="9ff3ec1c7aefd0b1a15a5b21ecc7b4e4"/>
+    <branch module="libbonoboui/2.24/libbonoboui-2.24.2.tar.bz2" 
+	    version="2.24.2" hash="sha256:aebcf9dc56a76f4ab1ae2134920d962e12c6f7397028052658dad5b1bebdbe00"/>
     <dependencies>
       <dep package="libgnome"/>
       <dep package="libbonobo"/>

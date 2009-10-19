@@ -61,6 +61,12 @@
     </dependencies>
   </autotools>
 
+<!-- Note for cross-compilation: libtool, for reasons known only to
+     itself, ignores the CFLAGS and links libosp.5.0.0.la with the
+     native architecture. When jhbuild stops, start a shell and go
+     back and find the link step, copy and paste it, adding the
+     architecture flags, and fire away. Then you can exit the shell
+     and rerun build and it will work OK. -->
   <autotools id="OpenSP" autogen-sh='configure'
 	     autogenargs="--disable-static --enable-shared --disable-doc-build">
     <branch repo="sourceforge" module="openjade/OpenSP-1.5.2.tar.gz" 
@@ -124,7 +130,7 @@
 	<patch file="http://github.com/jralls/gnucash-on-osx/raw/master/patches/gnucash-integration.patch" strip="1"/>
     </branch>
     <dependencies>
-      <dep package="meta-goffice"/>
+      <dep package="goffice-0.7.4"/>
       <dep package="meta-gtk-osx-core"/>
       <dep package="libofx"/>
       <!--dep package="aqbanking"/-->
