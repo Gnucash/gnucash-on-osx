@@ -231,11 +231,11 @@
   </data>
 
   <data dest="${bundle}/Contents/Resources/English.lproj/GnuCash Help/">
-    /usr/local/src/gnome/gnucash-docs-2.2.0/help/C/gnucash-help/
+    ${env:HOME}/gtk/source/gnucash-docs-2.2.0/help/C/gnucash-help/
   </data>
 
   <data dest="${bundle}/Contents/Resources/English.lproj/GnuCash Guide/">
-    /usr/local/src/gnome/gnucash-docs-2.2.0/guide/C/gnucash-guide/
+    ${env:HOME}/gtk/source/gnucash-docs-2.2.0/guide/C/gnucash-guide/
   </data>
 
   <translations name="gnucash">
