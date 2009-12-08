@@ -191,6 +191,10 @@
     ${prefix}/share/aqbanking
   </data>
 
+  <binary>
+    ${prefix}/lib/gwenhywfar
+  </binary>
+
   <data>
     ${prefix}/share/libofx
   </data>

@@ -82,6 +82,10 @@
   </binary>
 
   <binary>
+    ${prefix}/lib/gwenhywfar
+  </binary>
+
+  <binary>
     ${prefix}/lib/libglade
   </binary>
 
