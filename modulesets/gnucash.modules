@@ -68,8 +68,8 @@
      back and find the link step, copy and paste it, adding the
      architecture flags, and fire away. Then you can exit the shell
      and rerun build and it will work OK. -->
-  <autotools id="OpenSP" autogen-template="libtoolize &amp; %(srcdir)s/configure --prefix %(prefix)s --libdir %(libdir)s %(autogenargs)s"
-	     autogenargs="--disable-static --enable-shared --disable-doc-build">
+  <autotools id="OpenSP" autogen-template="%(srcdir)s/autoinit.sh &amp;&amp; %(srcdir)s/configure --prefix %(prefix)s --libdir %(libdir)s %(autogenargs)s"
+	     autogenargs="--disable-static --enable-shared --disable-doc-build --disable-nls">
     <branch repo="sourceforge" module="openjade/OpenSP-1.5.2.tar.gz" 
 	    version='1.5.2'/>>
   </autotools>
