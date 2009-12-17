@@ -75,8 +75,8 @@
   </autotools>
 
   <autotools id="libofx" autogen-sh='configure'>
-    <branch repo="sourceforge" module="libofx/libofx-0.8.3.tar.gz"
-	    version='0.8.3'/>
+    <branch repo="sourceforge" module="libofx/libofx-0.9.1.tar.gz"
+	    version='0.9.1'/>
     <dependencies>
       <dep package='guile-1.6'/>
       <dep package="OpenSP"/>
