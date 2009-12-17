@@ -82,6 +82,10 @@
   </binary>
 
   <binary>
+    ${prefix}/lib/gwenhywfar
+  </binary>
+
+  <binary>
     ${prefix}/lib/libglade
   </binary>
 
@@ -160,6 +164,10 @@
   </data>
 
   <data>
+    ${prefix}/etc/gwen-public-ca.crt
+  </data>
+
+  <data>
     ${prefix}/etc/fonts
   </data>
 
@@ -190,10 +198,6 @@
   <data>
     ${prefix}/share/aqbanking
   </data>
-
-  <binary>
-    ${prefix}/lib/gwenhywfar
-  </binary>
 
   <data>
     ${prefix}/share/libofx
