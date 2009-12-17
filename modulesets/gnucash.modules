@@ -129,7 +129,7 @@
   <autotools id="gnucash" autogen-sh="configure"
 	     autogenargs="--enable-ofx --enable-aqbanking --enable-binreloc">
     <branch module="stable/gnucash-2.2.9.tar.gz" version="2.2.9"
-	    repo="gnucash.org">
+	    repo="sourceforge">
 	<patch file="http://github.com/jralls/gnucash-on-osx/raw/master/patches/gnucash-xlib.patch" strip="0"/>
 	<patch file="http://github.com/jralls/gnucash-on-osx/raw/master/patches/gnucash-in.patch" strip="0"/>
 	<patch file="http://github.com/jralls/gnucash-on-osx/raw/master/patches/gnucash-integration.patch" strip="1"/>
