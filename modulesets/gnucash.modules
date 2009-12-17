@@ -106,14 +106,15 @@
     </dependencies>
   </autotools>
 
-  <autotools id="libdbi" autogen-template="libtoolize &amp; %(srcdir)s/configure --prefix %(prefix)s --libdir %(libdir)s %(autogenargs)s"  autogenargs='--disable-docs GCC="gcc"'>
+  <autotools id="libdbi" autogen-template="%(srcdir)s/autogen.sh &amp;&amp; %(srcdir)s/configure --prefix %(prefix)s --libdir %(libdir)s %(autogenargs)s"
+	     autogenargs="--disable-docs">
     <branch repo="sourceforge" module="libdbi/libdbi-0.8.3.tar.gz" 
 	    version="0.8.3">
       <patch file="http://github.com/jralls/gtk-osx-build/raw/master/patches/dbi.patch" strip="1"/>
     </branch>
   </autotools>
 
-  <autotools id="libdbi-drivers" autogen-template="libtoolize &amp; %(srcdir)s/configure --prefix %(prefix)s --libdir %(libdir)s %(autogenargs)s"
+  <autotools id="libdbi-drivers" autogen-template="%(srcdir)s/autogen.sh &amp;&amp; %(srcdir)s/configure --prefix %(prefix)s --libdir %(libdir)s %(autogenargs)s"
 	     autogenargs='--with-sqlite3 --disable-docs --with-sqlite3-incdir="/usr/include" --with-sqlite3-libdir="/usr/lib" '>
     <branch repo="sourceforge" version="0.8.3-1"
 	    module="libdbi-drivers/libdbi-drivers-0.8.3-1.tar.gz">
