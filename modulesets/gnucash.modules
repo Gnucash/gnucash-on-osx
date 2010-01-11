@@ -56,7 +56,7 @@
     <dependencies>
       <dep package="libofx"/>
       <dep package="gwenhywfar"/>
-      <dep package="gmp"/>
+      <!-- dep package="gmp"/ -->
       <dep package="ktoblzcheck"/>
     </dependencies>
   </autotools>
@@ -70,7 +70,7 @@
     <dependencies>
       <dep package="libofx"/>
       <dep package="gwenhywfar"/>
-      <dep package="gmp"/>
+      <!-- dep package="gmp"/ -->
       <dep package="ktoblzcheck"/>
     </dependencies>
   </autotools>
