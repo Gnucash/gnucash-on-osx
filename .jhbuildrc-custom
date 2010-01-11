@@ -1,32 +1,49 @@
 # -*- mode: python -*-
 
-#checkoutroot = '/usr/local/src/gnome'
-#prefix = '/usr/local/gtk'
-if _osx_version.startswith("8."):
-    os.environ["MACOSX_DEPLOYMENT_TARGET"] = "10.4"
-    module_makeargs["gtk+"]="LDFLAGS='-framework AppKit -framework Carbon -framework CoreFoundation -framework ApplicationServices -lobjc'"
-    module_makeargs["ige-mac-integration"]="LDFLAGS='-framework AppKit -lobjc'"
-    module_makeargs["aqbanking"]="LDFLAGS='-liconv'"
-   # setup_sdk_10_4()
-    pass
-else:
-    os.environ["MACOSX_DEPLOYMENT_TARGET"] = "10.5"
-    skip.append("bison")
+#Uncomment this if you have a completed build and only want to rebuild
+#updated modules instead of everything:
+#
+#build_policy = "updated-deps"
 
-autogenargs=autogenargs + ' --disable-xlib'
-append_autogenargs("gconf", "--enable-static --enable-shared --disable-scrollkeeper --disable-xlib")
+#Select one of these, or use a different one: Do keep the directories
+#separate for stable and unstable as they have different
+#dependencies. You can use 2.3.x for svn builds.
+prefix = os.path.join(os.environ["HOME"], "Library/Gnucash-2.2.9")
+#prefix = os.path.join(os.environ["HOME"], "/Library/Gnucash-2.3.x")
+
+#Select which modules to build. The only difference is which gnucash
+#module (and all of the dependencies, see above) get built:
+modules = ["gettext-fw", "meta-gtk-osx-bootstrap", "meta-gtk-osx-core", "gnucash"]
+#modules = ["gettext-fw", "meta-gtk-osx-bootstrap", "meta-gtk-osx-core", "gnucash-unstable"]
+#modules = ["gettext-fw", "meta-gtk-osx-bootstrap", "meta-gtk-osx-core", "gnucash-svn"]
+
+#Setup the build for Tiger. If you don't care about Tiger or are
+#building unstable or svn, comment out the first one and uncomment the
+#second.
+setup_sdk("10.4", "10.4u")
+#setup_sdk("10.5", "10.5")
+
+moduleset = "http://github.com/jralls/gnucash-on-osx/raw/master/modulesets/gnucash.modules"    
+
+
+skip.remove("gmp")
 append_autogenargs("libofx", "--with-opensp-includes=" + prefix + "/include/OpenSP --with-opensp-libs=" + prefix + "/lib")
 append_autogenargs("libgnomeui", "--disable-static --enable-shared --disable-scrollkeeper --disable-xlib --without-x")
 append_autogenargs("scrollkeeper", "--with-xml-catalog=" + os.path.join(prefix, "etc/xml/catalog"))
 
-append_autogenargs("gnucash-unstable", "--with-html-engine=webkit")
+append_autogenargs("OpenSP", "--enable-shared") #To override the global --disable-shared
 append_autogenargs("libdbi-drivers","--with-dbi-incdir=" + prefix + "/include --with-dbi-libdir=" + prefix + "/lib")
-append_autogenargs("aqbanking-qt", 'qt3_libs="-framework QtCore -framework QtGui -framework Qt3Support  -framework QtXml -framework QtSql -framework QtNetwork" qt3_includes="-I/Library/Frameworks/QtCore.framework/Headers -I/Library/Frameworks/QtGui.framework/Headers -I/Library/Frameworks/Qt3Support.framework/Headers" QT3TO4=/usr/bin/qt3to4')
+append_autogenargs("gnucash-unstable", "--with-dbi-dbd-dir=" + prefix +"/lib/dbd")
+append_autogenargs("gnucash-svn", "--with-dbi-dbd-dir=" + prefix +"/lib/dbd")
+append_autogenargs("aqbanking-qt", 'qt3_libs="-framework QtCore -framework QtGui -framework Qt3Support" qt3_includes="-I/Library/Frameworks/QtCore.framework/Headers -I/Library/Frameworks/QtGui.framework/Headers -I/Library/Frameworks/Qt3Support.framework/Headers" QT3TO4=/usr/bin/qt3to4')
 
-moduleset = os.environ["HOME"] + "/gnucash-on-osx/modulesets/gnucash.modules"
-modules = ['meta-gtk-osx-bootstrap', 'meta-gtk-osx-core', 'meta-gtk-osx-freetype', 'gnucash']
+append_autogenargs("gnucash-unstable", " --with-html-engine=webkit")
+append_autogenargs("gnucash-svn", " --with-html-engine=webkit")
 
-#build_policy = "updated-deps"
+append_autogenargs("python", "--with-universal-archs=32-bit --enable-universalsdk=/Developer/SDKs/MacOSX10.5.sdk")
+append_autogenargs("libiconv", "--with-libintl-prefix=" + prefix) 
+branches["python"] = "http://www.python.org/ftp/python/2.6.4/Python-2.6.4.tar.bz2"
+module_makecheck["gmp"] = True
 
 
 
