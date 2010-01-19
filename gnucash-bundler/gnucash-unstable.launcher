@@ -10,7 +10,7 @@ else
     EXEC=exec
 fi
 
-export PREFIX=/opt/gnucash-2.3.x
+export PREFIX=/Library/Gnucash-2.3.x
 export PREFIXDIR="`dirname $PREFIX`"
 
 name="`basename $0`"
@@ -28,7 +28,7 @@ bundle_etc="$bundle_res"/etc
 
 export DYLD_LIBRARY_PATH="$bundle_lib"
 export XDG_CONFIG_DIRS="$bundle_etc"/xdg
-export XDG_DATA_DIRS=$PREFIX/share
+export XDG_DATA_DIRS="$PREFIX/share"
 export GTK_DATA_PREFIX="$bundle_data"
 export GTK_EXE_PREFIX="$bundle_res"
 export GTK_PATH="$bundle_res"
@@ -131,18 +131,25 @@ if [ x`echo "x$1" | sed -e "s/^x-psn_.*//"` == x ]; then
     shift 1
 fi
 
-export RESPFX=${bundle_res}
-PATH="${RESPFX}/bin:${PATH}"
+export RESPFX="${bundle_res}"
+PATH="${RESPFX}"/bin:"${PATH}"
 export PATH
 
 GUILE_WARN_DEPRECATED="no"
 export GUILE_WARN_DEPRECATED
 
 if [ -e "$PREFIX" ] || [ -L "$PREFIX" ]  && [ ! "$PREFIX" -ef "$bundle_res" ]; then
-	osascript -e 'do shell script " if [ ! -d $PREFIX ]; then rm $PREFIX; else mv $PREFIX $PREFIX.Save; fi; ln -s $RESPFX $PREFIX"  with administrator privileges '
+	if [ ! -d "$PREFIX" ]; then 
+	    rm "$PREFIX"; else 
+	    mv "$PREFIX" "$PREFIX.Save"; 
+	fi
+	ln -s "$RESPFX" "$PREFIX"
 elif [ ! -e "$PREFIX" ] ; then
     echo "Linking $RESPFX to $PREFIX"
-    osascript -e 'do shell script "if [ ! -d $PREFIXDIR ]; then mkdir -p $PREFIXDIR; fi; ln -s $RESPFX $PREFIX" with administrator privileges ';
+    if [ ! -d "$PREFIXDIR" ]; then 
+	mkdir -p "$PREFIXDIR"; 
+    fi 
+    ln -s "$RESPFX" "$PREFIX"
 fi
 
 if test -z "$DBUS_SESSION_BUS_ADDRESS"; then
@@ -188,4 +195,5 @@ if test -f "$HOME/.gnucashrc"; then
     source "$HOME/.gnucashrc"
 fi
 
+#Don't quote $EXTRA_ARGS or it will turn into a single arg and fail.
 $EXEC "$bundle_contents/MacOS/$name-bin" $* $EXTRA_ARGS
