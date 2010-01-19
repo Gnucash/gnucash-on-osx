@@ -39,6 +39,12 @@
 	    version="6.0"/>
   </autotools>
 
+  <!-- gmp is also provided in theory by bootstrap, but it seems not to always get built, so it's provided here as well. -->
+  <autotools id="gmp">
+    <!--branch repo="ftp.gnu.org" module="gmp/gmp-5.0.0.tar.bz2" version="5.0.0"/-->
+    <branch repo="ftp.gnu.org" module="gmp/gmp-4.3.1.tar.bz2" version="4.3.1"/>
+  </autotools>
+
   <autotools id="gwenhywfar" autogen-sh="configure">
     <branch module="gwenhywfar-3.11.1.tar.gz" version="3.11.1"
 	    repo="github_gnucash"/>
@@ -56,7 +62,7 @@
     <dependencies>
       <dep package="libofx"/>
       <dep package="gwenhywfar"/>
-      <!-- dep package="gmp"/ -->
+      <dep package="gmp"/>
       <dep package="ktoblzcheck"/>
     </dependencies>
   </autotools>
@@ -70,7 +76,7 @@
     <dependencies>
       <dep package="libofx"/>
       <dep package="gwenhywfar"/>
-      <!-- dep package="gmp"/ -->
+      <dep package="gmp"/>
       <dep package="ktoblzcheck"/>
     </dependencies>
   </autotools>
