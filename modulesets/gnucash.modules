@@ -177,7 +177,8 @@
       <dep package="libofx"/>
       <!--dep package="aqbanking"/ -->
       <dep package="aqbanking-qt"/>
-      <dep package="meta-gtkhtml"/>
+      <!--dep package="meta-gtkhtml"/-->
+      <dep package="WebKit"/>
       <dep package="Slib"/>
     </dependencies>
 
