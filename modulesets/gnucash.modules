@@ -48,6 +48,10 @@
   <autotools id="gwenhywfar" autogen-sh="configure">
     <branch module="gwenhywfar-3.11.1.tar.gz" version="3.11.1"
 	    repo="github_gnucash"/>
+    <dependencies>
+      <dep package="libgcrypt"/>
+      <dep package="gnutls"/>
+    </dependencies>
   </autotools>
 
   <autotools id="ktoblzcheck" autogen-sh="configure">
