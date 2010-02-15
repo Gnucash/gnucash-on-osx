@@ -190,8 +190,9 @@
 
  <autotools id="gnucash-unstable" 
 	    autogenargs='--enable-ofx --enable-aqbanking --enable-binreloc --enable-dbi --with-html-engine="webkit"'>
-   <branch module="gnucash/gnucash-2.3.8.tar.gz" version="2.3.8"
+   <branch module="gnucash/gnucash-2.3.9.tar.gz" version="2.3.9"
 	    repo="sourceforge"/>
+	<patch file="http://github.com/jralls/gnucash-on-osx/raw/master/patches/dot_gnucash.patch" strip="0"/>
    <dependencies>
       <dep package="meta-gtk-osx-core"/>
       <dep package="meta-goffice"/>
