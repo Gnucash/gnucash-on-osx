@@ -190,9 +190,10 @@ export GNC_MODULE_PATH
 export GUILE_LOAD_PATH
 export LD_LIBRARY_PATH
 export DYLD_LIBRARY_PATH
+export GNC_DOT_DIR="$HOME/Library/Application Support/Gnucash"
 
-if test -f "$HOME/.gnucashrc"; then
-    source "$HOME/.gnucashrc"
+if test -f "$GNC_DOT_DIR/gnucashrc"; then
+    source "$GNC_DOT_DIR/gnucashrc"
 fi
 
 #Don't quote $EXTRA_ARGS or it will turn into a single arg and fail.
