@@ -105,7 +105,7 @@
     ${prefix}/bin/gnc-*
   </binary>
 
-  <binary>
+  <binary dest="${bundle}/Contents/MacOS">
     ${prefix}/bin/aqbanking-cli
   </binary>
 
