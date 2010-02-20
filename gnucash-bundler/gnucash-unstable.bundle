@@ -106,6 +106,10 @@
   </binary>
 
   <binary>
+    ${prefix}/bin/aqbanking-cli
+  </binary>
+
+  <binary>
     ${prefix}/lib/goffice
   </binary>
 
@@ -164,10 +168,6 @@
   </data>
 
   <data>
-    ${prefix}/etc/gwen-public-ca.crt
-  </data>
-
-  <data>
     ${prefix}/etc/fonts
   </data>
 
@@ -201,10 +201,6 @@
 
   <data>
     ${prefix}/share/libofx
-  </data>
-
-  <data>
-    ${prefix}/share/aqhbci
   </data>
 
   <data>
