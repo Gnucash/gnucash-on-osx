@@ -13,7 +13,7 @@ fi
 export PREFIX=/Library/Gnucash-2.3.x
 export PREFIXDIR="`dirname $PREFIX`"
 
-name="`basename $0`"
+name=`basename "$0"`
 tmp="$0"
 tmp=`dirname "$tmp"`
 tmp=`dirname "$tmp"`
