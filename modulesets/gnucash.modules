@@ -182,7 +182,7 @@
  <autotools id="gnucash-svn" 
 	    autogen-template="%(srcdir)s/%(autogen-sh)s &amp;&amp; %(srcdir)s/configure --prefix %(prefix)s --libdir %(libdir)s %(autogenargs)s"
 
-	     autogenargs="--enable-ofx --enable-aqbanking --enable-binreloc ">
+	     autogenargs='--enable-ofx --enable-aqbanking --enable-binreloc --enable-dbi --with-html-engine="webkit"'>
    <branch repo="svn.gnucash.org" module="gnucash"/>
     <dependencies>
       <dep package="meta-gtk-osx-core"/>
@@ -191,8 +191,10 @@
       <!--dep package="aqbanking"/ -->
       <dep package="aqbanking-qt"/>
       <!--dep package="meta-gtkhtml"/-->
+      <dep package="libgnomeui"/>
       <dep package="WebKit"/>
       <dep package="Slib"/>
+      <dep package="libdbi-drivers"/>
     </dependencies>
 
   </autotools>
