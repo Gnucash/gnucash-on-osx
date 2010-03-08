@@ -138,18 +138,41 @@ export PATH="${RESPFX}/bin":"${PATH}"
 GUILE_WARN_DEPRECATED="no"
 export GUILE_WARN_DEPRECATED
 
-if [ -e "$PREFIX" ] || [ -L "$PREFIX" ]  && [ ! "$PREFIX" -ef "$bundle_res" ]; then
-    if [ ! -d "$PREFIX" ]; then 
-	rm "$PREFIX"; 
-    else mv "$PREFIX" "$PREFIX.Save"; 
-    fi 
-    ln -s "$RESPFX" "$PREFIX"
-elif [ ! -e "$PREFIX" ] ; then
-    echo "Linking $RESPFX to $PREFIX"
-    if [ ! -d "$PREFIXDIR" ]; then 
-	mkdir -p "$PREFIXDIR"; 
-    fi 
-    ln -s "$RESPFX" "$PREFIX"; 
+if [ -w "$PREFIXDIR" ]; then
+    if [ -e "$PREFIX" ] || [ -L "$PREFIX" ]  && [ ! "$PREFIX" -ef "$bundle_res" ]; then
+	if [ ! -d "$PREFIX" ]; then 
+	    rm "$PREFIX"; else 
+	    mv "$PREFIX" "$PREFIX.Save"; 
+	fi
+	ln -s "$RESPFX" "$PREFIX"
+    elif [ ! -e "$PREFIX" ] ; then
+	echo "Linking $RESPFX to $PREFIX"
+	if [ ! -d "$PREFIXDIR" ]; then 
+	    mkdir -p "$PREFIXDIR"; 
+	fi 
+	ln -s "$RESPFX" "$PREFIX"
+    fi
+else 
+    echo "Don't have write access to $PREFIXDIR"
+    if [ -e "$PREFIX" ] || [ -L "$PREFIX" ]  && [ ! "$PREFIX" -ef "$bundle_res" ]; then
+	echo "moving the $PREFIX directory to $PREFIX.save"
+	osascript  <<EOF 
+display alert "Create Link" message "Gnucash requires authentication to create a link to the binary" as informational giving up after 3
+do shell script  "echo foo; if [ ! -d \"$PREFIX\" ]; then rm \"$PREFIX\"; else mv \"$PREFIX\" \"$PREFIX.Save\"; fi; ln -s \"$RESPFX\" \"$PREFIX\" " with administrator privileges
+
+EOF
+
+    elif [ ! -e "$PREFIX" ] ; 
+    then 
+	echo "Linking $RESPFX to $PREFIX" 
+	osascript <<EOF 
+display alert "Create Link" message "Gnucash requires authentication to create a link to the binary" as informational giving up after 3
+do shell script "if [ ! -d \"$PREFIXDIR\" ]; then mkdir -p \"$PREFIXDIR\"; fi; ln -s \"$RESPFX\" \"$PREFIX\"" with administrator privileges
+
+EOF
+
+
+    fi
 fi
 
 if test -z "$DBUS_SESSION_BUS_ADDRESS"; then
