@@ -101,7 +101,7 @@
     <branch repo="sourceforge" module="libofx/libofx-0.9.1.tar.gz"
 	    version='0.9.1'/>
     <dependencies>
-      <dep package='guile-1.6'/>
+      <dep package='guile'/>
       <dep package="OpenSP"/>
     </dependencies>
   </autotools>
@@ -116,7 +116,16 @@
     </dependencies>
   </autotools>
 
-  <autotools id="Slib" autogen-sh="install.sh"  makeargs="-f Makefile.gnucash" 
+   <autotools id="guile" autogen-sh="configure">
+    <branch repo="ftp.gnu.org" module="guile/guile-1.8.7.tar.gz" 
+	    version="1.8.7" />
+    <dependencies>
+      <dep package='readline'/>
+      <dep package="gmp"/>
+    </dependencies>
+  </autotools>
+
+ <autotools id="Slib" autogen-sh="install.sh"  makeargs="-f Makefile.gnucash" 
 	     makeinstallargs="-f Makefile.gnucash">
     <!-- <branch repo="slib.savannah.gnu.org"
 	    module="slib"/> -->
@@ -125,7 +134,7 @@
       <patch file="http://github.com/jralls/gnucash-on-osx/raw/master/patches/slib-install.patch"/>
     </branch>
     <dependencies>
-      <dep package="guile-1.6"/>
+      <dep package="guile"/>
     </dependencies>
   </autotools>
 

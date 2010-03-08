@@ -5,7 +5,7 @@
 +mkdir $PREFIX/lib/slib
 +cp *.scm $PREFIX/lib/slib/
 +cp guile.init $PREFIX/lib/slib
-+cd $PREFIX/share/guile/1.6/
++cd $PREFIX/share/guile/1.8/
 +mkdir ../site
 +ln -s ../../../lib/slib .
 +$PREFIX/bin/guile -c "(use-modules (ice-9 slib)) (require 'new-catalog)"
