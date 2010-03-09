@@ -22,7 +22,7 @@
   <repository type="svn" name="svn.gnucash.org" 
 	      href="http://svn.gnucash.org/repo/"/>
   <repository type="tarball" name="github_gnucash"
-	      href="http://cloud.github.com/downloads/jralls/gnucash-on-osx/"/>
+	      href="http://github.com/downloads/jralls/gnucash-on-osx/"/>
   <repository type="tarball" name="gmplib.org"
 	      href="ftp://ftp.gmplib.org/pub/"/>
 
