@@ -110,7 +110,7 @@
 	     autogenargs="--disable-static --enable-shared 
 			  --disable-scrollkeeper --disable-xlib">
     <branch repo="ftp.gnu.org" module="guile/guile-1.6.8.tar.gz" 
-	    version="1.6.7" size="3114052" />
+	    version="1.6.8" size="3114052" />
     <dependencies>
       <dep package='readline'/>
     </dependencies>
