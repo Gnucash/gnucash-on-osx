@@ -74,7 +74,7 @@
   <autotools id="aqbanking-qt" autogen-sh="configure" 
 	     autogenargs='--enable-ofx=yes --disable-kde --disable-chipcard-client --disable-python --with-frontends="cbanking g2banking qbanking"' 
 	     makeargs="qt4-all" >
-     <branch module="aqbanking-4.2.0.tar.gz" version="4.2.0"
+     <branch module="aqbanking-4.2.4.tar.gz" version="4.2.4"
 	    repo="github_gnucash" >
     </branch>
     <dependencies>
