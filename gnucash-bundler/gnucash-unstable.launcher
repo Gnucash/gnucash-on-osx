@@ -189,7 +189,7 @@ if test -z "$DBUS_SESSION_BUS_ADDRESS"; then
         done
     fi
 
-    eval `$PREFIX/bin/dbus-launch" --sh-syntax --exit-with-session --config-file="$bundle_res/etc/dbus-1/session.conf"`
+    eval `"$PREFIX/bin/dbus-launch" --sh-syntax --exit-with-session --config-file="$bundle_res/etc/dbus-1/session.conf"`
 fi
 
 GNC_MODULE_PATH="${RESPFX}/lib/gnucash:${GNC_MODULE_PATH}"
