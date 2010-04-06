@@ -10,10 +10,13 @@ binaries.
 
 ##Binaries available for download##
 
-Precompiled app bundles are available from
-http://gnucash.sourceforge.net, and users who are simply interested in
-running Gnucash on their Macs should obtain the latest stable release
-from there.
+Precompiled app bundles are available from [Gnucash at
+Sourceforge](http://gnucash.sourceforge.net), and users who are simply
+interested in running Gnucash on their Macs should obtain the latest
+stable release from there.
+
+More up-to-date and frequently maintained instruction can be found in
+the [Gnucash Wiki](http://wiki.gnucash.org/wiki/MacOSX/Quartz).
 
 ##Preliminaries##
 Tiger or newer is <em>required</em> for gtk-osx.
@@ -21,24 +24,23 @@ Tiger or newer is <em>required</em> for gtk-osx.
 You need Python 2.5 to run jhbuild. This is already part of Leopard
 (OSX 10.5), but Tiger (10.4) provided Python 2.3, so the gtk-osx
 maintainer has included logic to make a new python for Tiger users.
-You will also need Git (http://metastatic.org/source/git-osx.html) and Tiger users will need Subversion (http://www.open.collab.net/downloads/community/)
+You will also need [Git](http://metastatic.org/source/git-osx.html)
+and Tiger users will need
+[Subversion](http://www.open.collab.net/downloads/community/)
 
 If you haven't already done so, retrieve this package:
     git clone git://github.com/jralls/gnucash-on-osx.git
 
 Copy the .jhbuildrc-custom into your home directory.
 
-Note that by default, jhbuild will put everything into your home
-directory. I prefer to build and install into /usr/local, so you'll
-find commented out settings to do it that way at the top of
-.jhbuildrc-custom. You can uncomment these and change them to whatever
-you like -- or leave them as they are.
+There are two "prefix" lines at the top of .jhbuildrc-custom, one for stable and one for unstable. You can use these or set it to anywhere else you like. It's a good idea if your going to build both stable and unstable to keep them in separate directories, as they have different dependencies.
 
-Go to http://sourceforge.net/apps/trac/gtk-osx/wiki//Build and follow
+Go to [Gtk-OSX's Build instructions](http://sourceforge.net/apps/trac/gtk-osx/wiki/Build) and follow
 the instructions. <b><em>Don't run jhbuild build yet!</em></b>
 
 Tiger users will need to retrieve and install
-http://downloads.sourceforge.net/cups/cups-1.2.12.dmg
+[CUPS 1.2.12](http://downloads.sourceforge.net/cups/cups-1.2.12.dmg)
+
 
 ##Alternate Versions##
 
@@ -46,18 +48,12 @@ There are modules provided for building the latest stable release (gnucash), the
 
 ##AQBanking and Qt##
 
-With an additional dependency, you can build in the setup wizard for
-AQBanking. This depends on Nokia's Qt library (the same one that KDE
-uses). First, you must download and install the latest MacOSX Qt4
-package from https://qt.nokia.com/downloads/downloads#lgpl
+The AQbanking library requires [QT](http://qt.nokia.com/downloads/mac-os-cpp) for its online banking setup applet. If you don't want to use online banking, you can add a line 
+	skip.add("aqbanking-qt")
+to your .jhbuildrc-custom and add "aqbanking" to your modules list just before gnucash.
 
-Edit gnucash-on-osx/modulesets/gnucash-modules so that the dependency
-for aqbanking in the gnucash module that you want to build is
-aqbanking-qt. There's a commented out dependency; just uncomment it
-and comment out the plain aqbanking one.
-
-Edit gnucash-on-osx/gnucash-bundler/gnucash.bundle and uncomment the 4
-Qt framework elements.
+Edit gnucash-on-osx/gnucash-bundler/gnucash.bundle and comment out the 4
+Qt framework elements. (You comment out XML by wrapping the elements with &lt;!-- and --$gt;.)
 
 ##Building##
 
