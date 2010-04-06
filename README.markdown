@@ -61,7 +61,7 @@ Once all of the preliminaries are complete, run:
 	$> jhbuild build
 
 You also need to 
-    	 $> mkdir $PREFIX/tmp 
+    	$> mkdir $PREFIX/tmp 
 
 ##Running from the commandline##
 
@@ -94,5 +94,5 @@ the Dock) to click on when you run GnuCash. Here's how to do this:
  * exit the shell
 
 And your bundle should be ready to go.
-Try <tt>GnuCash.app/Contents/MacOSX/GnuCash</tt> from the command-line so that you can see any error messages. If that works, try <tt>open GnuCash.app</tt>. If that works, then you can move GnuCash.app to your Applications folder and it's ready to use. <em>Don't move or remove the installation directory (~/gtk/inst by default): Both dbus and GnuCash have links pointing into it which can't at present be changed.</em>
+Try <tt>GnuCash.app/Contents/MacOSX/GnuCash</tt> from the command-line so that you can see any error messages. If that works, try <tt>open GnuCash.app</tt>. If that works, then you can move GnuCash.app to your Applications folder and it's ready to use. <em>Don't move or remove the prefix directory: Both dbus and GnuCash have links pointing into it which can't at present be changed.</em>
 
