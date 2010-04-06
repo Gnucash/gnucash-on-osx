@@ -53,7 +53,7 @@ The AQbanking library requires [QT](http://qt.nokia.com/downloads/mac-os-cpp) fo
 to your .jhbuildrc-custom and add "aqbanking" to your modules list just before gnucash.
 
 Edit gnucash-on-osx/gnucash-bundler/gnucash.bundle and comment out the 4
-Qt framework elements. (You comment out XML by wrapping the elements with &lt;!-- and --$gt;.)
+Qt framework elements. (You comment out XML by wrapping the elements with &lt;!-- and --&gt;.)
 
 ##Building##
 
