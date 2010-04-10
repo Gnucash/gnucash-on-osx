@@ -38,24 +38,6 @@
     </dependencies>
   </autotools>
 
-  <autotools id="libgsf" autogenargs="--without-python">
-    <branch  module="libgsf/1.14/libgsf-1.14.16.tar.bz2" version="1.14.16"
-	     hash="sha256:11fd8fca1bdbcfa426276a124ad083cca9632f03cf766523bcdfb2fca0b08908"/>
-    <dependencies>
-      <dep package="glib"/>
-      <dep package="gnome-vfs"/>
-      <dep package="libbonobo"/>
-    </dependencies>
-  </autotools>
-
-  <autotools id="libart_lgpl">
-    <branch   module="libart_lgpl/2.3/libart_lgpl-2.3.20.tar.bz2" 
-	      version="2.3.20" md5sum="d0ce67f2ebcef1e51a83136c69242a73"/>
-    <after>
-      <dep package="meta-gtk-osx-bootstrap"/>
-      <dep package="meta-gtk-osx-core"/>
-    </after>
-  </autotools>
 
 
 
