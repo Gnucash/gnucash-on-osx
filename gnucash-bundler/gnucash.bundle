@@ -239,11 +239,11 @@
   </data>
 <!-- These can be pointed to ${prefix} like in unstable for the 2.4 release -->
   <data dest="${bundle}/Contents/Resources/English.lproj/GnuCash Help/">
-    ${env:HOME}/gtk/source/gnucash-docs-2.2.0/help/C/gnucash-help/
+    /usr/local/src/gnucash-stable/gnucash-docs-2.2.0/help/C/gnucash-help/
   </data>
 
   <data dest="${bundle}/Contents/Resources/English.lproj/GnuCash Guide/">
-    ${env:HOME}/gtk/source/gnucash-docs-2.2.0/guide/C/gnucash-guide/
+    /usr/local/src/gnucash-stable/gnucash-docs-2.2.0/guide/C/gnucash-guide/
   </data>
 
   <translations name="gnucash">
