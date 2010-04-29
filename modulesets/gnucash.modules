@@ -143,7 +143,7 @@
   <cmake id="mysql">
     <branch repo="csclub" module="Connector-C/mysql-connector-c-6.0.2.tar.gz" 
 	    version="6.0.2" >
-      <patch file="http://github.com/jralls/gnucash-on-osx/patches/libmysql.patch"/>
+      <patch file="http://github.com/jralls/gnucash-on-osx/raw/master/patches/libmysql.patch"/>
     </branch>
   </cmake>
 
