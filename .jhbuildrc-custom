@@ -21,7 +21,7 @@ modules = ["gettext-fw", "meta-gtk-osx-bootstrap", "meta-gtk-osx-core", "gnucash
 #building unstable or svn, comment out the first one and uncomment the
 #second. PPC users should change i386 to ppc when using SDK 10.5.
 setup_sdk("10.4", "10.4u")
-#setup_sdk("10.5", "10.5",[i386])
+#setup_sdk("10.5", "10.5",["i386"])
 
 moduleset = "http://github.com/jralls/gnucash-on-osx/raw/master/modulesets/gnucash.modules"    
 
