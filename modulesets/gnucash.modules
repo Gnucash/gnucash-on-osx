@@ -27,6 +27,8 @@
 	      href="http://github.com/downloads/jralls/gnucash-on-osx/"/>
   <repository type="tarball" name="gmplib.org"
 	      href="ftp://ftp.gmplib.org/pub/"/>
+  <repository type="tarball" name="cmake"
+	      href="http://www.cmake.org/files/"/>
 
 
 
@@ -140,11 +142,20 @@
     </dependencies>
   </autotools>
 
+  <autotools id="cmake"
+	     autogen-template="%(srcdir)s/%(autogen-sh)s --prefix=%(prefix)s --libdir=%(libdir)s %(autogenargs)s">
+    <branch module="v2.8/cmake-2.8.1.tar.gz"
+	    repo="cmake" version="2.8.1"/>
+  </autotools>
+
   <cmake id="mysql">
     <branch repo="csclub" module="Connector-C/mysql-connector-c-6.0.2.tar.gz" 
 	    version="6.0.2" >
       <patch file="http://github.com/jralls/gnucash-on-osx/raw/master/patches/libmysql.patch"/>
     </branch>
+    <dependencies>
+      <dep package="cmake"/>
+    </dependencies>
   </cmake>
 
   <autotools id="libdbi" autogen-template="%(srcdir)s/autogen.sh &amp;&amp; %(srcdir)s/configure --prefix %(prefix)s --libdir %(libdir)s %(autogenargs)s"
