@@ -25,6 +25,14 @@ setup_sdk("10.4", "10.4u")
 
 moduleset = "http://github.com/jralls/gnucash-on-osx/raw/master/modulesets/gnucash.modules"    
 
+#If you wish to enable the mysql backend, uncomment the lines below.
+#This only works for gnucash-unstable and gnucash-svn at present and
+#requires cmake to be installed on your machine to build the mysql libraries.
+#gc_module=modules[-1]
+#modules[-1]="mysql"
+#modules.append(gc_module)
+#module_extra_env["mysql"] = { "CMAKE_INSTALL_PREFIX":  prefix }
+#append_autogenargs("libdbi-drivers", "--with-mysql --with-mysql-incdir=" + prefix + "/include --with-mysql-libdir=" + prefix + "/lib")
 
 skip.remove("gmp")
 skip.remove("guile")

@@ -17,6 +17,8 @@
 	      password=""/> -->
   <repository type="tarball" name="csail" 
 	      href="http://groups.csail.mit.edu/mac/ftpdir/"/>
+  <repository type="tarball" name="csclub" 
+	      href="http://mirror.csclub.uwaterloo.ca/mysql/Downloads/"/>
   <repository type="tarball" name="gnucash.org"
 	      href="http://www.gnucash.org/pub/gnucash/sources/"/>
   <repository type="svn" name="svn.gnucash.org" 
@@ -137,6 +139,13 @@
       <dep package="guile"/>
     </dependencies>
   </autotools>
+
+  <cmake id="mysql">
+    <branch repo="csclub" module="Connector-C/mysql-connector-c-6.0.2.tar.gz" 
+	    version="6.0.2" >
+      <patch file="http://github.com/jralls/gnucash-on-osx/patches/libmysql.patch"/>
+    </branch>
+  </cmake>
 
   <autotools id="libdbi" autogen-template="%(srcdir)s/autogen.sh &amp;&amp; %(srcdir)s/configure --prefix %(prefix)s --libdir %(libdir)s %(autogenargs)s"
 	     autogenargs="--disable-docs">
