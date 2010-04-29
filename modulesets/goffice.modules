@@ -22,6 +22,7 @@
       <dep package="libxml2"/>
       <dep package="libglade"/>
       <dep package="libart_lgpl"/>
+      <dep package="gconf"/>
     </dependencies>
   </autotools>
 
