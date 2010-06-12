@@ -27,9 +27,14 @@
 	      href="http://github.com/downloads/jralls/gnucash-on-osx/"/>
   <repository type="tarball" name="gmplib.org"
 	      href="ftp://ftp.gmplib.org/pub/"/>
+<<<<<<< HEAD:modulesets/gnucash.modules
   <repository type="tarball" name="cmake"
 	      href="http://www.cmake.org/files/"/>
 
+=======
+  <repository type="svn" name="aquamaniac"
+	      href="http://devel.aqbanking.de/svn/"/>
+>>>>>>> Add modules for building SVN versions of gwenhywfar and aqbanking.:modulesets/gnucash.modules
 
 
   <include href="http://github.com/jralls/gtk-osx-build/raw/master/modulesets-stable/gtk-osx.modules"/>
@@ -52,6 +57,14 @@
   <autotools id="gwenhywfar" autogen-sh="configure">
     <branch module="gwenhywfar-3.11.1.tar.gz" version="3.11.1"
 	    repo="github_gnucash"/>
+    <dependencies>
+      <dep package="libgcrypt"/>
+      <dep package="gnutls"/>
+    </dependencies>
+  </autotools>
+
+  <autotools id="gwenhywfar-svn" autogen-template="make -fMakefile.cvs &amp;&amp; %(srcdir)s/configure --prefix %(prefix)s --libdir %(libdir)s %(autogenargs)s">
+    <branch module="gwenhywfar" repo="aquamaniac"/>
     <dependencies>
       <dep package="libgcrypt"/>
       <dep package="gnutls"/>
@@ -84,6 +97,20 @@
     <dependencies>
       <dep package="libofx"/>
       <dep package="gwenhywfar"/>
+      <dep package="gmp"/>
+      <dep package="ktoblzcheck"/>
+    </dependencies>
+  </autotools>
+
+  <autotools id="aqbanking-qt-svn" 
+	     autogenargs='--enable-ofx=yes --disable-kde --disable-chipcard-client --disable-python --with-frontends="cbanking g2banking qbanking" qt3_libs="-framework QtCore -framework QtGui -framework Qt3Support" qt3_includes="-I/Library/Frameworks/QtCore.framework/Headers -I/Library/Frameworks/QtGui.framework/Headers -I/Library/Frameworks/Qt3Support.framework/Headers"'
+autogen-template="make -fMakefile.cvs &amp;&amp; %(srcdir)s/configure --prefix %(prefix)s --libdir %(libdir)s %(autogenargs)s"
+	     makeargs="qt4-all" >
+     <branch module="aqbanking" repo="aquamaniac" >
+    </branch>
+    <dependencies>
+      <dep package="libofx"/>
+      <dep package="gwenhywfar-svn"/>
       <dep package="gmp"/>
       <dep package="ktoblzcheck"/>
     </dependencies>
