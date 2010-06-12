@@ -38,7 +38,7 @@ export GTK_IM_MODULE_FILE="$bundle_etc/gtk-2.0/gtk.immodules"
 export GDK_PIXBUF_MODULE_FILE="$bundle_etc/gtk-2.0/gdk-pixbuf.loaders"
 export PANGO_RC_FILE="$bundle_etc/pango/pangorc"
 
-# Set the locale-related variables appropriaty for GnuCash.
+# Set the locale-related variables appropriately for GnuCash.
 unset LANG LC_MESSAGES LC_MONETARY
 
 # Start by trying the Collation preference, in case it's the only setting that exists.
@@ -120,7 +120,7 @@ if test -f "$bundle_lib/charset.alias"; then
 fi
 
 # Extra arguments can be added in environment.sh.
-EXTRA_ARGS=--config-path "$bundle_etc/gnucash" --share-path "$bundle_data/gnucash" --debug
+EXTRA_ARGS="--config-path \"$bundle_etc/gnucash\" --share-path \"$bundle_data/gnucash\" --debug"
 
 if test -f "$bundle_res/environment.sh"; then
   source "$bundle_res/environment.sh"
