@@ -225,6 +225,9 @@
     ${project}/gnucash.icns
   </data>
 
+  <data dest="${bundle}/Contents/Resources">
+    ${prefix}/share/strings
+  </data>
 
   <data dest='${bundle}/Contents/Resources/var/lib/dbus/machine-id'>
     ${prefix}/var/lib/dbus/machine-id
@@ -242,15 +245,35 @@
     ${project}/Sources
   </data>
 
-  <data dest="${bundle}/Contents/Resources/English.lproj/GnuCash Help/">
+  <data dest="${bundle}/Contents/Resources/en.lproj/GnuCash Help/">
     ${prefix}/share/gnome/help/gnucash/C/gnucash-help
   </data>
 
-  <data dest="${bundle}/Contents/Resources/English.lproj/GnuCash Guide/">
+  <data dest="${bundle}/Contents/Resources/en.lproj/GnuCash Guide/">
     ${prefix}/share/gnome/help/gnucash/C/gnucash-guide/
   </data>
 
-  <translations name="gnucash">
+   <data dest="${bundle}/Contents/Resources/de.lproj/GnuCash Help/">
+    ${prefix}/share/gnome/help/gnucash/de_DE/gnucash-help
+  </data>
+
+  <data dest="${bundle}/Contents/Resources/de.lproj/GnuCash Guide/">
+    ${prefix}/share/gnome/help/gnucash/de_DE/gnucash-guide/
+  </data>
+
+  <data dest="${bundle}/Contents/Resources/it.lproj/GnuCash Help/">
+    ${prefix}/share/gnome/help/gnucash/it_IT/gnucash-help
+  </data>
+
+  <data dest="${bundle}/Contents/Resources/it.lproj/GnuCash Guide/">
+    ${prefix}/share/gnome/help/gnucash/it_IT/gnucash-guide/
+  </data>
+
+  <data dest="${bundle}/Contents/Resources/ja.lproj/GnuCash Guide/">
+    ${prefix}/share/gnome/help/gnucash/ja_JP/gnucash-guide/
+  </data>
+
+ <translations name="gnucash">
     ${prefix}/share/locale
   </translations>
 
