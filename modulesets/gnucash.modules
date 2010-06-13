@@ -122,7 +122,7 @@ autogen-template="make -fMakefile.cvs &amp;&amp; %(srcdir)s/configure --prefix %
   <autotools id="OpenSP" autogen-template="%(srcdir)s/autoinit.sh &amp;&amp; %(srcdir)s/configure --prefix %(prefix)s --libdir %(libdir)s %(autogenargs)s"
 	     autogenargs="--disable-static --enable-shared --disable-doc-build --disable-nls">
     <branch repo="sourceforge" module="openjade/OpenSP-1.5.2.tar.gz" 
-	    version='1.5.2'/>>
+	    version='1.5.2'/>
   </autotools>
 
   <autotools id="libofx" autogen-sh='configure'>
