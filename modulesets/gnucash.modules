@@ -90,7 +90,8 @@
 	     makeargs="qt4-all" >
      <branch module="aqbanking-4.2.4.tar.gz" version="4.2.4"
 	    repo="github_gnucash" >
-    </branch>
+       <patch file="http://github.com/jralls/gnucash-on-osx/raw/master/patches/aqbanking_accountgen.patch"/>
+     </branch>
     <dependencies>
       <dep package="libofx"/>
       <dep package="gwenhywfar"/>
