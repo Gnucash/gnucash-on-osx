@@ -27,14 +27,11 @@
 	      href="http://github.com/downloads/jralls/gnucash-on-osx/"/>
   <repository type="tarball" name="gmplib.org"
 	      href="ftp://ftp.gmplib.org/pub/"/>
-<<<<<<< HEAD:modulesets/gnucash.modules
   <repository type="tarball" name="cmake"
 	      href="http://www.cmake.org/files/"/>
-
-=======
   <repository type="svn" name="aquamaniac"
 	      href="http://devel.aqbanking.de/svn/"/>
->>>>>>> Add modules for building SVN versions of gwenhywfar and aqbanking.:modulesets/gnucash.modules
+
 
 
   <include href="http://github.com/jralls/gtk-osx-build/raw/master/modulesets-stable/gtk-osx.modules"/>
