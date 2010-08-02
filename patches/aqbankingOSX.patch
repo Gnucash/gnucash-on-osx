@@ -1,0 +1,105 @@
+Index: src/frontends/q4banking/lib/qbanking.h
+===================================================================
+--- src/frontends/q4banking/lib/qbanking.h	(revision 1972)
++++ src/frontends/q4banking/lib/qbanking.h	(working copy)
+@@ -35,12 +35,12 @@
+ #include <aqbanking/banking.h>
+ #include <aqbanking/accstatus.h>
+ 
+-#include <Qt/qobject.h>
+-#include <Qt/qdatetime.h>
+-#include <Qt/qstring.h>
+-#include <Qt/qstringlist.h>
+-#include <Qt/qwidget.h> // needed for QPointer<QWidget>
+-#include <Qt/qpointer.h>
++#include <QtCore/qobject.h>
++#include <QtCore/qdatetime.h>
++#include <QtCore/qstring.h>
++#include <QtCore/qstringlist.h>
++#include <QtGui/qwidget.h> // needed for QPointer<QWidget>
++#include <QtCore/qpointer.h>
+ 
+ #include <list>
+ 
+Index: src/frontends/q4banking/lib/dialogs/qbimporter.h
+===================================================================
+--- src/frontends/q4banking/lib/dialogs/qbimporter.h	(revision 1972)
++++ src/frontends/q4banking/lib/dialogs/qbimporter.h	(working copy)
+@@ -24,7 +24,7 @@
+ #include <list>
+ #include <string>
+ 
+-#include <Qt/qstring.h>
++#include <QtCore/qstring.h>
+ 
+ #include <gwenhywfar/logger.h>
+ 
+Index: src/frontends/q4banking/lib/widgets/qbplugindescrlist.cpp
+===================================================================
+--- src/frontends/q4banking/lib/widgets/qbplugindescrlist.cpp	(revision 1972)
++++ src/frontends/q4banking/lib/widgets/qbplugindescrlist.cpp	(working copy)
+@@ -17,7 +17,7 @@
+ 
+ #include "qbplugindescrlist.h"
+ #include <assert.h>
+-#include <Qt/qstring.h>
++#include <QtCore/qstring.h>
+ 
+ 
+ 
+Index: src/frontends/q4banking/lib/widgets/qbaccountlist.cpp
+===================================================================
+--- src/frontends/q4banking/lib/widgets/qbaccountlist.cpp	(revision 1972)
++++ src/frontends/q4banking/lib/widgets/qbaccountlist.cpp	(working copy)
+@@ -17,7 +17,7 @@
+ 
+ #include "qbaccountlist.h"
+ #include <assert.h>
+-#include <Qt/qstring.h>
++#include <QtCore/qstring.h>
+ 
+ 
+ 
+Index: src/frontends/q4banking/lib/widgets/qbcfgtabpage.h
+===================================================================
+--- src/frontends/q4banking/lib/widgets/qbcfgtabpage.h	(revision 1972)
++++ src/frontends/q4banking/lib/widgets/qbcfgtabpage.h	(working copy)
+@@ -18,8 +18,8 @@
+ #include <aqbanking/banking.h>
+ #include <q4banking/qbanking.h>
+ 
+-#include <Qt/qwidget.h>
+-#include <Qt/qstring.h>
++#include <QtGui/qwidget.h>
++#include <QtCore/qstring.h>
+ //Added by qt3to4:
+ #include <Q3VBoxLayout>
+ 
+Index: src/frontends/q4banking/lib/widgets/qbjoblist.cpp
+===================================================================
+--- src/frontends/q4banking/lib/widgets/qbjoblist.cpp	(revision 1972)
++++ src/frontends/q4banking/lib/widgets/qbjoblist.cpp	(working copy)
+@@ -17,8 +17,8 @@
+ 
+ #include "qbjoblist.h"
+ #include <assert.h>
+-#include <Qt/qstring.h>
+-#include <Qt/qwidget.h>
++#include <QtCore/qstring.h>
++#include <QtGui/qwidget.h>
+ #include <gwenhywfar/debug.h>
+ 
+ 
+Index: src/frontends/q4banking/lib/qbflagstaff.h
+===================================================================
+--- src/frontends/q4banking/lib/qbflagstaff.h	(revision 1972)
++++ src/frontends/q4banking/lib/qbflagstaff.h	(working copy)
+@@ -16,7 +16,7 @@
+ class QBFlagStaff;
+ 
+ #include <q4banking/qbanking.h>
+-#include <Qt/qobject.h>
++#include <QtCore/qobject.h>
+ 
+ 
+ class Q4BANKING_API QBFlagStaff: public QObject {
