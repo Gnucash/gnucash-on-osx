@@ -13,9 +13,9 @@
     </dependencies>
   </metamodule>
 
-  <autotools id="goffice">
-   <branch module="goffice/0.7/goffice-0.7.14.tar.bz2" version="0.7.14"
-	   hash="sha256:0fe2f4d7c39e85b5b577c6fa7a88c9a135ae5819cc521083af888e4c23deaacd"/>
+  <autotools id="goffice" autogenargs="--without-gconf">
+   <branch module="goffice/0.8/goffice-0.8.8.tar.bz2" version="0.8.8"
+	   hash="sha256:7a2cd13997d74e3bad76939f7767bf4bae27a76210096c09854d80a0b8ec9cac"/>
     <dependencies>
       <dep package="gtk+"/>
       <dep package="libgsf"/>
@@ -26,7 +26,7 @@
     </dependencies>
   </autotools>
 
-  <autotools id="goffice-0.7.4">
+  <autotools id="goffice-0.7.4" autogenargs="--without-gconf">
     <!-- gnucash 2.2.9 won't build against newer GOffice. -->
    <branch module="goffice/0.7/goffice-0.7.4.tar.bz2" version="0.7.4"
 	   md5sum="8fe65cb6a60e6064025fa465da99d31e"/>
