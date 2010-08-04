@@ -86,11 +86,10 @@
   </autotools>
 
   <autotools id="aqbanking-qt" autogen-sh="configure" 
-	     autogenargs='--enable-ofx=yes --disable-kde --disable-chipcard-client --disable-python --with-frontends="cbanking g2banking qbanking"' 
-	     makeargs="qt4-all" >
+	     autogenargs="--enable-ofx=yes --disable-kde --disable-chipcard-client --disable-python --with-frontends='cbanking g2banking q4banking' qt4_libs='-framework QtCore -framework QtGui -framework Qt3Support' qt4_includes='-framework QtCore -framework QtGui -framework Qt3Support'">
      <branch module="aqbanking-4.2.4.tar.gz" version="4.2.4"
 	    repo="github_gnucash" >
-       <patch file="http://github.com/jralls/gnucash-on-osx/raw/master/patches/aqbanking_accountgen.patch" strip="1"/>
+       <patch file="http://github.com/jralls/gnucash-on-osx/raw/master/patches/aqbankingOSX.patch" strip="0"/>
      </branch>
     <dependencies>
       <dep package="libofx"/>
@@ -247,7 +246,7 @@ autogen-template="make -fMakefile.cvs &amp;&amp; %(srcdir)s/configure --prefix %
  <autotools id="gnucash-unstable" 
 	    autogen-template="%(srcdir)s/%(autogen-sh)s &amp;&amp; %(srcdir)s/configure --prefix %(prefix)s --libdir %(libdir)s %(autogenargs)s"
 	    autogenargs='--enable-ofx --enable-aqbanking --enable-binreloc --enable-dbi --with-html-engine="webkit"'>
-   <branch tag="2.3.14" module="gnucash" repo="svn.gnucash.org"/>
+   <branch revision="19260" module="gnucash" repo="svn.gnucash.org"/>
 
    <dependencies>
       <dep package="meta-gtk-osx-core"/>
