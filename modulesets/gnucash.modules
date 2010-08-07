@@ -100,9 +100,8 @@
   </autotools>
 
   <autotools id="aqbanking-qt-svn" 
-	     autogenargs='--enable-ofx=yes --disable-kde --disable-chipcard-client --disable-python --with-frontends="cbanking g2banking qbanking" qt3_libs="-framework QtCore -framework QtGui -framework Qt3Support" qt3_includes="-I/Library/Frameworks/QtCore.framework/Headers -I/Library/Frameworks/QtGui.framework/Headers -I/Library/Frameworks/Qt3Support.framework/Headers"'
-autogen-template="make -fMakefile.cvs &amp;&amp; %(srcdir)s/configure --prefix %(prefix)s --libdir %(libdir)s %(autogenargs)s"
-	     makeargs="qt4-all" >
+	     autogenargs='--enable-ofx=yes --disable-kde --disable-chipcard-client --disable-python --with-frontends="cbanking g2banking q4banking" qt4_libs="-framework QtCore -framework QtGui -framework Qt3Support"qt4_includes="-framework QtCore -framework QtGui -framework Qt3Support"'
+	     autogen-template="make -fMakefile.cvs &amp;&amp; %(srcdir)s/configure --prefix %(prefix)s --libdir %(libdir)s %(autogenargs)s" >
      <branch module="aqbanking" repo="aquamaniac" >
     </branch>
     <dependencies>
