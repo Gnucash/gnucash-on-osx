@@ -185,10 +185,6 @@
   </data>
 
   <data>
-    ${prefix}/share/gnome
-  </data>
-
-  <data>
     ${prefix}/share/GConf
   </data>
 
