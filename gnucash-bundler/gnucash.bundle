@@ -114,27 +114,27 @@
   </binary>
 
   <framework>
-    /Library/Frameworks/Stripped/QtCore.framework
+    /Library/Frameworks/QtCore.framework
   </framework>
 
   <framework>
-    /Library/Frameworks/Stripped/QtGui.framework
+    /Library/Frameworks/QtGui.framework
   </framework>
 
    <framework>
-    /Library/Frameworks/Stripped/Qt3Support.framework
+    /Library/Frameworks/Qt3Support.framework
    </framework>
 
    <framework>
-    /Library/Frameworks/Stripped/QtSql.framework
+    /Library/Frameworks/QtSql.framework
    </framework>
 
    <framework>
-    /Library/Frameworks/Stripped/QtXml.framework
+    /Library/Frameworks/QtXml.framework
    </framework>
 
    <framework>
-    /Library/Frameworks/Stripped/QtNetwork.framework
+    /Library/Frameworks/QtNetwork.framework
    </framework>
 
 
