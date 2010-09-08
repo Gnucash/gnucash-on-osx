@@ -43,7 +43,7 @@ if test -f "$bundle_lib/charset.alias"; then
 fi
 
 # Extra arguments can be added in environment.sh.
-EXTRA_ARGS="--config-path \"$bundle_etc/gnucash\" --share-path \"$bundle_data/gnucash\" --debug"
+EXTRA_ARGS=" --debug"
 
 if test -f "$bundle_res/environment.sh"; then
   source "$bundle_res/environment.sh"
