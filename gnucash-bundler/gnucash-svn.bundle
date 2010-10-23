@@ -269,7 +269,11 @@
     ${prefix}/share/gnome/help/gnucash/ja_JP/gnucash-guide/
   </data>
 
- <translations name="gnucash">
+  <translations name="gnucash">
+    ${prefix}/share/locale
+  </translations>
+
+  <translations name="iso_4217">
     ${prefix}/share/locale
   </translations>
 

@@ -31,7 +31,8 @@
 	      href="http://www.cmake.org/files/"/>
   <repository type="svn" name="aquamaniac"
 	      href="http://devel.aqbanking.de/svn/"/>
-
+  <repository type="tarball" name="iso-codes"
+	      href="ftp://pkg-isocodes.alioth.debian.org/pub/pkg-isocodes/"/>
 
 
   <include href="http://github.com/jralls/gtk-osx-build/raw/master/modulesets-stable/gtk-osx.modules"/>
@@ -51,6 +52,10 @@
     <branch repo="ftp.gnu.org" module="gmp/gmp-4.3.1.tar.bz2" version="4.3.1"/>
   </autotools>
 
+  <autotools id="iso-codes" autogen-sh="configure">
+    <branch module="iso-codes-3.21.tar.bz2" version="3.21" repo="iso-codes"/>
+  </autotools>
+
   <autotools id="gwenhywfar" autogen-sh="configure">
     <branch module="gwenhywfar-3.11.1.tar.gz" version="3.11.1"
 	    repo="github_gnucash"/>
@@ -60,7 +65,8 @@
     </dependencies>
   </autotools>
 
-  <autotools id="gwenhywfar-svn" autogen-template="make -fMakefile.cvs &amp;&amp; %(srcdir)s/configure --prefix %(prefix)s --libdir %(libdir)s %(autogenargs)s">
+  <autotools id="gwenhywfar-svn" autogen-template="make -fMakefile.cvs &amp;&amp; %(srcdir)s/configure --prefix %(prefix)s --libdir %(libdir)s %(autogenargs)s"
+	     autogenargs="--disable-qt4 --with-guis=gtk2">
     <branch module="gwenhywfar" repo="aquamaniac"/>
     <dependencies>
       <dep package="libgcrypt"/>
@@ -99,8 +105,8 @@
     </dependencies>
   </autotools>
 
-  <autotools id="aqbanking-qt-svn" 
-	     autogenargs='--enable-ofx=yes --disable-kde --disable-chipcard-client --disable-python --with-frontends="cbanking g2banking q4banking" qt4_libs="-framework QtCore -framework QtGui -framework Qt3Support"qt4_includes="-framework QtCore -framework QtGui -framework Qt3Support"'
+  <autotools id="aqbanking-svn" 
+	     autogenargs='--enable-ofx=yes --disable-kde --disable-chipcard-client --disable-python --with-frontends="cbanking g2banking"'
 	     autogen-template="make -fMakefile.cvs &amp;&amp; %(srcdir)s/configure --prefix %(prefix)s --libdir %(libdir)s %(autogenargs)s" >
      <branch module="aqbanking" repo="aquamaniac" >
     </branch>
@@ -218,6 +224,7 @@
       <dep package="aqbanking-qt"/>
       <dep package="meta-gtkhtml"/>
       <dep package="Slib"/>
+      <dep package="iso-codes"/>
     </dependencies>
 
   </autotools>
@@ -232,12 +239,13 @@
       <dep package="meta-goffice"/>
       <dep package="libofx"/>
       <!--dep package="aqbanking"/ -->
-      <dep package="aqbanking-qt"/>
+      <dep package="aqbanking-svn"/>
       <!--dep package="meta-gtkhtml"/-->
       <dep package="libgnomeui"/>
       <dep package="WebKit"/>
       <dep package="Slib"/>
       <dep package="libdbi-drivers"/>
+      <dep package="iso-codes"/>
     </dependencies>
 
   </autotools>
@@ -258,6 +266,7 @@
       <dep package="libgnomeui"/>
       <dep package="Slib"/>
       <dep package="libdbi-drivers"/>
+      <dep package="iso-codes"/>
     </dependencies>
 
   </autotools>
