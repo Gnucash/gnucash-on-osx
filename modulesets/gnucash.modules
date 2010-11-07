@@ -162,7 +162,7 @@
 	     makeinstallargs="-f Makefile.gnucash">
     <!-- <branch repo="slib.savannah.gnu.org"
 	    module="slib"/> -->
-    <branch repo="csail" module="scm/slib-3b2.zip" version="3b1"
+    <branch repo="csail" module="scm/slib-3b3.zip" version="3b1"
 	    checkoutdir="slib">
       <patch file="http://github.com/jralls/gnucash-on-osx/raw/master/patches/slib-install.patch"/>
     </branch>
