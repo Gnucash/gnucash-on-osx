@@ -253,7 +253,7 @@
  <autotools id="gnucash-unstable" 
 	    autogen-template="%(srcdir)s/%(autogen-sh)s &amp;&amp; %(srcdir)s/configure --prefix %(prefix)s --libdir %(libdir)s %(autogenargs)s"
 	    autogenargs='--enable-ofx --enable-aqbanking --enable-binreloc --enable-dbi --with-html-engine="webkit"'>
-   <branch branch="2.3.16" module="gnucash" repo="svn.gnucash.org"/>
+   <branch branch="2.3.17" module="gnucash" repo="svn.gnucash.org"/>
 
    <dependencies>
       <dep package="meta-gtk-osx-core"/>
