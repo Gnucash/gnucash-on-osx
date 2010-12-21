@@ -209,30 +209,28 @@
 
 
   <autotools id="gnucash" autogen-sh="configure"
-	     autogenargs="--enable-ofx --enable-aqbanking --enable-binreloc">
-    <branch module="stable/gnucash-2.2.9.tar.gz" version="2.2.9"
-	    repo="sourceforge">
-	<patch file="http://github.com/jralls/gnucash-on-osx/raw/master/patches/gnucash-xlib.patch" strip="0"/>
-	<patch file="http://github.com/jralls/gnucash-on-osx/raw/master/patches/gnucash-in.patch" strip="0"/>
-	<patch file="http://github.com/jralls/gnucash-on-osx/raw/master/patches/gnucash-integration.patch" strip="1"/>
+	     autogen-template="%(srcdir)s/%(autogen-sh)s &amp;&amp; %(srcdir)s/configure --prefix %(prefix)s --libdir %(libdir)s %(autogenargs)s"
+	     autogenargs="--enable-ofx --enable-aqbanking --enable-binreloc --enable-dbi --with-html-engine='webkit'">
+    <branch module="gnucash" revision="19974" repo="svn.gnucash.org">
     </branch>
     <dependencies>
-      <dep package="goffice-0.7.4"/>
+      <dep package="meta-goffice"/>
       <dep package="meta-gtk-osx-core"/>
       <dep package="libofx"/>
       <!--dep package="aqbanking"/-->
       <dep package="aqbanking-qt"/>
-      <dep package="meta-gtkhtml"/>
+      <dep package="libgnomeui"/>
+      <dep package="WebKit"/>
       <dep package="Slib"/>
-      <dep package="iso-codes"/>
+      <dep package="libdbi-drivers"/>
+     <dep package="iso-codes"/>
     </dependencies>
 
   </autotools>
- 
- <autotools id="gnucash-svn" 
-	    autogen-template="%(srcdir)s/%(autogen-sh)s &amp;&amp; %(srcdir)s/configure --prefix %(prefix)s --libdir %(libdir)s %(autogenargs)s"
 
-	     autogenargs='--enable-ofx --enable-aqbanking --enable-binreloc --enable-dbi --with-html-engine="webkit"'>
+ <autotools id="gnucash-svn"
+	    autogen-template="%(srcdir)s/%(autogen-sh)s &amp;&amp; %(srcdir)s/configure --prefix %(prefix)s --libdir %(libdir)s %(autogenargs)s"
+	    autogenargs='--enable-ofx --enable-aqbanking --enable-binreloc --enable-dbi --with-html-engine="webkit"'>
    <branch repo="svn.gnucash.org" module="gnucash"/>
     <dependencies>
       <dep package="meta-gtk-osx-core"/>
@@ -281,9 +279,10 @@
   </autotools>
 
   <autotools id="gnucash-docs" autogenargs="--disable-scrollkeeper"
-	     makeargs=" html" >
-    <branch repo="gnucash.org" module="stable/gnucash-docs-2.2.0.tar.gz"
-	    version="2.2.0"/>
+	     autogen-template="%(srcdir)s/%(autogen-sh)s &amp;&amp; %(srcdir)s/configure --prefix %(prefix)s --libdir %(libdir)s %(autogenargs)s"
+	     makeargs=" html" makeinstallargs="install-html" >
+    <branch repo="svn.gnucash.org" module="gnucash-docs"
+	    revision="gnucash-docs-2.4"/>
    </autotools>
 
   <autotools id="scrollkeeper">
