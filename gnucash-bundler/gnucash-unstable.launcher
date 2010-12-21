@@ -143,4 +143,4 @@ if test -f "$GNC_DOT_DIR/gnucashrc"; then
 fi
 
 #Don't quote $EXTRA_ARGS or it will turn into a single arg and fail.
-$EXEC "$bundle_contents/MacOS/$name-bin" $* $EXTRA_ARGS
+$EXEC "$bundle_contents/MacOS/$name-bin" $EXTRA_ARGS $*

@@ -216,4 +216,4 @@ if test -f "$HOME/.gnucashrc"; then
 fi
 
 #$EXTRA_ARGS not quoted because we don't want GC to treat it as a single arg.
-$EXEC "$bundle_contents/MacOS/$name-bin" $* $EXTRA_ARGS
+$EXEC "$bundle_contents/MacOS/$name-bin" $EXTRA_ARGS $*
