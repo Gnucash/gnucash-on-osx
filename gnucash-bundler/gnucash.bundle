@@ -250,6 +250,10 @@
     ${prefix}/share/locale
   </translations>
 
+  <translations name="gtk20">
+    ${prefix}/share/locale
+  </translations>
+
   <translations name="iso_4217">
     ${prefix}/share/locale
   </translations>
