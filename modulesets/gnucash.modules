@@ -133,27 +133,7 @@
     <branch repo="sourceforge" module="libofx/libofx-0.9.1.tar.gz"
 	    version='0.9.1'/>
     <dependencies>
-      <dep package='guile'/>
       <dep package="OpenSP"/>
-    </dependencies>
-  </autotools>
-
-  <autotools id="guile-1.6" autogen-sh="configure"
-	     autogenargs="--disable-static --enable-shared
-			  --disable-scrollkeeper --disable-xlib">
-    <branch repo="ftp.gnu.org" module="guile/guile-1.6.8.tar.gz"
-	    version="1.6.8" size="3114052" />
-    <dependencies>
-      <dep package='readline'/>
-    </dependencies>
-  </autotools>
-
-   <autotools id="guile" autogen-sh="configure">
-    <branch repo="ftp.gnu.org" module="guile/guile-1.8.7.tar.gz"
-	    version="1.8.7" />
-    <dependencies>
-      <dep package='readline'/>
-      <dep package="gmp"/>
     </dependencies>
   </autotools>
 
@@ -166,7 +146,6 @@
       <patch file="http://github.com/jralls/gnucash-on-osx/raw/master/patches/slib-install.patch"/>
     </branch>
     <dependencies>
-      <dep package="guile"/>
     </dependencies>
   </autotools>
 
@@ -222,14 +201,13 @@
     <branch module="gnucash" revision="19974" repo="svn.gnucash.org">
     </branch>
     <dependencies>
-      <dep package="meta-goffice"/>
       <dep package="meta-gtk-osx-core"/>
       <dep package="libofx"/>
-      <!--dep package="aqbanking"/-->
       <dep package="aqbanking"/>
       <dep package="libgnomeui"/>
       <dep package="WebKit"/>
       <dep package="Slib"/>
+      <dep package="goffice"/>
       <dep package="libdbi-drivers"/>
      <dep package="iso-codes"/>
     </dependencies>
@@ -242,11 +220,9 @@
    <branch repo="svn.gnucash.org" module="gnucash"/>
     <dependencies>
       <dep package="meta-gtk-osx-core"/>
-      <dep package="meta-goffice"/>
       <dep package="libofx"/>
       <!--dep package="aqbanking"/ -->
       <dep package="aqbanking-svn"/>
-      <!--dep package="meta-gtkhtml"/-->
       <dep package="libgnomeui"/>
       <dep package="WebKit"/>
       <dep package="Slib"/>
@@ -263,7 +239,6 @@
 
    <dependencies>
       <dep package="meta-gtk-osx-core"/>
-      <dep package="meta-goffice"/>
       <dep package="libofx"/>
       <dep package="aqbanking"/>
        <dep package="WebKit"/>
@@ -295,8 +270,6 @@
     <branch repo="sourceforge" module="scrollkeeper/scrollkeeper-0.3.14.tar.gz"
 	    version="0.3.14"/>
     <dependencies>
-      <dep package="libxml2"/>
-      <dep package="libxslt"/>
        <dep package="gtk-osx-docbook"/>
     </dependencies>
   </autotools>
