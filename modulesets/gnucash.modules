@@ -38,7 +38,6 @@
   <include href="http://github.com/jralls/gtk-osx-build/raw/master/modulesets-stable/gtk-osx.modules"/>
 
   <include href="gtkhtml.modules"/>
-  <include href="goffice.modules"/>
 
 
   <autotools id='readline' >
@@ -206,6 +205,15 @@
     </dependencies>
   </autotools>
 
+  <autotools id="goffice" autogenargs="--without-gconf">
+   <branch module="goffice/0.8/goffice-0.8.12.tar.bz2" version="0.8.12"
+	   hash="sha256:c165f8b7aaab709295c8225b30f49fe75655149b982fd045d8c23bb7772eb22a"/>
+    <dependencies>
+      <dep package="gtk+"/>
+      <dep package="libgsf"/>
+      <dep package="gconf"/>
+    </dependencies>
+  </autotools>
 
 
   <autotools id="gnucash"
