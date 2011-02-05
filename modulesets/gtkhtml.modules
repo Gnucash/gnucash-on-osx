@@ -60,17 +60,14 @@ Optionally you may want to install GConf 1.0.7 (or later).
 	   hash="sha2556:6290424e51770fc09701ebaf89b7089214bbb9c81223430800160beee6f42288"/>
     <dependencies>
       <dep package="gtk+"/>
-      <dep package="libgnomeui"/>
-      <dep package="libbonoboui"/>
-      <dep package="libglade"/>
-      <dep package="libgnomeprint"/>
-      <dep package="libgnomeprintui"/> 
       <dep package="iso-codes"/>
-      <dep package="enchant"/> 
+      <dep package="enchant"/>
+      <dep package="gconf"/>
       <dep package="libsoup"/>
+<!-- dep package="gnome-icon-theme" -->
     </dependencies>
   </autotools>
-  
+<!-- Most of the following packages are deprecated -->
   <autotools id="libgnomecups">
     <branch module="libgnomecups/0.2/libgnomecups-0.2.3.tar.bz2" version="0.2.3"
 	    md5sum="dc4920c15c9f886f73ea74fbff0ae48b"/>
@@ -173,7 +170,6 @@ Optionally you may want to install GConf 1.0.7 (or later).
       <dep package="ORBit2"/>
       <dep package="intltool"/>
       <dep package="gnome-common"/>
-      <dep package="libxml2"/>
       <dep package="dbus-glib"/>
     </dependencies>
   </autotools>
@@ -193,8 +189,6 @@ Optionally you may want to install GConf 1.0.7 (or later).
     <branch module="libgnome/2.26/libgnome-2.26.0.tar.bz2" version="2.26.0"
 	    md5sum="a5634fe9ddc54bbb726cbaaa35abc0b9"/>
     <dependencies>
-      <dep package="libxml2"/>
-      <dep package="libxslt"/>
       <dep package="libbonobo"/>
       <dep package="gnome-vfs"/>
       <dep package="gconf"/>
@@ -205,6 +199,10 @@ Optionally you may want to install GConf 1.0.7 (or later).
   <autotools id="libgnomecanvas">
     <branch module="libgnomecanvas/2.26/libgnomecanvas-2.26.0.tar.bz2" 
 	    version="2.26.0" md5sum="9bbc635e5ae70e63af071af74ba7e72f"/>
+    <dependencies>
+      <dep package="libart_lgpl"/>
+      <dep package="libglade"/>
+    </dependencies>
     <after>
       <dep package="meta-gtk-osx-bootstrap"/>
       <dep package="meta-gtk-osx-core"/>
