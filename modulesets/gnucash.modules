@@ -2,9 +2,10 @@
 <!DOCTYPE moduleset SYSTEM "moduleset.dtd">
 <?xml-stylesheet type="text/xsl" href="moduleset.xsl"?>
 <moduleset>
-  <repository type="svn" name="svn.gnome.org" default="yes"
-	      href="http://svn.gnome.org/svn/"/>
-  <repository type="tarball" name="kernel.org"
+
+  <repository type="tarball" name="ftp.gnome.org" default="yes"
+              href="http://ftp.gnome.org/pub/GNOME/sources/"/>
+   <repository type="tarball" name="kernel.org"
 	      href="http://www.kernel.org/pub/linux/"/>
   <repository type='tarball' name='ftp.gnu.org'
 	      href="ftp://ftp.gnu.org/gnu/"/>
@@ -55,9 +56,10 @@
     <branch module="iso-codes-3.21.tar.bz2" version="3.21" repo="iso-codes"/>
   </autotools>
 
-  <autotools id="gwenhywfar" autogen-sh="configure">
-    <branch module="gwenhywfar-3.11.1.tar.gz" version="3.11.1"
-	    repo="github_gnucash"/>
+  <autotools id="gwenhywfar" autogen-sh="configure"
+	     autogenargs="--disable-qt4 --with-guis=gtk2">
+    <branch module="gwenhywfar-4.0.4.tar.gz" version="4.0.4"
+	    repo="github_gnucash" />
     <dependencies>
       <dep package="libgcrypt"/>
       <dep package="gnutls"/>
@@ -78,12 +80,10 @@
 	    repo="sourceforge"/>
   </autotools>
 
-  <autotools id="aqbanking" autogen-sh="configure"
-	     autogenargs='--enable-ofx=yes --disable-qt3 --disable-kde --disable-chipcard-client --disable-python --with-frontends="cbanking g2banking"' >
-    <branch module="aqbanking-4.2.4.tar.gz" version="4.2.4"
+  <autotools id="aqbanking" autogen-sh="configure">
+    <branch module="aqbanking-5.0.2.tar.bz2" version="5.0.2"
 	    repo="github_gnucash"/>
     <dependencies>
-      <dep package="libofx"/>
       <dep package="gwenhywfar"/>
       <dep package="gmp"/>
       <dep package="ktoblzcheck"/>
@@ -226,7 +226,7 @@
       <dep package="meta-gtk-osx-core"/>
       <dep package="libofx"/>
       <!--dep package="aqbanking"/-->
-      <dep package="aqbanking-qt"/>
+      <dep package="aqbanking"/>
       <dep package="libgnomeui"/>
       <dep package="WebKit"/>
       <dep package="Slib"/>
@@ -265,10 +265,8 @@
       <dep package="meta-gtk-osx-core"/>
       <dep package="meta-goffice"/>
       <dep package="libofx"/>
-      <!-- dep package="aqbanking"/ -->
-      <dep package="aqbanking-qt"/>
-      <!-- dep package="meta-gtkhtml"/ -->
-      <dep package="WebKit"/>
+      <dep package="aqbanking"/>
+       <dep package="WebKit"/>
       <dep package="libgnomeui"/>
       <dep package="Slib"/>
       <dep package="libdbi-drivers"/>
