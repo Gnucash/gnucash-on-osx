@@ -137,6 +137,11 @@
     </dependencies>
   </autotools>
 
+  <autotools id="guile" autogen-sh="configure">
+    <branch repo="ftp.gnu.org" module="guile/guile-1.8.8.tar.gz"
+	    version="1.8.8"/>
+  </autotools>
+
  <autotools id="Slib" autogen-sh="install.sh"  makeargs="-f Makefile.gnucash"
 	     makeinstallargs="-f Makefile.gnucash">
     <!-- <branch repo="slib.savannah.gnu.org"
@@ -146,6 +151,7 @@
       <patch file="http://github.com/jralls/gnucash-on-osx/raw/master/patches/slib-install.patch"/>
     </branch>
     <dependencies>
+      <dep package="guile"/>
     </dependencies>
   </autotools>
 
@@ -168,7 +174,7 @@
   <autotools id="libdbi" autogen-template="%(srcdir)s/autogen.sh &amp;&amp; %(srcdir)s/configure --prefix %(prefix)s --libdir %(libdir)s %(autogenargs)s"
 	     autogenargs="--disable-docs">
     <branch repo="sourceforge" module="libdbi/libdbi-0.8.3.tar.gz"
-	    version="0.8.3">
+	    version="0.8.4">
       <patch file="http://github.com/jralls/gtk-osx-build/raw/master/patches/dbi.patch" strip="1"/>
     </branch>
   </autotools>
@@ -221,8 +227,7 @@
     <dependencies>
       <dep package="meta-gtk-osx-core"/>
       <dep package="libofx"/>
-      <!--dep package="aqbanking"/ -->
-      <dep package="aqbanking-svn"/>
+      <dep package="aqbanking"/>
       <dep package="libgnomeui"/>
       <dep package="WebKit"/>
       <dep package="Slib"/>
@@ -244,6 +249,7 @@
        <dep package="WebKit"/>
       <dep package="libgnomeui"/>
       <dep package="Slib"/>
+      <dep package="goffice"/>
       <dep package="libdbi-drivers"/>
       <dep package="iso-codes"/>
     </dependencies>
