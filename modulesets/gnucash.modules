@@ -198,7 +198,7 @@
   <autotools id="gnucash"
 	     autogen-template="%(srcdir)s/%(autogen-sh)s &amp;&amp; %(srcdir)s/configure --prefix %(prefix)s --libdir %(libdir)s %(autogenargs)s"
 	     autogenargs="--enable-ofx --enable-aqbanking --enable-binreloc --enable-dbi --with-html-engine='webkit'">
-    <branch module="gnucash" revision="20232" repo="svn.gnucash.org">
+    <branch module="gnucash" revision="20345" repo="svn.gnucash.org">
     </branch>
     <dependencies>
       <dep package="meta-gtk-osx-core"/>
