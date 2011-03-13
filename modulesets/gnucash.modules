@@ -34,11 +34,14 @@
 	      href="http://devel.aqbanking.de/svn/"/>
   <repository type="tarball" name="iso-codes"
 	      href="ftp://pkg-isocodes.alioth.debian.org/pub/pkg-isocodes/"/>
+  <repository type="git" name="github"
+	      href="git://github.com/"/>
 
-
-  <include href="http://github.com/jralls/gtk-osx-build/raw/master/modulesets-stable/gtk-osx.modules"/>
-
+  <!--include href="http://github.com/jralls/gtk-osx-build/raw/master/modulesets-stable/gtk-osx.modules"/ -->
+  <include href="/Users/john/GTK-OSX/gtk-osx-build/modulesets-stable/gtk-osx.modules"/>
   <include href="gtkhtml.modules"/>
+  <include href="finance-quote.modules"/>
+
 
 
   <autotools id='readline' >
@@ -231,6 +234,26 @@
       <dep package="libgnomeui"/>
       <dep package="WebKit"/>
       <dep package="Slib"/>
+      <dep package="goffice"/>
+      <dep package="libdbi-drivers"/>
+      <dep package="iso-codes"/>
+    </dependencies>
+
+  </autotools>
+
+ <autotools id="gnucash-git"
+	    autogen-template="%(srcdir)s/%(autogen-sh)s &amp;&amp; %(srcdir)s/configure --prefix %(prefix)s --libdir %(libdir)s %(autogenargs)s"
+	    autogenargs='--enable-ofx --enable-aqbanking --enable-binreloc --enable-dbi --with-html-engine="webkit"'>
+   <branch repo="github" module="Gnucash/gnucash.git" revision="trunk" 
+	   checkoutdir="gnucash-git"/>
+    <dependencies>
+      <dep package="meta-gtk-osx-core"/>
+      <dep package="libofx"/>
+      <dep package="aqbanking"/>
+      <dep package="libgnomeui"/>
+      <dep package="WebKit"/>
+      <dep package="Slib"/>
+      <dep package="goffice"/>
       <dep package="libdbi-drivers"/>
       <dep package="iso-codes"/>
     </dependencies>
