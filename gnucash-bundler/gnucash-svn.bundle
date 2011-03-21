@@ -177,6 +177,10 @@
   </data>
 
   <data>
+    ${prefix}/share/gwenhywfar
+  </data>
+
+  <data>
     ${prefix}/share/libofx
   </data>
 
