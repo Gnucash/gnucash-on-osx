@@ -122,30 +122,6 @@
     ${prefix}/lib/dbd
   </binary>
 
-  <framework>
-    /Library/Frameworks/QtCore.framework
-  </framework>
-
-  <framework>
-    /Library/Frameworks/QtGui.framework
-  </framework>
-
-   <framework>
-    /Library/Frameworks/Qt3Support.framework
-   </framework>
-
-   <framework>
-    /Library/Frameworks/QtSql.framework
-   </framework>
-
-   <framework>
-    /Library/Frameworks/QtXml.framework
-   </framework>
-
-   <framework>
-    /Library/Frameworks/QtNetwork.framework
-   </framework>
-
 <!-- Data to copy in, usually Glade/UI files, images, sounds files
        etc. The destination inside the bundle can be specified if the
        files should end up at a different location, by using the
