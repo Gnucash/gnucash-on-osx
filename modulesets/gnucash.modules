@@ -59,6 +59,15 @@
     <branch module="iso-codes-3.21.tar.bz2" version="3.21" repo="iso-codes"/>
   </autotools>
 
+ <autotools id="libchipcard" autogen-sh="configure" >
+    <branch module="libchipcard-5.0.0.tar.gz" version="5.0.0"
+	    repo="github_gnucash" />
+    <dependencies>
+      <dep package="libgcrypt"/>
+      <dep package="gnutls"/>
+    </dependencies>
+  </autotools>
+
   <autotools id="gwenhywfar" autogen-sh="configure"
 	     autogenargs="--disable-qt4 --with-guis=gtk2">
     <branch module="gwenhywfar-4.0.4.tar.gz" version="4.0.4"
