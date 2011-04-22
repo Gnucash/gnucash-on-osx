@@ -13,20 +13,18 @@ prefix = os.path.join(os.environ["HOME"], "gnucash-stable")
 
 #Select which modules to build. The only difference is which gnucash
 #module (and all of the dependencies, see above) get built:
-modules = ["gettext-fw", "meta-gtk-osx-bootstrap", "meta-gtk-osx-core", "gnucash"]
-#modules = ["gettext-fw", "meta-gtk-osx-bootstrap", "meta-gtk-osx-core", "gnucash-unstable"]
-#modules = ["gettext-fw", "meta-gtk-osx-bootstrap", "meta-gtk-osx-core", "gnucash-svn"]
+modules = ["meta-gtk-osx-bootstrap", "meta-gtk-osx-core", "gnucash"]
+#modules = ["meta-gtk-osx-bootstrap", "meta-gtk-osx-core", "gnucash-unstable"]
+#modules = ["meta-gtk-osx-bootstrap", "meta-gtk-osx-core", "gnucash-svn"]
 
-#Setup the build for Tiger. If you don't care about Tiger or are
-#building unstable or svn, comment out the first one and uncomment the
-#second. PPC users should change i386 to ppc when using SDK 10.5.
-setup_sdk("10.4", "10.4u")
-#setup_sdk("10.5", "10.5",["i386"])
+#Setup the build. PPC users will need to replace "i386" with
+#"ppc". Don't try to do a universal build, it doesn't work. x86_64 is
+#untested, as is building against the 10.6 or 10.7 SDKs.
+setup_sdk("10.5", "10.5",["i386"])
 
 moduleset = "http://github.com/jralls/gnucash-on-osx/raw/master/modulesets/gnucash.modules"    
 
 #If you wish to enable the mysql backend, uncomment the lines below.
-#This only works for gnucash-unstable and gnucash-svn at present.
 #MySQL requires CMake 2.6.0 or later to build, so the libmysql module
 #has a dependency on cmake which will be built by default. If you
 #already have CMake installed on the path, add "skip.append("cmake")
@@ -48,14 +46,10 @@ append_autogenargs("OpenSP", "--enable-shared") #To override the global --disabl
 append_autogenargs("libdbi-drivers","--with-dbi-incdir=" + prefix + "/include --with-dbi-libdir=" + prefix + "/lib")
 append_autogenargs("gnucash-unstable", "--with-dbi-dbd-dir=" + prefix +"/lib/dbd")
 append_autogenargs("gnucash-svn", "--with-dbi-dbd-dir=" + prefix +"/lib/dbd")
-append_autogenargs("aqbanking-qt", 'qt3_libs="-framework QtCore -framework QtGui -framework Qt3Support" qt3_includes="-I/Library/Frameworks/QtCore.framework/Headers -I/Library/Frameworks/QtGui.framework/Headers -I/Library/Frameworks/Qt3Support.framework/Headers" QT3TO4=/usr/bin/qt3to4')
+append_autogenargs("gnucash", "--with-dbi-dbd-dir=" + prefix +"/lib/dbd")
 
-append_autogenargs("gnucash-unstable", " --with-html-engine=webkit")
-append_autogenargs("gnucash-svn", " --with-html-engine=webkit")
+append_autogenargs("libiconv", "--with-libintl-prefix=" + prefix)
 
-append_autogenargs("python", "--with-universal-archs=32-bit --enable-universalsdk=/Developer/SDKs/MacOSX10.5.sdk")
-append_autogenargs("libiconv", "--with-libintl-prefix=" + prefix) 
-branches["python"] = "http://www.python.org/ftp/python/2.6.4/Python-2.6.4.tar.bz2"
 module_makecheck["gmp"] = True
 
 
