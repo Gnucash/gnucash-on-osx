@@ -10,7 +10,7 @@ else
     EXEC=exec
 fi
 
-export PREFIX=/Library/Gnucash-2.3.x
+export PREFIX=/Library/Gnucash-2.5
 export PREFIXDIR="`dirname $PREFIX`"
 
 name=`basename "$0"`
