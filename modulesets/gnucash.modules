@@ -40,9 +40,6 @@
   <include href="http://github.com/jralls/gtk-osx-build/raw/master/modulesets-stable/gtk-osx.modules"/>
   <!--include href="/Users/john/GTK-OSX/gtk-osx-build/modulesets-stable/gtk-osx.modules"/-->
   <include href="gtkhtml.modules"/>
-  <include href="finance-quote.modules"/>
-
-
 
   <autotools id='readline' >
     <branch repo="ftp.gnu.org" module="readline/readline-6.0.tar.gz"
