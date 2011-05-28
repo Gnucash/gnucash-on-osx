@@ -97,12 +97,16 @@ EOF
 
     fi
 fi
-
-LAUNCH_PATH="$HOME/Library/LaunchAgents/org.freedesktop.dbus-session.plist"
-bundle_launch_path="$PREFIX/etc/dbus-1/org.freedesktop.dbus-session.plist"
+LAUNCH_PLIST="org.freedesktop.dbus-session.plist"
+LAUNCH_DIR="$HOME/Library/LaunchAgents"
+LAUNCH_PATH="$LAUNCH_DIR/$LAUNCH_PLIST"
+bundle_launch_path="$PREFIX/etc/dbus-1/$LAUNCH_PLIST"
 # See if the DBUS session bus is registered in launchd and register it if not
 if [ "x`launchctl list | grep 'org\.freedesktop\.dbus-session'`" == x ]; then
-   if [ -e "$LAUNCH_PATH" ] || [ -L "$LAUNCH_PATH" ]  && [ ! "$LAUNCH_PATH" -ef "$bundle_launch_path" ]; then
+    if [ ! -d $LAUNCH_DIR ]; then
+	mkdir -p $LAUNCH_DIR;
+    fi
+    if ! ([ -e "$LAUNCH_PATH" ] && [ -L "$LAUNCH_PATH" ]  && [ ! "$LAUNCH_PATH" -ef "$bundle_launch_path" ]); then
         ln -s  $bundle_launch_path $LAUNCH_PATH
     fi
     launchctl load -w $LAUNCH_PATH
