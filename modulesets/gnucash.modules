@@ -25,7 +25,7 @@
   <repository type="svn" name="svn.gnucash.org"
 	      href="http://svn.gnucash.org/repo/"/>
   <repository type="tarball" name="github_gnucash"
-	      href="http://github.com/downloads/jralls/gnucash-on-osx/"/>
+	      href="https://github.com/downloads/jralls/gnucash-on-osx/"/>
   <repository type="tarball" name="gmplib.org"
 	      href="ftp://ftp.gmplib.org/pub/"/>
   <repository type="tarball" name="cmake"
@@ -90,7 +90,7 @@
   </autotools>
 
   <autotools id="aqbanking" autogen-sh="configure">
-    <branch module="aqbanking-5.0.6.tar.bz2" version="5.0.6"
+    <branch module="aqbanking-5.0.6.tar.gz" version="5.0.6"
 	    repo="github_gnucash"/>
     <dependencies>
       <dep package="gwenhywfar"/>
