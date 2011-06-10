@@ -26,8 +26,6 @@
 	      href="http://svn.gnucash.org/repo/"/>
   <repository type="tarball" name="github_gnucash"
 	      href="https://github.com/downloads/jralls/gnucash-on-osx/"/>
-  <repository type="tarball" name="gmplib.org"
-	      href="ftp://ftp.gmplib.org/pub/"/>
   <repository type="tarball" name="cmake"
 	      href="http://www.cmake.org/files/"/>
   <repository type="svn" name="aquamaniac"
@@ -40,17 +38,6 @@
   <include href="http://github.com/jralls/gtk-osx-build/raw/master/modulesets-stable/gtk-osx.modules"/>
   <!--include href="/Users/john/GTK-OSX/gtk-osx-build/modulesets-stable/gtk-osx.modules"/-->
   <include href="gtkhtml.modules"/>
-
-  <autotools id='readline' >
-    <branch repo="ftp.gnu.org" module="readline/readline-6.0.tar.gz"
-	    version="6.0"/>
-  </autotools>
-
-  <!-- gmp is also provided in theory by bootstrap, but it seems not to always get built, so it's provided here as well. -->
-  <autotools id="gmp">
-    <!--branch repo="ftp.gnu.org" module="gmp/gmp-5.0.0.tar.bz2" version="5.0.0"/-->
-    <branch repo="ftp.gnu.org" module="gmp/gmp-4.3.1.tar.bz2" version="4.3.1"/>
-  </autotools>
 
   <autotools id="iso-codes" autogen-sh="configure">
     <branch module="iso-codes-3.21.tar.bz2" version="3.21" repo="iso-codes"/>
@@ -146,11 +133,6 @@
     </dependencies>
   </autotools>
 
-  <autotools id="guile" autogen-sh="configure">
-    <branch repo="ftp.gnu.org" module="guile/guile-1.8.8.tar.gz"
-	    version="1.8.8"/>
-  </autotools>
-
  <autotools id="Slib" autogen-sh="install.sh"  makeargs="-f Makefile.gnucash"
 	     makeinstallargs="-f Makefile.gnucash">
     <!-- <branch repo="slib.savannah.gnu.org"
@@ -196,6 +178,13 @@
     </branch>
     <dependencies>
       <dep package="libdbi"/>
+    </dependencies>
+  </autotools>
+
+  <autotools id="libgsf" autogenargs="--without-python">
+    <branch  module="libgsf/1.14/libgsf-1.14.19.tar.bz2" version="1.14.19"
+	     hash="sha256:8cf82ce95ef97e61bae02099d2f39e4d814747b546899b7c28a695e15391b56c"/>
+    <dependencies>
     </dependencies>
   </autotools>
 
