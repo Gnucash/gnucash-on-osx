@@ -90,7 +90,7 @@
 	     autogenargs="--enable-ofx=yes --disable-kde --disable-chipcard-client --disable-python --with-frontends='cbanking g2banking q4banking' qt4_libs='-framework QtCore -framework QtGui -framework Qt3Support' qt4_includes='-framework QtCore -framework QtGui -framework Qt3Support'">
      <branch module="aqbanking-4.2.4.tar.gz" version="4.2.4"
 	    repo="github_gnucash" >
-       <patch file="http://github.com/jralls/gnucash-on-osx/raw/master/patches/aqbankingOSX.patch" strip="0"/>
+       <patch file="http://raw.github.com/jralls/gnucash-on-osx/master/patches/aqbankingOSX.patch" strip="0"/>
      </branch>
     <dependencies>
       <dep package="libofx"/>
@@ -139,7 +139,7 @@
 	    module="slib"/> -->
     <branch repo="csail" module="scm/slib-3b3.zip" version="3b1"
 	    checkoutdir="slib">
-      <patch file="http://github.com/jralls/gnucash-on-osx/raw/master/patches/slib-install.patch"/>
+      <patch file="http://raw.github.com/jralls/gnucash-on-osx/master/patches/slib-install.patch"/>
     </branch>
     <dependencies>
       <dep package="guile"/>
@@ -155,7 +155,7 @@
   <cmake id="mysql">
     <branch repo="csclub" module="Connector-C/mysql-connector-c-6.0.2.tar.gz"
 	    version="6.0.2" >
-      <patch file="http://github.com/jralls/gnucash-on-osx/raw/master/patches/libmysql.patch"/>
+      <patch file="http://raw.github.com/jralls/gnucash-on-osx/master/patches/libmysql.patch"/>
     </branch>
     <dependencies>
       <dep package="cmake"/>
