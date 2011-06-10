@@ -98,14 +98,21 @@ EOF
     fi
 fi
 
-LAUNCH_PATH="$HOME/Library/LaunchAgents/org.freedesktop.dbus-session.plist"
-bundle_launch_path="$PREFIX/etc/dbus-1/org.freedesktop.dbus-session.plist"
-# See if the DBUS session bus is registered in launchd and register it if not
-if [ "x`launchctl list | grep 'org\.freedesktop\.dbus-session'`" == x ]; then
-   if [ -e "$LAUNCH_PATH" ] || [ -L "$LAUNCH_PATH" ]  && [ ! "$LAUNCH_PATH" -ef "$bundle_launch_path" ]; then
-        ln -s  $bundle_launch_path $LAUNCH_PATH
+if test -z "$DBUS_SESSION_BUS_ADDRESS"; then
+    # If we get here without a way to connect to an instance of dbus-daemon,
+    # then we can kill any existing instances of dbus-daemon that originate
+    # in this copy of Gnucash.
+
+    DBUS_PIDS=`ps ux | grep dbus-daemon | grep "${PREFIX}" | awk '{print $2}'`
+
+    if /bin/test "$DBUS_PIDS"; then
+        for DBUS_PID in ${DBUS_PIDS}
+        do
+            /bin/kill "${DBUS_PID}"
+        done
     fi
-    launchctl load -w $LAUNCH_PATH
+
+    eval `"$PREFIX/bin/dbus-launch" --sh-syntax --exit-with-session --config-file="$bundle_res/etc/dbus-1/session.conf"`
 fi
 
 GNC_MODULE_PATH="${RESPFX}/lib/gnucash:${GNC_MODULE_PATH}"
