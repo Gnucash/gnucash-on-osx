@@ -126,8 +126,8 @@
   </autotools>
 
   <autotools id="libofx" autogen-sh='configure'>
-    <branch repo="sourceforge" module="libofx/libofx-0.9.1.tar.gz"
-	    version='0.9.1'/>
+    <branch repo="sourceforge" module="libofx/libofx-0.9.4.tar.gz"
+	    version='0.9.4'/>
     <dependencies>
       <dep package="OpenSP"/>
     </dependencies>
