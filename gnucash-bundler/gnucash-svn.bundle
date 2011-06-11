@@ -214,7 +214,7 @@
   </data>
 
   <data dest="${bundle}/Contents/Resources/License">
-    ${prefix}/share/gnucash/doc/LICENSE
+    ${prefix}/share/doc/gnucash/LICENSE
   </data>
 
   <data dest="${bundle}/Contents/Resources/Sources">
