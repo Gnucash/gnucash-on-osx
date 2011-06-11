@@ -133,6 +133,18 @@
     </dependencies>
   </autotools>
 
+  <autotools id="pcre">
+    <branch repo="sourceforge" module="pcre/pcre-8.12.tar.bz2"
+	    version="8.12"/>
+  </autotools>
+
+  <autotools id="swig">
+    <branch repo="sourceforge" module="swig/swig-2.0.4.tar.gz" version="2.0.4"/>
+    <dependencies>
+      <dep package="pcre"/>
+    </dependencies>
+  </autotools>
+
  <autotools id="Slib" autogen-sh="install.sh"  makeargs="-f Makefile.gnucash"
 	     makeinstallargs="-f Makefile.gnucash">
     <!-- <branch repo="slib.savannah.gnu.org"
@@ -232,6 +244,7 @@
       <dep package="goffice"/>
       <dep package="libdbi-drivers"/>
       <dep package="iso-codes"/>
+      <dep package="swig"/>
     </dependencies>
 
   </autotools>
@@ -251,6 +264,7 @@
       <dep package="goffice"/>
       <dep package="libdbi-drivers"/>
       <dep package="iso-codes"/>
+      <dep package="swig"/>
     </dependencies>
 
   </autotools>
