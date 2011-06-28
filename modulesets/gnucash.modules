@@ -44,7 +44,7 @@
   </autotools>
 
  <autotools id="libchipcard" autogen-sh="configure" >
-    <branch module="libchipcard-5.0.0.tar.gz" version="5.0.0"
+    <branch module="libchipcard-5.0.2.tar.gz" version="5.0.2"
 	    repo="github_gnucash" />
     <dependencies>
       <dep package="libgcrypt"/>
@@ -54,7 +54,7 @@
 
   <autotools id="gwenhywfar" autogen-sh="configure"
 	     autogenargs="--disable-qt4 --with-guis=gtk2">
-    <branch module="gwenhywfar-4.0.9.tar.gz" version="4.0.9"
+    <branch module="gwenhywfar-4.1.0.tar.gz" version="4.1.0"
 	    repo="github_gnucash" />
     <dependencies>
       <dep package="libgcrypt"/>
@@ -77,7 +77,7 @@
   </autotools>
 
   <autotools id="aqbanking" autogen-sh="configure">
-    <branch module="aqbanking-5.0.6.tar.gz" version="5.0.6"
+    <branch module="aqbanking-5.0.10.tar.gz" version="5.0.10"
 	    repo="github_gnucash"/>
     <dependencies>
       <dep package="gwenhywfar"/>
