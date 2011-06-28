@@ -193,13 +193,6 @@
     </dependencies>
   </autotools>
 
-  <autotools id="libgsf" autogenargs="--without-python">
-    <branch  module="libgsf/1.14/libgsf-1.14.19.tar.bz2" version="1.14.19"
-	     hash="sha256:8cf82ce95ef97e61bae02099d2f39e4d814747b546899b7c28a695e15391b56c"/>
-    <dependencies>
-    </dependencies>
-  </autotools>
-
   <autotools id="goffice" autogenargs="--without-gconf">
    <branch module="goffice/0.8/goffice-0.8.12.tar.bz2" version="0.8.12"
 	   hash="sha256:c165f8b7aaab709295c8225b30f49fe75655149b982fd045d8c23bb7772eb22a"/>
