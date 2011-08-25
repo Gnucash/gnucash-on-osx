@@ -151,7 +151,7 @@
 	    module="slib"/> -->
     <branch repo="csail" module="scm/slib-3b3.zip" version="3b1"
 	    checkoutdir="slib">
-      <patch file="http://raw.github.com/jralls/gnucash-on-osx/master/patches/slib-install.patch"/>
+      <patch file="https://raw.github.com/jralls/gnucash-on-osx/master/patches/slib-install.patch"/>
     </branch>
     <dependencies>
       <dep package="guile"/>
