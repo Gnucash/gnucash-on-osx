@@ -40,7 +40,7 @@
   <include href="gtkhtml.modules"/>
 
   <autotools id="iso-codes" autogen-sh="configure">
-    <branch module="iso-codes_3.23.orig.tar.bz2" version="3.23" repo="iso-codes" checkoutdir="iso-codes-3.23"/>
+    <branch module="iso-codes_3.28.orig.tar.bz2" version="3.28" repo="iso-codes" checkoutdir="iso-codes-3.28"/>
   </autotools>
 
  <autotools id="libchipcard" autogen-sh="configure" >
