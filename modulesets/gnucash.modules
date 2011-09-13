@@ -31,7 +31,7 @@
   <repository type="svn" name="aquamaniac"
 	      href="http://devel.aqbanking.de/svn/"/>
   <repository type="tarball" name="iso-codes"
-	      href="ftp://pkg-isocodes.alioth.debian.org/pub/pkg-isocodes/"/>
+	      href="http://ftp.us.debian.org/debian/pool/main/i/iso-codes/"/>
   <repository type="git" name="github"
 	      href="git://github.com/"/>
 
@@ -40,7 +40,7 @@
   <include href="gtkhtml.modules"/>
 
   <autotools id="iso-codes" autogen-sh="configure">
-    <branch module="iso-codes-3.21.tar.bz2" version="3.21" repo="iso-codes"/>
+    <branch module="iso-codes_3.28.orig.tar.bz2" version="3.28" repo="iso-codes" checkoutdir="iso-codes-3.28"/>
   </autotools>
 
  <autotools id="libchipcard" autogen-sh="configure" >
