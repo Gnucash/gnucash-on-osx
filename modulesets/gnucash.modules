@@ -139,7 +139,10 @@
   </autotools>
 
   <autotools id="swig">
-    <branch repo="sourceforge" module="swig/swig-2.0.4.tar.gz" version="2.0.4"/>
+    <branch repo="sourceforge" module="swig/swig-2.0.4.tar.gz" version="2.0.4">
+      <patch file="/Users/john/0001-Updated-swig-guile-deprecated-patch.patch"
+	     strip="1"/>
+    </branch>
     <dependencies>
       <dep package="pcre"/>
     </dependencies>
@@ -207,7 +210,7 @@
   <autotools id="gnucash"
 	     autogenargs="--enable-ofx --enable-aqbanking --enable-binreloc --enable-dbi --with-html-engine='webkit'">
     <!--branch module="gnucash" revision="20812" repo="svn.gnucash.org"-->
-    <branch module="gnucash/stable/gnucash-2.4.8.tar.bz2" version="2.4.8"
+    <branch module="gnucash/stable/gnucash-2.4.9.tar.bz2" version="2.4.9"
 	    repo="sourceforge">
     </branch>
     <dependencies>
