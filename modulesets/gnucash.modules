@@ -30,18 +30,12 @@
 	      href="http://www.cmake.org/files/"/>
   <repository type="svn" name="aquamaniac"
 	      href="http://devel.aqbanking.de/svn/"/>
-  <repository type="tarball" name="iso-codes"
-	      href="http://ftp.us.debian.org/debian/pool/main/i/iso-codes/"/>
   <repository type="git" name="github"
 	      href="git://github.com/"/>
 
   <include href="http://git.gnome.org/browse/gtk-osx/plain/modulesets-stable/gtk-osx.modules"/>
 <!--  <include href="/Users/john/GTK-OSX/gtk-osx-build/modulesets-stable/gtk-osx.modules"/> -->
   <include href="gtkhtml.modules"/>
-
-  <autotools id="iso-codes" autogen-sh="configure">
-    <branch module="iso-codes_3.28.orig.tar.bz2" version="3.28" repo="iso-codes" checkoutdir="iso-codes-3.28"/>
-  </autotools>
 
  <autotools id="libchipcard" autogen-sh="configure" >
     <branch module="libchipcard-5.0.2.tar.gz" version="5.0.2"
