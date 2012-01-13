@@ -212,7 +212,7 @@
       <dep package="libofx"/>
       <dep package="aqbanking"/>
       <dep package="libgnomeui"/>
-      <dep package="WebKit"/>
+      <dep package="meta-gtk-osx-webkit"/>
       <dep package="Slib"/>
       <dep package="goffice"/>
       <dep package="libdbi-drivers"/>
@@ -230,7 +230,7 @@
       <dep package="libofx"/>
       <dep package="aqbanking"/>
       <dep package="libgnomeui"/>
-      <dep package="WebKit"/>
+      <dep package="meta-gtk-osx-webkit"/>
       <dep package="Slib"/>
       <dep package="goffice"/>
       <dep package="libdbi-drivers"/>
@@ -250,7 +250,7 @@
       <dep package="libofx"/>
       <dep package="aqbanking"/>
       <dep package="libgnomeui"/>
-      <dep package="WebKit"/>
+      <dep package="meta-gtk-osx-webkit"/>
       <dep package="Slib"/>
       <dep package="goffice"/>
       <dep package="libdbi-drivers"/>
@@ -269,7 +269,7 @@
       <dep package="meta-gtk-osx-core"/>
       <dep package="libofx"/>
       <dep package="aqbanking"/>
-       <dep package="WebKit"/>
+       <dep package="meta-gtk-osx-webkit"/>
       <dep package="libgnomeui"/>
       <dep package="Slib"/>
       <dep package="goffice"/>
