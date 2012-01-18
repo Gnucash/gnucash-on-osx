@@ -1,0 +1,186 @@
+From 908eab348ca34f6a8c765682179eb00b8c3bee95 Mon Sep 17 00:00:00 2001
+From: John Ralls <jralls@ceridwen.us>
+Date: Fri, 30 Dec 2011 12:05:12 -0800
+Subject: [PATCH] Updated swig-guile-deprecated patch
+
+---
+ Lib/guile/ghinterface.i     |    8 ++++++++
+ Lib/guile/guile_gh_run.swg  |   13 ++++++++++---
+ Lib/guile/guile_scm_run.swg |   30 +++++++++++++++++++++++-------
+ Lib/guile/typemaps.i        |    2 +-
+ Source/Modules/guile.cxx    |   16 ++++++++++++++++
+ configure.in                |    1 +
+ 6 files changed, 59 insertions(+), 11 deletions(-)
+
+diff --git a/Lib/guile/ghinterface.i b/Lib/guile/ghinterface.i
+index c5fda62..2a9e549 100644
+--- a/Lib/guile/ghinterface.i
++++ b/Lib/guile/ghinterface.i
+@@ -20,7 +20,11 @@
+ #define gh_scm2int(a) scm_num2int(a, SCM_ARG1, FUNC_NAME) 
+ #define gh_scm2long(a) scm_num2long(a, SCM_ARG1, FUNC_NAME) 
+ #define gh_scm2short(a) scm_num2short(a, SCM_ARG1, FUNC_NAME)
++#ifdef HAVE_SCM_TO_LOCALE_STRINGN
++#define gh_scm2newstr scm_to_locale_stringn
++#else
+ #define gh_scm2newstr SWIG_Guile_scm2newstr
++#endif
+ #define gh_scm2ulong(a) scm_num2ulong(a, SCM_ARG1, FUNC_NAME)
+ #define gh_scm2ushort(a) scm_num2ushort(a, SCM_ARG1, FUNC_NAME)
+ #define gh_scm2uint(a) scm_num2uint(a, SCM_ARG1, FUNC_NAME)
+@@ -31,7 +35,11 @@
+ #define gh_scm2long_long(a) scm_num2long_long(a, SCM_ARG1, FUNC_NAME)
+ #define gh_ulong_long2scm scm_ulong_long2num
+ #define gh_scm2ulong_long(a) scm_num2ulong_long(a, SCM_ARG1, FUNC_NAME)
++#ifdef HAVE_SCM_IS_STRING
++#define gh_string_p scm_is_string
++#else
+ #define gh_string_p SCM_STRINGP 
++#endif
+ #define gh_vector_length SCM_VECTOR_LENGTH 
+ #define gh_vector_p SCM_VECTORP 
+ #define gh_vector_ref scm_vector_ref 
+diff --git a/Lib/guile/guile_gh_run.swg b/Lib/guile/guile_gh_run.swg
+index 0eba1f9..a15ffc2 100644
+--- a/Lib/guile/guile_gh_run.swg
++++ b/Lib/guile/guile_gh_run.swg
+@@ -17,10 +17,17 @@ extern "C" {
+ 
+ typedef SCM (*swig_guile_proc)();
+ 
+-#define SWIG_malloc(size) \
+-  SCM_MUST_MALLOC(size)
++#ifdef HAVE_SCM_MALLOC
++#define SWIG_malloc(size)\
++   scm_malloc(size)
+ #define SWIG_free(mem) \
+-  scm_must_free(mem)
++   free(mem)
++#else
++ #define SWIG_malloc(size) \
++   SCM_MUST_MALLOC(size)
++ #define SWIG_free(mem) \
++   scm_must_free(mem)
++#endif
+ #define SWIG_ConvertPtr(s, result, type, flags) \
+   SWIG_Guile_ConvertPtr(&swig_module, s, result, type, flags)
+ #define SWIG_MustGetPtr(s, type, argnum, flags) \
+diff --git a/Lib/guile/guile_scm_run.swg b/Lib/guile/guile_scm_run.swg
+index 91b7409..46cec56 100644
+--- a/Lib/guile/guile_scm_run.swg
++++ b/Lib/guile/guile_scm_run.swg
+@@ -20,12 +20,22 @@ typedef struct swig_guile_clientdata {
+   SCM goops_class;
+ } swig_guile_clientdata;
+ 
+-#define SWIG_scm2str(s) \
+-  SWIG_Guile_scm2newstr(s, NULL)
+-#define SWIG_malloc(size) \
+-  SCM_MUST_MALLOC(size)
++#if (defined HAVE_SCM_TO_LOCALE_STRING) && (defined HAVE_SCM_TO_LOCALE_STRINGN)
++#define SWIG_scm2str(s) scm_to_locale_string(s)
++#else
++#define SWIG_scm2str(s) SWIG_Guile_scm2newstr(s, NULL)
++#endif
++#ifdef HAVE_SCM_MALLOC
++#define SWIG_malloc(size)\
++   scm_malloc(size)
+ #define SWIG_free(mem) \
+-  scm_must_free(mem)
++   free(mem)
++#else
++ #define SWIG_malloc(size) \
++   SCM_MUST_MALLOC(size)
++ #define SWIG_free(mem) \
++   scm_must_free(mem)
++#endif
+ #define SWIG_ConvertPtr(s, result, type, flags) \
+   SWIG_Guile_ConvertPtr(s, result, type, flags)
+ #define SWIG_MustGetPtr(s, type, argnum, flags) \
+@@ -56,16 +66,21 @@ typedef struct swig_guile_clientdata {
+ static swig_module_info *SWIG_Guile_GetModule(void);
+ #define SWIG_GetModule(clientdata) SWIG_Guile_GetModule()
+ #define SWIG_SetModule(clientdata, pointer) SWIG_Guile_SetModule(pointer)
+-  
++
++#ifndef HAC_SCM_TO_LOCALE_STRINGN  
+ SWIGINTERN char *
+ SWIG_Guile_scm2newstr(SCM str, size_t *len) {
+ #define FUNC_NAME "SWIG_Guile_scm2newstr"
+   char *ret;
+   size_t l;
+ 
+-  SCM_ASSERT (SCM_STRINGP(str), str, 1, FUNC_NAME);
++  SCM_ASSERT (gh_string_p(str), str, 1, FUNC_NAME);
+   
++  #ifdef HAC_SCM_C_STRING_LENGTH
++  l = scn_c_string_length(str);
++  #else
+   l = SCM_STRING_LENGTH(str);
++  #endif
+   ret = (char *) SWIG_malloc( (l + 1) * sizeof(char));
+   if (!ret) return NULL;
+ 
+@@ -75,6 +90,7 @@ SWIG_Guile_scm2newstr(SCM str, size_t *len) {
+   return ret;
+ #undef FUNC_NAME
+ }
++#endif
+ 
+ static int swig_initialized = 0;
+ static scm_t_bits swig_tag = 0;
+diff --git a/Lib/guile/typemaps.i b/Lib/guile/typemaps.i
+index edf227d..3bf969d 100644
+--- a/Lib/guile/typemaps.i
++++ b/Lib/guile/typemaps.i
+@@ -427,7 +427,7 @@ typedef unsigned long SCM;
+ }
+ 
+ %typecheck(SWIG_TYPECHECK_STRING) char * {
+-  $1 = SCM_STRINGP($input) ? 1 : 0;
++  $1 = gh_string_p($input) ? 1 : 0;
+ }
+ 
+ %typecheck(SWIG_TYPECHECK_POINTER) SWIGTYPE *, SWIGTYPE &, SWIGTYPE [] {
+diff --git a/Source/Modules/guile.cxx b/Source/Modules/guile.cxx
+index bdf11ee..4d81587 100644
+--- a/Source/Modules/guile.cxx
++++ b/Source/Modules/guile.cxx
+@@ -335,6 +335,22 @@ public:
+     Printf(f_runtime, "\n");
+     Printf(f_runtime, "#define SWIGGUILE\n");
+ 
++    #ifdef HAVE_SCM_MALLOC
++    Printf(f_runtime, "#define HAVE_SCM_MALLOC 1\n");
++    #endif
++    #ifdef HAVE_SCM_IS_STRING
++    Printf(f_runtime, "#define HAVE_SCM_IS_STRING 1\n");
++    #endif
++    #ifdef HAVE_SCM_C_STRING_LENGTH
++    Printf(f_runtime, "#define HAVE_SCM_C_STRING_LENGTH 1\n");
++    #endif
++    #ifdef HAVE_SCM_TO_LOCALE_STRING
++    Printf(f_runtime, "#define HAVE_SCM_TO_LOCALE_STRING 1\n");
++    #endif
++    #ifdef HAVE_SCM_TO_LOCALE_STRINGN
++    Printf(f_runtime, "#define HAVE_SCM_TO_LOCALE_STRINGN 1\n");
++    #endif
++
+     if (!use_scm_interface) {
+       if (SwigRuntime == 1)
+ 	Printf(f_runtime, "#define SWIG_GLOBAL\n");
+diff --git a/configure.in b/configure.in
+index 7e3b43d..42ee248 100644
+--- a/configure.in
++++ b/configure.in
+@@ -1266,6 +1266,7 @@ else
+ 	AC_MSG_RESULT(no)
+ fi
+ CFLAGS=$guilesafe_CFLAGS
++AC_CHECK_FUNCS(scm_malloc scm_is_string scm_c_string_length scm_to_locale_string scm_to_locale_stringn)
+ LIBS=$guilesafe_LIBS
+ fi
+ 
+-- 
+1.7.6.3.dirty
+
