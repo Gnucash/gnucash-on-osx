@@ -134,7 +134,7 @@
 
   <autotools id="swig">
     <branch repo="sourceforge" module="swig/swig-2.0.4.tar.gz" version="2.0.4">
-      <patch file="http://raw.github.com/jralls/gnucash-on-osx/master/patches/0001-Updated-swig-guile-deprecated-patch.patch"
+      <patch file="https://raw.github.com/jralls/gnucash-on-osx/master/patches/0001-Updated-swig-guile-deprecated-patch.patch"
 	     strip="1"/>
     </branch>
     <dependencies>
