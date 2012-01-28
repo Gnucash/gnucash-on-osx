@@ -150,7 +150,7 @@
   <cmake id="mysql">
     <branch repo="csclub" module="Connector-C/mysql-connector-c-6.0.2.tar.gz"
 	    version="6.0.2" >
-      <patch file="http://raw.github.com/jralls/gnucash-on-osx/master/patches/libmysql.patch"/>
+      <patch file="https://raw.github.com/jralls/gnucash-on-osx/master/patches/libmysql.patch"/>
     </branch>
     <dependencies>
       <dep package="cmake"/>
@@ -161,7 +161,7 @@
 	     autogenargs="--disable-docs">
     <branch repo="sourceforge" module="libdbi/libdbi-0.8.3.tar.gz"
 	    version="0.8.4">
-      <patch file="http://github.com/jralls/gtk-osx-build/raw/master/patches/dbi.patch" strip="1"/>
+      <patch file="https://raw.github.com/jralls/gnucash-on-osx/master/patches/dbi.patch" strip="1"/>
     </branch>
   </autotools>
 
@@ -169,7 +169,7 @@
 	     autogenargs='--with-sqlite3 --disable-docs --with-sqlite3-incdir="/usr/include" --with-sqlite3-libdir="/usr/lib" '>
     <branch repo="sourceforge" version="0.8.3-1"
 	    module="libdbi-drivers/libdbi-drivers-0.8.3-1.tar.gz">
-      <patch file="http://github.com/jralls/gtk-osx-build/raw/master/patches/dbi-drv.patch" strip="1"/>
+      <patch file="https://github.com/jralls/gnucash-on-osx/master/patches/dbi-drv.patch" strip="1"/>
     </branch>
     <dependencies>
       <dep package="libdbi"/>

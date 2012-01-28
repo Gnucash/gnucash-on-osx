@@ -1,0 +1,16 @@
+diff -c /usr/local/src/gnucash/libdbi-0.8.3/configure.in\~ /usr/local/src/gnucash/libdbi-0.8.3/configure.in
+*** a/configure.in	Wed Feb  6 08:03:27 2008
+--- b/configure.in	Tue Dec  8 17:09:30 2009
+***************
+*** 61,66 ****
+--- 61,68 ----
+                  DEBUG="-g -Wall -D__NO_MATH_INLINES -fsigned-char -mv8 -std=gnu99"
+                  CFLAGS="-O20 -ffast-math -D__NO_MATH_INLINES -fsigned-char -mv8 -std=gnu99"
+                  PROFILE="-pg -g -O20 -D__NO_MATH_INLINES -fsigned-char -mv8 -std=gnu99" ;;
++ 	*-*-darwin*)
++ 		;;
+          *)
+                  DEBUG="-g -Wall -D__NO_MATH_INLINES -fsigned-char -std=gnu99"
+                  CFLAGS="-O20 -D__NO_MATH_INLINES -fsigned-char -std=gnu99"
+
+Diff finished.  Tue Dec  8 17:09:36 2009
