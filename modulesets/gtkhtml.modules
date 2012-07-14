@@ -83,7 +83,7 @@ Optionally you may want to install GConf 1.0.7 (or later).
 	    repo="ftp.gnome.org" version="2.18.6"
 	    md5sum="10a9e58aabecf541bc6852f64b3a9294">
       <!-- Note: A fix was committed to SVN 9APR2009, so this patch should be removed when this module is upgraded to the next release. -->
-	<patch file="http://github.com/jralls/gnucash-on-osx/raw/master/patches/libgnomeprint.patch" skip="0"/> 
+	<patch file="http://raw.github.com/jralls/gnucash-on-osx/raw/master/patches/libgnomeprint.patch" skip="0"/> 
     </branch>
     <dependencies>
       <dep package="bison"/>
@@ -162,7 +162,7 @@ Optionally you may want to install GConf 1.0.7 (or later).
   <autotools id="libgnomeui" >
     <branch module="libgnomeui/2.24/libgnomeui-2.24.2.tar.bz2" version="2.24.2"
 	    repo="ftp.gnome.org" hash="sha256:ae7459b3ddee78258bb2d619fd199b0b24647f1df45fc397fee83d659c354910">
-	<patch file="http://github.com/jralls/gnucash-on-osx/raw/master/patches/libgnomeui.patch" skip="0"/> 
+	<patch file="https://raw.github.com/jralls/gnucash-on-osx/master/patches/libgnomeui.patch" skip="0"/> 
     </branch>
     <dependencies>
       <dep package="libbonoboui"/>
