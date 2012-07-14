@@ -169,7 +169,7 @@
 	     autogenargs='--with-sqlite3 --disable-docs --with-sqlite3-incdir="/usr/include" --with-sqlite3-libdir="/usr/lib" '>
     <branch repo="sourceforge" version="0.8.3-1"
 	    module="libdbi-drivers/libdbi-drivers-0.8.3-1.tar.gz">
-      <patch file="https://github.com/jralls/gnucash-on-osx/master/patches/dbi-drv.patch" strip="1"/>
+      <patch file="https://raw.github.com/jralls/gnucash-on-osx/master/patches/dbi-drv.patch" strip="1"/>
     </branch>
     <dependencies>
       <dep package="libdbi"/>
@@ -190,7 +190,7 @@
   <autotools id="gnucash"
 	     autogenargs="--enable-ofx --enable-aqbanking --enable-binreloc --enable-dbi --with-html-engine='webkit'">
     <!--branch module="gnucash" revision="20812" repo="svn.gnucash.org"-->
-    <branch module="gnucash/stable/gnucash-2.4.10.tar.bz2" version="2.4.10"
+    <branch module="gnucash/stable/gnucash-2.4.11.tar.bz2" version="2.4.11"
 	    repo="sourceforge">
     </branch>
     <dependencies>
