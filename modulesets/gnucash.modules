@@ -215,7 +215,7 @@
       <dep package="meta-gtk-osx-core"/>
       <dep package="libofx"/>
       <dep package="aqbanking"/>
-      <dep package="libgnomeui"/>
+      <dep package="libgnomecanvas"/>
       <dep package="meta-gtk-osx-webkit"/>
       <dep package="Slib"/>
       <dep package="goffice"/>
@@ -235,7 +235,7 @@
       <dep package="meta-gtk-osx-core"/>
       <dep package="libofx"/>
       <dep package="aqbanking"/>
-      <dep package="libgnomeui"/>
+      <dep package="libgnomecanvas"/>
       <dep package="meta-gtk-osx-webkit"/>
       <dep package="Slib"/>
       <dep package="goffice"/>
