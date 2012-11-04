@@ -38,7 +38,7 @@
 <!--      <dep package="audiofile"/> -->
       <dep package="dbus"/>
       <dep package="dbus-glib"/>
-      <dep package="gnome-keyring"/>
+      <dep package="libgnome-keyring"/>
       <dep package="libtasn1"/>
     </dependencies>
   </metamodule>
@@ -109,34 +109,11 @@ Optionally you may want to install GConf 1.0.7 (or later).
   </autotools>
 
 
-  <!-- Audiofile hasn't been actively developed since 2004 and doesn't
-       really seem necessary. -->
-<!--
-  <autotools id='audiofile' autogen-sh="configure">
-    <branch module='audiofile/audiofile-0.2.6.tar.gz'
-            repo='michael.68k.org' version='0.2.6'
-            size="374688" md5sum="9c1049876cd51c0f1b12c2886cce4d42"/>
-  </autotools>
-
-  <autotools id="esound">
-    <branch/>
-    <dependencies>
-      <dep package="audiofile"/>
-    </dependencies>
-  </autotools>
--->
   <autotools id="popt" autogen-sh='configure'>
     <branch module="popt/popt-1.14.tar.gz" version="1.14" repo="rpm5.org"/>
   </autotools>
 
-  <!--gnome-vfs in  gnome-suites-2.24.modules includes the following 
-      <dep package="desktop-file-utils"/>
-      <dep package="avahi"/>
-      <dep package="hal"/>
-      <dep package="gamin"/>
-      but building them on OS-X proved problematic and gnome-vfs builds well 
-      without them -->
-  <autotools id="gnome-vfs">
+  <autotools id="gnome-vfs"  autogen-sh="configure">
     <branch module="gnome-vfs/2.24/gnome-vfs-2.24.2.tar.bz2" version="2.24.2"
 	    hash="sha256:50ecf5f37d377492e8943a3c359ffe64176d4e7f045e9980790eca999a1c6856"/>
     <dependencies>
@@ -147,33 +124,22 @@ Optionally you may want to install GConf 1.0.7 (or later).
     </dependencies>
   </autotools>
 
-<!-- libgnomeui requires the old gnome-keyring library, deleted after
-     the release of gnome-keyring 2.28-->
-  <autotools id="gnome-keyring-28">
-    <branch module="gnome-keyring/2.28/gnome-keyring-2.28.2.tar.bz2"
-	    version="2.28.2" hash="sha256:d2d686fb2528ee045bbcd9f18d0d452e0eb88c2265a1947f639152b61a5987f6"/>
-    <dependencies>
-      <dep package="gtk+"/>
-      <dep package="libgcrypt"/>
-      <dep package="libtasn1"/>
-    </dependencies>
-  </autotools>
 
-  <autotools id="libgnomeui" >
+  <autotools id="libgnomeui" autogen-sh="configure">
     <branch module="libgnomeui/2.24/libgnomeui-2.24.2.tar.bz2" version="2.24.2"
 	    repo="ftp.gnome.org" hash="sha256:ae7459b3ddee78258bb2d619fd199b0b24647f1df45fc397fee83d659c354910">
-	<patch file="https://raw.github.com/jralls/gnucash-on-osx/master/patches/libgnomeui.patch" skip="0"/> 
+	<patch file="https://raw.github.com/jralls/gnucash-on-osx/master/patches/libgnomeui.patch" skip="0"/>
     </branch>
     <dependencies>
       <dep package="libbonoboui"/>
       <dep package="libglade"/>
       <dep package="gnome-icon-theme"/>
-      <dep package="gnome-keyring-28"/>
+      <dep package="libgnome-keyring"/>
     </dependencies>
   </autotools>
 
 
-   <autotools id="libbonobo">
+   <autotools id="libbonobo" autogen-sh="configure">
 <!-- DEPENDS says "ORBit" -->
     <branch module="libbonobo/2.24/libbonobo-2.24.2.tar.bz2" version="2.24.2"
 	    hash="sha256:95c0230a31a657e1873fc601318bbaa16722986699219317053f1cd1aa2a28bf"/>
@@ -186,8 +152,8 @@ Optionally you may want to install GConf 1.0.7 (or later).
     </dependencies>
   </autotools>
 
-  <autotools id="libbonoboui" autogenargs="--without-x">
-    <branch module="libbonoboui/2.24/libbonoboui-2.24.2.tar.bz2" 
+  <autotools id="libbonoboui" autogenargs="--without-x" autogen-sh="configure">
+    <branch module="libbonoboui/2.24/libbonoboui-2.24.2.tar.bz2"
 	    version="2.24.2" hash="sha256:aebcf9dc56a76f4ab1ae2134920d962e12c6f7397028052658dad5b1bebdbe00"/>
     <dependencies>
       <dep package="libgnome"/>
@@ -197,7 +163,7 @@ Optionally you may want to install GConf 1.0.7 (or later).
     </dependencies>
   </autotools>
 
- <autotools id="libgnome" autogenargs="--disable-esd" >
+ <autotools id="libgnome" autogenargs="--disable-esd"  autogen-sh="configure">
     <branch module="libgnome/2.26/libgnome-2.26.0.tar.bz2" version="2.26.0"
 	    md5sum="a5634fe9ddc54bbb726cbaaa35abc0b9"/>
     <dependencies>
@@ -208,7 +174,7 @@ Optionally you may want to install GConf 1.0.7 (or later).
     </dependencies>
   </autotools>
 
-  <autotools id="libgnomecanvas">
+  <autotools id="libgnomecanvas" autogen-sh="configure">
     <branch module="libgnomecanvas/2.26/libgnomecanvas-2.26.0.tar.bz2" 
 	    version="2.26.0" md5sum="9bbc635e5ae70e63af071af74ba7e72f"/>
     <dependencies>

@@ -26,15 +26,13 @@
 	      href="http://svn.gnucash.org/repo/"/>
   <repository type="tarball" name="github_gnucash"
 	      href="https://github.com/downloads/jralls/gnucash-on-osx/"/>
-  <repository type="tarball" name="cmake"
-	      href="http://www.cmake.org/files/"/>
   <repository type="svn" name="aquamaniac"
 	      href="http://devel.aqbanking.de/svn/"/>
   <repository type="git" name="github"
 	      href="git://github.com/"/>
 
-  <include href="http://git.gnome.org/browse/gtk-osx/plain/modulesets-stable/gtk-osx.modules"/>
-<!--  <include href="/Users/john/Development/GTK-OSX/gtk-osx-build/modulesets-stable/gtk-osx.modules"/> -->
+  <!--include href="http://git.gnome.org/browse/gtk-osx/plain/modulesets-stable/gtk-osx.modules"/-->
+ <include href="/Users/john/Development/GTK-OSX/gtk-osx-build/modulesets-stable/gtk-osx.modules"/>
   <include href="gtkhtml.modules"/>
 
  <autotools id="libchipcard" autogen-sh="configure" >
@@ -48,7 +46,7 @@
 
   <autotools id="gwenhywfar" autogen-sh="configure"
 	     autogenargs="--disable-qt4 --with-guis=gtk2">
-    <branch module="gwenhywfar-4.1.0.tar.gz" version="4.1.0"
+    <branch module="gwenhywfar-4.3.3.tar.gz" version="4.3.3"
 	    repo="github_gnucash" />
     <dependencies>
       <dep package="libgcrypt"/>
@@ -66,12 +64,12 @@
   </autotools>
 
   <autotools id="ktoblzcheck" autogen-sh="configure">
-    <branch module="ktoblzcheck/ktoblzcheck-1.24.tar.gz" version="1.24"
+    <branch module="ktoblzcheck/ktoblzcheck-1.40.tar.gz" version="1.40"
 	    repo="sourceforge"/>
   </autotools>
 
   <autotools id="aqbanking" autogen-sh="configure">
-    <branch module="aqbanking-5.0.10.tar.gz" version="5.0.10"
+    <branch module="aqbanking-5.0.25.tar.gz" version="5.0.25"
 	    repo="github_gnucash"/>
     <dependencies>
       <dep package="gwenhywfar"/>
@@ -106,20 +104,21 @@
   </autotools>
 
   <autotools id="libofx" autogen-sh='configure'>
-    <branch repo="sourceforge" module="libofx/libofx-0.9.4.tar.gz"
-	    version='0.9.4'/>
+    <branch repo="sourceforge" module="libofx/libofx-0.9.5.tar.gz"
+	    version="0.9.5"/>
     <dependencies>
       <dep package="OpenSP"/>
     </dependencies>
   </autotools>
 
-  <autotools id="pcre">
-    <branch repo="sourceforge" module="pcre/pcre-8.12.tar.bz2"
-	    version="8.12"/>
+  <autotools id="pcre" autogenargs="--enable-unicode-properties"
+	     autogen-sh="configure">
+    <branch repo="sourceforge" module="pcre/pcre-8.31.tar.bz2"
+	    version="8.31"/>
   </autotools>
 
-  <autotools id="swig">
-    <branch repo="sourceforge" module="swig/swig-2.0.4.tar.gz" version="2.0.4">
+  <autotools id="swig" autogen-sh="configure">
+    <branch repo="sourceforge" module="swig/swig-2.0.8.tar.gz" version="2.0.8">
       <patch file="https://raw.github.com/jralls/gnucash-on-osx/master/patches/0001-Updated-swig-guile-deprecated-patch.patch"
 	     strip="1"/>
     </branch>
@@ -129,22 +128,16 @@
   </autotools>
 
  <autotools id="Slib" autogen-sh="install.sh"  makeargs="-f Makefile.gnucash"
-	     makeinstallargs="-f Makefile.gnucash">
+	     skip-install="yes">
     <!-- <branch repo="slib.savannah.gnu.org"
 	    module="slib"/> -->
-    <branch repo="csail" module="scm/slib-3b3.zip" version="3b1"
+    <branch repo="csail" module="scm/slib-3b3.zip" version="3b3"
 	    checkoutdir="slib">
       <patch file="https://raw.github.com/jralls/gnucash-on-osx/master/patches/slib-install.patch"/>
     </branch>
     <dependencies>
       <dep package="guile"/>
     </dependencies>
-  </autotools>
-
-  <autotools id="cmake"
-	     autogen-template="%(srcdir)s/%(autogen-sh)s --prefix=%(prefix)s --libdir=%(libdir)s %(autogenargs)s">
-    <branch module="v2.8/cmake-2.8.1.tar.gz"
-	    repo="cmake" version="2.8.1"/>
   </autotools>
 
   <cmake id="mysql">
@@ -176,18 +169,21 @@
     </dependencies>
   </autotools>
 
-  <autotools id="goffice" autogenargs="--without-gconf">
-   <branch module="goffice/0.8/goffice-0.8.12.tar.bz2" version="0.8.12"
-	   hash="sha256:c165f8b7aaab709295c8225b30f49fe75655149b982fd045d8c23bb7772eb22a"/>
+<!-- Goffice-0.9 is for Gtk3 -->
+  <autotools id="goffice" autogenargs="--without-gconf" autogen-sh="configure">
+   <branch module="goffice/0.8/goffice-0.8.17.tar.xz" version="0.8.17"
+	   hash="sha256:165070beb67b84580afe80a8a100b674a81d553ab791acd72ac0c655f4fadb15"/>
     <dependencies>
       <dep package="gtk+"/>
       <dep package="libgsf"/>
       <dep package="gconf"/>
+      <dep package="pcre"/>
     </dependencies>
   </autotools>
 
 
   <autotools id="gnucash"
+	     autogen-sh="configure"
 	     autogenargs="--enable-ofx --enable-aqbanking --enable-binreloc --enable-dbi --with-html-engine='webkit'">
     <!--branch module="gnucash" revision="20812" repo="svn.gnucash.org"-->
     <branch module="gnucash/stable/gnucash-2.4.11.tar.bz2" version="2.4.11"
@@ -281,7 +277,7 @@
 	    />
    </autotools>
 
-  <autotools id="scrollkeeper">
+  <autotools id="scrollkeeper" autogen-sh="configure">
     <branch repo="sourceforge" module="scrollkeeper/scrollkeeper-0.3.14.tar.gz"
 	    version="0.3.14"/>
     <dependencies>
