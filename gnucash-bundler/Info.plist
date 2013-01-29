@@ -63,5 +63,7 @@
 	<string>10.5.0</string>
 	<key>NSHumanReadableCopyright</key>
 	<string>Copyright 2012 Gnucash Contributors</string>
+	<key>NSHighResolutionCapable</key>
+	<true/>
 </dict>
 </plist>
