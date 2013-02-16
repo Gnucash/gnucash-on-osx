@@ -204,7 +204,7 @@
   </autotools>
 
  <autotools id="gnucash-svn"
-	    autogen-template="%(srcdir)s/%(autogen-sh)s &amp;&amp; %(srcdir)s/configure --prefix %(prefix)s --libdir %(libdir)s %(autogenargs)s"
+	    autogen-template="GNOME2_PATH=%(prefix)s %(srcdir)s/%(autogen-sh)s &amp;&amp; %(srcdir)s/configure --prefix %(prefix)s --libdir %(libdir)s %(autogenargs)s"
 	    autogenargs='--enable-ofx --enable-aqbanking --enable-binreloc --enable-dbi --with-html-engine="webkit"'>
    <branch repo="svn.gnucash.org" module="gnucash"/>
     <dependencies>
