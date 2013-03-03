@@ -176,7 +176,6 @@
     <dependencies>
       <dep package="gtk+"/>
       <dep package="libgsf"/>
-      <dep package="gconf"/>
       <dep package="pcre"/>
     </dependencies>
   </autotools>
@@ -198,7 +197,8 @@
       <dep package="Slib"/>
       <dep package="goffice"/>
       <dep package="libdbi-drivers"/>
-     <dep package="iso-codes"/>
+      <dep package="iso-codes"/>
+      <dep package="gconf2"/>
     </dependencies>
 
   </autotools>
@@ -218,6 +218,7 @@
       <dep package="libdbi-drivers"/>
       <dep package="iso-codes"/>
       <dep package="swig"/>
+      <dep package="gconf2"/>
     </dependencies>
 
   </autotools>
