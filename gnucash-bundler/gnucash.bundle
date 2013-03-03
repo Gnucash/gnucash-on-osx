@@ -223,31 +223,31 @@
   </data>
 
   <data dest="${bundle}/Contents/Resources/en.lproj/GnuCash Help/">
-    ${prefix}/share/gnome/help/gnucash/C/gnucash-help
+    ${prefix}/share/doc/gnucash-docs/C/gnucash-help/
   </data>
 
   <data dest="${bundle}/Contents/Resources/en.lproj/GnuCash Guide/">
-    ${prefix}/share/gnome/help/gnucash/C/gnucash-guide/
+    ${prefix}/share/doc/gnucash-docs/C/gnucash-guide/
   </data>
 
    <data dest="${bundle}/Contents/Resources/de.lproj/GnuCash Help/">
-    ${prefix}/share/gnome/help/gnucash/de_DE/gnucash-help
+    ${prefix}/share/doc/gnucash-docs/de_DE/gnucash-help/
   </data>
 
   <data dest="${bundle}/Contents/Resources/de.lproj/GnuCash Guide/">
-    ${prefix}/share/gnome/help/gnucash/de_DE/gnucash-guide/
+    ${prefix}/share/doc/gnucash-docs/de_DE/gnucash-guide/
   </data>
 
   <data dest="${bundle}/Contents/Resources/it.lproj/GnuCash Help/">
-    ${prefix}/share/gnome/help/gnucash/it_IT/gnucash-help
+    ${prefix}/share/doc/gnucash-docs/it_IT/gnucash-help/
   </data>
 
   <data dest="${bundle}/Contents/Resources/it.lproj/GnuCash Guide/">
-    ${prefix}/share/gnome/help/gnucash/it_IT/gnucash-guide/
+    ${prefix}/share/doc/gnucash-docs/it_IT/gnucash-guide/
   </data>
 
   <data dest="${bundle}/Contents/Resources/ja.lproj/GnuCash Guide/">
-    ${prefix}/share/gnome/help/gnucash/ja_JP/gnucash-guide/
+    ${prefix}/share/doc/gnucash-docs/ja_JP/gnucash-guide/
   </data>
 
   <translations name="gnucash">
