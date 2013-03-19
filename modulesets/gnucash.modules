@@ -128,7 +128,7 @@
   </autotools>
 
  <autotools id="Slib" autogen-sh="install.sh"  makeargs="-f Makefile.gnucash"
-	     skip-install="yes">
+	     skip-install="yes" skip-configure="never">
     <!-- <branch repo="slib.savannah.gnu.org"
 	    module="slib"/> -->
     <branch repo="csail" module="scm/slib-3b3.zip" version="3b3"
