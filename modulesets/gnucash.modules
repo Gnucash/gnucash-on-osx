@@ -35,7 +35,7 @@
   <!--include href="/Users/john/GTK-OSX/gtk-osx-build/modulesets-stable/gtk-osx.modules"/-->
   <include href="gtkhtml.modules"/>
 
- <autotools id="libchipcard" autogen-sh="configure" >
+  <autotools id="libchipcard" autogen-sh="configure" >
     <branch module="libchipcard-5.0.2.tar.gz" version="5.0.2"
 	    repo="github_gnucash" />
     <dependencies>
@@ -64,11 +64,7 @@
   </autotools>
 
   <autotools id="ktoblzcheck" autogen-sh="configure">
-<<<<<<< HEAD
-    <branch module="ktoblzcheck/ktoblzcheck-1.40.tar.gz" version="1.40"
-=======
     <branch module="ktoblzcheck/ktoblzcheck-1.41.tar.gz" version="1.41"
->>>>>>> Update for Gnucash-2.4.12
 	    repo="sourceforge"/>
   </autotools>
 
@@ -115,16 +111,10 @@
     </dependencies>
   </autotools>
 
-<<<<<<< HEAD
   <autotools id="pcre" autogenargs="--enable-unicode-properties"
 	     autogen-sh="configure">
-    <branch repo="sourceforge" module="pcre/pcre-8.31.tar.bz2"
-	    version="8.31"/>
-=======
-  <autotools id="pcre">
     <branch repo="sourceforge" module="pcre/pcre-8.32.tar.bz2"
 	    version="8.32"/>
->>>>>>> Update for Gnucash-2.4.12
   </autotools>
 
   <autotools id="swig" autogen-sh="configure">

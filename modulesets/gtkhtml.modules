@@ -48,7 +48,7 @@
 	    repo="xmlsoft"/>
   </distutils>
 
-  <autotools id="gtkhtml" autogenargs='--disable-deprecated-warning-flags">
+  <autotools id="gtkhtml" autogenargs="--disable-deprecated-warning-flags">
  <!--
 In order to compile GtkHTML, you need libgnome[ui] 1.112.1 (or later),
 Bonobo 1.112.1 (or later), gnome-print 2.2.0 (or later) and GAL 2.1.0 (or
