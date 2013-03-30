@@ -48,7 +48,7 @@
 	    repo="xmlsoft"/>
   </distutils>
 
-  <autotools id="gtkhtml" >
+  <autotools id="gtkhtml" autogenargs='--disable-deprecated-warning-flags">
  <!--
 In order to compile GtkHTML, you need libgnome[ui] 1.112.1 (or later),
 Bonobo 1.112.1 (or later), gnome-print 2.2.0 (or later) and GAL 2.1.0 (or
@@ -56,8 +56,9 @@ later).
 
 Optionally you may want to install GConf 1.0.7 (or later).
 -->
-   <branch module="gtkhtml/3.28/gtkhtml-3.28.0.tar.bz2" version="3.28.0"
-	   hash="sha2556:6290424e51770fc09701ebaf89b7089214bbb9c81223430800160beee6f42288"/>
+<!-- The last version which works with Gtk2 -->
+   <branch module="gtkhtml/3.32/gtkhtml-3.32.2.tar.bz2" version="3.32.2"
+	   hash="sha2556:8746053cf709e1de37c7ac775ab1364ddda4b75167660ed7f98a237b3797e39f"/>
     <dependencies>
       <dep package="gtk+"/>
       <dep package="iso-codes"/>
