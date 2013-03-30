@@ -31,8 +31,8 @@
   <repository type="git" name="github"
 	      href="git://github.com/"/>
 
-  <!--include href="http://git.gnome.org/browse/gtk-osx/plain/modulesets-stable/gtk-osx.modules"/-->
- <include href="/Users/john/Development/GTK-OSX/gtk-osx-build/modulesets-stable/gtk-osx.modules"/>
+  <include href="http://git.gnome.org/browse/gtk-osx/plain/modulesets-stable/gtk-osx.modules"/>
+  <!--include href="/Users/john/GTK-OSX/gtk-osx-build/modulesets-stable/gtk-osx.modules"/-->
   <include href="gtkhtml.modules"/>
 
  <autotools id="libchipcard" autogen-sh="configure" >
@@ -64,7 +64,11 @@
   </autotools>
 
   <autotools id="ktoblzcheck" autogen-sh="configure">
+<<<<<<< HEAD
     <branch module="ktoblzcheck/ktoblzcheck-1.40.tar.gz" version="1.40"
+=======
+    <branch module="ktoblzcheck/ktoblzcheck-1.41.tar.gz" version="1.41"
+>>>>>>> Update for Gnucash-2.4.12
 	    repo="sourceforge"/>
   </autotools>
 
@@ -111,10 +115,16 @@
     </dependencies>
   </autotools>
 
+<<<<<<< HEAD
   <autotools id="pcre" autogenargs="--enable-unicode-properties"
 	     autogen-sh="configure">
     <branch repo="sourceforge" module="pcre/pcre-8.31.tar.bz2"
 	    version="8.31"/>
+=======
+  <autotools id="pcre">
+    <branch repo="sourceforge" module="pcre/pcre-8.32.tar.bz2"
+	    version="8.32"/>
+>>>>>>> Update for Gnucash-2.4.12
   </autotools>
 
   <autotools id="swig" autogen-sh="configure">
@@ -185,7 +195,7 @@
 	     autogen-sh="configure"
 	     autogenargs="--enable-ofx --enable-aqbanking --enable-binreloc --enable-dbi --with-html-engine='webkit'">
     <!--branch module="gnucash" revision="20812" repo="svn.gnucash.org"-->
-    <branch module="gnucash/stable/gnucash-2.4.11.tar.bz2" version="2.4.11"
+    <branch module="gnucash/stable/gnucash-2.4.12.tar.bz2" version="2.4.12"
 	    repo="sourceforge">
     </branch>
     <dependencies>
@@ -246,7 +256,7 @@
  <autotools id="gnucash-unstable"
 	    autogen-template="%(srcdir)s/%(autogen-sh)s &amp;&amp; %(srcdir)s/configure --prefix %(prefix)s --libdir %(libdir)s %(autogenargs)s"
 	    autogenargs='--enable-ofx --enable-aqbanking --enable-binreloc --enable-dbi --with-html-engine="webkit"'>
-   <branch module="gnucash" repo="svn.gnucash.org"/>
+   <branch module="gnucash/branches/2.4" repo="svn.gnucash.org"/>
 
    <dependencies>
       <dep package="meta-gtk-osx-core"/>
