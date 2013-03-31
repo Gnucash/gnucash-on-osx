@@ -31,7 +31,7 @@
          not needed. If the source path is left out, the default
          script will be used.
     -->
-    <launcher-script>${project}/gnucash-unstable.launcher</launcher-script>
+    <launcher-script>${project}/gnucash.launcher</launcher-script>
 
     <!-- Not implemented: Optional runtime, could be python or mono
          for example.
@@ -50,7 +50,7 @@
   <!-- Copy in GTK+ and Pango modules. Note the use of the
        "${pkg:module:variable}" macro, which evaluates to a pkg-config
        variable in the specified module. Note that any libraries that
-       binaries link to are also copied in automatically. 
+       binaries link to are also copied in automatically.
   -->
   <binary>
     ${prefix}/lib/gdk-pixbuf-2.0/${pkg:gdk-pixbuf-2.0:gdk_pixbuf_binary_version}/loaders/*.so
@@ -66,7 +66,7 @@
   </binary>
 
   <binary>
-    ${prefix}/lib/pango/${pkg:pango:pango_module_version}/modules/pango-basic-fc.so
+    ${prefix}/lib/pango/${pkg:pango:pango_module_version}/modules/
   </binary>
 
   <binary>
@@ -122,6 +122,7 @@
     ${prefix}/lib/dbd
   </binary>
 
+
 <!-- Data to copy in, usually Glade/UI files, images, sounds files
        etc. The destination inside the bundle can be specified if the
        files should end up at a different location, by using the
@@ -142,10 +143,6 @@
 
   <data dest="${bundle}/Contents/Resources/lib/">
     ${prefix}/lib/libofx.la
-  </data>
-
-  <data>
-    ${prefix}/etc/xdg
   </data>
 
   <data>
@@ -185,10 +182,6 @@
   </data>
 
   <data>
-    ${prefix}/share/mime
-  </data>
-
-  <data>
     ${prefix}/share/themes
   </data>
 
@@ -214,7 +207,7 @@
   </data>
 
   <data dest="${bundle}/Contents/Resources/License">
-    ${prefix}/share/gnucash/doc/LICENSE
+    ${prefix}/share/doc/gnucash/LICENSE
   </data>
 
   <data dest="${bundle}/Contents/Resources/Sources">
@@ -222,34 +215,38 @@
   </data>
 
   <data dest="${bundle}/Contents/Resources/en.lproj/GnuCash Help/">
-    ${prefix}/share/gnome/help/gnucash/C/gnucash-help
+    ${prefix}/share/doc/gnucash-docs/C/gnucash-help/
   </data>
 
   <data dest="${bundle}/Contents/Resources/en.lproj/GnuCash Guide/">
-    ${prefix}/share/gnome/help/gnucash/C/gnucash-guide/
+    ${prefix}/share/doc/gnucash-docs/C/gnucash-guide/
   </data>
 
    <data dest="${bundle}/Contents/Resources/de.lproj/GnuCash Help/">
-    ${prefix}/share/gnome/help/gnucash/de_DE/gnucash-help
+    ${prefix}/share/doc/gnucash-docs/de_DE/gnucash-help/
   </data>
 
   <data dest="${bundle}/Contents/Resources/de.lproj/GnuCash Guide/">
-    ${prefix}/share/gnome/help/gnucash/de_DE/gnucash-guide/
+    ${prefix}/share/doc/gnucash-docs/de_DE/gnucash-guide/
   </data>
 
   <data dest="${bundle}/Contents/Resources/it.lproj/GnuCash Help/">
-    ${prefix}/share/gnome/help/gnucash/it_IT/gnucash-help
+    ${prefix}/share/doc/gnucash-docs/it_IT/gnucash-help/
   </data>
 
   <data dest="${bundle}/Contents/Resources/it.lproj/GnuCash Guide/">
-    ${prefix}/share/gnome/help/gnucash/it_IT/gnucash-guide/
+    ${prefix}/share/doc/gnucash-docs/it_IT/gnucash-guide/
   </data>
 
   <data dest="${bundle}/Contents/Resources/ja.lproj/GnuCash Guide/">
-    ${prefix}/share/gnome/help/gnucash/ja_JP/gnucash-guide/
+    ${prefix}/share/doc/gnucash-docs/ja_JP/gnucash-guide/
   </data>
 
   <translations name="gnucash">
+    ${prefix}/share/locale
+  </translations>
+
+  <translations name="gtk20">
     ${prefix}/share/locale
   </translations>
 
@@ -261,7 +258,7 @@
     ${prefix}/share/locale
   </translations>
 
-<!-- This takes the Quartz theme instructions from the package and puts them in the bundle gtkrc file. You may want to cusomize the source path if you want a different theme, or if you want other stuff in your gtkrc. 
+<!-- This takes the Quartz theme instructions from the package and puts them in the bundle gtkrc file. You may want to cusomize the source path if you want a different theme, or if you want other stuff in your gtkrc.
 
   <data dest='${bundle}/Contents/Resources/etc/gtk-2.0/gtkrc'>
     ${prefix}/share/themes/Quartz/gtk-2.0/gtkrc

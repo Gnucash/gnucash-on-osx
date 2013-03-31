@@ -125,8 +125,8 @@
     </dependencies>
   </autotools>
 
- <autotools id="Slib" autogen-sh="install.sh"  makeargs="-f Makefile.gnucash"
-	     skip-install="yes" skip-configure="never">
+ <autotools id="Slib" autogen-sh="configure"  makeargs="-f Makefile.gnucash"
+	     skip-autogen="never">
     <!-- <branch repo="slib.savannah.gnu.org"
 	    module="slib"/> -->
     <branch repo="csail" module="scm/slib-3b3.zip" version="3b3"
@@ -182,7 +182,6 @@
   <autotools id="gnucash"
 	     autogen-sh="configure"
 	     autogenargs="--enable-ofx --enable-aqbanking --enable-binreloc --enable-dbi --with-html-engine='webkit'">
-    <!--branch module="gnucash" revision="20812" repo="svn.gnucash.org"-->
     <branch module="gnucash/stable/gnucash-2.4.12.tar.bz2" version="2.4.12"
 	    repo="sourceforge">
     </branch>
@@ -196,6 +195,26 @@
       <dep package="goffice"/>
       <dep package="libdbi-drivers"/>
       <dep package="iso-codes"/>
+      <dep package="gconf2"/>
+    </dependencies>
+
+  </autotools>
+
+ <autotools id="gnucash-unstable" autogen-sh='configure'
+	    autogenargs='--enable-ofx --enable-aqbanking --enable-binreloc --enable-dbi --with-html-engine="webkit"'>
+   <branch module="gnucash/unstable/gnucash-2.5.0.tar.bz2" version="2.5.0"
+	   repo="sourceforge"/>
+    <dependencies>
+      <dep package="meta-gtk-osx-core"/>
+      <dep package="libofx"/>
+      <dep package="aqbanking"/>
+      <dep package="libgnomecanvas"/>
+      <dep package="meta-gtk-osx-webkit"/>
+      <dep package="Slib"/>
+      <dep package="goffice"/>
+      <dep package="libdbi-drivers"/>
+      <dep package="iso-codes"/>
+      <dep package="swig"/>
       <dep package="gconf2"/>
     </dependencies>
 
@@ -237,25 +256,7 @@
       <dep package="libdbi-drivers"/>
       <dep package="iso-codes"/>
       <dep package="swig"/>
-    </dependencies>
-
-  </autotools>
-
- <autotools id="gnucash-unstable"
-	    autogen-template="%(srcdir)s/%(autogen-sh)s &amp;&amp; %(srcdir)s/configure --prefix %(prefix)s --libdir %(libdir)s %(autogenargs)s"
-	    autogenargs='--enable-ofx --enable-aqbanking --enable-binreloc --enable-dbi --with-html-engine="webkit"'>
-   <branch module="gnucash/branches/2.4" repo="svn.gnucash.org"/>
-
-   <dependencies>
-      <dep package="meta-gtk-osx-core"/>
-      <dep package="libofx"/>
-      <dep package="aqbanking"/>
-       <dep package="meta-gtk-osx-webkit"/>
-      <dep package="libgnomeui"/>
-      <dep package="Slib"/>
-      <dep package="goffice"/>
-      <dep package="libdbi-drivers"/>
-      <dep package="iso-codes"/>
+      <dep package="gconf2"/>
     </dependencies>
 
   </autotools>
