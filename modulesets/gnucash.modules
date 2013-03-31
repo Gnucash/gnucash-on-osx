@@ -24,8 +24,6 @@
 	      href="http://www.gnucash.org/pub/gnucash/sources/"/>
   <repository type="svn" name="svn.gnucash.org"
 	      href="http://svn.gnucash.org/repo/"/>
-  <repository type="tarball" name="github_gnucash"
-	      href="https://github.com/downloads/jralls/gnucash-on-osx/"/>
   <repository type="svn" name="aquamaniac"
 	      href="http://devel.aqbanking.de/svn/"/>
   <repository type="git" name="github"
@@ -36,8 +34,8 @@
   <include href="gtkhtml.modules"/>
 
   <autotools id="libchipcard" autogen-sh="configure" >
-    <branch module="libchipcard-5.0.2.tar.gz" version="5.0.2"
-	    repo="github_gnucash" />
+    <branch module="gnucash/Dependencies/libchipcard-5.0.2.tar.gz" version="5.0.2"
+	    repo="sourceforge" />
     <dependencies>
       <dep package="libgcrypt"/>
       <dep package="gnutls"/>
@@ -46,8 +44,8 @@
 
   <autotools id="gwenhywfar" autogen-sh="configure"
 	     autogenargs="--disable-qt4 --with-guis=gtk2">
-    <branch module="gwenhywfar-4.3.3.tar.gz" version="4.3.3"
-	    repo="github_gnucash" />
+    <branch module="gnucash/Dependencies/gwenhywfar-4.3.3.tar.gz" version="4.3.3"
+	    repo="sourceforge" />
     <dependencies>
       <dep package="libgcrypt"/>
       <dep package="gnutls"/>
@@ -69,8 +67,8 @@
   </autotools>
 
   <autotools id="aqbanking" autogen-sh="configure">
-    <branch module="aqbanking-5.0.25.tar.gz" version="5.0.25"
-	    repo="github_gnucash"/>
+    <branch module="gnucash/Dependencies/aqbanking-5.0.25.tar.gz" version="5.0.25"
+	    repo="sourceforge"/>
     <dependencies>
       <dep package="gwenhywfar"/>
       <dep package="gmp"/>
