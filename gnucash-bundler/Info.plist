@@ -62,8 +62,8 @@
 	<key>LSMinimumSystemVersion</key>
 	<string>10.5.0</string>
 	<key>NSHumanReadableCopyright</key>
-	<key>NSHighResolutionCapable</key>
-	<true/>
+	<!--key>NSHighResolutionCapable</key>
+	<true/-->
 	<string>Copyright 2013 Gnucash Contributors</string>
 </dict>
 </plist>
