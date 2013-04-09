@@ -91,10 +91,6 @@
   </binary>
 
   <binary>
-    ${prefix}/lib/libglade
-  </binary>
-
-  <binary>
     ${prefix}/libexec
   </binary>
 
@@ -141,10 +137,6 @@
     ${prefix}/lib/libgnc-*.la
   </data>
 
-  <data dest="${bundle}/Contents/Resources/lib/">
-    ${prefix}/lib/libofx.la
-  </data>
-
   <data>
     ${prefix}/etc/fonts
   </data>
@@ -179,6 +171,10 @@
 
   <data>
     ${prefix}/share/libofx
+  </data>
+
+  <data>
+    ${prefix}/share/mime
   </data>
 
   <data>

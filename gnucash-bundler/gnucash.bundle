@@ -141,14 +141,6 @@
     ${prefix}/lib/libgnc-*.la
   </data>
 
-  <data dest="${bundle}/Contents/Resources/lib/">
-    ${prefix}/lib/libofx.la
-  </data>
-
-  <data>
-    ${prefix}/etc/xdg
-  </data>
-
   <data>
     ${prefix}/etc/fonts
   </data>
