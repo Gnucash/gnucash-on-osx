@@ -31,7 +31,7 @@
          not needed. If the source path is left out, the default
          script will be used.
     -->
-    <launcher-script>${project}/gnucash.launcher</launcher-script>
+    <launcher-script>${project}/gnucash-unstable.launcher</launcher-script>
 
     <!-- Not implemented: Optional runtime, could be python or mono
          for example.
