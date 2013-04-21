@@ -115,7 +115,7 @@ Optionally you may want to install GConf 1.0.7 (or later).
   </autotools>
 
 <!-- Encountered a problem with linking libgnomevfs: For some reason it didn't include libresolv in the link list. Added it manually to Makefile and it worked, need a better solution. -->
-  <autotools id="gnome-vfs"  autogen-sh="configure">
+  <autotools id="gnome-vfs"  autogen-sh="configure" autogenargs='LDFLAGS="$LDFLAGS -lresolv"'>
     <branch module="gnome-vfs/2.24/gnome-vfs-2.24.2.tar.bz2" version="2.24.2"
 	    hash="sha256:50ecf5f37d377492e8943a3c359ffe64176d4e7f045e9980790eca999a1c6856"/>
     <dependencies>
