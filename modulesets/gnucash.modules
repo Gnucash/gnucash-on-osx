@@ -29,8 +29,8 @@
   <repository type="git" name="github"
 	      href="git://github.com/"/>
 
-  <include href="http://git.gnome.org/browse/gtk-osx/plain/modulesets-stable/gtk-osx.modules"/>
-  <!--include href="/Users/john/Development/GTK-OSX/gtk-osx-build/modulesets-stable/gtk-osx.modules"/-->
+  <!--include href="http://git.gnome.org/browse/gtk-osx/plain/modulesets-stable/gtk-osx.modules"/ -->
+  <include href="/Users/john/Development/GTK-OSX/gtk-osx-build/modulesets-stable/gtk-osx.modules"/>
   <include href="gtkhtml.modules"/>
 
   <autotools id="libchipcard" autogen-sh="configure" >
@@ -95,7 +95,7 @@
      back and find the link step, copy and paste it, adding the
      architecture flags, and fire away. Then you can exit the shell
      and rerun build and it will work OK. -->
-  <autotools id="OpenSP" autogen-template="%(srcdir)s/autoinit.sh &amp;&amp; %(srcdir)s/configure --prefix %(prefix)s --libdir %(libdir)s %(autogenargs)s"
+  <autotools id="OpenSP" autogen-sh='autoreconf'
 	     autogenargs="--disable-static --enable-shared --disable-doc-build --disable-nls">
     <branch repo="sourceforge" module="openjade/OpenSP-1.5.2.tar.gz"
 	    version='1.5.2'/>
@@ -149,15 +149,14 @@
     </dependencies>
   </cmake>
 
-  <autotools id="libdbi" autogen-template="%(srcdir)s/autogen.sh &amp;&amp; %(srcdir)s/configure --prefix %(prefix)s --libdir %(libdir)s %(autogenargs)s"
-	     autogenargs="--disable-docs">
+  <autotools id="libdbi" autogen-sh='autoreconf' autogenargs="--disable-docs">
     <branch repo="sourceforge" module="libdbi/libdbi-0.8.3.tar.gz"
 	    version="0.8.4">
       <patch file="https://raw.github.com/jralls/gnucash-on-osx/master/patches/dbi.patch" strip="1"/>
     </branch>
   </autotools>
 
-  <autotools id="libdbi-drivers" autogen-template="%(srcdir)s/autogen.sh &amp;&amp; %(srcdir)s/configure --prefix %(prefix)s --libdir %(libdir)s %(autogenargs)s"
+  <autotools id="libdbi-drivers" autogen-sh='autoreconf'
 	     autogenargs='--with-sqlite3 --disable-docs --with-sqlite3-incdir="/usr/include" --with-sqlite3-libdir="/usr/lib" '>
     <branch repo="sourceforge" version="0.8.3-1"
 	    module="libdbi-drivers/libdbi-drivers-0.8.3-1.tar.gz">
@@ -203,7 +202,7 @@
 
  <autotools id="gnucash-unstable" autogen-sh='configure'
 	    autogenargs='--enable-ofx --enable-aqbanking --enable-binreloc --enable-dbi --with-html-engine="webkit"'>
-   <branch module="gnucash/unstable/gnucash-2.5.0.tar.bz2" version="2.5.0"
+   <branch module="gnucash/unstable/gnucash-2.5.1.tar.bz2" version="2.5.1"
 	   repo="sourceforge"/>
     <dependencies>
       <dep package="meta-gtk-osx-core"/>
@@ -247,6 +246,7 @@
 	   checkoutdir="gnucash-git"/>
     <dependencies>
       <dep package="meta-gtk-osx-core"/>
+      <dep package="meta-gtk-osx-python"/>
       <dep package="libofx"/>
       <dep package="aqbanking"/>
       <dep package="libgnomecanvas"/>
@@ -265,6 +265,16 @@
 	    autogen-template="%(srcdir)s/%(autogen-sh)s &amp;&amp; %(srcdir)s/configure --prefix %(prefix)s --libdir %(libdir)s %(autogenargs)s"
 	    makeargs=" html" makeinstallargs="install-html" >
     <branch repo="svn.gnucash.org" module="gnucash-docs"/>
+    <dependencies>
+      <!-- dep package="scrollkeeper"/ -->
+    </dependencies>
+  </autotools>
+
+  <autotools id="gnucash-docs-git" autogenargs="--disable-scrollkeeper"
+	    autogen-template="%(srcdir)s/%(autogen-sh)s &amp;&amp; %(srcdir)s/configure --prefix %(prefix)s --libdir %(libdir)s %(autogenargs)s"
+	    makeargs=" html" makeinstallargs="install-html" >
+    <branch  repo="github" module="Gnucash/gnucash-docs.git" revision="trunk"
+	   checkoutdir="gnucash-docs-git"/>
     <dependencies>
       <!-- dep package="scrollkeeper"/ -->
     </dependencies>
