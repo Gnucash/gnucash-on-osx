@@ -202,7 +202,7 @@
 
  <autotools id="gnucash-unstable" autogen-sh='configure'
 	    autogenargs='--enable-ofx --enable-aqbanking --enable-binreloc --enable-dbi --with-html-engine="webkit"'>
-   <branch module="gnucash/unstable/gnucash-2.5.1.tar.bz2" version="2.5.1"
+   <branch module="gnucash/unstable/gnucash-2.5.2.tar.bz2" version="2.5.2"
 	   repo="sourceforge"/>
     <dependencies>
       <dep package="meta-gtk-osx-core"/>
@@ -213,6 +213,7 @@
       <dep package="goffice"/>
       <dep package="libdbi-drivers"/>
       <dep package="iso-codes"/>
+      <dep package="guile"/>
       <dep package="swig"/>
       <dep package="gconf2"/>
     </dependencies>
@@ -230,6 +231,7 @@
       <dep package="libgnomecanvas"/>
       <dep package="meta-gtk-osx-webkit"/>
       <dep package="Slib"/> <!-- Needed only for the 2.4 branch -->
+      <dep package="guile"/>
       <dep package="goffice"/>
       <dep package="libdbi-drivers"/>
       <dep package="iso-codes"/>
@@ -262,7 +264,7 @@
   </autotools>
 
   <autotools id="gnucash-docs-svn" autogenargs="--disable-scrollkeeper"
-	    autogen-template="%(srcdir)s/%(autogen-sh)s &amp;&amp; %(srcdir)s/configure --prefix %(prefix)s --libdir %(libdir)s %(autogenargs)s"
+	    autogen-sh='autoreconf'
 	    makeargs=" html" makeinstallargs="install-html" >
     <branch repo="svn.gnucash.org" module="gnucash-docs"/>
     <dependencies>
@@ -271,7 +273,7 @@
   </autotools>
 
   <autotools id="gnucash-docs-git" autogenargs="--disable-scrollkeeper"
-	    autogen-template="%(srcdir)s/%(autogen-sh)s &amp;&amp; %(srcdir)s/configure --prefix %(prefix)s --libdir %(libdir)s %(autogenargs)s"
+	    autogen-sh='autoreconf'
 	    makeargs=" html" makeinstallargs="install-html" >
     <branch  repo="github" module="Gnucash/gnucash-docs.git" revision="trunk"
 	   checkoutdir="gnucash-docs-git"/>
@@ -281,7 +283,7 @@
   </autotools>
 
   <autotools id="gnucash-docs" autogenargs="--disable-scrollkeeper"
-	     autogen-template="%(srcdir)s/%(autogen-sh)s &amp;&amp; %(srcdir)s/configure --prefix %(prefix)s --libdir %(libdir)s %(autogenargs)s"
+	     autogen='autreconf'
 	     makeargs=" html" makeinstallargs="install-html" >
     <branch repo="svn.gnucash.org" module="gnucash-docs"
 	    />
