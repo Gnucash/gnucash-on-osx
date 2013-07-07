@@ -116,10 +116,8 @@
   </autotools>
 
   <autotools id="swig" autogen-sh="configure">
-    <branch repo="sourceforge" module="swig/swig-2.0.8.tar.gz" version="2.0.8">
-      <patch file="https://raw.github.com/jralls/gnucash-on-osx/master/patches/0001-Updated-swig-guile-deprecated-patch.patch"
-	     strip="1"/>
-    </branch>
+    <branch repo="sourceforge" module="swig/swig-2.0.10.tar.gz"
+	    version="2.0.10"/>
     <dependencies>
       <dep package="pcre"/>
     </dependencies>
