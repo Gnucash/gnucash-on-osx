@@ -101,6 +101,7 @@
 	    version='1.5.2'>
       <patch file="https://raw.github.com/jralls/gnucash-on-osx/master/patches/OpenSP-AC_CONFIG_HEADERS.patch" strip='0'>
       </patch>
+    </branch>
   </autotools>
 
   <autotools id="libofx" autogen-sh='configure'>
