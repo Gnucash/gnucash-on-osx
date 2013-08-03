@@ -2,6 +2,17 @@ diff -c /usr/local/src/gnucash/libdbi-drivers-0.8.3-1/configure.in\~ /usr/local/
 *** a/configure.in	Mon Mar  3 09:41:41 2008
 --- b/configure.in	Tue Dec  8 17:05:50 2009
 ***************
+*** 3,7 ****
+--- 3,7 ----
+ AM_MAINTAINER_MODE
+
+ AM_INIT_AUTOMAKE(libdbi, 0.8.3)
+-AM_CONFIG_HEADER(config.h)
++AC_CONFIG_HEADERS(config.h)
+
+ dnl Library versioning
+ LIB_CURRENT=0
+***************
 *** 63,68 ****
 --- 63,70 ----
                   DEBUG="-g -Wall -D__NO_MATH_INLINES -fsigned-char -mv8"
