@@ -102,8 +102,8 @@
   </autotools>
 
   <autotools id="libofx" autogen-sh='configure'>
-    <branch repo="sourceforge" module="libofx/libofx-0.9.5.tar.gz"
-	    version="0.9.5"/>
+    <branch repo="sourceforge" module="libofx/libofx-0.9.8.tar.gz"
+	    version="0.9.8"/>
     <dependencies>
       <dep package="OpenSP"/>
     </dependencies>
@@ -124,9 +124,8 @@
   </autotools>
 
  <autotools id="Slib" autogen-sh="install.sh"  makeargs="-f Makefile.gnucash"
-	    makeinstallargs="-f Makefile.gnucash"
-	    skip-install="yes" skip-autogen="never"
-	    supports-non-srcdir-builds="no">
+	    makeinstallargs="-f Makefile.gnucash"  skip-install="yes"
+	    skip-autogen="never" supports-non-srcdir-builds="no">
     <!-- <branch repo="slib.savannah.gnu.org"
 	    module="slib"/> -->
     <branch repo="csail" module="scm/slib-3b4.zip" version="3b3"
@@ -201,7 +200,7 @@
 
  <autotools id="gnucash-unstable" autogen-sh='configure'
 	    autogenargs='--enable-ofx --enable-aqbanking --enable-binreloc --enable-dbi --with-html-engine="webkit"'>
-   <branch module="gnucash/unstable/gnucash-2.5.3.tar.bz2" version="2.5.3"
+   <branch module="gnucash/unstable/gnucash-2.5.4.tar.bz2" version="2.5.4"
 	   repo="sourceforge"/>
     <dependencies>
       <dep package="meta-gtk-osx-core"/>
