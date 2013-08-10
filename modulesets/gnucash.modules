@@ -211,6 +211,7 @@
       <dep package="aqbanking"/>
       <dep package="libgnomecanvas"/>
       <dep package="meta-gtk-osx-webkit"/>
+      <dep package="shared-mime-info"/>
       <dep package="goffice"/>
       <dep package="libdbi-drivers"/>
       <dep package="iso-codes"/>
