@@ -29,8 +29,8 @@
   <repository type="git" name="github"
 	      href="git://github.com/"/>
 
-  <include href="http://git.gnome.org/browse/gtk-osx/plain/modulesets-stable/gtk-osx.modules"/>
-  <!--include href="/Users/john/Development/GTK-OSX/gtk-osx-build/modulesets-stable/gtk-osx.modules"/-->
+  <!--include href="http://git.gnome.org/browse/gtk-osx/plain/modulesets-stable/gtk-osx.modules"/-->
+  <include href="/Users/john/Development/GTK-OSX/gtk-osx-build/modulesets-stable/gtk-osx.modules"/>
   <include href="gtkhtml.modules"/>
 
   <autotools id="libchipcard" autogen-sh="configure" >
@@ -256,6 +256,27 @@
       <dep package="libgnomecanvas"/>
       <dep package="meta-gtk-osx-webkit"/>
       <dep package="Slib"/> <!-- Needed only for the 2.4 branch -->
+      <dep package="goffice"/>
+      <dep package="libdbi-drivers"/>
+      <dep package="iso-codes"/>
+      <dep package="swig"/>
+      <dep package="gconf2"/>
+    </dependencies>
+
+  </autotools>
+
+  <autotools id="gnucash-2.4"
+	    autogen-template="%(srcdir)s/%(autogen-sh)s &amp;&amp; %(srcdir)s/configure --prefix %(prefix)s --libdir %(libdir)s %(autogenargs)s"
+	     autogenargs="--enable-ofx --enable-aqbanking --enable-binreloc --enable-dbi --with-html-engine='webkit'">
+   <branch repo="github" module="Gnucash/gnucash.git" revision="2.4"
+	   checkoutdir="gnucash-2.4"/>
+    <dependencies>
+      <dep package="meta-gtk-osx-core"/>
+      <dep package="libofx"/>
+      <dep package="aqbanking"/>
+      <dep package="libgnomeui"/>
+      <dep package="meta-gtk-osx-webkit"/>
+      <dep package="Slib"/>
       <dep package="goffice"/>
       <dep package="libdbi-drivers"/>
       <dep package="iso-codes"/>

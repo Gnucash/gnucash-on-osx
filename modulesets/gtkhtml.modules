@@ -117,7 +117,9 @@ Optionally you may want to install GConf 1.0.7 (or later).
 <!-- Encountered a problem with linking libgnomevfs: For some reason it didn't include libresolv in the link list. Added it manually to Makefile and it worked, need a better solution. -->
   <autotools id="gnome-vfs"  autogen-sh="configure" autogenargs='LDFLAGS="$LDFLAGS -lresolv"'>
     <branch module="gnome-vfs/2.24/gnome-vfs-2.24.2.tar.bz2" version="2.24.2"
-	    hash="sha256:50ecf5f37d377492e8943a3c359ffe64176d4e7f045e9980790eca999a1c6856"/>
+	    hash="sha256:50ecf5f37d377492e8943a3c359ffe64176d4e7f045e9980790eca999a1c6856">
+      <patch file="https://raw.github.com/jralls/gnucash-on-osx/master/gnome-vfs-glib-2_36.patch" skip='1'/>
+    </branch>
     <dependencies>
       <dep package="gconf2"/>
       <dep package="shared-mime-info"/>
@@ -144,7 +146,9 @@ Optionally you may want to install GConf 1.0.7 (or later).
    <autotools id="libbonobo" autogen-sh="configure">
 <!-- DEPENDS says "ORBit" -->
     <branch module="libbonobo/2.24/libbonobo-2.24.2.tar.bz2" version="2.24.2"
-	    hash="sha256:95c0230a31a657e1873fc601318bbaa16722986699219317053f1cd1aa2a28bf"/>
+	    hash="sha256:95c0230a31a657e1873fc601318bbaa16722986699219317053f1cd1aa2a28bf">
+      <patch file="https://raw.github.com/jralls/gnucash-on-osx/master/libbonobo-glib-2_36.patch" skip='1'/>
+    </branch>
     <dependencies>
       <dep package="popt"/>
       <dep package="ORBit2"/>
@@ -167,7 +171,9 @@ Optionally you may want to install GConf 1.0.7 (or later).
 
  <autotools id="libgnome" autogenargs="--disable-esd"  autogen-sh="configure">
     <branch module="libgnome/2.26/libgnome-2.26.0.tar.bz2" version="2.26.0"
-	    md5sum="a5634fe9ddc54bbb726cbaaa35abc0b9"/>
+	    md5sum="a5634fe9ddc54bbb726cbaaa35abc0b9">
+      <patch file="https://raw.github.com/jralls/gnucash-on-osx/master/libgnome-glib-2_36.patch" skip='1'/>
+    </branch>
     <dependencies>
       <dep package="libbonobo"/>
       <dep package="gnome-vfs"/>
