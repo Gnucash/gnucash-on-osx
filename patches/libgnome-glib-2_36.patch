@@ -1,0 +1,87 @@
+--- ./libgnome/gnome-i18n.c	2009-03-17 07:42:06.000000000 -0700
++++ ./libgnome/gnome-i18n.c	2013-08-26 14:58:56.000000000 -0700
+@@ -55,12 +55,12 @@
+ const GList *
+ gnome_i18n_get_language_list (const gchar *ignored)
+ {
+-  static GStaticRecMutex lang_list_lock = G_STATIC_REC_MUTEX_INIT;
++  static GRecMutex lang_list_lock;
+   static GList *list = NULL;
+   const char * const* langs;
+   int i;
+ 
+-  g_static_rec_mutex_lock (&lang_list_lock);
++  g_rec_mutex_lock (&lang_list_lock);
+ 
+   if (list == NULL) {
+     langs = g_get_language_names ();
+@@ -71,7 +71,7 @@
+     list = g_list_reverse (list);
+   }
+ 
+-  g_static_rec_mutex_unlock (&lang_list_lock);
++  g_rec_mutex_unlock (&lang_list_lock);
+ 
+   return list;
+ }
+--- ./libgnome/gnome-init.c	2009-03-17 07:42:06.000000000 -0700
++++ ./libgnome/gnome-init.c	2013-08-26 15:02:41.000000000 -0700
+@@ -115,9 +115,6 @@
+ static void
+ bonobo_activation_pre_args_parse (GnomeProgram *program, GnomeModuleInfo *mod_info)
+ {
+-        if (!g_thread_supported ())
+-		g_thread_init (NULL);
+-
+ 	if (!bonobo_activation_is_initialized ())
+ 		bonobo_activation_preinit (program, mod_info);
+ }
+--- ./libgnome/gnome-program.c	2009-03-17 07:42:06.000000000 -0700
++++ ./libgnome/gnome-program.c	2013-08-26 14:59:50.000000000 -0700
+@@ -149,16 +149,6 @@
+ 			 GObject, G_TYPE_OBJECT)
+ 
+ static void
+-global_program_unref (void)
+-{
+-    if (global_program) {
+-        g_object_unref (global_program);
+-        global_program = NULL;
+-        program_initialized = FALSE;
+-    }
+-}
+-
+-static void
+ gnome_program_set_property (GObject *object, guint param_id,
+ 			    const GValue *value, GParamSpec *pspec)
+ {
+@@ -1878,12 +1868,6 @@
+     GnomeProgram *program;
+     va_list args;
+ 
+-    /* g_thread_init() has to be the first GLib function called ever */
+-    if (!g_threads_got_initialized)
+-        g_thread_init (NULL);
+-
+-    g_type_init ();
+-
+     va_start(args, first_property_name);
+     program = gnome_program_initv (GNOME_TYPE_PROGRAM,
+ 				   app_id, app_version, module_info,
+@@ -1913,8 +1897,6 @@
+     g_print ("Starting gnome_program_init:\n\n");
+ #endif
+ 
+-    g_type_init ();
+-
+     klass = g_type_class_ref (type);
+ 
+     if (!program_initialized) {
+@@ -2064,7 +2046,6 @@
+ 
+ 	program_initialized = TRUE;
+ 
+-	g_atexit (global_program_unref);
+     }
+ 
+     gnome_program_preinit (program, app_id, app_version, argc, argv);
