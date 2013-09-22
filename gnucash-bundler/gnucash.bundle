@@ -247,6 +247,10 @@
     ${prefix}/share/doc/gnucash-docs/ja_JP/gnucash-guide/
   </data>
 
+  <data>
+    ${prefix}/share/doc/gnucash/
+  </data>
+
   <translations name="gnucash">
     ${prefix}/share/locale
   </translations>
