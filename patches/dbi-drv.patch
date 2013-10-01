@@ -1,9 +1,7 @@
 diff -c /usr/local/src/gnucash/libdbi-drivers-0.8.3-1/configure.in\~ /usr/local/src/gnucash/libdbi-drivers-0.8.3-1/configure.in
-*** a/configure.in	Mon Mar  3 09:41:41 2008
---- b/configure.in	Tue Dec  8 17:05:50 2009
-***************
-*** 3,7 ****
---- 3,7 ----
+--- a/configure.in	Mon Mar  3 09:41:41 2008
++++ b/configure.in	Tue Dec  8 17:05:50 2009
+@@ -3,5 +3,5 @@
  AM_MAINTAINER_MODE
 
  AM_INIT_AUTOMAKE(libdbi, 0.8.3)
@@ -12,16 +10,14 @@ diff -c /usr/local/src/gnucash/libdbi-drivers-0.8.3-1/configure.in\~ /usr/local/
 
  dnl Library versioning
  LIB_CURRENT=0
-***************
-*** 63,68 ****
---- 63,70 ----
-                  DEBUG="-g -Wall -D__NO_MATH_INLINES -fsigned-char -mv8"
-                  CFLAGS="-O20 -ffast-math -D__NO_MATH_INLINES -fsigned-char -mv8"
-                  PROFILE="-pg -g -O20 -D__NO_MATH_INLINES -fsigned-char -mv8" ;;
-+ 	*-*-darwin*)
-+ 		;;	
-          *)
-                  DEBUG="-g -Wall -D__NO_MATH_INLINES -fsigned-char"
-                  CFLAGS="-O20 -D__NO_MATH_INLINES -fsigned-char"
+@@ -63,6 +63,8 @@
+                 DEBUG="-g -Wall -D__NO_MATH_INLINES -fsigned-char -mv8"
+                 CFLAGS="-O20 -ffast-math -D__NO_MATH_INLINES -fsigned-char -mv8"
+                 PROFILE="-pg -g -O20 -D__NO_MATH_INLINES -fsigned-char -mv8" ;;
++	*-*-darwin*)
++		;;	
+         *)
+                 DEBUG="-g -Wall -D__NO_MATH_INLINES -fsigned-char"
+                 CFLAGS="-O20 -D__NO_MATH_INLINES -fsigned-char"
 
 Diff finished.  Tue Dec  8 17:06:44 2009
