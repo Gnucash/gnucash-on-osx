@@ -7,9 +7,9 @@ diff -c /usr/local/src/gnucash/libdbi-drivers-0.8.3-1/configure.in\~ /usr/local/
  AM_INIT_AUTOMAKE(libdbi-drivers, 0.8.3-1)
 -AM_CONFIG_HEADER(config.h)
 +AC_CONFIG_HEADERS(config.h)
+AC_LIBTOOL_WIN32_DLL
 
- dnl Library versioning
- LIB_CURRENT=0
+dnl library versioning currently unnecessary...
 @@ -63,6 +63,8 @@
                  DEBUG="-g -Wall -D__NO_MATH_INLINES -fsigned-char -mv8"
                  CFLAGS="-O20 -ffast-math -D__NO_MATH_INLINES -fsigned-char -mv8"
