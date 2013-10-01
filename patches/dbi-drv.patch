@@ -1,10 +1,10 @@
 diff -c /usr/local/src/gnucash/libdbi-drivers-0.8.3-1/configure.in\~ /usr/local/src/gnucash/libdbi-drivers-0.8.3-1/configure.in
 --- a/configure.in	Mon Mar  3 09:41:41 2008
 +++ b/configure.in	Tue Dec  8 17:05:50 2009
-@@ -3,5 +3,5 @@
+@@ -3,1 +3,1 @@
  AM_MAINTAINER_MODE
 
- AM_INIT_AUTOMAKE(libdbi, 0.8.3)
+ AM_INIT_AUTOMAKE(libdbi-drivers, 0.8.3-1)
 -AM_CONFIG_HEADER(config.h)
 +AC_CONFIG_HEADERS(config.h)
 
