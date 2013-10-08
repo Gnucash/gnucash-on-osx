@@ -63,59 +63,6 @@ export PATH
 GUILE_WARN_DEPRECATED="no"
 export GUILE_WARN_DEPRECATED
 
-if [ -w "$PREFIXDIR" ]; then
-    if [ -e "$PREFIX" ] || [ -L "$PREFIX" ]  && [ ! "$PREFIX" -ef "$bundle_res" ]; then
-	if [ ! -d "$PREFIX" ]; then
-	    rm "$PREFIX"; else
-	    mv "$PREFIX" "$PREFIX.Save";
-	fi
-	ln -s "$RESPFX" "$PREFIX"
-    elif [ ! -e "$PREFIX" ] ; then
-	echo "Linking $RESPFX to $PREFIX"
-	if [ ! -d "$PREFIXDIR" ]; then
-	    mkdir -p "$PREFIXDIR";
-	fi
-	ln -s "$RESPFX" "$PREFIX"
-    fi
-else
-    echo "Don't have write access to $PREFIXDIR"
-    if [ -e "$PREFIX" ] || [ -L "$PREFIX" ]  && [ ! "$PREFIX" -ef "$bundle_res" ]; then
-	echo "moving the $PREFIX directory to $PREFIX.save"
-	osascript  <<EOF
-display alert "Create Link" message "Gnucash requires authentication to create a link to the binary" as informational giving up after 3
-do shell script  "echo foo; if [ ! -d \"$PREFIX\" ]; then rm \"$PREFIX\"; else mv \"$PREFIX\" \"$PREFIX.Save\"; fi; ln -s \"$RESPFX\" \"$PREFIX\" " with administrator privileges
-
-EOF
-
-    elif [ ! -e "$PREFIX" ] ;
-    then
-	echo "Linking $RESPFX to $PREFIX"
-	osascript <<EOF
-display alert "Create Link" message "Gnucash requires authentication to create a link to the binary" as informational giving up after 3
-do shell script "if [ ! -d \"$PREFIXDIR\" ]; then mkdir -p \"$PREFIXDIR\"; fi; ln -s \"$RESPFX\" \"$PREFIX\"" with administrator privileges
-
-EOF
-
-
-    fi
-fi
-
-if test -z "$DBUS_SESSION_BUS_ADDRESS"; then
-    # If we get here without a way to connect to an instance of dbus-daemon,
-    # then we can kill any existing instances of dbus-daemon that originate
-    # in this copy of Gnucash.
-
-    DBUS_PIDS=`ps ux | grep dbus-daemon | grep "${PREFIX}" | awk '{print $2}'`
-
-    if /bin/test "$DBUS_PIDS"; then
-        for DBUS_PID in ${DBUS_PIDS}
-        do
-            /bin/kill "${DBUS_PID}"
-        done
-    fi
-
-    eval `"$PREFIX/bin/dbus-launch" --sh-syntax --exit-with-session --config-file="$bundle_res/etc/dbus-1/session.conf"`
-fi
 
 GNC_MODULE_PATH="${RESPFX}/lib/gnucash:${GNC_MODULE_PATH}"
 

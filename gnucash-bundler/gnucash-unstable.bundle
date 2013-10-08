@@ -74,10 +74,6 @@
     ${prefix}/lib/pango/${pkg:pango:pango_module_version}/modules/
   </binary>
 
-  <binary>
-    ${prefix}/lib/GConf/2/*.so
-  </binary>
-
   <!-- Seems to get missed by the dependency resolver -->
   <binary>
     ${prefix}/lib/libguile-srfi*
@@ -97,14 +93,6 @@
 
   <binary>
     ${prefix}/libexec
-  </binary>
-
-  <binary>
-    ${prefix}/bin/dbus-launch
-  </binary>
-
-  <binary>
-    ${prefix}/bin/dbus-daemon
   </binary>
 
   <binary>
@@ -159,14 +147,6 @@
   </data>
 
   <data>
-    ${prefix}/share/GConf
-  </data>
-
-  <data>
-    ${prefix}/share/dbus-1/
-  </data>
-
-  <data>
     ${prefix}/share/aqbanking
   </data>
 
@@ -188,18 +168,6 @@
 
   <data dest="${bundle}/Contents/Resources">
     ${project}/gnucash.icns
-  </data>
-
-  <data dest="${bundle}/Contents/Resources">
-    ${prefix}/share/strings
-  </data>
-
-  <data dest='${bundle}/Contents/Resources/var/lib/dbus/machine-id'>
-    ${prefix}/var/lib/dbus/machine-id
-  </data>
-
-  <data dest='${bundle}/Contents/Resources/etc/dbus-1/'>
-    ${prefix}/etc/dbus-1/
   </data>
 
   <data dest="${bundle}/Contents/Resources/License">

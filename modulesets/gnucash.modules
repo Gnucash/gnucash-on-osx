@@ -29,8 +29,8 @@
   <repository type="git" name="github"
 	      href="git://github.com/"/>
 
-  <include href="http://git.gnome.org/browse/gtk-osx/plain/modulesets-stable/gtk-osx.modules"/>
-  <!--include href="/Users/john/Development/GTK-OSX/gtk-osx-build/modulesets-stable/gtk-osx.modules"/-->
+  <!--include href="http://git.gnome.org/browse/gtk-osx/plain/modulesets-stable/gtk-osx.modules"/-->
+  <include href="/Users/john/Development/GTK-OSX/gtk-osx-build/modulesets-stable/gtk-osx.modules"/>
   <include href="gtkhtml.modules"/>
 
   <autotools id="libchipcard" autogen-sh="configure" >
@@ -203,7 +203,7 @@
 
  <autotools id="gnucash-unstable" autogen-sh='configure'
 	    autogenargs='--enable-ofx --enable-aqbanking --enable-binreloc --enable-dbi --with-html-engine="webkit"'>
-   <branch module="gnucash/unstable/gnucash-2.5.5.tar.bz2" version="2.5.5"
+   <branch module="gnucash/unstable/gnucash-2.5.6.tar.bz2" version="2.5.6"
 	   repo="sourceforge"/>
     <dependencies>
       <dep package="meta-gtk-osx-core"/>
@@ -217,7 +217,6 @@
       <dep package="iso-codes"/>
       <dep package="guile"/>
       <dep package="swig"/>
-      <dep package="gconf2"/>
     </dependencies>
 
   </autotools>
@@ -238,7 +237,6 @@
       <dep package="libdbi-drivers"/>
       <dep package="iso-codes"/>
       <dep package="swig"/>
-      <dep package="gconf2"/>
     </dependencies>
 
   </autotools>
@@ -260,7 +258,6 @@
       <dep package="libdbi-drivers"/>
       <dep package="iso-codes"/>
       <dep package="swig"/>
-      <dep package="gconf2"/>
     </dependencies>
 
   </autotools>
