@@ -135,7 +135,7 @@
   </data>
 
   <data>
-    ${prefix}/etc/gconf
+    ${prefix}/share/glib-2.0/schemas
   </data>
 
   <data>

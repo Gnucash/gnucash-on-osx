@@ -10,9 +10,6 @@ else
     EXEC=exec
 fi
 
-export PREFIX=/Library/Gnucash-2.5
-export PREFIXDIR="`dirname $PREFIX`"
-
 name=`basename "$0"`
 tmp="$0"
 tmp=`dirname "$tmp"`
@@ -28,7 +25,7 @@ bundle_etc="$bundle_res"/etc
 
 export DYLD_LIBRARY_PATH="$bundle_lib"
 export XDG_CONFIG_DIRS="$bundle_etc"/xdg
-export XDG_DATA_DIRS="$PREFIX/share"
+export XDG_DATA_DIRS="$bundle_data"
 export GTK_DATA_PREFIX="$bundle_res"
 export GTK_EXE_PREFIX="$bundle_res"
 export GTK_PATH="$bundle_res"
@@ -80,7 +77,7 @@ DYLD_LIBRARY_PATH="${DYLD_LIBRARY_PATH}:${EXTRA_LIBS}"
 export DYLD_FRAMEWORK_PATH="${bundle_fw}"
 export GNC_STANDARD_REPORTS_DIR="${bundle_data}/gnucash/guile-modules/gnucash/report/standard-reports"
 export GNC_DBD_DIR="${bundle_lib}/dbd"
-
+export GSETTINGS_SCHEMA_DIR="${bundle_data}
 export GNC_MODULE_PATH
 export GUILE_LOAD_PATH
 export LD_LIBRARY_PATH
