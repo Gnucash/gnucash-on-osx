@@ -77,7 +77,7 @@ DYLD_LIBRARY_PATH="${DYLD_LIBRARY_PATH}:${EXTRA_LIBS}"
 export DYLD_FRAMEWORK_PATH="${bundle_fw}"
 export GNC_STANDARD_REPORTS_DIR="${bundle_data}/gnucash/guile-modules/gnucash/report/standard-reports"
 export GNC_DBD_DIR="${bundle_lib}/dbd"
-export GSETTINGS_SCHEMA_DIR="${bundle_data}
+export GSETTINGS_SCHEMA_DIR="${bundle_data}"
 export GNC_MODULE_PATH
 export GUILE_LOAD_PATH
 export LD_LIBRARY_PATH
