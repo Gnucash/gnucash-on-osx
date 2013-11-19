@@ -66,7 +66,7 @@
 	    repo="sourceforge"/>
   </autotools>
 
-  <autotools id="aqbanking" autogen-sh="configure">
+  <autotools id="aqbanking" autogen-sh="configure" makeargs="-j1">
     <branch module="gnucash/Dependencies/aqbanking-5.0.25.tar.gz" version="5.0.25"
 	    repo="sourceforge"/>
     <dependencies>
