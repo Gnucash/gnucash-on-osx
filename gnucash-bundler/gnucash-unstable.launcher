@@ -85,7 +85,7 @@ export GUILE_LOAD_PATH
 export LD_LIBRARY_PATH
 export DYLD_LIBRARY_PATH
 export GNC_DOT_DIR="$HOME/Library/Application Support/Gnucash"
-export OFX_DTD_PATH="{bundle_data}/libofx/dtd"
+export OFX_DTD_PATH="${bundle_data}/libofx/dtd"
 
 if test -f "$GNC_DOT_DIR/gnucashrc"; then
     source "$GNC_DOT_DIR/gnucashrc"
