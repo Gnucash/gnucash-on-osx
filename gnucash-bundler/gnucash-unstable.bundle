@@ -79,15 +79,15 @@
     ${prefix}/lib/libguile-srfi*
   </binary>
 
-  <binary>
+  <binary loadable="True">
     ${prefix}/lib/gnucash
   </binary>
 
-  <binary>
+  <binary loadable="True">
     ${prefix}/lib/aqbanking
   </binary>
 
-  <binary>
+  <binary loadable="True">
     ${prefix}/lib/gwenhywfar
   </binary>
 
@@ -107,7 +107,7 @@
     ${prefix}/lib/goffice
   </binary>
 
-  <binary>
+  <binary loadable="True">
     ${prefix}/lib/dbd
   </binary>
 
