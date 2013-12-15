@@ -204,7 +204,7 @@
 
  <autotools id="gnucash-unstable" autogen-sh='configure'
 	    autogenargs='--enable-ofx --enable-aqbanking --enable-binreloc --enable-dbi --with-html-engine="webkit"'>
-   <branch module="gnucash/unstable/gnucash-2.5.9.tar.bz2" version="2.5.9"
+   <branch module="gnucash/unstable/gnucash-2.5.10.tar.bz2" version="2.5.10"
 	   repo="sourceforge"/>
     <dependencies>
       <dep package="meta-gtk-osx-core"/>
