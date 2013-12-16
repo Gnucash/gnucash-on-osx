@@ -26,6 +26,35 @@
 	<string>????</string>
 	<key>CFBundleVersion</key>
 	<string>2.5.10</string>
+	<key>CFBundleDocumentTypes</key>
+	<array>
+	  <dict>
+	    <key>CFBundleTypeName</key>
+	    <string>Gnucash Document</string>
+	    <key>CFBundleTypeExtensions</key>
+	    <array>
+	      <string>gnucash</string>
+	    </array>
+	    <key>CFBundleTypeIconFile</key>
+	    <string>gnucash.icns</string>
+	    <key>CFBundleTypeRole</key>
+	    <string>Editor</string>
+	  </dict>
+	  <dict>
+	    <key>CFBundleTypeName</key>
+	    <string>Gnucash Import/Export</string>
+	    <key>CFBundleTypeExtensions</key>
+	    <array>
+	      <string>qif</string>
+	      <string>ofx</string>
+	      <string>txf</string>
+	    </array>
+	    <key>CFBundleTypeIconFile</key>
+	    <string>gnucash.icns</string>
+	    <key>CFBundleTypeRole</key>
+	    <string>Viewer</string>
+	  </dict>
+	</array>
 	<key>CSResourcesFileMapped</key>
 	<true/>
 	<key>LSRequiresCarbon</key>
