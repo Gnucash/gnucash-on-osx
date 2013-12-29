@@ -31,7 +31,6 @@
 
   <include href="http://git.gnome.org/browse/gtk-osx/plain/modulesets-stable/gtk-osx.modules"/>
   <!--include href="/Users/john/Development/GTK-OSX/gtk-osx-build/modulesets-stable/gtk-osx.modules"/-->
-  <include href="gtkhtml.modules"/>
 
   <autotools id="libchipcard" autogen-sh="configure" >
     <branch module="gnucash/Dependencies/libchipcard-5.0.2.tar.gz" version="5.0.2"
@@ -170,6 +169,19 @@
     </dependencies>
   </autotools>
 
+  <autotools id="libgnomecanvas" autogen-sh="configure">
+    <branch module="libgnomecanvas/2.26/libgnomecanvas-2.26.0.tar.bz2" 
+	    version="2.26.0" md5sum="9bbc635e5ae70e63af071af74ba7e72f"/>
+    <dependencies>
+      <dep package="libart_lgpl"/>
+      <dep package="libglade"/>
+    </dependencies>
+    <after>
+      <dep package="meta-gtk-osx-bootstrap"/>
+      <dep package="meta-gtk-osx-core"/>
+    </after>
+  </autotools>
+
 <!-- Goffice-0.9 is for Gtk3 -->
   <autotools id="goffice" autogenargs="--without-gconf" autogen-sh="configure">
    <branch module="goffice/0.8/goffice-0.8.17.tar.xz" version="0.8.17"
@@ -185,7 +197,7 @@
   <autotools id="gnucash"
 	     autogen-sh="configure"
 	     autogenargs="--enable-ofx --enable-aqbanking --enable-binreloc --enable-dbi --with-html-engine='webkit'">
-    <branch module="gnucash/stable/gnucash-2.4.14.tar.bz2" version="2.4.14"
+    <branch module="gnucash/stable/gnucash-2.6.0.tar.bz2" version="2.6.0"
 	    repo="sourceforge">
     </branch>
     <dependencies>
@@ -199,46 +211,6 @@
       <dep package="libdbi-drivers"/>
       <dep package="iso-codes"/>
       <dep package="gconf2"/>
-    </dependencies>
-
-  </autotools>
-
- <autotools id="gnucash-unstable" autogen-sh='configure'
-	    autogenargs='--enable-ofx --enable-aqbanking --enable-binreloc --enable-dbi --with-html-engine="webkit"'>
-   <branch module="gnucash/unstable/gnucash-2.5.10.tar.bz2" version="2.5.10"
-	   repo="sourceforge"/>
-    <dependencies>
-      <dep package="meta-gtk-osx-core"/>
-      <dep package="libofx"/>
-      <dep package="aqbanking"/>
-      <dep package="libgnomecanvas"/>
-      <dep package="meta-gtk-osx-webkit"/>
-      <dep package="shared-mime-info"/>
-      <dep package="goffice"/>
-      <dep package="libdbi-drivers"/>
-      <dep package="iso-codes"/>
-      <dep package="guile"/>
-      <dep package="swig"/>
-    </dependencies>
-
-  </autotools>
-
- <autotools id="gnucash-svn"
-	    autogen-template="GNOME2_PATH=%(prefix)s %(srcdir)s/%(autogen-sh)s &amp;&amp; %(srcdir)s/configure --prefix %(prefix)s --libdir %(libdir)s %(autogenargs)s"
-	    autogenargs='--enable-ofx --enable-aqbanking --enable-binreloc --enable-dbi --with-html-engine="webkit"'>
-   <branch repo="svn.gnucash.org" module="gnucash"/>
-    <dependencies>
-      <dep package="meta-gtk-osx-core"/>
-      <dep package="libofx"/>
-      <dep package="aqbanking"/>
-      <dep package="libgnomecanvas"/>
-      <dep package="meta-gtk-osx-webkit"/>
-      <dep package="Slib"/> <!-- Needed only for the 2.4 branch -->
-      <dep package="guile"/>
-      <dep package="goffice"/>
-      <dep package="libdbi-drivers"/>
-      <dep package="iso-codes"/>
-      <dep package="swig"/>
     </dependencies>
 
   </autotools>
@@ -264,36 +236,6 @@
 
   </autotools>
 
-  <autotools id="gnucash-2.4"
-	    autogen-template="%(srcdir)s/%(autogen-sh)s &amp;&amp; %(srcdir)s/configure --prefix %(prefix)s --libdir %(libdir)s %(autogenargs)s"
-	     autogenargs="--enable-ofx --enable-aqbanking --enable-binreloc --enable-dbi --with-html-engine='webkit'">
-   <branch repo="github" module="Gnucash/gnucash.git" revision="2.4"
-	   checkoutdir="gnucash-2.4"/>
-    <dependencies>
-      <dep package="meta-gtk-osx-core"/>
-      <dep package="libofx"/>
-      <dep package="aqbanking"/>
-      <dep package="libgnomeui"/>
-      <dep package="meta-gtk-osx-webkit"/>
-      <dep package="Slib"/>
-      <dep package="goffice"/>
-      <dep package="libdbi-drivers"/>
-      <dep package="iso-codes"/>
-      <dep package="swig"/>
-      <dep package="gconf2"/>
-    </dependencies>
-
-  </autotools>
-
-  <autotools id="gnucash-docs-svn" autogenargs="--disable-scrollkeeper"
-	    autogen-sh='autoreconf'
-	    makeargs=" html" makeinstallargs="install-html" >
-    <branch repo="svn.gnucash.org" module="gnucash-docs"/>
-    <dependencies>
-      <!-- dep package="scrollkeeper"/ -->
-    </dependencies>
-  </autotools>
-
   <autotools id="gnucash-docs-git" autogenargs="--disable-scrollkeeper"
 	    autogen-sh='autoreconf'
 	    makeargs=" html" makeinstallargs="install-html" >
@@ -307,7 +249,7 @@
   <autotools id="gnucash-docs" autogenargs="--disable-scrollkeeper"
 	     autogen='autreconf'
 	     makeargs=" html" makeinstallargs="install-html" >
-    <branch repo="svn.gnucash.org" module="gnucash-docs" revision="2.4"
+    <branch repo="svn.gnucash.org" module="gnucash-docs" revision="trunk"
 	    />
    </autotools>
 
