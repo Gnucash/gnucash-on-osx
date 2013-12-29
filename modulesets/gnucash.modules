@@ -204,13 +204,11 @@
       <dep package="meta-gtk-osx-core"/>
       <dep package="libofx"/>
       <dep package="aqbanking"/>
-      <dep package="libgnomeui"/>
+      <dep package="libgnomecanvas"/>
       <dep package="meta-gtk-osx-webkit"/>
-      <dep package="Slib"/>
       <dep package="goffice"/>
       <dep package="libdbi-drivers"/>
       <dep package="iso-codes"/>
-      <dep package="gconf2"/>
     </dependencies>
 
   </autotools>
@@ -227,7 +225,6 @@
       <dep package="aqbanking"/>
       <dep package="libgnomecanvas"/>
       <dep package="meta-gtk-osx-webkit"/>
-      <dep package="Slib"/> <!-- Needed only for the 2.4 branch -->
       <dep package="goffice"/>
       <dep package="libdbi-drivers"/>
       <dep package="iso-codes"/>
@@ -247,11 +244,10 @@
   </autotools>
 
   <autotools id="gnucash-docs" autogenargs="--disable-scrollkeeper"
-	     autogen='autreconf'
-	     makeargs=" html" makeinstallargs="install-html" >
-    <branch repo="svn.gnucash.org" module="gnucash-docs" revision="trunk"
-	    />
-   </autotools>
+	     autogen='autoreconf'
+	    makeargs=" html" makeinstallargs="install-html" >
+    <branch  repo="github" module="Gnucash/gnucash-docs.git" revision="trunk"/>
+  </autotools>
 
   <autotools id="scrollkeeper" autogen-sh="configure">
     <branch repo="sourceforge" module="scrollkeeper/scrollkeeper-0.3.14.tar.gz"
