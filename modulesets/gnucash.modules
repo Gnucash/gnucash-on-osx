@@ -307,7 +307,7 @@
   <autotools id="gnucash-docs" autogenargs="--disable-scrollkeeper"
 	     autogen='autreconf'
 	     makeargs=" html" makeinstallargs="install-html" >
-    <branch repo="svn.gnucash.org" module="gnucash-docs"
+    <branch repo="svn.gnucash.org" module="gnucash-docs" revision="2.4"
 	    />
    </autotools>
 
