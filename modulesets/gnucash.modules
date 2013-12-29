@@ -185,7 +185,7 @@
   <autotools id="gnucash"
 	     autogen-sh="configure"
 	     autogenargs="--enable-ofx --enable-aqbanking --enable-binreloc --enable-dbi --with-html-engine='webkit'">
-    <branch module="gnucash/stable/gnucash-2.4.13.tar.bz2" version="2.4.13"
+    <branch module="gnucash/stable/gnucash-2.4.14.tar.bz2" version="2.4.14"
 	    repo="sourceforge">
     </branch>
     <dependencies>
