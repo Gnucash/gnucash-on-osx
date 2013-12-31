@@ -187,27 +187,27 @@
   </data>
 
    <data dest="${bundle}/Contents/Resources/de.lproj/GnuCash Help/">
-    ${prefix}/share/doc/gnucash-docs/de_DE/gnucash-help/
+    ${prefix}/share/doc/gnucash-docs/de/gnucash-help/
   </data>
 
   <data dest="${bundle}/Contents/Resources/de.lproj/GnuCash Guide/">
-    ${prefix}/share/doc/gnucash-docs/de_DE/gnucash-guide/
+    ${prefix}/share/doc/gnucash-docs/de/gnucash-guide/
   </data>
 
   <data dest="${bundle}/Contents/Resources/it.lproj/GnuCash Help/">
-    ${prefix}/share/doc/gnucash-docs/it_IT/gnucash-help/
+    ${prefix}/share/doc/gnucash-docs/it/gnucash-help/
   </data>
 
   <data dest="${bundle}/Contents/Resources/it.lproj/GnuCash Guide/">
-    ${prefix}/share/doc/gnucash-docs/it_IT/gnucash-guide/
+    ${prefix}/share/doc/gnucash-docs/it/gnucash-guide/
   </data>
 
   <data dest="${bundle}/Contents/Resources/ja.lproj/GnuCash Guide/">
-    ${prefix}/share/doc/gnucash-docs/ja_JP/gnucash-guide/
+    ${prefix}/share/doc/gnucash-docs/ja/gnucash-guide/
   </data>
 
   <data>
-    ${prefix}/share/doc/gnucash/
+    ${prefix}/share/gnucash/doc/
   </data>
 
   <translations name="gnucash">
