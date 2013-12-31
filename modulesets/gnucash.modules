@@ -208,7 +208,9 @@
       <dep package="meta-gtk-osx-webkit"/>
       <dep package="goffice"/>
       <dep package="libdbi-drivers"/>
+      <dep package="shared-mime-info"/>
       <dep package="iso-codes"/>
+      <dep package="guile"/>
     </dependencies>
 
   </autotools>
@@ -227,7 +229,9 @@
       <dep package="meta-gtk-osx-webkit"/>
       <dep package="goffice"/>
       <dep package="libdbi-drivers"/>
+      <dep package="shared-mime-info"/>
       <dep package="iso-codes"/>
+      <dep package="guile"/>
       <dep package="swig"/>
     </dependencies>
 
