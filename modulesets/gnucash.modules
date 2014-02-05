@@ -30,7 +30,7 @@
 	      href="git://github.com/"/>
 
   <include href="http://git.gnome.org/browse/gtk-osx/plain/modulesets-stable/gtk-osx.modules"/>
-  <include href="/Users/john/Development/GTK-OSX/gtk-osx-build/modulesets-stable/gtk-osx.modules"/>
+  <!--include href="/Users/john/Development/GTK-OSX/gtk-osx-build/modulesets-stable/gtk-osx.modules"/-->
 
   <autotools id="libchipcard" autogen-sh="configure" >
     <branch module="gnucash/Dependencies/libchipcard-5.0.2.tar.gz" version="5.0.2"
