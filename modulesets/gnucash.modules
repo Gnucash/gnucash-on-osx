@@ -240,7 +240,7 @@
   <autotools id="gnucash-docs-git" autogenargs="--disable-scrollkeeper"
 	    autogen-template="%(srcdir)s/%(autogen-sh)s &amp;&amp; %(srcdir)s/configure --prefix %(prefix)s --libdir %(libdir)s %(autogenargs)s"
 	    makeargs=" html" makeinstallargs="install-html" >
-    <branch  repo="github" module="Gnucash/gnucash-docs.git" revision="trunk"
+    <branch  repo="github" module="Gnucash/gnucash-docs.git" revision="master"
 	   checkoutdir="gnucash-docs-git"/>
     <dependencies>
       <!-- dep package="scrollkeeper"/ -->
@@ -250,7 +250,7 @@
   <autotools id="gnucash-docs" autogenargs="--disable-scrollkeeper"
 	    autogen-template="%(srcdir)s/%(autogen-sh)s &amp;&amp; %(srcdir)s/configure --prefix %(prefix)s --libdir %(libdir)s %(autogenargs)s"
 	    makeargs=" html" makeinstallargs="install-html" >
-    <branch  repo="github" module="Gnucash/gnucash-docs.git" revision="trunk"/>
+    <branch  repo="github" module="Gnucash/gnucash-docs.git" revision="master"/>
   </autotools>
 
   <autotools id="scrollkeeper" autogen-sh="configure">
