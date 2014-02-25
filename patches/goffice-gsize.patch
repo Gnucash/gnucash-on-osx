@@ -1,0 +1,23 @@
+diff -c /Users/john/Development/Gnucash-Build/Gnucash-master-git-Leopard/src/goffice-0.8.17/goffice/utils/go-glib-extras.c\~ /Users/john/Development/Gnucash-Build/Gnucash-master-git-Leopard/src/goffice-0.8.17/goffice/utils/go-glib-extras.c
+--- a/goffice/utils/go-glib-extras.c	SatAug 21 05:20:49 2010
++++ b/goffice/utils/go-glib-extras.c	Tue Feb 25 11:16:31 2014
+@@ -452,7 +452,7 @@
+ 
+ 
+ GOMemChunk *
+-go_mem_chunk_new (char const *name, size_t user_atom_size, size_t chunk_size)
++go_mem_chunk_new (char const *name, gsize user_atom_size, gsize chunk_size)
+ {
+ 	int atoms_per_block;
+ 	GOMemChunk *res;
+@@ -694,7 +694,7 @@
+ 
+ 
+ const char *
+-go_guess_encoding (const char *raw, size_t len, const char *user_guess,
++go_guess_encoding (const char *raw, gsize len, const char *user_guess,
+ 		   char **utf8_str)
+ {
+ 	int try;
+
+Diff finished.  Tue Feb 25 11:17:18 2014
