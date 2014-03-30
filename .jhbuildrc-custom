@@ -19,7 +19,8 @@ modules = ["meta-gtk-osx-bootstrap", "meta-gtk-osx-core", "gnucash"]
 
 #Setup the build. PPC users will need to replace "i386" with
 #"ppc". Don't try to do a universal build, it doesn't work. x86_64 is
-#untested, as is building against the 10.6 or 10.7 SDKs.
+#untested. Users on systems later than 10.6 will need to replace both
+#instances of "10.5" below with their OS version:
 setup_sdk("10.5", "10.5",["i386"])
 
 moduleset = "http://github.com/jralls/gnucash-on-osx/raw/master/modulesets/gnucash.modules"    
