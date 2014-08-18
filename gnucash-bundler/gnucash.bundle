@@ -155,6 +155,10 @@
   </data>
 
   <data>
+    ${prefix}/share/ktoblzcheck
+  </data>
+
+  <data>
     ${prefix}/share/libofx
   </data>
 
