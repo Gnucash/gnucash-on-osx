@@ -195,6 +195,10 @@
     </dependencies>
   </autotools>
 
+  <autotools id="boost" supports-non-srcdir-builds="no">
+    <branch module="boost/boost_1_56_0.tar.bz2" repo="sourceforge"
+	    version="1.56.0"/>
+  </autotools>
 
   <autotools id="gnucash"
 	     autogen-sh="configure"
@@ -235,6 +239,7 @@
       <dep package="iso-codes"/>
       <dep package="guile"/>
       <dep package="swig"/>
+      <dep package="boost"/>
     </dependencies>
 
   </autotools>
