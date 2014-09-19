@@ -216,7 +216,7 @@
       <dep package="libdbi-drivers"/>
       <dep package="shared-mime-info"/>
       <dep package="iso-codes"/>
-      <dep package="guile"/>
+      <dep package="guile2"/>
     </dependencies>
 
   </autotools>
@@ -237,7 +237,7 @@
       <dep package="libdbi-drivers"/>
       <dep package="shared-mime-info"/>
       <dep package="iso-codes"/>
-      <dep package="guile"/>
+      <dep package="guile2"/>
       <dep package="swig"/>
       <dep package="boost"/>
     </dependencies>
