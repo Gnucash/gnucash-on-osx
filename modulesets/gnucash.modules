@@ -43,9 +43,9 @@
 
   <autotools id="gwenhywfar" autogen-sh="configure"
 	     autogenargs="--with-guis=gtk2 --enable-local-install">
-    <branch module="gnucash/Dependencies/gwenhywfar-4.3.3.tar.gz" version="4.3.3"
+    <branch module="gnucash/Dependencies/gwenhywfar-4.12.0beta.tar.gz" version="4.12.0"
 	    repo="sourceforge">
-      <patch file="https://raw.github.com/jralls/gnucash-on-osx/master/patches/gwen-macos-bundle-path.patch" strip='0'/>
+      <!--patch file="https://raw.github.com/jralls/gnucash-on-osx/master/patches/gwen-macos-bundle-path.patch" strip='0'/-->
     </branch>
     <dependencies>
       <dep package="libgcrypt"/>
@@ -63,18 +63,23 @@
   </autotools>
 
   <autotools id="ktoblzcheck" autogen-sh="configure">
-    <branch module="ktoblzcheck/ktoblzcheck-1.46.tar.gz" version="1.46"
+    <branch module="ktoblzcheck/ktoblzcheck-1.47.tar.gz" version="1.47"
 	    repo="sourceforge"/>
+  </autotools>
+
+  <autotools id="xmlsec">
+    <branch module="mogigoma/xmlsec" repo="github"/>
   </autotools>
 
   <autotools id="aqbanking" autogen-sh="configure" makeargs="-j1"
 	     autogenargs="--enable-local-install">
-    <branch module="gnucash/Dependencies/aqbanking-5.0.25.tar.gz" version="5.0.25"
+    <branch module="gnucash/Dependencies/aqbanking-5.5.0.2-git.tar.gz" version="5.5.0.2"
 	    repo="sourceforge"/>
     <dependencies>
       <dep package="gwenhywfar"/>
       <dep package="gmp"/>
       <dep package="ktoblzcheck"/>
+      <dep package="xmlsec"/>
     </dependencies>
   </autotools>
 
@@ -106,8 +111,8 @@
   </autotools>
 
   <autotools id="libofx" autogen-sh='configure'>
-    <branch repo="sourceforge" module="libofx/libofx-0.9.8.tar.gz"
-	    version="0.9.8"/>
+    <branch repo="sourceforge" module="libofx/libofx-0.9.10.tar.gz"
+	    version="0.9.10"/>
     <dependencies>
       <dep package="OpenSP"/>
     </dependencies>
@@ -120,8 +125,8 @@
   </autotools>
 
   <autotools id="swig" autogen-sh="configure">
-    <branch repo="sourceforge" module="swig/swig-2.0.10.tar.gz"
-	    version="2.0.10"/>
+    <branch repo="sourceforge" module="swig/swig-2.0.11.tar.gz"
+	    version="2.0.11"/>
     <dependencies>
       <dep package="pcre"/>
     </dependencies>
@@ -151,10 +156,9 @@
     </dependencies>
   </cmake>
 
-  <autotools id="libdbi" autogen-sh='autoreconf' autogenargs="--disable-docs">
-    <branch repo="sourceforge" module="libdbi/libdbi-0.8.3.tar.gz"
+  <autotools id="libdbi" autogen-sh="configure" autogenargs="--disable-docs">
+    <branch repo="sourceforge" module="libdbi/libdbi-0.8.4.tar.gz"
 	    version="0.8.4">
-      <patch file="https://raw.github.com/jralls/gnucash-on-osx/master/patches/dbi.patch" strip="1"/>
     </branch>
   </autotools>
 
@@ -203,7 +207,7 @@
   <autotools id="gnucash"
 	     autogen-sh="configure"
 	     autogenargs="--enable-ofx --enable-aqbanking --enable-binreloc --enable-dbi --with-html-engine='webkit'">
-    <branch module="gnucash/stable/gnucash-2.6.3.tar.bz2" version="2.6.3"
+    <branch module="gnucash/stable/gnucash-2.6.4.tar.bz2" version="2.6.4"
 	    repo="sourceforge">
     </branch>
     <dependencies>
