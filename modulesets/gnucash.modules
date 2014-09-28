@@ -261,8 +261,8 @@
   <autotools id="gnucash-docs" autogenargs="--disable-scrollkeeper"
 	    autogen-template="%(srcdir)s/%(autogen-sh)s &amp;&amp; %(srcdir)s/configure --prefix %(prefix)s --libdir %(libdir)s %(autogenargs)s"
 	    makeargs=" html" makeinstallargs="install-html" >
-    <branch  module="gnucash/gnucash-docs/gnucash-docs-2.6.3.tar.gz"
-	     version="2.6.3" repo="sourceforge"/>
+    <branch  module="gnucash/gnucash-docs/gnucash-docs-2.6.4.tar.gz"
+	     version="2.6.4" repo="sourceforge"/>
   </autotools>
 
   <autotools id="scrollkeeper" autogen-sh="configure">
