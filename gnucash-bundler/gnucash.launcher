@@ -65,10 +65,11 @@ export GUILE_WARN_DEPRECATED
 
 GNC_MODULE_PATH="${RESPFX}/lib/gnucash:${GNC_MODULE_PATH}"
 
-GUILE_LOAD_PATH="${bundle_data}/guile/1.8/"
+GUILE_LOAD_PATH="${bundle_data}/guile/2.0/"
 EXTRA_PATH="${EXTRA_PATH}:${RESPFX}/share/gnucash/guile-modules"
 EXTRA_PATH="${EXTRA_PATH}:${RESPFX}/share/gnucash/scm"
 GUILE_LOAD_PATH="${EXTRA_PATH}:${GUILE_LOAD_PATH}"
+GUILE_LOAD_COMPILED_PATH="${bundle_lib}/guile/2.0/ccache:${GUILE_LOAD_COMPILED_PATH}"
 
 EXTRA_LIBS="${GNC_MODULE_PATH}"
 EXTRA_LIBS="${EXTRA_LIBS}:/System/Library/Frameworks/ApplicationServices.framework/Versions/A/Frameworks/ImageIO.framework/Versions/A/Resources/"
@@ -84,6 +85,7 @@ export GSETTINGS_SCHEMA_DIR="${bundle_data}"
 
 export GNC_MODULE_PATH
 export GUILE_LOAD_PATH
+export GUILE_LOAD_COMPILED_PATH
 export LD_LIBRARY_PATH
 export DYLD_LIBRARY_PATH
 export GNC_DOT_DIR="$HOME/Library/Application Support/Gnucash"

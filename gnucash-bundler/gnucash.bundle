@@ -147,6 +147,10 @@
   </data>
 
   <data>
+    ${prefix}/lib/guile
+  </data>
+
+  <data>
     ${prefix}/share/aqbanking
   </data>
 
