@@ -45,7 +45,7 @@
 	     autogenargs="--with-guis=gtk2 --enable-local-install">
     <branch module="gnucash/Dependencies/gwenhywfar-4.12.0beta.tar.gz" version="4.12.0"
 	    repo="sourceforge">
-      <!--patch file="https://raw.github.com/jralls/gnucash-on-osx/master/patches/gwen-macos-bundle-path.patch" strip='0'/-->
+      <patch file="https://raw.github.com/jralls/gnucash-on-osx/master/patches/gwen-macos-bundle-path.patch" strip='0'/>
     </branch>
     <dependencies>
       <dep package="libgcrypt"/>
