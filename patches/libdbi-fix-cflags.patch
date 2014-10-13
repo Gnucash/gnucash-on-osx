@@ -1,0 +1,39 @@
+--- a/configure.in	Tue Aug 31 15:35:12 2010
++++ b/configure.in	Mon Oct 13 10:29:50 2014
+@@ -3,7 +3,7 @@
+ AM_MAINTAINER_MODE
+ 
+ AM_INIT_AUTOMAKE(libdbi, 0.8.4)
+-AM_CONFIG_HEADER(config.h)
++AC_CONFIG_HEADERS(config.h)
+ AC_CONFIG_MACRO_DIR([m4])
+ 
+ dnl Library versioning
+@@ -47,9 +47,9 @@
+                 CFLAGS="-xO4 -fast -w -fsimple -native -xcg92"
+                 PROFILE="-v -xpg -g -xO4 -fast -native -fsimple -xcg92 -Dsuncc" ;;
+         *)
+-                DEBUG="-g"
+-                CFLAGS="-O"
+-                PROFILE="-g -p" ;;
++                DEBUG="$CFLAGS -g"
++                CFLAGS="$CFLAGS -O"
++                PROFILE="$CFLAGS -g -p" ;;
+         esac
+ else
+ 
+@@ -63,9 +63,9 @@
+                 CFLAGS="-O20 -ffast-math -D__NO_MATH_INLINES -fsigned-char -mv8 -std=gnu99"
+                 PROFILE="-pg -g -O20 -D__NO_MATH_INLINES -fsigned-char -mv8 -std=gnu99" ;;
+         *)
+-                DEBUG="-g -Wall -D__NO_MATH_INLINES -fsigned-char -std=gnu99"
+-                CFLAGS="-O20 -D__NO_MATH_INLINES -fsigned-char -std=gnu99"
+-                PROFILE="-O20 -g -pg -D__NO_MATH_INLINES -fsigned-char -std=gnu99" ;;
++                DEBUG="$CFLAGS -g -Wall -D__NO_MATH_INLINES -fsigned-char -std=gnu99"
++                CFLAGS="$CFLAGS -O20 -D__NO_MATH_INLINES -fsigned-char -std=gnu99"
++                PROFILE="$CFLAGS -O20 -g -pg -D__NO_MATH_INLINES -fsigned-char -std=gnu99" ;;
+         esac
+ fi
+ 
+
+Diff finished.  Mon Oct 13 10:30:08 2014

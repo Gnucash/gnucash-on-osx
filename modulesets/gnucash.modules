@@ -156,9 +156,10 @@
     </dependencies>
   </cmake>
 
-  <autotools id="libdbi" autogen-sh="configure" autogenargs="--disable-docs">
+  <autotools id="libdbi" autogen-sh="autoreconf" autogenargs="--disable-docs">
     <branch repo="sourceforge" module="libdbi/libdbi-0.8.4.tar.gz"
 	    version="0.8.4">
+      <patch file="https://raw.github.com/jralls/gnucash-on-osx/master/patches/libdbi-fix-cflags.patch" strip="1"/>
     </branch>
   </autotools>
 
