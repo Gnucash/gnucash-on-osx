@@ -238,8 +238,8 @@
   </autotools>
 
  <autotools id="gnucash-git"
-	    autogen-template="%(srcdir)s/%(autogen-sh)s &amp;&amp; %(srcdir)s/configure --prefix %(prefix)s --libdir %(libdir)s %(autogenargs)s"
-	    autogenargs='--enable-ofx --enable-aqbanking --enable-binreloc --enable-dbi --with-html-engine="webkit"'>
+	    autogen-template="%(srcdir)s/%(autogen-sh)s &amp;&amp; %(srcdir)s/configure --prefix %(prefix)s %(autogenargs)s"
+	    autogenargs='--enable-ofx --enable-aqbanking --enable-binreloc --enable-dbi --with-dbi-dbd-dir=$PREFIX/lib/dbd --with-html-engine="webkit"'>
    <branch repo="github" module="Gnucash/gnucash.git" revision="master"
 	   checkoutdir="gnucash-git"/>
     <dependencies>
@@ -261,7 +261,7 @@
   </autotools>
 
   <autotools id="gnucash-docs-git" autogenargs="--disable-scrollkeeper"
-	    autogen-template="%(srcdir)s/%(autogen-sh)s &amp;&amp; %(srcdir)s/configure --prefix %(prefix)s --libdir %(libdir)s %(autogenargs)s"
+	    autogen-template="%(srcdir)s/%(autogen-sh)s &amp;&amp; %(srcdir)s/configure --prefix %(prefix)s %(autogenargs)s"
 	    makeargs=" html" makeinstallargs="install-html" >
     <branch  repo="github" module="Gnucash/gnucash-docs.git" revision="master"
 	   checkoutdir="gnucash-docs-git"/>
@@ -271,7 +271,7 @@
   </autotools>
 
   <autotools id="gnucash-docs" autogenargs="--disable-scrollkeeper"
-	    autogen-template="%(srcdir)s/%(autogen-sh)s &amp;&amp; %(srcdir)s/configure --prefix %(prefix)s --libdir %(libdir)s %(autogenargs)s"
+	    autogen-template="%(srcdir)s/%(autogen-sh)s &amp;&amp; %(srcdir)s/configure --prefix %(prefix)s %(autogenargs)s"
 	    makeargs=" html" makeinstallargs="install-html" >
     <branch  module="gnucash/gnucash-docs/gnucash-docs-2.6.4.tar.gz"
 	     version="2.6.4" repo="sourceforge"/>
