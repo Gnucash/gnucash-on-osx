@@ -34,6 +34,7 @@ export GTK2_RC_FILES="$bundle_etc/gtk-2.0/gtkrc"
 if [ `uname -r | cut -d . -f 1` -ge 10 ]; then
     export GTK_IM_MODULE_FILE="$bundle_etc/gtk-2.0/gtk.immodules"
 fi
+export GDK_PIXBUF_MODULE_FILE="$bundle_lib/gdk-pixbuf-2.0/2.10.0/loaders.cache"
 export PANGO_RC_FILE="$bundle_etc/pango/pangorc"
 export PANGO_SYSCONFDIR="$bundle_etc"
 export PANGO_LIBDIR="$bundle_lib"
@@ -68,7 +69,7 @@ GUILE_LOAD_PATH="${bundle_data}/guile/2.0/"
 EXTRA_PATH="${EXTRA_PATH}:${RESPFX}/share/gnucash/guile-modules"
 EXTRA_PATH="${EXTRA_PATH}:${RESPFX}/share/gnucash/scm"
 GUILE_LOAD_PATH="${EXTRA_PATH}:${GUILE_LOAD_PATH}"
-GUILE_LOAD_COMPILED_PATH="${bundle_lib}/gnucash/scm/ccache:${GUILE_LOAD_COMPILED_PATH}"
+GUILE_LOAD_COMPILED_PATH="${bundle_data}/gnucash/scm/ccache:${bundle_lib}/guile/2.0/ccache:${GUILE_LOAD_COMPILED_PATH}"
 
 EXTRA_LIBS="${GNC_MODULE_PATH}"
 EXTRA_LIBS="${EXTRA_LIBS}:/System/Library/Frameworks/ApplicationServices.framework/Versions/A/Frameworks/ImageIO.framework/Versions/A/Resources/"
