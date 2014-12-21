@@ -122,8 +122,10 @@
     ${prefix}/etc/gnucash
   </data>
 
+  <!-- Yes, this case is covered by the next one, but it raises an
+       error if it's missing. -->
   <data dest="${bundle}/Contents/Resources/lib/">
-    ${prefix}/lib/libguile-srfi-srfi-*.la
+    ${prefix}/lib/libgnc-qof.la
   </data>
 
   <data dest="${bundle}/Contents/Resources/lib/">
