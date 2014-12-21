@@ -72,7 +72,7 @@
   <autotools id="openssl" autogen-sh="Configure"
 	     autogen-template="%(srcdir)s/Configure --prefix=%(prefix)s  darwin-i386-cc"
 	     supports-non-srcdir-builds="no">
-    <branch module="openssl-0.9.8x.tar.gz" version="0.9.8x" repo="openssl"/>
+    <branch module="openssl-1.0.1j.tar.gz" version="1.0.1j" repo="openssl"/>
   </autotools>
 
   <autotools id="xmlsec">
