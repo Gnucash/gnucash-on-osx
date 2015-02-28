@@ -37,8 +37,6 @@ moduleset = "http://github.com/jralls/gnucash-on-osx/raw/master/modulesets/gnuca
 #module_extra_env["mysql"] = { "CMAKE_INSTALL_PREFIX":  prefix }
 #append_autogenargs("libdbi-drivers", "--with-mysql --with-mysql-incdir=" + prefix + "/include --with-mysql-libdir=" + prefix + "/lib")
 
-skip.remove("gmp")
-skip.remove("guile")
 append_autogenargs("libofx", "--with-opensp-includes=" + prefix + "/include/OpenSP --with-opensp-libs=" + prefix + "/lib")
 append_autogenargs("libgnomeui", "--disable-static --enable-shared --disable-scrollkeeper --disable-xlib --without-x")
 append_autogenargs("scrollkeeper", "--with-xml-catalog=" + os.path.join(prefix, "etc/xml/catalog"))
