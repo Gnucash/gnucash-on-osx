@@ -76,7 +76,7 @@
   </autotools>
 
   <autotools id="xmlsec">
-    <branch module="mogigoma/xmlsec" repo="github"/>
+    <branch module="GNOME/xmlsec" repo="github"/>
     <dependencies>
       <dep package="openssl"/>
     </dependencies>
