@@ -35,7 +35,7 @@
   <!--include href="/Users/john/Development/GTK-OSX/gtk-osx-build/modulesets-stable/gtk-osx.modules"/-->
 
   <autotools id="libchipcard" autogen-sh="configure" >
-    <branch module="gnucash/Dependencies/libchipcard-5.0.2.tar.gz" version="5.0.2"
+    <branch module="gnucash/Dependencies/libchipcard-5.0.3beta.tar.gz" version="5.0.3"
 	    repo="sourceforge" />
     <dependencies>
       <dep package="libgcrypt"/>
@@ -45,7 +45,7 @@
 
   <autotools id="gwenhywfar" autogen-sh="configure"
 	     autogenargs="--with-guis=gtk2 --enable-local-install">
-    <branch module="gnucash/Dependencies/gwenhywfar-4.12.0beta.tar.gz" version="4.12.0"
+    <branch module="gnucash/Dependencies/gwenhywfar-4.13.1.tar.gz" version="4.13.1"
 	    repo="sourceforge">
       <patch file="https://raw.github.com/jralls/gnucash-on-osx/master/patches/gwen-macos-bundle-path.patch" strip='0'/>
     </branch>
@@ -84,7 +84,7 @@
 
   <autotools id="aqbanking" autogen-sh="configure" makeargs="-j1"
 	     autogenargs="--enable-local-install">
-    <branch module="gnucash/Dependencies/aqbanking-5.5.0.2-git.tar.gz" version="5.5.0.2"
+    <branch module="gnucash/Dependencies/aqbanking-5.5.1..tar.gz" version="5.5.1"
 	    repo="sourceforge"/>
     <dependencies>
       <dep package="gwenhywfar"/>
@@ -211,6 +211,7 @@
     </dependencies>
   </autotools>
 
+<!--./b2 toolset=darwin address_model=32 cxxflags=$CXXFLAGS cflags=$CFLAGS compileflags=$CPPFLAGS linkflags=$LDFLAGS - -prefix=$PREFIX - -build-dir=$PREFIX/../build/boost_1_56_0-->
   <autotools id="boost" supports-non-srcdir-builds="no">
     <branch module="boost/boost_1_56_0.tar.bz2" repo="sourceforge"
 	    version="1.56.0"/>
@@ -219,7 +220,7 @@
   <autotools id="gnucash"
 	     autogen-sh="configure"
 	     autogenargs="--enable-ofx --enable-aqbanking --enable-binreloc --enable-dbi --with-dbi-dbd-dir=$PREFIX/lib/dbd --with-html-engine='webkit'">
-    <branch module="gnucash/stable/gnucash-2.6.5.tar.bz2" version="2.6.5"
+    <branch module="gnucash/stable/gnucash-2.6.6.tar.bz2" version="2.6.6"
 	    repo="sourceforge">
     </branch>
     <dependencies>
