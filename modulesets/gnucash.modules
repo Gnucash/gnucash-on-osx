@@ -84,7 +84,7 @@
 
   <autotools id="aqbanking" autogen-sh="configure" makeargs="-j1"
 	     autogenargs="--enable-local-install">
-    <branch module="gnucash/Dependencies/aqbanking-5.5.1..tar.gz" version="5.5.1"
+    <branch module="gnucash/Dependencies/aqbanking-5.5.1.tar.gz" version="5.5.1"
 	    repo="sourceforge"/>
     <dependencies>
       <dep package="gwenhywfar"/>
