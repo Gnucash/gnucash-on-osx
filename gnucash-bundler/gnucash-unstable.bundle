@@ -123,7 +123,7 @@
   </data>
 
   <data dest="${bundle}/Contents/Resources/lib/">
-    ${prefix}/lib/libguile-srfi-srfi-*.la
+    ${prefix}/lib/libgnc-qof.la
   </data>
 
   <data dest="${bundle}/Contents/Resources/lib/">
@@ -147,11 +147,19 @@
   </data>
 
   <data>
+    ${prefix}/lib/guile
+  </data>
+
+  <data>
     ${prefix}/share/aqbanking
   </data>
 
   <data>
     ${prefix}/share/gwenhywfar
+  </data>
+
+  <data>
+    ${prefix}/share/ktoblzcheck
   </data>
 
   <data>
