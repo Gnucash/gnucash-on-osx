@@ -1,24 +1,15 @@
-Index: src/os/posix/directory.c
-===================================================================
---- src/os/posix/directory.c	(revision 2280)
-+++ src/os/posix/directory.c	(working copy)
-@@ -28,7 +28,7 @@
- 
- #include "directory_p.h"
- #if defined(OS_DARWIN) && defined(ENABLE_LOCAL_INSTALL)
--#  include <CoreFoundation/CFBundle.h>
-+#  include <mach-o/dyld.h>
- #  include <sys/param.h>
- #else
- # include "binreloc.h"
+diff -c /Users/john/Development/Gnucash-Build/Gnucash-2.6-Leopard/src/gwenhywfar-4.12.0beta/src/os/posix/directory.c /Users/john/Development/Gnucash-Build/Gnucash-2.6-Leopard/src/gwenhywfar-4.13.1/src/os/posix/directory.c
+--- a/src/os/posix/directory.c	Sun Mar 29 10:22:05 2015
++++ b/src/os/posix/directory.c	Sat Dec 20 14:36:01 2014
 @@ -229,9 +229,10 @@
      /* remove "/bin/" or "MacOS" from path */
      s=strrchr(realbuffer, '/');
      if (s) {
 -      if (strcasecmp(s, "/bin")==0 ||
--	  strcasecmp(s, "/MacOS")==0)
+-          strcasecmp(s, "/MacOS")==0)
+-        *s=0;
 +      if (strcasecmp(s, "/bin")==0)
- 	*s=0;
++	*s=0;
 +      if (strcasecmp(s, "/MacOS")==0)
 +	strcpy(s, "/Resources");
      }
