@@ -12,10 +12,12 @@ prefix = os.path.join(os.environ["HOME"], "gnucash-stable")
 #prefix = os.path.join(os.environ["HOME"], "gnucash-unstable")
 
 #Select which modules to build. The only difference is which gnucash
-#module (and all of the dependencies, see above) get built:
-modules = ["meta-gtk-osx-bootstrap", "meta-gtk-osx-core", "gnucash"]
-#modules = ["meta-gtk-osx-bootstrap", "meta-gtk-osx-core", "gnucash-unstable"]
-#modules = ["meta-gtk-osx-bootstrap", "meta-gtk-osx-core", "gnucash-svn"]
+#module (and all of the dependencies, see above) get built.  N.B.: If
+#you are building with/for OS X 10.5, append "Leopard" to the
+#meta-gnucash module name, e.g. meta-gnucash-stable-Leopard."
+modules = ["meta-gtk-osx-bootstrap", "meta-gtk-osx-core", "meta-gnucash-stable"]
+#modules = ["meta-gtk-osx-bootstrap", "meta-gtk-osx-core", "meta-gnucash-unstable"]
+#modules = ["meta-gtk-osx-bootstrap", "meta-gtk-osx-core", "meta-gnucash-git"]
 
 #Setup the build. PPC users will need to replace "i386" with
 #"ppc". Don't try to do a universal build, it doesn't work. x86_64 is

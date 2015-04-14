@@ -211,7 +211,7 @@
     </dependencies>
   </autotools>
 
-<!--./b2 toolset=darwin address_model=32 cxxflags=$CXXFLAGS cflags=$CFLAGS compileflags=$CPPFLAGS linkflags=$LDFLAGS - -prefix=$PREFIX - -build-dir=$PREFIX/../build/boost_1_56_0-->
+<!--./b2 toolset=darwin address_model=32 cxxflags="$CPPFLAGS" cflags="$CPPFLAGS" linkflags="$LDFLAGS: -\-prefix=$PREFIX -\-build-dir=$PREFIX/../build/boost_1_56_0-->
   <autotools id="boost" supports-non-srcdir-builds="no">
     <branch module="boost/boost_1_56_0.tar.bz2" repo="sourceforge"
 	    version="1.56.0"/>
@@ -228,13 +228,16 @@
       <dep package="libofx"/>
       <dep package="aqbanking"/>
       <dep package="libgnomecanvas"/>
-      <dep package="meta-gtk-osx-webkit1.6"/>
       <dep package="goffice"/>
       <dep package="libdbi-drivers"/>
       <dep package="shared-mime-info"/>
       <dep package="iso-codes"/>
       <dep package="guile2"/>
     </dependencies>
+    <after>
+      <dep package="meta-gtk-osx-webkit1.6"/>
+      <dep package="meta-gtk-osx-webkit"/>
+    </after>
 
   </autotools>
 
@@ -249,7 +252,6 @@
       <dep package="libofx"/>
       <dep package="aqbanking"/>
       <dep package="libgnomecanvas"/>
-      <dep package="meta-gtk-osx-webkit"/>
       <dep package="goffice"/>
       <dep package="libdbi-drivers"/>
       <dep package="shared-mime-info"/>
@@ -258,6 +260,10 @@
       <dep package="swig"/>
       <dep package="boost"/>
     </dependencies>
+    <after>
+      <dep package="meta-gtk-osx-webkit1.6"/>
+      <dep package="meta-gtk-osx-webkit"/>
+    </after>
 
   </autotools>
 
@@ -285,5 +291,46 @@
        <dep package="gtk-osx-docbook"/>
     </dependencies>
   </autotools>
+
+  <metamodule id="meta-gnucash-stable">
+    <dependencies>
+      <dep package="gnucash"/>
+      <dep package="meta-gtk-osx-webkit"/>
+    </dependencies>
+  </metamodule>
+
+  <metamodule id="meta-gnucash-stable-Leopard">
+    <dependencies>
+      <dep package="gnucash"/>
+      <dep package="meta-gtk-osx-webkit1.6"/>
+    </dependencies>
+  </metamodule>
+
+  <metamodule id="meta-gnucash-unstable">
+    <dependencies>
+      <dep package="gnucash-unstable"/>
+      <dep package="meta-gtk-osx-webkit"/>
+    </dependencies>
+  </metamodule>
+
+  <metamodule id="meta-gnucash-unstable-Leopard">
+    <dependencies>
+      <dep package="gnucash-unstable"/>
+      <dep package="meta-gtk-osx-webkit1.6"/>
+    </dependencies>
+  </metamodule>
+
+  <metamodule id="meta-gnucash-git">
+    <dependencies>
+      <dep package="gnucash-git"/>
+      <dep package="meta-gtk-osx-webkit"/>
+    </dependencies>
+  </metamodule>
+  <metamodule id="meta-gnucash-git-Leopard">
+    <dependencies>
+      <dep package="gnucash-git"/>
+      <dep package="meta-gtk-osx-webkit1.6"/>
+    </dependencies>
+  </metamodule>
 
 </moduleset>
