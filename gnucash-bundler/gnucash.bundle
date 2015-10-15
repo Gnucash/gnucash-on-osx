@@ -133,10 +133,6 @@
   </data>
 
   <data>
-    ${prefix}/etc/fonts
-  </data>
-
-  <data>
     ${prefix}/share/glib-2.0/schemas
   </data>
 
