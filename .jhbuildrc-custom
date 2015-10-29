@@ -25,7 +25,7 @@ modules = ["meta-gtk-osx-bootstrap", "meta-gtk-osx-core", "meta-gnucash-stable"]
 #instances of "10.5" below with their OS version:
 setup_sdk("10.5", "10.5",["i386"])
 
-moduleset = "http://github.com/jralls/gnucash-on-osx/raw/master/modulesets/gnucash.modules"    
+moduleset = "http://github.com/gnucash/gnucash-on-osx/raw/master/modulesets/gnucash.modules"
 
 #If you wish to enable the mysql backend, uncomment the lines below.
 #MySQL requires CMake 2.6.0 or later to build, so the libmysql module
@@ -52,7 +52,3 @@ append_autogenargs("gnucash", "--with-dbi-dbd-dir=" + prefix +"/lib/dbd")
 append_autogenargs("libiconv", "--with-libintl-prefix=" + prefix)
 
 module_makecheck["gmp"] = True
-
-
-
-
