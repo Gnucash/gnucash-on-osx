@@ -40,7 +40,7 @@ moduleset = "http://github.com/gnucash/gnucash-on-osx/raw/master/modulesets/gnuc
 #append_autogenargs("libdbi-drivers", "--with-mysql --with-mysql-incdir=" + prefix + "/include --with-mysql-libdir=" + prefix + "/lib")
 
 append_autogenargs("libofx", "--with-opensp-includes=" + prefix + "/include/OpenSP --with-opensp-libs=" + prefix + "/lib")
-append_autogenargs("libgnomeui", "--disable-static --enable-shared --disable-scrollkeeper --disable-xlib --without-x")
+
 append_autogenargs("scrollkeeper", "--with-xml-catalog=" + os.path.join(prefix, "etc/xml/catalog"))
 
 append_autogenargs("OpenSP", "--enable-shared") #To override the global --disable-shared
