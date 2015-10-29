@@ -68,12 +68,6 @@
 	    repo="sourceforge"/>
   </autotools>
 
-  <autotools id="openssl" autogen-sh="Configure"
-	     autogen-template="%(srcdir)s/Configure --prefix=%(prefix)s  darwin-i386-cc"
-	     supports-non-srcdir-builds="no">
-    <branch module="openssl-1.0.1j.tar.gz" version="1.0.1j" repo="openssl"/>
-  </autotools>
-
   <autotools id="xmlsec">
     <branch module="GNOME/xmlsec" repo="github"/>
     <dependencies>
