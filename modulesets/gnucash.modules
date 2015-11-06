@@ -184,6 +184,7 @@
     <dependencies>
       <dep package="libart_lgpl"/>
       <dep package="libglade"/>
+      <dep package="meta-gtk-osx-freetype"/>
     </dependencies>
     <after>
       <dep package="meta-gtk-osx-bootstrap"/>
