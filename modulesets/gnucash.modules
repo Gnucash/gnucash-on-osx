@@ -47,7 +47,7 @@
     <branch module="gnucash/Dependencies/gwenhywfar-4.13.1.tar.gz" version="4.13.1"
 	    repo="sourceforge">
       <patch file="https://raw.githubusercontent.com/gnucash/gnucash-on-osx/master/patches/gwen-include-file.patch" strip='1'/>
-      <patch file="https://raw.github.com/gnucash/gnucash-on-osx/master/patches/gwen-macos-bundle-path.patch" strip='1'/>
+      <patch file="https://raw.githubusercontent.com/gnucash/gnucash-on-osx/master/patches/gwen-macos-bundle-path.patch" strip='1'/>
     </branch>
     <dependencies>
       <dep package="libgcrypt"/>
@@ -111,7 +111,7 @@
 	     autogenargs="--disable-static --enable-shared --disable-doc-build --disable-nls">
     <branch repo="sourceforge" module="openjade/OpenSP-1.5.2.tar.gz"
 	    version='1.5.2'>
-      <patch file="https://raw.github.com/gnucash/gnucash-on-osx/master/patches/OpenSP-AC_CONFIG_HEADERS.patch" strip='0'/>
+      <patch file="https://raw.githubusercontent.com/gnucash/gnucash-on-osx/master/patches/OpenSP-AC_CONFIG_HEADERS.patch" strip='0'/>
     </branch>
   </autotools>
 
@@ -144,7 +144,7 @@
 	    module="slib"/> -->
     <branch repo="csail" module="scm/slib-3b4.zip" version="3b3"
 	    checkoutdir="slib">
-      <patch file="https://raw.github.com/gnucash/gnucash-on-osx/master/patches/slib-install.patch"/>
+      <patch file="https://raw.githubusercontent.com/gnucash/gnucash-on-osx/master/patches/slib-install.patch"/>
     </branch>
     <dependencies>
       <dep package="guile"/>
@@ -154,7 +154,7 @@
   <cmake id="mysql">
     <branch repo="csclub" module="Connector-C/mysql-connector-c-6.0.2.tar.gz"
 	    version="6.0.2" >
-      <patch file="https://raw.github.com/gnucash/gnucash-on-osx/master/patches/libmysql.patch"/>
+      <patch file="https://raw.githubusercontent.com/gnucash/gnucash-on-osx/master/patches/libmysql.patch"/>
     </branch>
     <dependencies>
       <dep package="cmake"/>
@@ -164,7 +164,7 @@
   <autotools id="libdbi" autogen-sh="autoreconf" autogenargs="--disable-docs">
     <branch repo="sourceforge" module="libdbi/libdbi-0.8.4.tar.gz"
 	    version="0.8.4">
-      <patch file="https://raw.github.com/gnucash/gnucash-on-osx/master/patches/libdbi-fix-cflags.patch" strip="1"/>
+      <patch file="https://raw.githubusercontent.com/gnucash/gnucash-on-osx/master/patches/libdbi-fix-cflags.patch" strip="1"/>
     </branch>
   </autotools>
 
@@ -172,7 +172,7 @@
 	     autogenargs='--with-sqlite3 --disable-docs --with-sqlite3-incdir="/usr/include" --with-sqlite3-libdir="/usr/lib" '>
     <branch repo="sourceforge" version="0.8.3-1"
 	    module="libdbi-drivers/libdbi-drivers-0.8.3-1.tar.gz">
-      <patch file="https://raw.github.com/gnucash/gnucash-on-osx/master/patches/dbi-drv.patch" strip="1"/>
+      <patch file="https://raw.githubusercontent.com/gnucash/gnucash-on-osx/master/patches/dbi-drv.patch" strip="1"/>
     </branch>
     <dependencies>
       <dep package="libdbi"/>
@@ -197,7 +197,7 @@
   <autotools id="goffice" autogen-sh="configure">
    <branch module="goffice/0.8/goffice-0.8.17.tar.xz" version="0.8.17"
 	   hash="sha256:165070beb67b84580afe80a8a100b674a81d553ab791acd72ac0c655f4fadb15">
-     <patch file="https://raw.github.com/gnucash/gnucash-on-osx/master/patches/goffice-gsize.patch" strip="1"/>
+     <patch file="https://raw.githubusercontent.com/gnucash/gnucash-on-osx/master/patches/goffice-gsize.patch" strip="1"/>
    </branch>
     <dependencies>
       <dep package="gtk+"/>
