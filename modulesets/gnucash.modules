@@ -46,6 +46,7 @@
 	     autogenargs="--with-guis=gtk2 --enable-local-install">
     <branch module="gnucash/Dependencies/gwenhywfar-4.13.1.tar.gz" version="4.13.1"
 	    repo="sourceforge">
+      <patch file="https://raw.githubusercontent.com/gnucash/gnucash-on-osx/master/patches/gwen-include-file.patch" strip='1'/>
       <patch file="https://raw.github.com/gnucash/gnucash-on-osx/master/patches/gwen-macos-bundle-path.patch" strip='1'/>
     </branch>
     <dependencies>

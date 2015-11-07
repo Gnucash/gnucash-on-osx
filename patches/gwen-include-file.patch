@@ -1,0 +1,11 @@
+--- gwenhywfar-4.13.1.orig/src/os/posix/directory.c	2014-10-12 08:12:22.000000000 -0500
++++ gwenhywfar-4.13.1/src/os/posix/directory.c	2015-11-06 15:40:36.000000000 -0600
+@@ -28,7 +28,7 @@
+ 
+ #include "directory_p.h"
+ #if defined(OS_DARWIN) && defined(ENABLE_LOCAL_INSTALL)
+-#  include <CoreFoundation/CFBundle.h>
++#  include <mach-o/dyld.h>
+ #  include <sys/param.h>
+ #else
+ # include "binreloc.h"
