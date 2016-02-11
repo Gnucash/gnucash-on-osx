@@ -103,6 +103,10 @@
     ${prefix}/bin/aqbanking-cli
   </binary>
 
+  <binary dest="${bundle}/Contents/MacOS">
+    ${prefix}/bin/chipcard-tool
+  </binary>
+
   <binary>
     ${prefix}/lib/goffice
   </binary>
@@ -158,6 +162,14 @@
 
   <data>
     ${prefix}/share/ktoblzcheck
+  </data>
+
+  <data>
+    ${prefix}/share/chipcard
+  </data>
+
+  <data>
+    ${prefix}/etc/chipcard
   </data>
 
   <data>

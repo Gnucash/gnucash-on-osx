@@ -34,8 +34,8 @@
   <include href="http://git.gnome.org/browse/gtk-osx/plain/modulesets-stable/gtk-osx.modules"/>
  <!--include href="file:///Users/john/Development/GTK-OSX/gtk-osx-build/modulesets-stable/gtk-osx.modules"/-->
 
-  <autotools id="libchipcard" autogen-sh="configure" >
-    <branch module="gnucash/Dependencies/libchipcard-5.0.3beta.tar.gz" version="5.0.3"
+  <autotools id="libchipcard" autogen-sh="configure" autogenargs="--enable-local-install">
+    <branch module="gnucash/Dependencies/libchipcard-5.0.4.tar.gz" version="5.0.4"
 	    repo="sourceforge" />
     <dependencies>
       <dep package="libgcrypt"/>
@@ -86,6 +86,7 @@
       <dep package="gmp"/>
       <dep package="ktoblzcheck"/>
       <dep package="xmlsec"/>
+      <dep package="libchipcard"/>
     </dependencies>
   </autotools>
 
@@ -99,6 +100,8 @@
       <dep package="gwenhywfar-svn"/>
       <dep package="gmp"/>
       <dep package="ktoblzcheck"/>
+      <dep package="xmlsec"/>
+      <dep package="libchipcard"/>
     </dependencies>
   </autotools>
 
