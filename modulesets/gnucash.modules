@@ -71,7 +71,7 @@
   </autotools>
 
   <autotools id="xmlsec">
-    <branch module="GNOME/xmlsec" repo="github"/>
+    <branch module="lsh123/xmlsec" repo="github"/>
     <dependencies>
       <dep package="openssl"/>
     </dependencies>
