@@ -219,7 +219,7 @@
   <autotools id="gnucash"
 	     autogen-sh="configure"
 	     autogenargs="--enable-ofx --enable-aqbanking --enable-binreloc --enable-dbi --with-dbi-dbd-dir=$PREFIX/lib/dbd --with-html-engine='webkit'">
-    <branch module="gnucash/stable/gnucash-2.6.11.tar.bz2" version="2.6.11"
+    <branch module="gnucash/stable/gnucash-2.6.12.tar.bz2" version="2.6.12"
 	    repo="sourceforge">
     </branch>
     <dependencies>
@@ -279,8 +279,8 @@
   <autotools id="gnucash-docs" autogenargs="--disable-scrollkeeper"
 	    autogen-template="%(srcdir)s/%(autogen-sh)s &amp;&amp; %(srcdir)s/configure --prefix %(prefix)s %(autogenargs)s"
 	    makeargs=" html" makeinstallargs="install-html" >
-    <branch  module="gnucash/gnucash-docs/gnucash-docs-2.6.11.tar.gz"
-	     version="2.6.11" repo="sourceforge"/>
+    <branch  module="gnucash/gnucash-docs/gnucash-docs-2.6.12.tar.gz"
+	     version="2.6.12" repo="sourceforge"/>
   </autotools>
 
   <autotools id="scrollkeeper" autogen-sh="configure">
