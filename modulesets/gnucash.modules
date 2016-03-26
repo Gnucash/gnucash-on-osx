@@ -71,7 +71,7 @@
   </autotools>
 
   <autotools id="xmlsec">
-    <branch module="lsh123/xmlsec" repo="github"/>
+    <branch module="lsh123/xmlsec" repo="github" tag="xmlsec-1_2_20"/>
     <dependencies>
       <dep package="openssl"/>
     </dependencies>
