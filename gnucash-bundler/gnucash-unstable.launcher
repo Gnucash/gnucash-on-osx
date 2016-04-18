@@ -56,7 +56,7 @@ if /bin/expr "x$1" : "x-psn_.*" > /dev/null; then
 fi
 
 export RESPFX="${bundle_res}"
-PATH="${RESPFX}"/bin:"${PATH}"
+PATH="${RESPFX}"/bin:/bin/usr/bin
 export PATH
 
 GUILE_WARN_DEPRECATED="no"
