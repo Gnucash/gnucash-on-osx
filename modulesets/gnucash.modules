@@ -77,7 +77,7 @@
     </dependencies>
   </autotools>
 
-  <autotools id="aqbanking" autogen-sh="configure" makeargs="-j1"
+  <autotools id="aqbanking" autogen-sh="autoreconf" makeargs="-j1"
 	     autogenargs="--enable-local-install">
     <branch module="gnucash/Dependencies/aqbanking-5.6.10.tar.gz" version="5.6.10"
 	    repo="sourceforge">
