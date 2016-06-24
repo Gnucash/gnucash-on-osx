@@ -1,0 +1,45 @@
+--- a/src/plugins/parsers/swift/swift940.c     2015-06-01 10:16:28.000000000 -0700
++++ b/src/plugins/parsers/swift/swift940.c     2016-06-20 16:45:18.000000000 -0700
+@@ -31,9 +31,20 @@
+ 
+ 
+ /* #define ENABLE_FULL_SEPA_LOG */
++#ifndef HAVE_STRNDUP
++inline char* strndup_impl(char* instr, size_t len)
++{
++     char *outstr = malloc(len +1);
++     if (outstr)
++     {
++          memset(outstr, 0, len);
++          memcpy(outstr, instr, len);
++     }
++     return outstr;
++}
+ 
+-
+-
++#define strndup(str, len) strndup_impl(str, len)
++#endif
+ #define CENTURY_CUTOFF_YEAR 79
+ 
+ 
+@@ -266,7 +277,7 @@
+ 
+ 	    /* found begin of the next SEPA field or end of buffer */
+ 	    if (s > sLastTagStart) {
+-	      int tagLen;
++	      size_t tagLen;
+ 
+ 	      /* we currently have a field, close that first */
+ 	      tagLen=s-sLastTagStart;
+--- a/configure.ac	2016-04-23 09:29:09.000000000 -0700
++++ b/configure.ac	2016-06-20 16:48:10.000000000 -0700
+@@ -384,7 +384,7 @@
+ # Checks for library functions.
+ #
+ AC_FUNC_STRFTIME
+-AC_CHECK_FUNCS([memmove memset strcasecmp strdup strerror snprintf])
++AC_CHECK_FUNCS([memmove memset strcasecmp strdup strndup strerror snprintf])
+ AC_CHECK_FUNCS([setlocale])
+ 
+ 

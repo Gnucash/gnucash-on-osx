@@ -80,7 +80,9 @@
   <autotools id="aqbanking" autogen-sh="configure" makeargs="-j1"
 	     autogenargs="--enable-local-install">
     <branch module="gnucash/Dependencies/aqbanking-5.6.10.tar.gz" version="5.6.10"
-	    repo="sourceforge"/>
+	    repo="sourceforge">
+            <patch file="https://raw.githubusercontent.com/gnucash/gnucash-on-osx/master/patches/swift940-strndup.patch" strip='1'/>
+    </branch>
     <dependencies>
       <dep package="gwenhywfar"/>
       <dep package="gmp"/>
@@ -210,7 +212,11 @@
     </dependencies>
   </autotools>
 
-<!--./b2 toolset=darwin address-model=32 cxxflags="$CPPFLAGS" cflags="$CPPFLAGS" linkflags="$LDFLAGS" -\-prefix=$PREFIX -\-build-dir=$PREFIX/../build/boost_1_56_0-->
+<!--./b2 toolset=darwin address-model=32 cxxflags="$CPPFLAGS" cflags="$CPPFLAGS" linkflags="$LDFLAGS" dll-path=$PREFIX/lib -\-prefix=$PREFIX -\-build-dir=$PREFIX/../build/boost_1_56_0
+
+After which one must run 
+for i in `ls $PREFIX/lib/libboost*`; do install_name_tool -id $i $i; done
+-->
   <autotools id="boost" supports-non-srcdir-builds="no">
     <branch module="boost/boost_1_56_0.tar.bz2" repo="sourceforge"
 	    version="1.56.0"/>
