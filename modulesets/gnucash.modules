@@ -31,8 +31,8 @@
   <repository type="tarball" name="openssl"
 	      href="https://www.openssl.org/source/"/>
 
-  <include href="http://git.gnome.org/browse/gtk-osx/plain/modulesets-stable/gtk-osx.modules"/>
- <!--include href="file:///Users/john/Development/GTK-OSX/gtk-osx-build/modulesets-stable/gtk-osx.modules"/-->
+  <!--include href="http://git.gnome.org/browse/gtk-osx/plain/modulesets-stable/gtk-osx.modules"/-->
+ <include href="file:///Users/john/Development/GTK-OSX/gtk-osx-build/modulesets-stable/gtk-osx.modules"/>
 
   <autotools id="libchipcard" autogen-sh="configure" autogenargs="--enable-local-install">
     <branch module="gnucash/Dependencies/libchipcard-5.0.4.tar.gz" version="5.0.4"
@@ -225,7 +225,7 @@ for i in `ls $PREFIX/lib/libboost*`; do install_name_tool -id $i $i; done
   <autotools id="gnucash"
 	     autogen-sh="configure"
 	     autogenargs="--enable-ofx --enable-aqbanking --enable-binreloc --enable-dbi --with-dbi-dbd-dir=$PREFIX/lib/dbd --with-html-engine='webkit'">
-    <branch module="gnucash/stable/gnucash-2.6.13.tar.bz2" version="2.6.13"
+    <branch module="gnucash/stable/gnucash-2.6.14.tar.bz2" version="2.6.14"
 	    repo="sourceforge">
     </branch>
     <dependencies>
