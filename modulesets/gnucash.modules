@@ -225,7 +225,7 @@ for i in `ls $PREFIX/lib/libboost*`; do install_name_tool -id $i $i; done
   <autotools id="gnucash"
 	     autogen-sh="configure"
 	     autogenargs="--enable-ofx --enable-aqbanking --enable-binreloc --enable-dbi --with-dbi-dbd-dir=$PREFIX/lib/dbd --with-html-engine='webkit'">
-    <branch module="gnucash/stable/gnucash-2.6.14.tar.bz2" version="2.6.14"
+    <branch module="gnucash/stable/gnucash-2.6.15.tar.bz2" version="2.6.15"
 	    repo="sourceforge">
     </branch>
     <dependencies>
