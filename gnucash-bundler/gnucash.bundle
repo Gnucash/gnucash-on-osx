@@ -87,14 +87,6 @@
     ${prefix}/lib/gwenhywfar
   </binary>
 
-  <binary>
-    ${prefix}/libexec
-  </binary>
-
-  <binary>
-    ${prefix}/bin/gnc-*
-  </binary>
-
   <binary dest="${bundle}/Contents/MacOS">
     ${prefix}/bin/aqbanking-cli
   </binary>
@@ -118,6 +110,14 @@
        "dest" property. The destination must then start with the macro
        "${bundle}", which refers to the bundle root directory.
   -->
+  <data>
+    ${prefix}/libexec
+  </data>
+
+  <data>
+    ${prefix}/bin/gnc-*
+  </data>
+
   <data>
     ${prefix}/etc/gnucash
   </data>
