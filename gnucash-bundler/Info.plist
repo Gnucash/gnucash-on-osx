@@ -59,8 +59,8 @@
 	<true/>
 	<key>LSRequiresCarbon</key>
 	<true/>
-	<key>LSApplicationCategoryType<key>
-	<string>public.app-category.finance<string>
+	<key>LSApplicationCategoryType</key>
+	<string>public.app-category.finance</string>
 	<key>NSHumanReadableCopyright</key>
 	<string>Copyright 2016 Gnucash Contributors</string>
 	<key>NSHighResolutionCapable</key>
