@@ -222,6 +222,10 @@ for i in `ls $PREFIX/lib/libboost*`; do install_name_tool -id $i $i; done
 	    version="1.56.0"/>
   </autotools>
 
+  <cmake id="googletest" cmakeargs="-DBUILD_GMOCK=OFF">
+    <branch module="google/googletest" repo="github" tag="release-1.8.0"/>
+  </cmake>
+
   <autotools id="gnucash"
 	     autogen-sh="configure"
 	     autogenargs="--enable-ofx --enable-aqbanking --enable-binreloc --enable-dbi --with-dbi-dbd-dir=$PREFIX/lib/dbd --with-html-engine='webkit'">
@@ -246,9 +250,8 @@ for i in `ls $PREFIX/lib/libboost*`; do install_name_tool -id $i $i; done
 
   </autotools>
 
- <autotools id="gnucash-git"
-	    autogen-template="%(srcdir)s/%(autogen-sh)s &amp;&amp; %(srcdir)s/configure --prefix %(prefix)s %(autogenargs)s"
-	    autogenargs='--enable-ofx --enable-aqbanking --enable-binreloc --enable-dbi --with-dbi-dbd-dir=$PREFIX/lib/dbd --with-html-engine="webkit"'>
+ <cmake id="gnucash-git"
+        cmakeargs="-DGTEST_ROOT=${SRCROOT}/googletest/googletest -DGMOCK_ROOT=${SRCROOT}/googletest/googlemock">
    <branch repo="github" module="Gnucash/gnucash.git" revision="master"
 	   checkoutdir="gnucash-git"/>
     <dependencies>
@@ -264,13 +267,14 @@ for i in `ls $PREFIX/lib/libboost*`; do install_name_tool -id $i $i; done
       <dep package="guile2"/>
       <dep package="swig"/>
       <dep package="boost"/>
+      <dep package="googletest"/>
     </dependencies>
     <after>
       <dep package="meta-gtk-osx-webkit1.6"/>
       <dep package="meta-gtk-osx-webkit"/>
     </after>
 
-  </autotools>
+ </cmake>
 
   <autotools id="gnucash-docs-git" autogenargs="--disable-scrollkeeper"
 	    autogen-template="%(srcdir)s/%(autogen-sh)s &amp;&amp; %(srcdir)s/configure --prefix %(prefix)s %(autogenargs)s"
