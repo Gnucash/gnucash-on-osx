@@ -260,7 +260,6 @@ for i in `ls $PREFIX/lib/libboost*`; do install_name_tool -id $i $i; done
       <dep package="libofx"/>
       <dep package="aqbanking"/>
       <dep package="libgnomecanvas"/>
-      <dep package="goffice"/>
       <dep package="libdbi-drivers"/>
       <dep package="shared-mime-info"/>
       <dep package="iso-codes"/>
