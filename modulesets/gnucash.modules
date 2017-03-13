@@ -220,6 +220,9 @@ for i in `ls $PREFIX/lib/libboost*`; do install_name_tool -id $i $i; done
   <autotools id="boost" supports-non-srcdir-builds="no">
     <branch module="boost/boost_1_56_0.tar.bz2" repo="sourceforge"
 	    version="1.56.0"/>
+    <dependencies>
+      <dep package="icu"/>
+    </dependencies>
   </autotools>
 
   <cmake id="googletest" cmakeargs="-DBUILD_GMOCK=OFF">
