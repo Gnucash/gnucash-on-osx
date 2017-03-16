@@ -36,7 +36,9 @@
 
   <autotools id="libchipcard" autogen-sh="configure" autogenargs="--enable-local-install">
     <branch module="gnucash/Dependencies/libchipcard-5.0.4.tar.gz" version="5.0.4"
-	    repo="sourceforge" />
+            repo="sourceforge">
+      <patch file="https://raw.githubusercontent.com/gnucash/gnucash-on-osx/master/patches/libchipcard-sdk.patch"/>
+    </branch>
     <dependencies>
       <dep package="libgcrypt"/>
       <dep package="gnutls"/>
@@ -81,7 +83,6 @@
 	     autogenargs="--enable-local-install">
     <branch module="gnucash/Dependencies/aqbanking-5.6.12.tar.gz" version="5.6.12"
 	    repo="sourceforge">
-            <patch file="https://raw.githubusercontent.com/gnucash/gnucash-on-osx/master/patches/swift940-strndup.patch" strip='1'/>
     </branch>
     <dependencies>
       <dep package="gwenhywfar"/>
@@ -216,6 +217,7 @@
 
 After which one must run 
 for i in `ls $PREFIX/lib/libboost*`; do install_name_tool -id $i $i; done
+for i in `ls $PREFIX/lib/libboost*.dylib`; do for j in `ls $PREFIX/lib/libboost*.dylib`; do install_name_tool -change `basename $i` $i $j; done; done
 -->
   <autotools id="boost" supports-non-srcdir-builds="no">
     <branch module="boost/boost_1_56_0.tar.bz2" repo="sourceforge"

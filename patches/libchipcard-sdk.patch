@@ -1,0 +1,14 @@
+diff -c /Users/john/Development/Gnucash-Build/Gnucash-master-git/src/libchipcard-5.0.4/configure.ac\~ /Users/john/Development/Gnucash-Build/Gnucash-master-git/src/libchipcard-5.0.4/configure.ac
+--- a/configure.ac	Tue Dec 15 06:46:03 2015
++++ b/configure.ac	Mon Mar 13 13:43:03 2017
+@@ -413,7 +413,7 @@
+ elif test "$OSYSTEM" = "osx" ; then
+   AC_MSG_CHECKING(for pcsc includes)
+ #  pcsc_includes="-I\$(libchipcard_symlinkdir)/PCSC"
+-  pcsc_includes="-I/System/Library/Frameworks/PCSC.framework/Headers"
++  pcsc_includes="-I${SDKDIR}/System/Library/Frameworks/PCSC.framework/Headers"
+   AC_MSG_RESULT($pcsc_includes)
+   AC_MSG_CHECKING(for pcsc libs)
+   pcsc_libraries=""
+
+Diff finished.  Mon Mar 13 13:49:02 2017
