@@ -234,7 +234,7 @@ for i in `ls $PREFIX/lib/libboost*.dylib`; do for j in `ls $PREFIX/lib/libboost*
   <autotools id="gnucash"
 	     autogen-sh="configure"
 	     autogenargs="--enable-ofx --enable-aqbanking --enable-binreloc --enable-dbi --with-dbi-dbd-dir=$PREFIX/lib/dbd --with-html-engine='webkit'">
-    <branch module="gnucash/stable/gnucash-2.6.15.tar.bz2" version="2.6.15"
+    <branch module="gnucash/stable/gnucash-2.6.16.tar.bz2" version="2.6.16"
 	    repo="sourceforge">
     </branch>
     <dependencies>
