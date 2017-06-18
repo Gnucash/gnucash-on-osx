@@ -132,6 +132,14 @@
     ${prefix}/lib/libgnc-*.la
   </data>
 
+  <data dest="${bundle}/Contents/Resources/lib/aqbanking/" recurse="True">
+    ${prefix}/lib/aqbanking/*.xml
+  </data>
+
+  <data dest="${bundle}/Contents/Resources/lib/gwenhywfar/" recurse="True">
+    ${prefix}/lib/gwenhywfar/*.xml
+  </data>
+
   <data>
     ${prefix}/share/glib-2.0/schemas
   </data>
