@@ -53,6 +53,7 @@
       <patch file="https://raw.githubusercontent.com/gnucash/gnucash-on-osx/master/patches/gwen-macos-bundle-path.patch" strip='1'/>
     </branch>
     <dependencies>
+      <dep package="meta-gtk-osx-core"/>
       <dep package="libgcrypt"/>
       <dep package="gnutls"/>
     </dependencies>
@@ -62,6 +63,7 @@
 	     autogenargs="--with-guis=gtk2 --enable-local-install">
     <branch module="gwenhywfar" repo="aquamaniac"/>
     <dependencies>
+      <dep package="meta-gtk-osx-core"/>
       <dep package="libgcrypt"/>
       <dep package="gnutls"/>
     </dependencies>
@@ -260,11 +262,10 @@ for i in `ls $PREFIX/lib/libboost*.dylib`; do for j in `ls $PREFIX/lib/libboost*
    <branch repo="github" module="Gnucash/gnucash.git" revision="master"
 	   checkoutdir="gnucash-git"/>
     <dependencies>
-      <dep package="meta-gtk-osx-core"/>
-      <dep package="meta-gtk-osx-python"/>
+      <dep package="meta-gtk-osx-python-gtk3"/>
+      <dep package="meta-gtk-osx-webkit-gtk3"/>
       <dep package="libofx"/>
       <dep package="aqbanking"/>
-      <dep package="libgnomecanvas"/>
       <dep package="libdbi-drivers"/>
       <dep package="shared-mime-info"/>
       <dep package="iso-codes"/>
@@ -273,11 +274,6 @@ for i in `ls $PREFIX/lib/libboost*.dylib`; do for j in `ls $PREFIX/lib/libboost*
       <dep package="boost"/>
       <dep package="googletest"/>
     </dependencies>
-    <after>
-      <dep package="meta-gtk-osx-webkit1.6"/>
-      <dep package="meta-gtk-osx-webkit"/>
-    </after>
-
  </cmake>
 
   <autotools id="gnucash-docs-git" autogenargs="--disable-scrollkeeper"
@@ -336,7 +332,7 @@ for i in `ls $PREFIX/lib/libboost*.dylib`; do for j in `ls $PREFIX/lib/libboost*
   <metamodule id="meta-gnucash-git">
     <dependencies>
       <dep package="gnucash-git"/>
-      <dep package="meta-gtk-osx-webkit"/>
+      <dep package="meta-gtk-osx-webkit-gtk3"/>
     </dependencies>
   </metamodule>
   <metamodule id="meta-gnucash-git-Leopard">
