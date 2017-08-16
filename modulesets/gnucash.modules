@@ -37,7 +37,7 @@
   <autotools id="libchipcard" autogen-sh="configure" autogenargs="--enable-local-install">
     <branch module="gnucash/Dependencies/libchipcard-5.0.4.tar.gz" version="5.0.4"
             repo="sourceforge">
-      <patch file="https://raw.githubusercontent.com/gnucash/gnucash-on-osx/master/patches/libchipcard-sdk.patch strip="1""/>
+      <patch file="https://raw.githubusercontent.com/gnucash/gnucash-on-osx/master/patches/libchipcard-sdk.patch" strip="1"/>
     </branch>
     <dependencies>
       <dep package="libgcrypt"/>
