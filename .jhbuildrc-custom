@@ -19,19 +19,24 @@ modules = ["meta-gtk-osx-bootstrap", "meta-gtk-osx-core", "meta-gnucash-stable"]
 #modules = ["meta-gtk-osx-bootstrap", "meta-gtk-osx-core", "meta-gnucash-unstable"]
 #modules = ["meta-gtk-osx-bootstrap", "meta-gtk-osx-core", "meta-gnucash-git"]
 
-#Setup the build. PPC users will need to replace "i386" with
-#"ppc". Don't try to do a universal build, it doesn't work. x86_64 is
-#untested. Users on systems later than 10.6 will need to replace both
-#instances of "10.5" below with their OS version:
-setup_sdk("10.5", "10.5",["i386"])
+# This will set up the build for your system. The result will run on
+# the same or newer versionss of MacOS for the same archechture.
+setup_sdk()
+
+# To build a GnuCash able to run on older systems you can specify
+# minimum version, SDK, and architecture. Note that only
+# MacOSX10.9.sdk and later can build for earlier MacOS versions, and
+# that all Macs running 10.7 and later are 64-bit. Finally note that
+# GnuCash 2.6.99 and later requuire MacOS X 10.9 or later. If you need
+# to build with an older SDK see
+# https://wiki.gnome.org/Projects/GTK+/OSX/Building#Building_for_Older_Versions_of_Mac_OS_X
+
+#This will build a 32-bit version for 10.5 and later:
+#setup_sdk("10.5", "10.5", ["i386"])
 
 moduleset = "http://github.com/gnucash/gnucash-on-osx/raw/master/modulesets/gnucash.modules"
 
 #If you wish to enable the mysql backend, uncomment the lines below.
-#MySQL requires CMake 2.6.0 or later to build, so the libmysql module
-#has a dependency on cmake which will be built by default. If you
-#already have CMake installed on the path, add "skip.append("cmake")
-#somewhere in this file.
 
 #_gc_module=modules[-1]
 #modules[-1]="mysql"
