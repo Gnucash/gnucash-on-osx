@@ -215,7 +215,7 @@
     </dependencies>
   </autotools>
 
-<!--./b2 toolset=darwin address-model=32 cxxflags="$CPPFLAGS" cflags="$CPPFLAGS" linkflags="$LDFLAGS" dll-path=$PREFIX/lib -\-prefix=$PREFIX -\-build-dir=$PREFIX/../build/boost_1_56_0
+<!--./b2 toolset=darwin address-model=32 cxxflags="$CPPFLAGS" cflags="$CPPFLAGS" linkflags="$LDFLAGS" dll-path=$PREFIX/lib -\-prefix=$PREFIX -\-build-dir=$PREFIX/../build/boost_1_56_0 install
 
 After which one must run 
 for i in `ls $PREFIX/lib/libboost*`; do install_name_tool -id $i $i; done
