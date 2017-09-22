@@ -229,14 +229,14 @@ for i in `ls $PREFIX/lib/libboost*.dylib`; do for j in `ls $PREFIX/lib/libboost*
     </dependencies>
   </autotools>
 
-  <cmake id="googletest" cmakeargs="-DBUILD_GMOCK=OFF">
+  <cmake id="googletest" cmakeargs="-DBUILD_GMOCK=OFF" skip-install="True">
     <branch module="google/googletest" repo="github" tag="release-1.8.0"/>
   </cmake>
 
   <autotools id="gnucash"
 	     autogen-sh="configure"
 	     autogenargs="--enable-ofx --enable-aqbanking --enable-binreloc --enable-dbi --with-dbi-dbd-dir=$PREFIX/lib/dbd --with-html-engine='webkit'">
-    <branch module="gnucash/stable/gnucash-2.6.17.tar.bz2" version="2.6.17"
+    <branch module="gnucash/stable/gnucash-2.6.18.tar.bz2" version="2.6.18"
 	    repo="sourceforge">
     </branch>
     <dependencies>
@@ -289,8 +289,8 @@ for i in `ls $PREFIX/lib/libboost*.dylib`; do for j in `ls $PREFIX/lib/libboost*
   <autotools id="gnucash-docs" autogenargs="--disable-scrollkeeper"
 	    autogen-template="%(srcdir)s/%(autogen-sh)s &amp;&amp; %(srcdir)s/configure --prefix %(prefix)s %(autogenargs)s"
 	    makeargs=" html" makeinstallargs="install-html" >
-    <branch  module="gnucash/gnucash-docs/gnucash-docs-2.6.17.tar.gz"
-	     version="2.6.17" repo="sourceforge"/>
+    <branch  module="gnucash/gnucash-docs/gnucash-docs-2.6.18.tar.gz"
+	     version="2.6.18" repo="sourceforge"/>
   </autotools>
 
   <autotools id="scrollkeeper" autogen-sh="configure">
