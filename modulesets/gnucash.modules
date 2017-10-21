@@ -354,31 +354,4 @@ for i in `ls $PREFIX/lib/libboost*.dylib`; do for j in `ls $PREFIX/lib/libboost*
     </dependencies>
   </metamodule>
 
-  <metamodule id="meta-gnucash-unstable">
-    <dependencies>
-      <dep package="gnucash-unstable"/>
-      <dep package="meta-gtk-osx-webkit"/>
-    </dependencies>
-  </metamodule>
-
-  <metamodule id="meta-gnucash-unstable-Leopard">
-    <dependencies>
-      <dep package="gnucash-unstable"/>
-      <dep package="meta-gtk-osx-webkit1.6"/>
-    </dependencies>
-  </metamodule>
-
-  <metamodule id="meta-gnucash-git">
-    <dependencies>
-      <dep package="gnucash-git"/>
-      <dep package="meta-gtk-osx-webkit-gtk3"/>
-    </dependencies>
-  </metamodule>
-  <metamodule id="meta-gnucash-git-Leopard">
-    <dependencies>
-      <dep package="gnucash-git"/>
-      <dep package="meta-gtk-osx-webkit1.6"/>
-    </dependencies>
-  </metamodule>
-
 </moduleset>
