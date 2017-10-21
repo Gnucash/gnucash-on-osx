@@ -30,6 +30,8 @@
 	      href="git://github.com/"/>
   <repository type="tarball" name="openssl"
 	      href="https://www.openssl.org/source/"/>
+  <repository type="tarball" name="postgres"
+              href="https://ftp.postgresql.org/pub/source/"/>
 
   <include href="http://git.gnome.org/browse/gtk-osx/plain/modulesets-stable/gtk-osx.modules"/>
  <!--include href="file:///Users/john/Development/GTK-OSX/gtk-osx-build/modulesets-stable/gtk-osx.modules"/-->
@@ -46,27 +48,34 @@
   </autotools>
 
   <autotools id="gwenhywfar" autogen-sh="configure"
-	     autogenargs="--with-guis=gtk2 --enable-local-install">
-    <branch module="gnucash/Dependencies/gwenhywfar-4.17.0.tar.gz" version="4.17.0"
+	     autogenargs="--with-guis='' --enable-local-install">
+    <branch module="gnucash/Dependencies/gwenhywfar-4.17.0.tar.gz"
+            version="4.17.0"
 	    repo="sourceforge">
       <patch file="https://raw.githubusercontent.com/gnucash/gnucash-on-osx/master/patches/gwen-include-file.patch" strip='1'/>
       <patch file="https://raw.githubusercontent.com/gnucash/gnucash-on-osx/master/patches/gwen-macos-bundle-path.patch" strip='1'/>
     </branch>
     <dependencies>
-      <dep package="meta-gtk-osx-core"/>
       <dep package="libgcrypt"/>
       <dep package="gnutls"/>
     </dependencies>
+    <after>
+      <dep package="meta-gtk-osx-core"/>
+      <dep package="meta-gtk-osx-gtk3"/>
+    </after>
   </autotools>
 
-  <autotools id="gwenhywfar-svn" autogen-template="make -fMakefile.cvs &amp;&amp; %(srcdir)s/configure --prefix %(prefix)s --libdir %(libdir)s %(autogenargs)s"
-	     autogenargs="--with-guis=gtk2 --enable-local-install">
+  <autotools id="gwenhywfar-git" autogen-template="make -fMakefile.cvs &amp;&amp; %(srcdir)s/configure --prefix %(prefix)s --libdir %(libdir)s %(autogenargs)s"
+	     autogenargs="--with-guis='' --enable-local-install">
     <branch module="gwenhywfar" repo="aquamaniac"/>
     <dependencies>
-      <dep package="meta-gtk-osx-core"/>
       <dep package="libgcrypt"/>
       <dep package="gnutls"/>
     </dependencies>
+    <after>
+      <dep package="meta-gtk-osx-core"/>
+      <dep package="meta-gtk-osx--gtk3"/>
+    </after>
   </autotools>
 
   <autotools id="ktoblzcheck" autogen-sh="configure">
@@ -160,31 +169,39 @@
     </dependencies>
   </autotools>
 
+  <autotools id="pgsql">
+    <branch repo="postgres" module="v9.6.5/postgresql-9.6.5.tar.bz2" 
+            version="9.6.10"/>
+      <dependencies>
+        <dep package="openssl"/>
+      </dependencies>
+  </autotools>
+
   <cmake id="mysql">
-    <branch repo="csclub" module="Connector-C/mysql-connector-c-6.0.2.tar.gz"
-	    version="6.0.2" >
-      <patch file="https://raw.githubusercontent.com/gnucash/gnucash-on-osx/master/patches/libmysql.patch"/>
+    <branch repo="csclub" module="Connector-C/mysql-connector-c-6.1.10-src.tar.gz"
+	    version="6.1.10" >
     </branch>
     <dependencies>
       <dep package="cmake"/>
     </dependencies>
   </cmake>
 
-  <autotools id="libdbi" autogen-sh="autoreconf" autogenargs="--disable-docs">
-    <branch repo="sourceforge" module="libdbi/libdbi-0.8.4.tar.gz"
-	    version="0.8.4">
-      <patch file="https://raw.githubusercontent.com/gnucash/gnucash-on-osx/master/patches/libdbi-fix-cflags.patch" strip="1"/>
+  <autotools id="libdbi" autogen-sh="configure" autogenargs="--disable-docs">
+    <branch repo="sourceforge" module="libdbi/libdbi-0.9.0.tar.gz"
+	    version="0.9.0">
     </branch>
   </autotools>
 
-  <autotools id="libdbi-drivers" autogen-sh='autoreconf'
-	     autogenargs='--with-sqlite3 --disable-docs --with-sqlite3-incdir="/usr/include" --with-sqlite3-libdir="/usr/lib" '>
-    <branch repo="sourceforge" version="0.8.3-1"
-	    module="libdbi-drivers/libdbi-drivers-0.8.3-1.tar.gz">
-      <patch file="https://raw.githubusercontent.com/gnucash/gnucash-on-osx/master/patches/dbi-drv.patch" strip="1"/>
+  <autotools id="libdbi-drivers" autogen-sh='configure'
+	     autogenargs='--with-mysql --with-mysql-libdir=$PREFIX/lib --with-pgsql --with-sqlite3 --disable-docs --disable-dependency-tracking'>
+    <branch repo="sourceforge" version="0.9.0"
+	    module="libdbi-drivers/libdbi-drivers-0.9.0.tar.gz">
     </branch>
     <dependencies>
       <dep package="libdbi"/>
+      <dep package="mysql"/>
+      <dep package="pgsql"/>
+      <dep package="sqlite"/>
     </dependencies>
   </autotools>
 
@@ -221,12 +238,13 @@ After which one must run
 for i in `ls $PREFIX/lib/libboost*`; do install_name_tool -id $i $i; done
 for i in `ls $PREFIX/lib/libboost*.dylib`; do for j in `ls $PREFIX/lib/libboost*.dylib`; do install_name_tool -change `basename $i` $i $j; done; done
 -->
-  <autotools id="boost" supports-non-srcdir-builds="no">
+  <autotools id="boost" supports-non-srcdir-builds="no" skip-install="True">
     <branch module="boost/boost_1_56_0.tar.bz2" repo="sourceforge"
 	    version="1.56.0"/>
-    <dependencies>
+    <after>
       <dep package="icu"/>
-    </dependencies>
+      <dep package="icu55"/>
+    </after>
   </autotools>
 
   <cmake id="googletest" cmakeargs="-DBUILD_GMOCK=OFF" skip-install="True">
@@ -257,13 +275,34 @@ for i in `ls $PREFIX/lib/libboost*.dylib`; do for j in `ls $PREFIX/lib/libboost*
 
   </autotools>
 
- <cmake id="gnucash-git"
+
+<cmake id="gnucash-unstable"
         cmakeargs="-DGTEST_ROOT=${SRCROOT}/googletest/googletest -DGMOCK_ROOT=${SRCROOT}/googletest/googlemock">
+   <branch repo="sourceforge" module="gnucash/unstable/gnucash-2.7.0.tar.bz2"
+           version="2.7.0" />
+    <dependencies>
+      <dep package="meta-gtk-osx-gtk3"/>
+      <dep package="libofx"/>
+      <dep package="aqbanking"/>
+      <dep package="libdbi-drivers"/>
+      <dep package="shared-mime-info"/>
+      <dep package="iso-codes"/>
+      <dep package="guile2"/>
+      <dep package="swig"/>
+      <dep package="boost"/>
+      <dep package="googletest"/>
+      <dep package="webkit1gtk3"/>
+    </dependencies>
+
+ </cmake>
+
+ <cmake id="gnucash-git"
+        cmakeargs="-DCMAKE_INSTALL_RPATH_USE_LINK_PATH=ON -DGTEST_ROOT=${SRCROOT}/googletest/googletest -DGMOCK_ROOT=${SRCROOT}/googletest/googlemock">
    <branch repo="github" module="Gnucash/gnucash.git" revision="master"
 	   checkoutdir="gnucash-git"/>
     <dependencies>
+      <dep package="meta-gtk-osx-gtk3"/>
       <dep package="meta-gtk-osx-python-gtk3"/>
-      <dep package="meta-gtk-osx-webkit-gtk3"/>
       <dep package="libofx"/>
       <dep package="aqbanking"/>
       <dep package="libdbi-drivers"/>
