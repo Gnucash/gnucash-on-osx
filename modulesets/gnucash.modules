@@ -24,8 +24,8 @@
 	      href="http://www.gnucash.org/pub/gnucash/sources/"/>
   <repository type="svn" name="svn.gnucash.org"
 	      href="http://svn.gnucash.org/repo/"/>
-  <repository type="svn" name="aquamaniac"
-	      href="http://devel.aqbanking.de/svn/"/>
+  <repository type="git" name="aquamaniac"
+	      href="http://git.aqbanking.de/git/"/>
   <repository type="git" name="github"
 	      href="git://github.com/"/>
   <repository type="tarball" name="openssl"
@@ -104,7 +104,7 @@
     </dependencies>
   </autotools>
 
-  <autotools id="aqbanking-svn"
+  <autotools id="aqbanking-git"
 	     autogenargs='--enable-local-install"'
 	     autogen-template="make -fMakefile.cvs &amp;&amp; %(srcdir)s/configure --prefix %(prefix)s --libdir %(libdir)s %(autogenargs)s" >
      <branch module="aqbanking" repo="aquamaniac" >
