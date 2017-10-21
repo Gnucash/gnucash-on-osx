@@ -312,6 +312,7 @@ for i in `ls $PREFIX/lib/libboost*.dylib`; do for j in `ls $PREFIX/lib/libboost*
       <dep package="swig"/>
       <dep package="boost"/>
       <dep package="googletest"/>
+      <dep package="webkit1gtk3"/>
     </dependencies>
  </cmake>
 
