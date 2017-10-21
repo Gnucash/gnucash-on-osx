@@ -16,8 +16,8 @@ prefix = os.path.join(os.environ["HOME"], "gnucash-stable")
 #you are building with/for OS X 10.5, append "Leopard" to the
 #meta-gnucash module name, e.g. meta-gnucash-stable-Leopard."
 modules = ["meta-gtk-osx-bootstrap", "meta-gtk-osx-core", "meta-gnucash-stable"]
-#modules = ["meta-gtk-osx-bootstrap", "meta-gtk-osx-core", "meta-gnucash-unstable"]
-#modules = ["meta-gtk-osx-bootstrap", "meta-gtk-osx-core", "meta-gnucash-git"]
+#modules = ["python", "meta-gtk-osx-bootstrap", "meta-gtk-osx-core", "meta-gnucash-unstable"]
+#modules = ["python", "meta-gtk-osx-bootstrap", "meta-gtk-osx-core", "gnucash-git"]
 
 # This will set up the build for your system. The result will run on
 # the same or newer versionss of MacOS for the same archechture.
@@ -36,7 +36,9 @@ setup_sdk()
 
 moduleset = "http://github.com/gnucash/gnucash-on-osx/raw/master/modulesets/gnucash.modules"
 
-#If you wish to enable the mysql backend, uncomment the lines below.
+#If you wish to enable the mysql backend on gnucash-stable (it and
+#pgsql are already included in gnucash-git), uncomment the lines
+#below.
 
 #_gc_module=modules[-1]
 #modules[-1]="mysql"
@@ -51,7 +53,7 @@ append_autogenargs("scrollkeeper", "--with-xml-catalog=" + os.path.join(prefix, 
 append_autogenargs("OpenSP", "--enable-shared") #To override the global --disable-shared
 append_autogenargs("libdbi-drivers","--with-dbi-incdir=" + prefix + "/include --with-dbi-libdir=" + prefix + "/lib")
 append_autogenargs("gnucash-unstable", "--with-dbi-dbd-dir=" + prefix +"/lib/dbd")
-append_autogenargs("gnucash-svn", "--with-dbi-dbd-dir=" + prefix +"/lib/dbd")
+append_autogenargs("gnucash-git", "--with-dbi-dbd-dir=" + prefix +"/lib/dbd")
 append_autogenargs("gnucash", "--with-dbi-dbd-dir=" + prefix +"/lib/dbd")
 
 append_autogenargs("libiconv", "--with-libintl-prefix=" + prefix)
