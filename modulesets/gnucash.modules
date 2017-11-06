@@ -13,9 +13,6 @@
 	      href="http://www.freedesktop.org/software/" /-->
   <repository type='tarball' name='sourceforge'
 	      href="http://downloads.sourceforge.net/"/>
-  <!--  <repository type="cvs" name="slib.savannah.gnu.org"
-	      cvsroot=":pserver:anonymous@cvs.savannah.gnu.org:/sources/slib"
-	      password=""/> -->
   <repository type="tarball" name="csail"
 	      href="http://groups.csail.mit.edu/mac/ftpdir/"/>
   <repository type="tarball" name="csclub"
@@ -152,20 +149,6 @@
 	    version="2.0.11"/>
     <dependencies>
       <dep package="pcre"/>
-    </dependencies>
-  </autotools>
-
- <autotools id="Slib" autogen-sh="install.sh"  makeargs="-f Makefile.gnucash"
-	    makeinstallargs="-f Makefile.gnucash"  skip-install="yes"
-	    skip-autogen="never" supports-non-srcdir-builds="no">
-    <!-- <branch repo="slib.savannah.gnu.org"
-	    module="slib"/> -->
-    <branch repo="csail" module="scm/slib-3b4.zip" version="3b3"
-	    checkoutdir="slib">
-      <patch file="https://raw.githubusercontent.com/gnucash/gnucash-on-osx/master/patches/slib-install.patch"/>
-    </branch>
-    <dependencies>
-      <dep package="guile"/>
     </dependencies>
   </autotools>
 
