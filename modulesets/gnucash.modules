@@ -22,7 +22,7 @@
   <repository type="svn" name="svn.gnucash.org"
 	      href="http://svn.gnucash.org/repo/"/>
   <repository type="git" name="aquamaniac"
-	      href="http://git.aqbanking.de/git/"/>
+	      href="https://git.aquamaniac.de/git/"/>
   <repository type="git" name="github"
 	      href="git://github.com/"/>
   <repository type="tarball" name="openssl"
@@ -46,9 +46,8 @@
 
   <autotools id="gwenhywfar" autogen-sh="configure"
 	     autogenargs="--with-guis='' --enable-local-install">
-    <branch module="gnucash/Dependencies/gwenhywfar-4.17.0.tar.gz"
-            version="4.17.0"
-	    repo="sourceforge">
+    <branch module="gnucash/Dependencies/gwenhywfar-4.18.0.tar.gz"
+            version="4.18.0" repo="sourceforge">
       <patch file="https://raw.githubusercontent.com/gnucash/gnucash-on-osx/master/patches/gwen-include-file.patch" strip='1'/>
       <patch file="https://raw.githubusercontent.com/gnucash/gnucash-on-osx/master/patches/gwen-macos-bundle-path.patch" strip='1'/>
     </branch>
