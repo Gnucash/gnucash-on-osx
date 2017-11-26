@@ -260,8 +260,8 @@ for i in `ls $PREFIX/lib/libboost*.dylib`; do for j in `ls $PREFIX/lib/libboost*
 
 <cmake id="gnucash-unstable"
         cmakeargs="-DGTEST_ROOT=${SRCROOT}/googletest/googletest -DGMOCK_ROOT=${SRCROOT}/googletest/googlemock">
-   <branch repo="sourceforge" module="gnucash/unstable/gnucash-2.7.0.tar.bz2"
-           version="2.7.0" />
+   <branch repo="sourceforge" module="gnucash/unstable/gnucash-2.7.2.tar.bz2"
+           version="2.7.2" />
     <dependencies>
       <dep package="meta-gtk-osx-gtk3"/>
       <dep package="libofx"/>
