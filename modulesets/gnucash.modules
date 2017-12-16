@@ -217,7 +217,7 @@
 <!--./b2 toolset=darwin address-model=32 cxxflags="$CPPFLAGS" cflags="$CPPFLAGS" linkflags="$LDFLAGS" dll-path=$PREFIX/lib -\-prefix=$PREFIX -\-build-dir=$PREFIX/../build/boost_1_56_0 install
 
 After which one must run 
-for i in `ls $PREFIX/lib/libboost*`; do install_name_tool -id $i $i; done
+for i in `ls $PREFIX/lib/libboost*.dylib`; do install_name_tool -id $i $i; done
 for i in `ls $PREFIX/lib/libboost*.dylib`; do for j in `ls $PREFIX/lib/libboost*.dylib`; do install_name_tool -change `basename $i` $i $j; done; done
 -->
   <autotools id="boost" supports-non-srcdir-builds="no" skip-install="True">
@@ -236,7 +236,7 @@ for i in `ls $PREFIX/lib/libboost*.dylib`; do for j in `ls $PREFIX/lib/libboost*
   <autotools id="gnucash"
 	     autogen-sh="configure"
 	     autogenargs="--enable-ofx --enable-aqbanking --enable-binreloc --enable-dbi --with-dbi-dbd-dir=$PREFIX/lib/dbd --with-html-engine='webkit'">
-    <branch module="gnucash/stable/gnucash-2.6.18.tar.bz2" version="2.6.18"
+    <branch module="gnucash/stable/gnucash-2.6.19.tar.bz2" version="2.6.19"
 	    repo="sourceforge">
     </branch>
     <dependencies>
@@ -311,8 +311,8 @@ for i in `ls $PREFIX/lib/libboost*.dylib`; do for j in `ls $PREFIX/lib/libboost*
   <autotools id="gnucash-docs" autogenargs="--disable-scrollkeeper"
 	    autogen-template="%(srcdir)s/%(autogen-sh)s &amp;&amp; %(srcdir)s/configure --prefix %(prefix)s %(autogenargs)s"
 	    makeargs=" html" makeinstallargs="install-html" >
-    <branch  module="gnucash/gnucash-docs/gnucash-docs-2.6.18.tar.gz"
-	     version="2.6.18" repo="sourceforge"/>
+    <branch  module="gnucash/gnucash-docs/gnucash-docs-2.6.19.tar.gz"
+	     version="2.6.19" repo="sourceforge"/>
   </autotools>
 
   <autotools id="scrollkeeper" autogen-sh="configure">
