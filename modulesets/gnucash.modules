@@ -61,8 +61,8 @@
     </after>
   </autotools>
 
-  <autotools id="gwenhywfar-git" autogen-template="make -fMakefile.cvs &amp;&amp; %(srcdir)s/configure --prefix %(prefix)s --libdir %(libdir)s %(autogenargs)s"
-	     autogenargs="--with-guis='' --enable-local-install">
+  <autotools id="gwenhywfar-git" autogen-template="make -fMakefile.cvs &amp;&amp; %(srcdir)s/configure --prefix %(prefix)s %(autogenargs)s"
+	     autogenargs="--with-guis='gtk3' --enable-local-install">
     <branch module="gwenhywfar" repo="aquamaniac"/>
     <dependencies>
       <dep package="libgcrypt"/>
@@ -260,8 +260,8 @@ for i in `ls $PREFIX/lib/libboost*.dylib`; do for j in `ls $PREFIX/lib/libboost*
 
 <cmake id="gnucash-unstable"
         cmakeargs="-DGTEST_ROOT=${SRCROOT}/googletest/googletest -DGMOCK_ROOT=${SRCROOT}/googletest/googlemock">
-   <branch repo="sourceforge" module="gnucash/unstable/gnucash-2.7.2.tar.bz2"
-           version="2.7.2" />
+   <branch repo="sourceforge" module="gnucash/unstable/gnucash-2.7.3.tar.bz2"
+           version="2.7.3" />
     <dependencies>
       <dep package="meta-gtk-osx-gtk3"/>
       <dep package="libofx"/>
