@@ -181,11 +181,13 @@
     </branch>
     <dependencies>
       <dep package="libdbi"/>
+    </dependencies>
+    <after>
       <dep package="mysql"/>
       <dep package="pgsql"/>
       <dep package="sqlite"/>
-    </dependencies>
-  </autotools>
+    </after>
+   </autotools>
 
   <autotools id="libgnomecanvas" autogen-sh="configure">
     <branch module="libgnomecanvas/2.26/libgnomecanvas-2.26.0.tar.bz2" 
@@ -249,6 +251,7 @@ for i in `ls $PREFIX/lib/libboost*.dylib`; do for j in `ls $PREFIX/lib/libboost*
       <dep package="shared-mime-info"/>
       <dep package="iso-codes"/>
       <dep package="guile2"/>
+      <dep package="sqlite"/>
     </dependencies>
     <after>
       <dep package="meta-gtk-osx-webkit"/>
@@ -265,6 +268,9 @@ for i in `ls $PREFIX/lib/libboost*.dylib`; do for j in `ls $PREFIX/lib/libboost*
       <dep package="meta-gtk-osx-gtk3"/>
       <dep package="libofx"/>
       <dep package="aqbanking"/>
+      <dep package="mysql"/>
+      <dep package="pgsql"/>
+      <dep package="sqlite"/>
       <dep package="libdbi-drivers"/>
       <dep package="shared-mime-info"/>
       <dep package="iso-codes"/>
