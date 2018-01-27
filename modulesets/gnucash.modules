@@ -30,7 +30,7 @@
   <repository type="tarball" name="postgres"
               href="https://ftp.postgresql.org/pub/source/"/>
 
-  <include href="http://git.gnome.org/browse/gtk-osx/plain/modulesets-stable/gtk-osx.modules"/>
+  <include href="https://git.gnome.org/browse/gtk-osx/plain/modulesets-stable/gtk-osx.modules"/>
  <!--include href="file:///Users/john/Development/GTK-OSX/gtk-osx-build/modulesets-stable/gtk-osx.modules"/-->
 
   <autotools id="libchipcard" autogen-sh="configure" autogenargs="--enable-local-install">
@@ -80,7 +80,7 @@
   </autotools>
 
   <autotools id="xmlsec">
-    <branch module="lsh123/xmlsec" repo="github" tag="xmlsec-1_2_20"/>
+    <branch module="lsh123/xmlsec" repo="github" tag="xmlsec-1_2_25"/>
     <dependencies>
       <dep package="openssl"/>
     </dependencies>
@@ -259,7 +259,7 @@ for i in `ls $PREFIX/lib/libboost*.dylib`; do for j in `ls $PREFIX/lib/libboost*
 
 
 <cmake id="gnucash-unstable"
-        cmakeargs="-DGTEST_ROOT=${SRCROOT}/googletest/googletest -DGMOCK_ROOT=${SRCROOT}/googletest/googlemock">
+        cmakeargs="-DGTEST_ROOT=${JHBUILD_SOURCE}/googletest/googletest -DGMOCK_ROOT=${JHBUILD_SOURCE}/googletest/googlemock">
    <branch repo="sourceforge" module="gnucash/unstable/gnucash-2.7.3.tar.bz2"
            version="2.7.3" />
     <dependencies>
