@@ -251,7 +251,6 @@ for i in `ls $PREFIX/lib/libboost*.dylib`; do for j in `ls $PREFIX/lib/libboost*
       <dep package="guile2"/>
     </dependencies>
     <after>
-      <dep package="meta-gtk-osx-webkit1.6"/>
       <dep package="meta-gtk-osx-webkit"/>
     </after>
 
@@ -327,13 +326,6 @@ for i in `ls $PREFIX/lib/libboost*.dylib`; do for j in `ls $PREFIX/lib/libboost*
     <dependencies>
       <dep package="gnucash"/>
       <dep package="meta-gtk-osx-webkit"/>
-    </dependencies>
-  </metamodule>
-
-  <metamodule id="meta-gnucash-stable-Leopard">
-    <dependencies>
-      <dep package="gnucash"/>
-      <dep package="meta-gtk-osx-webkit1.6"/>
     </dependencies>
   </metamodule>
 
