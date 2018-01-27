@@ -79,10 +79,6 @@
     ${prefix}/lib/gwenhywfar
   </binary>
 
-  <binary>
-    ${prefix}/libexec
-  </binary>
-
   <binary dest="${bundle}/Contents/MacOS">
     ${prefix}/bin/aqbanking-cli
   </binary>
@@ -90,7 +86,6 @@
   <binary loadable="True">
     ${prefix}/lib/dbd
   </binary>
-
 
 <!-- Data to copy in, usually Glade/UI files, images, sounds files
        etc. The destination inside the bundle can be specified if the
