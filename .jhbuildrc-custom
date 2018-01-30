@@ -7,7 +7,7 @@
 
 #Select one of these, or use a different one: Do keep the directories
 #separate for stable and unstable as they have different
-#dependencies. You can use 2.3.x for svn builds.
+#dependencies. 
 prefix = os.path.join(os.environ["HOME"], "gnucash-stable")
 #prefix = os.path.join(os.environ["HOME"], "gnucash-unstable")
 
