@@ -8,14 +8,14 @@
 #Select one of these, or use a different one: Do keep the directories
 #separate for stable and unstable as they have different
 #dependencies. You can use 2.3.x for svn builds.
-#prefix = os.path.join(os.environ["HOME"], "gnucash-stable")
-prefix = os.path.join(os.environ["HOME"], "gnucash-unstable")
+prefix = os.path.join(os.environ["HOME"], "gnucash-stable")
+#prefix = os.path.join(os.environ["HOME"], "gnucash-unstable")
 
 #Select which modules to build. The only difference is which gnucash
 #module (and all of the dependencies, see above) get built. "
-#modules = ["meta-gtk-osx-bootstrap", "meta-gtk-osx-core", "meta-gnucash-stable"]
-modules = ["python", "meta-gtk-osx-bootstrap", "meta-gtk-osx-core", "gnucash-unstable"]
-#modules = ["python", "meta-gtk-osx-bootstrap", "meta-gtk-osx-core", "gnucash-git"]
+modules = ["meta-gnucash-stable"]
+#modules = ["gnucash-unstable"]
+#modules = ["gnucash-git"]
 
 # This will set up the build for your system. The result will run on
 # the same or newer versionss of MacOS for the same archechture.
