@@ -149,6 +149,10 @@
     ${prefix}/share/themes
   </data>
 
+  <data>
+    ${prefix}/share/icons
+  </data>
+
   <data dest="${bundle}/Contents/Resources">
     ${project}/gnucash.icns
   </data>
@@ -205,7 +209,7 @@
     ${prefix}/share/locale
   </translations>
 
-  <translations name="gtk20">
+  <translations name="gtk30">
     ${prefix}/share/locale
   </translations>
 
@@ -217,24 +221,12 @@
     ${prefix}/share/locale
   </translations>
 
-<!-- This takes the Quartz theme instructions from the package and puts them in the bundle gtkrc file. You may want to cusomize the source path if you want a different theme, or if you want other stuff in your gtkrc.
-
-  <data dest='${bundle}/Contents/Resources/etc/gtk-2.0/gtkrc'>
-    ${prefix}/share/themes/Quartz/gtk-2.0/gtkrc
+  <icon-theme icons="auto">
+    Adwaita
+  </icon-theme>
+  <!-- Default settings file to set the theme. -->
+  <data dest="${bundle}/Contents/Resources/etc/gtk-3.0/settings.ini">
+    ${project}/settings.ini
   </data>
--->
-
-  <!-- Icon themes to copy. The "icons" property can be either of
-       "auto", "all", or "none". All or none should be
-       self-explanatory, while auto means that the script will try to
-       figure out which icons are needed. This is done by getting all
-       the strings from all copied binaries, and matching them against
-       icon names. To be safe, you should use "all". "none" is useful
-       if you want just the index.theme file but no icons, mostly
-       needed for the "hicolor" base theme.
-  -->
-  <!-- icon-theme icons="auto"/>
-    Tango
-  </icon-theme -->
 
 </app-bundle>
