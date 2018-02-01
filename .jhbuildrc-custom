@@ -56,4 +56,6 @@ append_autogenargs("gnucash", "--with-dbi-dbd-dir=" + prefix +"/lib/dbd")
 
 append_autogenargs("libiconv", "--with-libintl-prefix=" + prefix)
 
+#Tell fontconfig where to find fonts and to not set a cache directory in prefix:
+append_autogenargs("fontconfig", "--with-default-fonts=/Library/Fonts --with-cache-dir=home")
 module_makecheck["gmp"] = True
