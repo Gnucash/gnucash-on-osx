@@ -193,14 +193,18 @@
     ${prefix}/share/doc/gnucash-docs/ja/gnucash-guide/
   </data>
 
-  <data dest="${bundle}/Contents/Resources/it.lproj/GnuCash Help/">
+  <data dest="${bundle}/Contents/Resources/pt.lproj/GnuCash Help/">
     ${prefix}/share/doc/gnucash-docs/pt/gnucash-help/
   </data>
 
-  <data dest="${bundle}/Contents/Resources/it.lproj/GnuCash Guide/">
+  <data dest="${bundle}/Contents/Resources/pt.lproj/GnuCash Guide/">
     ${prefix}/share/doc/gnucash-docs/pt/gnucash-guide/
   </data>
   
+  <data dest="${bundle}/Contents/Resources/ru.lproj/GnuCash Guide/">
+    ${prefix}/share/doc/gnucash-docs/ru/gnucash-guide/
+  </data>
+
   <data>
     ${prefix}/share/doc/gnucash/
   </data>
