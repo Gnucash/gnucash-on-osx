@@ -26,13 +26,7 @@
     <run-install-name-tool/>
 
 
-    <!-- Optionally specify a launcher script to use. If the
-         application sets up everything needed itself, like
-         environment variable, linker paths, etc, a launcher script is
-         not needed. If the source path is left out, the default
-         script will be used.
-    -->
-    <!--launcher-script>${project}/gnucash-unstable.launcher</launcher-script-->
+    <!-- GnuCash doesn't need a launcher script. -->
 
     <!-- Not implemented: Optional runtime, could be python or mono
          for example.
@@ -81,6 +75,14 @@
 
   <binary dest="${bundle}/Contents/MacOS">
     ${prefix}/bin/aqbanking-cli
+  </binary>
+
+  <binary dest="${bundle}/Contents/MacOS">
+    ${prefix}/bin/aqebics-tool
+  </binary>
+
+  <binary dest="${bundle}/Contents/MacOS">
+    ${prefix}/bin/aqhbci-tool4
   </binary>
 
   <binary loadable="True">

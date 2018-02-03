@@ -92,6 +92,14 @@
   </binary>
 
   <binary dest="${bundle}/Contents/MacOS">
+    ${prefix}/bin/aqebics-tool
+  </binary>
+
+  <binary dest="${bundle}/Contents/MacOS">
+    ${prefix}/bin/aqhbci-tool4
+  </binary>
+
+  <binary dest="${bundle}/Contents/MacOS">
     ${prefix}/bin/chipcard-tool
   </binary>
 
