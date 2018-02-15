@@ -13,9 +13,9 @@ prefix = os.path.join(os.environ["HOME"], "gnucash-stable")
 
 #Select which modules to build. The only difference is which gnucash
 #module (and all of the dependencies, see above) get built. "
-modules = ["meta-gnucash-stable"]
-#modules = ["gnucash-unstable"]
-#modules = ["gnucash-git"]
+modules = ["meta-gtk-osx-bootstrap", "meta-gnucash-stable"]
+#modules = ["meta-gtk-osx-bootstrap", "gnucash-unstable"]
+#modules = ["meta-gtk-osx-bootstrap", "gnucash-git"]
 
 # This will set up the build for your system. The result will run on
 # the same or newer versionss of MacOS for the same archechture.
