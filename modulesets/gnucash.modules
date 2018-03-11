@@ -19,10 +19,10 @@
 	      href="http://mirror.csclub.uwaterloo.ca/mysql/Downloads/"/>
   <repository type="tarball" name="gnucash.org"
 	      href="http://www.gnucash.org/pub/gnucash/sources/"/>
-  <repository type="svn" name="svn.gnucash.org"
-	      href="http://svn.gnucash.org/repo/"/>
   <repository type="git" name="aquamaniac"
-	      href="https://git.aquamaniac.de/git/"/>
+              href="https://git.aquamaniac.de/git/"/>
+  <repository type="tarball" name="aqbanking"
+              href="https://www.aquamaniac.de/sites/download/"/>
   <repository type="git" name="github"
 	      href="git://github.com/"/>
   <repository type="tarball" name="openssl"
@@ -45,9 +45,8 @@
   </autotools>
 
   <autotools id="gwenhywfar" autogen-sh="configure"
-	     autogenargs="--with-guis='' --enable-local-install">
-    <branch module="gnucash/Dependencies/gwenhywfar-4.18.0.tar.gz"
-            version="4.18.0" repo="sourceforge">
+	     autogenargs="--with-guis='gtk3' --enable-local-install">
+    <branch module="download.php?package=01&amp;release=208&amp;file=02&amp;dummy=gwenhywfar-4.20.0.tar.gz" version="4.20.0" repo="aqbanking" checkoutdir="gwenhywfar-4.20.0">
       <patch file="https://raw.githubusercontent.com/gnucash/gnucash-on-osx/master/patches/gwen-include-file.patch" strip='1'/>
       <patch file="https://raw.githubusercontent.com/gnucash/gnucash-on-osx/master/patches/gwen-macos-bundle-path.patch" strip='1'/>
     </branch>
@@ -88,8 +87,7 @@
 
   <autotools id="aqbanking" autogen-sh="autoreconf" makeargs="-j1"
 	     autogenargs="--enable-local-install">
-    <branch module="gnucash/Dependencies/aqbanking-5.6.12.tar.gz" version="5.6.12"
-	    repo="sourceforge">
+    <branch module="download.php?package=03&amp;release=217&amp;file=02&amp;dummy=aqbanking-5.7.8.tar.gz" repo="aqbanking" version="5.7.8" checkoutdir="aqbanking-5.7.8">
     </branch>
     <dependencies>
       <dep package="gwenhywfar"/>
