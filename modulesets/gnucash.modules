@@ -318,6 +318,13 @@ for i in `ls $PREFIX/lib/libboost*.dylib`; do for j in `ls $PREFIX/lib/libboost*
 	     version="2.6.20" repo="sourceforge"/>
   </autotools>
 
+  <autotools id="gnucash-docs-unstable" autogenargs="--disable-scrollkeeper"
+	    autogen-template="%(srcdir)s/%(autogen-sh)s &amp;&amp; %(srcdir)s/configure --prefix %(prefix)s %(autogenargs)s"
+	    makeargs=" html" makeinstallargs="install-html" >
+    <branch  module="gnucash/gnucash-docs/gnucash-docs-3.0.tar.gz"
+	     version="3.0" repo="sourceforge"/>
+  </autotools>
+
   <autotools id="scrollkeeper" autogen-sh="configure">
     <branch repo="sourceforge" module="scrollkeeper/scrollkeeper-0.3.14.tar.gz"
 	    version="0.3.14"/>
