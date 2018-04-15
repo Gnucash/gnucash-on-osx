@@ -18,6 +18,7 @@
     -->
     <destination overwrite="yes">${env:HOME}</destination>
 
+    <gtk>gtk+-3.0</gtk>
     <image>
       <!-- Not implemented yet (DMG image). -->
     </image>
@@ -25,13 +26,7 @@
     <run-install-name-tool/>
 
 
-    <!-- Optionally specify a launcher script to use. If the
-         application sets up everything needed itself, like
-         environment variable, linker paths, etc, a launcher script is
-         not needed. If the source path is left out, the default
-         script will be used.
-    -->
-    <launcher-script>${project}/gnucash.launcher</launcher-script>
+    <!-- GnuCash doesn't need a launcher script. -->
 
     <!-- Not implemented: Optional runtime, could be python or mono
          for example.
@@ -55,24 +50,15 @@
   <binary>
     ${prefix}/lib/gdk-pixbuf-2.0/${pkg:gdk-pixbuf-2.0:gdk_pixbuf_binary_version}/loaders/*.so
   </binary>
-<!-- Copy in the theme engines, -->
-  <binary>
-    ${prefix}/lib/gtk-2.0/${pkg:gtk+-2.0:gtk_binary_version}/engines/*.so
-  </binary>
 
 <!-- The quartz input-method module, -->
   <binary>
-    ${prefix}/lib/gtk-2.0/${pkg:gtk+-2.0:gtk_binary_version}/immodules/im-quartz.so
+    ${prefix}/lib/gtk-3.0/${pkg:gtk+-3.0:gtk_binary_version}/immodules/im-quartz.so
   </binary>
 
 <!-- And the print backends -->
   <binary>
-    ${prefix}/lib/gtk-2.0/${pkg:gtk+-2.0:gtk_binary_version}/printbackends/*.so
-  </binary>
-
-  <!-- Seems to get missed by the dependency resolver -->
-  <binary>
-    ${prefix}/lib/libguile-srfi*
+    ${prefix}/lib/gtk-3.0/${pkg:gtk+-3.0:gtk_binary_version}/printbackends/*.so
   </binary>
 
   <binary loadable="True">
@@ -103,14 +89,9 @@
     ${prefix}/bin/chipcard-tool
   </binary>
 
-  <binary>
-    ${prefix}/lib/goffice
-  </binary>
-
   <binary loadable="True">
     ${prefix}/lib/dbd
   </binary>
-
 
 <!-- Data to copy in, usually Glade/UI files, images, sounds files
        etc. The destination inside the bundle can be specified if the
@@ -119,7 +100,7 @@
        "${bundle}", which refers to the bundle root directory.
   -->
   <data>
-    ${prefix}/libexec
+    ${prefix}/etc/gnucash
   </data>
 
   <data>
@@ -127,25 +108,7 @@
   </data>
 
   <data>
-    ${prefix}/etc/gnucash
-  </data>
-
-  <!-- Yes, this case is covered by the next one, but it raises an
-       error if it's missing. -->
-  <data dest="${bundle}/Contents/Resources/lib/">
-    ${prefix}/lib/libgnc-qof.la
-  </data>
-
-  <data dest="${bundle}/Contents/Resources/lib/">
-    ${prefix}/lib/libgnc-*.la
-  </data>
-
-  <data dest="${bundle}/Contents/Resources/lib/aqbanking/" recurse="True">
-    ${prefix}/lib/aqbanking/*.xml
-  </data>
-
-  <data dest="${bundle}/Contents/Resources/lib/gwenhywfar/" recurse="True">
-    ${prefix}/lib/gwenhywfar/*.xml
+    ${prefix}/etc/fonts
   </data>
 
   <data>
@@ -200,6 +163,10 @@
     ${prefix}/share/themes
   </data>
 
+  <data>
+    ${prefix}/share/icons
+  </data>
+
   <data dest="${bundle}/Contents/Resources">
     ${project}/gnucash.icns
   </data>
@@ -240,6 +207,18 @@
     ${prefix}/share/doc/gnucash-docs/ja/gnucash-guide/
   </data>
 
+  <data dest="${bundle}/Contents/Resources/pt.lproj/GnuCash Help/">
+    ${prefix}/share/doc/gnucash-docs/pt/gnucash-help/
+  </data>
+
+  <data dest="${bundle}/Contents/Resources/pt.lproj/GnuCash Guide/">
+    ${prefix}/share/doc/gnucash-docs/pt/gnucash-guide/
+  </data>
+  
+  <data dest="${bundle}/Contents/Resources/ru.lproj/GnuCash Guide/">
+    ${prefix}/share/doc/gnucash-docs/ru/gnucash-guide/
+  </data>
+
   <data>
     ${prefix}/share/doc/gnucash/
   </data>
@@ -248,7 +227,7 @@
     ${prefix}/share/locale
   </translations>
 
-  <translations name="gtk20">
+  <translations name="gtk30">
     ${prefix}/share/locale
   </translations>
 
@@ -260,24 +239,12 @@
     ${prefix}/share/locale
   </translations>
 
-<!-- This takes the Quartz theme instructions from the package and puts them in the bundle gtkrc file. You may want to cusomize the source path if you want a different theme, or if you want other stuff in your gtkrc.
-
-  <data dest='${bundle}/Contents/Resources/etc/gtk-2.0/gtkrc'>
-    ${prefix}/share/themes/Quartz/gtk-2.0/gtkrc
+  <icon-theme icons="auto">
+    Adwaita
+  </icon-theme>
+  <!-- Default settings file to set the theme. -->
+  <data dest="${bundle}/Contents/Resources/etc/gtk-3.0/settings.ini">
+    ${project}/settings.ini
   </data>
--->
-
-  <!-- Icon themes to copy. The "icons" property can be either of
-       "auto", "all", or "none". All or none should be
-       self-explanatory, while auto means that the script will try to
-       figure out which icons are needed. This is done by getting all
-       the strings from all copied binaries, and matching them against
-       icon names. To be safe, you should use "all". "none" is useful
-       if you want just the index.theme file but no icons, mostly
-       needed for the "hicolor" base theme.
-  -->
-  <!-- icon-theme icons="auto"/>
-    Tango
-  </icon-theme -->
 
 </app-bundle>
