@@ -139,6 +139,14 @@
     ${prefix}/share/gwenhywfar
   </data>
 
+  <data dest="${bundle}/Contents/Resources/lib/aqbanking/" recurse="True">
+    ${prefix}/lib/aqbanking/*.xml
+  </data>
+
+  <data dest="${bundle}/Contents/Resources/lib/gwenhywfar/" recurse="True">
+    ${prefix}/lib/gwenhywfar/*.xml
+  </data>
+
   <data>
     ${prefix}/share/ktoblzcheck
   </data>
