@@ -228,6 +228,18 @@ for i in `ls $PREFIX/lib/libboost*.dylib`; do for j in `ls $PREFIX/lib/libboost*
       <dep package="icu55"/>
     </after>
   </autotools>
+  <autotools id="guile22" autogen-sh="configure">
+    <branch repo="ftp.gnu.org" module="guile/guile-2.2.4.tar.gz"
+	    version="2.2.4">
+     <patch file="https://raw.githubusercontent.com/gnucash/gnucash-on-osx/master/patches/guile-2.2-libguile-Makefile-fixups.patch" strip="1"/>
+    </branch>
+    <dependencies>
+      <dep package="libunistring"/>
+      <dep package="gmp"/>
+      <dep package="libffi"/>
+      <dep package="bdw-gc"/>
+    </dependencies>
+  </autotools>
 
   <cmake id="googletest" cmakeargs="-DBUILD_GMOCK=OFF" skip-install="True">
     <branch module="google/googletest" repo="github" tag="release-1.8.0"/>
@@ -248,7 +260,7 @@ for i in `ls $PREFIX/lib/libboost*.dylib`; do for j in `ls $PREFIX/lib/libboost*
       <dep package="libdbi-drivers"/>
       <dep package="shared-mime-info"/>
       <dep package="iso-codes"/>
-      <dep package="guile2"/>
+      <dep package="guile22"/>
       <dep package="sqlite"/>
     </dependencies>
     <after>
@@ -272,7 +284,7 @@ for i in `ls $PREFIX/lib/libboost*.dylib`; do for j in `ls $PREFIX/lib/libboost*
       <dep package="libdbi-drivers"/>
       <dep package="shared-mime-info"/>
       <dep package="iso-codes"/>
-      <dep package="guile2"/>
+      <dep package="guile22"/>
       <dep package="swig"/>
       <dep package="boost"/>
       <dep package="googletest"/>
@@ -293,7 +305,7 @@ for i in `ls $PREFIX/lib/libboost*.dylib`; do for j in `ls $PREFIX/lib/libboost*
       <dep package="libdbi-drivers"/>
       <dep package="shared-mime-info"/>
       <dep package="iso-codes"/>
-      <dep package="guile2"/>
+      <dep package="guile22"/>
       <dep package="swig"/>
       <dep package="boost"/>
       <dep package="googletest"/>

@@ -1,0 +1,212 @@
+diff -c /Users/john/Development/Gnucash-Build/Gnucash-master-git/src/guile-2.2.4/libguile/Makefile.in\~ /Users/john/Development/Gnucash-Build/Gnucash-master-git/src/guile-2.2.4/libguile/Makefile.in
+*** a/libguile/Makefile.in	Sun Jul  1 14:34:02 2018
+--- b/libguile/Makefile.in	Mon Jul 16 12:15:16 2018
+***************
+*** 2239,2245 ****
+      locale-categories.h
+  
+  INSTANTIATE = \
+!   $(SED) -i -e 's,[@]pkgdatadir[@],$(pkgdatadir),g'				\
+              -e 's,[@]pkglibdir[@],$(pkglibdir),g'				\
+              -e 's,[@]GUILE_EFFECTIVE_VERSION[@],$(GUILE_EFFECTIVE_VERSION),g'
+  
+--- 2239,2245 ----
+      locale-categories.h
+  
+  INSTANTIATE = \
+!   $(SED) -i "" -e 's,[@]pkgdatadir[@],$(pkgdatadir),g'				\
+              -e 's,[@]pkglibdir[@],$(pkglibdir),g'				\
+              -e 's,[@]GUILE_EFFECTIVE_VERSION[@],$(GUILE_EFFECTIVE_VERSION),g'
+  
+***************
+*** 2463,2469 ****
+  guile-snarf-docs: $(top_builddir)/config.status $(srcdir)/guile-snarf-docs.in
+  	cd $(top_builddir) && $(SHELL) ./config.status $(subdir)/$@
+  install-binPROGRAMS: $(bin_PROGRAMS)
+! 	@$(NORMAL_INSTALL)
+  	@list='$(bin_PROGRAMS)'; test -n "$(bindir)" || list=; \
+  	if test -n "$$list"; then \
+  	  echo " $(MKDIR_P) '$(DESTDIR)$(bindir)'"; \
+--- 2463,2469 ----
+  guile-snarf-docs: $(top_builddir)/config.status $(srcdir)/guile-snarf-docs.in
+  	cd $(top_builddir) && $(SHELL) ./config.status $(subdir)/$@
+  install-binPROGRAMS: $(bin_PROGRAMS)
+! 	@$(NORMAL_INSTALL) \
+  	@list='$(bin_PROGRAMS)'; test -n "$(bindir)" || list=; \
+  	if test -n "$$list"; then \
+  	  echo " $(MKDIR_P) '$(DESTDIR)$(bindir)'"; \
+***************
+*** 2493,2499 ****
+  	; done
+  
+  uninstall-binPROGRAMS:
+! 	@$(NORMAL_UNINSTALL)
+  	@list='$(bin_PROGRAMS)'; test -n "$(bindir)" || list=; \
+  	files=`for p in $$list; do echo "$$p"; done | \
+  	  sed -e 'h;s,^.*/,,;s/$(EXEEXT)$$//;$(transform)' \
+--- 2493,2499 ----
+  	; done
+  
+  uninstall-binPROGRAMS:
+! 	@$(NORMAL_UNINSTALL) \
+  	@list='$(bin_PROGRAMS)'; test -n "$(bindir)" || list=; \
+  	files=`for p in $$list; do echo "$$p"; done | \
+  	  sed -e 'h;s,^.*/,,;s/$(EXEEXT)$$//;$(transform)' \
+***************
+*** 2522,2528 ****
+  	rm -f $$list
+  
+  install-libLTLIBRARIES: $(lib_LTLIBRARIES)
+! 	@$(NORMAL_INSTALL)
+  	@list='$(lib_LTLIBRARIES)'; test -n "$(libdir)" || list=; \
+  	list2=; for p in $$list; do \
+  	  if test -f $$p; then \
+--- 2522,2528 ----
+  	rm -f $$list
+  
+  install-libLTLIBRARIES: $(lib_LTLIBRARIES)
+! 	@$(NORMAL_INSTALL) \
+  	@list='$(lib_LTLIBRARIES)'; test -n "$(libdir)" || list=; \
+  	list2=; for p in $$list; do \
+  	  if test -f $$p; then \
+***************
+*** 2537,2543 ****
+  	}
+  
+  uninstall-libLTLIBRARIES:
+! 	@$(NORMAL_UNINSTALL)
+  	@list='$(lib_LTLIBRARIES)'; test -n "$(libdir)" || list=; \
+  	for p in $$list; do \
+  	  $(am__strip_dir) \
+--- 2537,2543 ----
+  	}
+  
+  uninstall-libLTLIBRARIES:
+! 	@$(NORMAL_UNINSTALL) \
+  	@list='$(lib_LTLIBRARIES)'; test -n "$(libdir)" || list=; \
+  	for p in $$list; do \
+  	  $(am__strip_dir) \
+***************
+*** 2563,2569 ****
+  	@rm -f guile$(EXEEXT)
+  	$(AM_V_CCLD)$(guile_LINK) $(guile_OBJECTS) $(guile_LDADD) $(LIBS)
+  install-binSCRIPTS: $(bin_SCRIPTS)
+! 	@$(NORMAL_INSTALL)
+  	@list='$(bin_SCRIPTS)'; test -n "$(bindir)" || list=; \
+  	if test -n "$$list"; then \
+  	  echo " $(MKDIR_P) '$(DESTDIR)$(bindir)'"; \
+--- 2563,2569 ----
+  	@rm -f guile$(EXEEXT)
+  	$(AM_V_CCLD)$(guile_LINK) $(guile_OBJECTS) $(guile_LDADD) $(LIBS)
+  install-binSCRIPTS: $(bin_SCRIPTS)
+! 	@$(NORMAL_INSTALL) \
+  	@list='$(bin_SCRIPTS)'; test -n "$(bindir)" || list=; \
+  	if test -n "$$list"; then \
+  	  echo " $(MKDIR_P) '$(DESTDIR)$(bindir)'"; \
+***************
+*** 2592,2598 ****
+  	; done
+  
+  uninstall-binSCRIPTS:
+! 	@$(NORMAL_UNINSTALL)
+  	@list='$(bin_SCRIPTS)'; test -n "$(bindir)" || exit 0; \
+  	files=`for p in $$list; do echo "$$p"; done | \
+  	       sed -e 's,.*/,,;$(transform)'`; \
+--- 2592,2598 ----
+  	; done
+  
+  uninstall-binSCRIPTS:
+! 	@$(NORMAL_UNINSTALL) \
+  	@list='$(bin_SCRIPTS)'; test -n "$(bindir)" || exit 0; \
+  	files=`for p in $$list; do echo "$$p"; done | \
+  	       sed -e 's,.*/,,;$(transform)'`; \
+***************
+*** 3591,3597 ****
+  clean-libtool:
+  	-rm -rf .libs _libs
+  install-modincludeHEADERS: $(modinclude_HEADERS)
+! 	@$(NORMAL_INSTALL)
+  	@list='$(modinclude_HEADERS)'; test -n "$(modincludedir)" || list=; \
+  	if test -n "$$list"; then \
+  	  echo " $(MKDIR_P) '$(DESTDIR)$(modincludedir)'"; \
+--- 3591,3597 ----
+  clean-libtool:
+  	-rm -rf .libs _libs
+  install-modincludeHEADERS: $(modinclude_HEADERS)
+! 	@$(NORMAL_INSTALL) \
+  	@list='$(modinclude_HEADERS)'; test -n "$(modincludedir)" || list=; \
+  	if test -n "$$list"; then \
+  	  echo " $(MKDIR_P) '$(DESTDIR)$(modincludedir)'"; \
+***************
+*** 3607,3618 ****
+  	done
+  
+  uninstall-modincludeHEADERS:
+! 	@$(NORMAL_UNINSTALL)
+  	@list='$(modinclude_HEADERS)'; test -n "$(modincludedir)" || list=; \
+  	files=`for p in $$list; do echo $$p; done | sed -e 's|^.*/||'`; \
+  	dir='$(DESTDIR)$(modincludedir)'; $(am__uninstall_files_from_dir)
+  install-nodist_modincludeHEADERS: $(nodist_modinclude_HEADERS)
+! 	@$(NORMAL_INSTALL)
+  	@list='$(nodist_modinclude_HEADERS)'; test -n "$(modincludedir)" || list=; \
+  	if test -n "$$list"; then \
+  	  echo " $(MKDIR_P) '$(DESTDIR)$(modincludedir)'"; \
+--- 3607,3618 ----
+  	done
+  
+  uninstall-modincludeHEADERS:
+! 	@$(NORMAL_UNINSTALL) \
+  	@list='$(modinclude_HEADERS)'; test -n "$(modincludedir)" || list=; \
+  	files=`for p in $$list; do echo $$p; done | sed -e 's|^.*/||'`; \
+  	dir='$(DESTDIR)$(modincludedir)'; $(am__uninstall_files_from_dir)
+  install-nodist_modincludeHEADERS: $(nodist_modinclude_HEADERS)
+! 	@$(NORMAL_INSTALL) \
+  	@list='$(nodist_modinclude_HEADERS)'; test -n "$(modincludedir)" || list=; \
+  	if test -n "$$list"; then \
+  	  echo " $(MKDIR_P) '$(DESTDIR)$(modincludedir)'"; \
+***************
+*** 3628,3639 ****
+  	done
+  
+  uninstall-nodist_modincludeHEADERS:
+! 	@$(NORMAL_UNINSTALL)
+  	@list='$(nodist_modinclude_HEADERS)'; test -n "$(modincludedir)" || list=; \
+  	files=`for p in $$list; do echo $$p; done | sed -e 's|^.*/||'`; \
+  	dir='$(DESTDIR)$(modincludedir)'; $(am__uninstall_files_from_dir)
+  install-pkgincludeHEADERS: $(pkginclude_HEADERS)
+! 	@$(NORMAL_INSTALL)
+  	@list='$(pkginclude_HEADERS)'; test -n "$(pkgincludedir)" || list=; \
+  	if test -n "$$list"; then \
+  	  echo " $(MKDIR_P) '$(DESTDIR)$(pkgincludedir)'"; \
+--- 3628,3639 ----
+  	done
+  
+  uninstall-nodist_modincludeHEADERS:
+! 	@$(NORMAL_UNINSTALL) \
+  	@list='$(nodist_modinclude_HEADERS)'; test -n "$(modincludedir)" || list=; \
+  	files=`for p in $$list; do echo $$p; done | sed -e 's|^.*/||'`; \
+  	dir='$(DESTDIR)$(modincludedir)'; $(am__uninstall_files_from_dir)
+  install-pkgincludeHEADERS: $(pkginclude_HEADERS)
+! 	@$(NORMAL_INSTALL) \
+  	@list='$(pkginclude_HEADERS)'; test -n "$(pkgincludedir)" || list=; \
+  	if test -n "$$list"; then \
+  	  echo " $(MKDIR_P) '$(DESTDIR)$(pkgincludedir)'"; \
+***************
+*** 3649,3655 ****
+  	done
+  
+  uninstall-pkgincludeHEADERS:
+! 	@$(NORMAL_UNINSTALL)
+  	@list='$(pkginclude_HEADERS)'; test -n "$(pkgincludedir)" || list=; \
+  	files=`for p in $$list; do echo $$p; done | sed -e 's|^.*/||'`; \
+  	dir='$(DESTDIR)$(pkgincludedir)'; $(am__uninstall_files_from_dir)
+--- 3649,3655 ----
+  	done
+  
+  uninstall-pkgincludeHEADERS:
+! 	@$(NORMAL_UNINSTALL) \
+  	@list='$(pkginclude_HEADERS)'; test -n "$(pkgincludedir)" || list=; \
+  	files=`for p in $$list; do echo $$p; done | sed -e 's|^.*/||'`; \
+  	dir='$(DESTDIR)$(pkgincludedir)'; $(am__uninstall_files_from_dir)
+
+Diff finished.  Mon Jul 16 12:15:29 2018
