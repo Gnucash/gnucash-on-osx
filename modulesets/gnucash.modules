@@ -272,8 +272,8 @@ for i in `ls $PREFIX/lib/libboost*.dylib`; do for j in `ls $PREFIX/lib/libboost*
 
 <cmake id="gnucash"
         cmakeargs="-DGTEST_ROOT=${JHBUILD_SOURCE}/googletest/googletest -DGMOCK_ROOT=${JHBUILD_SOURCE}/googletest/googlemock">
-   <branch repo="sourceforge" module="gnucash/unstable/gnucash-3.2.tar.bz2"
-           version="3.2" />
+   <branch repo="sourceforge" module="gnucash/unstable/gnucash-3.3.tar.bz2"
+           version="3.3" />
     <dependencies>
       <dep package="meta-gtk-osx-gtk3"/>
       <dep package="libofx"/>
@@ -333,8 +333,8 @@ for i in `ls $PREFIX/lib/libboost*.dylib`; do for j in `ls $PREFIX/lib/libboost*
   <autotools id="gnucash-docs" autogenargs="--disable-scrollkeeper"
 	    autogen-template="%(srcdir)s/%(autogen-sh)s &amp;&amp; %(srcdir)s/configure --prefix %(prefix)s %(autogenargs)s"
 	    makeargs=" html" makeinstallargs="install-html" >
-    <branch  module="gnucash/gnucash-docs/gnucash-docs-3.2.tar.gz"
-	     version="3.2" repo="sourceforge"/>
+    <branch  module="gnucash/gnucash-docs/gnucash-docs-3.3.tar.gz"
+	     version="3.3" repo="sourceforge"/>
   </autotools>
 
   <autotools id="scrollkeeper" autogen-sh="configure">
