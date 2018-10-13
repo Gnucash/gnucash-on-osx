@@ -30,7 +30,7 @@
   <repository type="tarball" name="postgres"
               href="https://ftp.postgresql.org/pub/source/"/>
 
-  <include href="https://git.gnome.org/browse/gtk-osx/plain/modulesets-stable/gtk-osx.modules">
+  <include href="https://git.gnome.org/browse/gtk-osx/plain/modulesets-stable/gtk-osx.modules"/>
  <!--include href="file:///Users/john/Development/GTK-OSX/gtk-osx-build/modulesets-stable/gtk-osx.modules"/-->
 
   <autotools id="libchipcard" autogen-sh="configure" autogenargs="--enable-local-install">

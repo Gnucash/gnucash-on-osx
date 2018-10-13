@@ -1,7 +1,7 @@
 diff -c /Users/john/Development/Gnucash-Build/Gnucash-master-git/src/guile-2.2.4/libguile/Makefile.in\~ /Users/john/Development/Gnucash-Build/Gnucash-master-git/src/guile-2.2.4/libguile/Makefile.in
 --- a/libguile/Makefile.in	Sun Jul  1 14:34:02 2018
 +++ b/libguile/Makefile.in	Mon Jul 16 12:15:16 2018
-@@ -2239,7 +2239,6 @@
+@@ -2239,7 +2239,7 @@
      locale-categories.h
  
  INSTANTIATE = \
@@ -9,4 +9,6 @@ diff -c /Users/john/Development/Gnucash-Build/Gnucash-master-git/src/guile-2.2.4
 +  $(SED) -i "" -e 's,[@]pkgdatadir[@],$(pkgdatadir),g'				\
              -e 's,[@]pkglibdir[@],$(pkglibdir),g'				\
              -e 's,[@]GUILE_EFFECTIVE_VERSION[@],$(GUILE_EFFECTIVE_VERSION),g'
- 
+
+
+
