@@ -30,7 +30,7 @@
   <repository type="tarball" name="postgres"
               href="https://ftp.postgresql.org/pub/source/"/>
 
-  <include href="https://git.gnome.org/browse/gtk-osx/plain/modulesets-stable/gtk-osx.modules"/>
+  <include href="https://gitlab.gnome.org/GNOME/gtk-osx/raw/master/modulesets-stable/gtk-osx.modules"/>
  <!--include href="file:///Users/john/Development/GTK-OSX/gtk-osx-build/modulesets-stable/gtk-osx.modules"/-->
 
   <autotools id="libchipcard" autogen-sh="configure" autogenargs="--enable-local-install">
@@ -228,6 +228,7 @@ for i in `ls $PREFIX/lib/libboost*.dylib`; do for j in `ls $PREFIX/lib/libboost*
       <dep package="icu55"/>
     </after>
   </autotools>
+
   <autotools id="guile22" autogen-sh="configure">
     <branch repo="ftp.gnu.org" module="guile/guile-2.2.4.tar.gz"
 	    version="2.2.4">
