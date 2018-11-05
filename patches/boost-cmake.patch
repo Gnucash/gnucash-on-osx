@@ -1,0 +1,75 @@
+diff --git a/CMakeLists.txt b/CMakeLists.txt
+index e69de29..b53cf7a 100644
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -0,0 +1,70 @@
++#CMakeLists.txt for wrapping Boost.Build in a gtk-osx jhbuild environment.
++#Copyright 2018 John Ralls <jralls@ceridwen.us>
++#This file is part of gtk-osx.
++# This program is free software; you can redistribute it and/or
++# modify it under the terms of the GNU General Public License as
++# published by the Free Software Foundation; either version 2 of
++# the License, or (at your option) any later version.
++#
++# This program is distributed in the hope that it will be useful,
++# but WITHOUT ANY WARRANTY; without even the implied warranty of
++# MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
++# GNU General Public License for more details
++
++cmake_minimum_required (VERSION 3.6)
++
++project (boost)
++
++if(NOT LIBRARIES)
++  set(LIBRARIES date_time;regex;locale;filesystem)
++endif()
++
++set(B2_EXE ${CMAKE_SOURCE_DIR}/b2)
++
++add_custom_command (
++  OUTPUT ${B2_EXE}
++  COMMAND ${CMAKE_SOURCE_DIR}/bootstrap.sh
++  WORKING_DIRECTORY ${CMAKE_SOURCE_DIR}
++  )
++
++set(LIB_ARG "")
++foreach(lib ${LIBRARIES})
++  list(APPEND LIB_ARGS --with-${lib})
++endforeach()
++
++add_custom_target(bootstrap DEPENDS ${B2_EXE})
++
++set(BUILD_FLAGS
++  --prefix=${CMAKE_INSTALL_PREFIX}
++  ${LIB_ARGS}
++  --build-dir=${CMAKE_BINARY_DIR} --link-shared
++  toolset=darwin cxxflags=${CMAKE_CXX_FLAGS}
++  cflags=${CMAKE_C_FLAGS} linkflags=${CMAKE_SHARED_LINKER_FLAGS}
++  install)
++add_custom_target(boost_libs
++  COMMAND ${B2_EXE} ${BUILD_FLAGS}
++  WORKING_DIRECTORY ${CMAKE_SOURCE_DIR}
++  )
++
++set(CMAKE_COMMAND_TMP ${CMAKE_COMMAND} -E env)
++
++file(WRITE ${CMAKE_BINARY_DIR}/script1.sh
++  "for i in ${CMAKE_INSTALL_PREFIX}/lib/libboost*.dylib; do \n"
++     "\tinstall_name_tool -id $i $i; \n"
++  "done; \n"
++  "for i in ${CMAKE_INSTALL_PREFIX}/lib/libboost*.dylib; do \n"
++     "\tfor j in $PREFIX/lib/libboost*.dylib; do \n"
++        "\t\tinstall_name_tool -change `basename $i` $i $j; \n"
++     "\tdone; \n"
++  "done \n"
++)
++
++add_custom_target(fix_rpaths ALL
++  COMMAND ${CMAKE_COMMAND_TMP} $ENV{SHELL} ${CMAKE_BINARY_DIR}/script1.sh
++  )
++
++add_dependencies(fix_rpaths boost_libs)
++add_dependencies(boost_libs bootstrap)
++
++install(FILES ${CMAKE_SOURCE_DIR}/LICENSE_1_0.txt
++  DESTINATION ${CMAKE_INSTALL_PREFIX}/share/doc/boost/)
