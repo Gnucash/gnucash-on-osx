@@ -71,7 +71,7 @@
     </dependencies>
     <after>
       <dep package="meta-gtk-osx-core"/>
-      <dep package="meta-gtk-osx--gtk3"/>
+      <dep package="meta-gtk-osx-gtk3"/>
     </after>
   </autotools>
 
