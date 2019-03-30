@@ -96,6 +96,7 @@
       <dep package="gmp"/>
       <dep package="ktoblzcheck"/>
       <dep package="xmlsec"/>
+      <dep package="libxslt"/>
       <dep package="libchipcard"/>
     </dependencies>
   </autotools>
@@ -290,6 +291,28 @@
       <dep package="webkit1gtk3"/>
     </dependencies>
 
+ </cmake>
+
+<cmake id="gnucash-unstable"
+        cmakeargs="-DGTEST_ROOT=${JHBUILD_SOURCE}/googletest/googletest -DGMOCK_ROOT=${JHBUILD_SOURCE}/googletest/googlemock">
+   <branch repo="sourceforge" module="gnucash/unstable/gnucash-3.900.tar.bz2"
+           version="3.900" />
+    <dependencies>
+      <dep package="meta-gtk-osx-gtk3"/>
+      <dep package="libofx"/>
+      <dep package="aqbanking"/>
+      <dep package="mysql"/>
+      <dep package="pgsql"/>
+      <dep package="sqlite"/>
+      <dep package="libdbi-drivers"/>
+      <dep package="shared-mime-info"/>
+      <dep package="iso-codes"/>
+      <dep package="guile22"/>
+      <dep package="swig"/>
+      <dep package="boost"/>
+      <dep package="googletest"/>
+      <dep package="webkit1gtk3"/>
+    </dependencies>
  </cmake>
 
  <cmake id="gnucash-git"
