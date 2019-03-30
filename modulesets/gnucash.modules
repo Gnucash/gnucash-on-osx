@@ -247,7 +247,7 @@
   <autotools id="gnucash-oldstable"
 	     autogen-sh="configure"
 	     autogenargs="--enable-ofx --enable-aqbanking --enable-binreloc --enable-dbi --with-dbi-dbd-dir=$PREFIX/lib/dbd --with-html-engine='webkit'">
-    <branch module="gnucash/stable/gnucash-2.6.21.tar.bz2" version="2.6.21"
+    <branch module="project/gnucash/gnucash%20%28stable%29/2.6.21/gnucash-2.6.21.tar.bz2" version="2.6.21"
 	    repo="sourceforge">
     </branch>
     <dependencies>
@@ -271,8 +271,8 @@
 
 <cmake id="gnucash"
         cmakeargs="-DGTEST_ROOT=${JHBUILD_SOURCE}/googletest/googletest -DGMOCK_ROOT=${JHBUILD_SOURCE}/googletest/googlemock">
-   <branch repo="sourceforge" module="gnucash/unstable/gnucash-3.4.tar.bz2"
-           version="3.4" />
+   <branch repo="sourceforge" module="projects/gnucash/gnucash%20%28stable%29/3.5/gnucash-3.5.tar.bz2"
+           version="3.5" />
     <dependencies>
       <dep package="meta-gtk-osx-gtk3"/>
       <dep package="libofx"/>
@@ -325,15 +325,15 @@
   <autotools id="gnucash-olddocs" autogenargs="--disable-scrollkeeper"
 	    autogen-template="%(srcdir)s/%(autogen-sh)s &amp;&amp; %(srcdir)s/configure --prefix %(prefix)s %(autogenargs)s"
 	    makeargs=" html" makeinstallargs="install-html" >
-    <branch  module="gnucash/gnucash-docs/gnucash-docs-2.6.20.tar.gz"
+    <branch  module="projects/gnucash/gnucash-docs/2.6.20/gnucash-docs-2.6.20.tar.gz"
 	     version="2.6.20" repo="sourceforge"/>
   </autotools>
 
   <autotools id="gnucash-docs" autogenargs="--disable-scrollkeeper"
 	    autogen-template="%(srcdir)s/%(autogen-sh)s &amp;&amp; %(srcdir)s/configure --prefix %(prefix)s %(autogenargs)s"
 	    makeargs=" html" makeinstallargs="install-html" >
-    <branch  module="gnucash/gnucash-docs/gnucash-docs-3.4.tar.gz"
-	     version="3.4" repo="sourceforge"/>
+    <branch  module="projects/gnucash/gnucash%20%28stable%29/3.5/gnucash-docs-3.5.tar.gz"
+	     version="3.5" repo="sourceforge"/>
   </autotools>
 
   <autotools id="scrollkeeper" autogen-sh="configure">
