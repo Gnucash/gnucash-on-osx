@@ -272,8 +272,8 @@
 
 <cmake id="gnucash"
         cmakeargs="-DGTEST_ROOT=${JHBUILD_SOURCE}/googletest/googletest -DGMOCK_ROOT=${JHBUILD_SOURCE}/googletest/googlemock">
-   <branch repo="sourceforge" module="projects/gnucash/gnucash%20%28stable%29/3.5/gnucash-3.5.tar.bz2"
-           version="3.5" />
+   <branch repo="sourceforge" module="projects/gnucash/gnucash%20%28stable%29/3.5/gnucash-3.6.tar.bz2"
+           version="3.6" />
     <dependencies>
       <dep package="meta-gtk-osx-gtk3"/>
       <dep package="libofx"/>
@@ -355,8 +355,8 @@
   <autotools id="gnucash-docs" autogenargs="--disable-scrollkeeper"
 	    autogen-template="%(srcdir)s/%(autogen-sh)s &amp;&amp; %(srcdir)s/configure --prefix %(prefix)s %(autogenargs)s"
 	    makeargs=" html" makeinstallargs="install-html" >
-    <branch  module="projects/gnucash/gnucash%20%28stable%29/3.5/gnucash-docs-3.5.tar.gz"
-	     version="3.5" repo="sourceforge"/>
+    <branch  module="projects/gnucash/gnucash%20%28stable%29/3.5/gnucash-docs-3.6.tar.gz"
+	     version="3.6" repo="sourceforge"/>
   </autotools>
 
   <autotools id="scrollkeeper" autogen-sh="configure">
