@@ -75,11 +75,6 @@
     </after>
   </autotools>
 
-  <autotools id="ktoblzcheck" autogen-sh="configure">
-    <branch module="ktoblzcheck/ktoblzcheck-1.47.tar.gz" version="1.47"
-	    repo="sourceforge"/>
-  </autotools>
-
   <autotools id="xmlsec">
     <branch module="lsh123/xmlsec" repo="github" tag="xmlsec-1_2_25"/>
     <dependencies>
