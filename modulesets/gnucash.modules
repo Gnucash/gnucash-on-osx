@@ -48,7 +48,12 @@
 
   <autotools id="gwenhywfar" autogen-sh="configure"
 	     autogenargs="--with-guis='gtk3' --enable-local-install">
+<<<<<<< HEAD
     <branch module="108/gwenhywfar-4.20.2.tar.gz" version="4.20.2" repo="aqbanking">
+=======
+    <branch module="108/gwenhywfar-4.20.2.tar.gz" version="4.20.2"
+            repo="aqbanking" >
+>>>>>>> Build 3.7 Release.
       <patch file="https://raw.githubusercontent.com/gnucash/gnucash-on-osx/master/patches/gwen-include-file.patch" strip='1'/>
       <patch file="https://raw.githubusercontent.com/gnucash/gnucash-on-osx/master/patches/gwen-macos-bundle-path.patch" strip='1'/>
     </branch>
@@ -84,8 +89,8 @@
 
   <autotools id="aqbanking" autogen-sh="autoreconf" makeargs="-j1"
 	     autogenargs="--enable-local-install">
-    <branch module="107/aqbanking-5.8.2.tar.gz" repo="aqbanking" version="5.8.2">
-      <patch file="https://raw.githubusercontent.com/gnucash/gnucash-on-osx/master/patches/aqbanking-aqhbci-la.patch" strip="1"/>
+    <branch module="107/aqbanking-5.8.2.tar.gz" version="5.8.2"
+            repo="aqbanking">
     </branch>
     <dependencies>
       <dep package="gwenhywfar"/>
@@ -266,8 +271,8 @@
 
 <cmake id="gnucash"
         cmakeargs="-DGTEST_ROOT=${JHBUILD_SOURCE}/googletest/googletest -DGMOCK_ROOT=${JHBUILD_SOURCE}/googletest/googlemock">
-   <branch repo="sourceforge" module="gnucash/gnucash%20%28stable%29/3.6/gnucash-3.6.tar.bz2"
-           version="3.6" />
+   <branch module="gnucash/gnucash%20%28stable%29/3.7/gnucash-3.7.tar.bz2"
+           repo="sourceforge" version="3.7" />
     <dependencies>
       <dep package="meta-gtk-osx-gtk3"/>
       <dep package="libofx"/>
@@ -349,8 +354,8 @@
   <autotools id="gnucash-docs" autogenargs="--disable-scrollkeeper"
 	    autogen-template="%(srcdir)s/%(autogen-sh)s &amp;&amp; %(srcdir)s/configure --prefix %(prefix)s %(autogenargs)s"
 	    makeargs=" html" makeinstallargs="install-html" >
-    <branch  module="gnucash/gnucash%20%28stable%29/3.6/gnucash-docs-3.6.tar.gz"
-	     version="3.6" repo="sourceforge"/>
+    <branch  module="gnucash/gnucash%20%28stable%29/3.7/gnucash-docs-3.7.tar.gz"
+	     version="3.7" repo="sourceforge"/>
   </autotools>
 
   <autotools id="scrollkeeper" autogen-sh="configure">
