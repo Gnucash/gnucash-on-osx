@@ -224,8 +224,8 @@
   </cmake>
 
   <autotools id="guile22" autogen-sh="configure">
-    <branch repo="ftp.gnu.org" module="guile/guile-2.2.4.tar.gz"
-	    version="2.2.4">
+    <branch repo="ftp.gnu.org" module="guile/guile-2.2.6.tar.gz"
+	    version="2.2.6">
      <patch file="https://raw.githubusercontent.com/gnucash/gnucash-on-osx/master/patches/guile-2.2-libguile-Makefile-fixups.patch" strip="1"/>
     </branch>
     <dependencies>

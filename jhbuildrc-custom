@@ -25,8 +25,9 @@ setup_sdk()
 # minimum version, SDK, and architecture. Note that only
 # MacOSX10.9.sdk and later can build for earlier MacOS versions, and
 # that all Macs running 10.7 and later are 64-bit. Finally note that
-# GnuCash 2.6.99 and later requuire MacOS X 10.9 or later. If you need
-# to build with an older SDK see
+# GnuCash 2.6.99 and later requuire MacOS X 10.9 or later and 3.900
+# and later require MacOS 10.13 or later. If you need to build with an
+# older SDK see
 # https://wiki.gnome.org/Projects/GTK+/OSX/Building#Building_for_Older_Versions_of_Mac_OS_X
 
 #This will build a 32-bit version for 10.9 and later:
@@ -34,26 +35,13 @@ setup_sdk()
 
 moduleset = "https://github.com/gnucash/gnucash-on-osx/raw/master/modulesets/gnucash.modules"
 
-#If you wish to enable the mysql backend on gnucash-stable (it and
-#pgsql are already included in gnucash-git), uncomment the lines
-#below.
-
-#_gc_module=modules[-1]
-#modules[-1]="mysql"
-#modules.append(_gc_module)
-#module_extra_env["mysql"] = { "CMAKE_INSTALL_PREFIX":  prefix }
-#append_autogenargs("libdbi-drivers", "--with-mysql --with-mysql-incdir=" + prefix + "/include --with-mysql-libdir=" + prefix + "/lib")
-
+skip.append('icu') # Webkit1 requires icu55, Harfbuzz depends on icu but works fine with icu55.
 append_autogenargs("libofx", "--with-opensp-includes=" + prefix + "/include/OpenSP --with-opensp-libs=" + prefix + "/lib")
 
 append_autogenargs("scrollkeeper", "--with-xml-catalog=" + os.path.join(prefix, "etc/xml/catalog"))
 
 append_autogenargs("OpenSP", "--enable-shared") #To override the global --disable-shared
 append_autogenargs("libdbi-drivers","--with-dbi-incdir=" + prefix + "/include --with-dbi-libdir=" + prefix + "/lib")
-append_autogenargs("gnucash-unstable", "--with-dbi-dbd-dir=" + prefix +"/lib/dbd")
-append_autogenargs("gnucash-git", "--with-dbi-dbd-dir=" + prefix +"/lib/dbd")
-append_autogenargs("gnucash", "--with-dbi-dbd-dir=" + prefix +"/lib/dbd")
-
 append_autogenargs("libiconv", "--with-libintl-prefix=" + prefix)
 
 #Tell fontconfig where to find fonts and to not set a cache directory in prefix:
