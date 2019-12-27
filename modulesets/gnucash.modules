@@ -83,7 +83,7 @@
 
   <autotools id="aqbanking" autogen-sh="autoreconf" makeargs="-j1"
 	     autogenargs="--enable-local-install">
-    <branch module=224/aqbanking-5.99.44beta.tar.gz" version="5.99.44beta"
+    <branch module="224/aqbanking-5.99.44beta.tar.gz" version="5.99.44beta"
             repo="aqbanking">
     </branch>
     <dependencies>
@@ -265,7 +265,7 @@
 
 <cmake id="gnucash"
         cmakeargs="-DGTEST_ROOT=${JHBUILD_SOURCE}/googletest/googletest -DGMOCK_ROOT=${JHBUILD_SOURCE}/googletest/googlemock">
-   <branch module="gnucash/gnucash%20%28stable%29/3.7/gnucash-3.7.tar.bz2"
+   <branch module="gnucash/gnucash%20%28stable%29/3.8/gnucash-3.8.tar.bz2"
            repo="sourceforge" version="3.7" />
     <dependencies>
       <dep package="meta-gtk-osx-gtk3"/>
@@ -348,8 +348,8 @@
   <autotools id="gnucash-docs" autogenargs="--disable-scrollkeeper"
 	    autogen-template="%(srcdir)s/%(autogen-sh)s &amp;&amp; %(srcdir)s/configure --prefix %(prefix)s %(autogenargs)s"
 	    makeargs=" html" makeinstallargs="install-html" >
-    <branch  module="gnucash/gnucash%20%28stable%29/3.7/gnucash-docs-3.7.tar.gz"
-	     version="3.7" repo="sourceforge"/>
+    <branch  module="gnucash/gnucash%20%28stable%29/3.8/gnucash-docs-3.8.tar.gz"
+	     version="3.8" repo="sourceforge"/>
   </autotools>
 
   <autotools id="scrollkeeper" autogen-sh="configure">
