@@ -36,8 +36,8 @@
  <!--include href="file:///Users/john/Development/GTK-OSX/gtk-osx-build/modulesets-stable/gtk-osx.modules"/-->
 
   <autotools id="libchipcard" autogen-sh="configure" autogenargs="--enable-local-install">
-    <branch module="gnucash/Dependencies/libchipcard-5.0.4.tar.gz" version="5.0.4"
-            repo="sourceforge">
+    <branch module="221/libchipcard-5.1.4rc1.tar.gz" version="5.1.4rc1"
+            repo="aqbanking">
       <patch file="https://raw.githubusercontent.com/gnucash/gnucash-on-osx/master/patches/libchipcard-sdk.patch" strip="1"/>
     </branch>
     <dependencies>
@@ -48,10 +48,8 @@
 
   <autotools id="gwenhywfar" autogen-sh="configure"
 	     autogenargs="--with-guis='gtk3' --enable-local-install">
-    <branch module="108/gwenhywfar-4.20.2.tar.gz" version="4.20.2"
+    <branch module="224/gwenhywfar-4.99.25rc9.tar.gz" version="4.99.25rc9"
             repo="aqbanking" >
-      <patch file="https://raw.githubusercontent.com/gnucash/gnucash-on-osx/master/patches/gwen-include-file.patch" strip='1'/>
-      <patch file="https://raw.githubusercontent.com/gnucash/gnucash-on-osx/master/patches/gwen-macos-bundle-path.patch" strip='1'/>
     </branch>
     <dependencies>
       <dep package="libgcrypt"/>
@@ -85,7 +83,7 @@
 
   <autotools id="aqbanking" autogen-sh="autoreconf" makeargs="-j1"
 	     autogenargs="--enable-local-install">
-    <branch module="107/aqbanking-5.8.2.tar.gz" version="5.8.2"
+    <branch module=224/aqbanking-5.99.44beta.tar.gz" version="5.99.44beta"
             repo="aqbanking">
     </branch>
     <dependencies>
