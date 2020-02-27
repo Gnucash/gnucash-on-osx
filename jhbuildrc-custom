@@ -51,4 +51,4 @@ append_autogenargs("libiconv", "--with-libintl-prefix=" + prefix)
 append_autogenargs("fontconfig", "--with-default-fonts=/Library/Fonts --with-cache-dir=home")
 module_makecheck["gmp"] = True
 
-os.environ["GNC_SHELL"] = os.path.join(prefix, 'bin', 'bash')
+os.environ["GNC_SHELL"] = os.path.join(os.environ['DEVPREFIX'], 'bin', 'bash')
