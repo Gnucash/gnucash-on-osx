@@ -15,9 +15,9 @@ checkoutroot = os.path.join(prefix, 'src')
 
 #Select which modules to build. The only difference is which gnucash
 #module (and all of the dependencies, see above) get built. "
-modules = ["meta-gtk-osx-bootstrap", "meta-gnucash-stable"]
-#modules = ["meta-gtk-osx-bootstrap", "gnucash-unstable"]
-#modules = ["meta-gtk-osx-bootstrap", "gnucash-git"]
+modules = ["python3", "meta-gtk-osx-bootstrap", "gnucash"]
+#modules = ["python3", "meta-gtk-osx-bootstrap", "gnucash-unstable"]
+#modules = ["python3", "meta-gtk-osx-bootstrap", "gnucash-git"]
 #branches["gnucash-git"] = (None, "maint")
 
 # This will set up the build for your system. The result will run on
