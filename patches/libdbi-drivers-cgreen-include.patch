@@ -1,0 +1,13 @@
+--- a/tests/cgreen/Makefile.am	2010-09-29 15:22:34.000000000 -0600
++++ b/tests/cgreen/Makefile.am	2020-02-29 09:16:54.000000000 -0700
+@@ -4,7 +4,7 @@
+ 
+ noinst_LIBRARIES = libcgreen.a
+ 
+-INCLUDES = -Iinclude
++INCLUDES = -I${srcdir}/include
+ 
+ libcgreen_a_SOURCES =  src/unit.c src/messaging.c src/breadcrumb.c src/reporter.c src/assertions.c src/vector.c src/mocks.c src/constraint.c src/parameters.c src/text_reporter.c src/cdash_reporter.c 
+ 
+
+Diff finished.  Sat Feb 29 09:19:34 2020
