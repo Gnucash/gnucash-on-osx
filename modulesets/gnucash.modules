@@ -176,12 +176,10 @@
     </branch>
     <dependencies>
       <dep package="libdbi"/>
-    </dependencies>
-    <after>
       <dep package="mysql"/>
       <dep package="pgsql"/>
       <dep package="sqlite"/>
-    </after>
+    </dependencies>
    </autotools>
 
   <autotools id="libgnomecanvas" autogen-sh="configure">
