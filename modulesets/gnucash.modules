@@ -269,8 +269,8 @@
 
 <cmake id="gnucash"
         cmakeargs="-DGTEST_ROOT=${JHBUILD_SOURCE}/googletest/googletest -DGMOCK_ROOT=${JHBUILD_SOURCE}/googletest/googlemock">
-   <branch module="gnucash/gnucash%20%28stable%29/3.8/gnucash-3.8.tar.bz2"
-           repo="sourceforge" version="3.7" />
+   <branch module="gnucash/gnucash%20%28stable%29/3.8/gnucash-3.8b.tar.bz2"
+           checkoutdir="gnucash-3.8" repo="sourceforge" version="3.8" />
     <dependencies>
       <dep package="meta-gtk-osx-gtk3"/>
       <dep package="libofx"/>
