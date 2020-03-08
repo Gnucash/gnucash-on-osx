@@ -39,6 +39,7 @@
     <branch module="229/libchipcard-5.1.5rc2.tar.gz" version="5.1.5rc2"
             repo="aqbanking">
       <patch file="https://raw.githubusercontent.com/gnucash/gnucash-on-osx/master/patches/libchipcard-sdk.patch" strip="1"/>
+      <patch file="https://raw.githubusercontent.com/gnucash/gnucash-on-osx/master/patches/libchipcard-include.patch" strip="1"/>
     </branch>
     <dependencies>
       <dep package="libgcrypt"/>
@@ -48,8 +49,9 @@
 
   <autotools id="gwenhywfar" autogen-sh="configure"
 	     autogenargs="--with-guis='gtk3' --enable-local-install">
-    <branch module="231/gwenhywfar-5.1.0.tar.gz" version="5.1.0"
+    <branch module="256/gwenhywfar-5.2.0.tar.gz" version="5.2.0"
             repo="aqbanking" >
+      <patch file="https://raw.githubusercontent.com/gnucash/gnucash-on-osx/master/patches/gwen-include-file.patch" strip="1"/>
     </branch>
     <dependencies>
       <dep package="libgcrypt"/>
@@ -83,7 +85,7 @@
 
   <autotools id="aqbanking" autogen-sh="autoreconf" makeargs="-j1"
 	     autogenargs="--enable-local-install">
-    <branch module="232/aqbanking-5.99.45.tar.gz" version="5.99.45"
+    <branch module="269/aqbanking-6.1.2.tar.gz" version="6.1.2"
             repo="aqbanking">
     </branch>
     <dependencies>
@@ -146,11 +148,14 @@
   </autotools>
 
   <autotools id="pgsql">
-    <branch repo="postgres" module="v9.6.5/postgresql-9.6.5.tar.bz2" 
-            version="9.6.10"/>
-      <dependencies>
-        <dep package="openssl"/>
-      </dependencies>
+    <branch repo="postgres" module="v9.6.17/postgresql-9.6.17.tar.bz2" 
+            version="9.6.17">
+      <patch file="https://raw.githubusercontent.com/gnucash/gnucash-on-osx/master/patches/pgsql-find-int64.patch" strip="1"/>
+
+    </branch>
+    <dependencies>
+      <dep package="openssl"/>
+    </dependencies>
   </autotools>
 
   <cmake id="mysql">

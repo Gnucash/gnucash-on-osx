@@ -1,0 +1,13 @@
+diff -u /Users/john/Development/Gnucash-Build/Gnucash-3/src/libchipcard-5.1.5rc2/src/tools/usbtan-test/main.c\~ /Users/john/Development/Gnucash-Build/Gnucash-3/src/libchipcard-5.1.5rc2/src/tools/usbtan-test/main.c
+--- a/src/tools/usbtan-test/main.c	2020-01-12 08:22:44.000000000 -0800
++++ b/src/tools/usbtan-test/main.c	2020-03-07 10:31:29.000000000 -0800
+@@ -12,6 +12,7 @@
+ # include <config.h>
+ #endif
+ 
++#include <ctype.h>
+ #include <gwenhywfar/args.h>
+ #include <gwenhywfar/cgui.h>
+ #include <gwenhywfar/text.h>
+
+Diff finished.  Sat Mar  7 11:14:03 2020
