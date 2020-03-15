@@ -52,6 +52,7 @@
     <branch module="256/gwenhywfar-5.2.0.tar.gz" version="5.2.0"
             repo="aqbanking" >
       <patch file="https://raw.githubusercontent.com/gnucash/gnucash-on-osx/master/patches/gwen-include-file.patch" strip="1"/>
+      <patch file="https://raw.githubusercontent.com/gnucash/gnucash-on-osx/master/patches/gwen-macos-bundle-path.patch" strip="1"/>
     </branch>
     <dependencies>
       <dep package="libgcrypt"/>
