@@ -65,7 +65,8 @@
   </autotools>
 
   <autotools id="gwenhywfar-git" autogen-template="make -fMakefile.cvs &amp;&amp; %(srcdir)s/configure --prefix %(prefix)s %(autogenargs)s"
-	     autogenargs="--with-guis='gtk3' --enable-local-install">
+             autogenargs="--with-guis='gtk3' --enable-local-install"
+             supports-non-srcdir-builds="no">
     <branch module="gwenhywfar" repo="aquamaniac"/>
     <dependencies>
       <dep package="libgcrypt"/>
@@ -99,13 +100,14 @@
   </autotools>
 
   <autotools id="aqbanking-git"
-	     autogenargs='--enable-local-install"'
-	     autogen-template="make -fMakefile.cvs &amp;&amp; %(srcdir)s/configure --prefix %(prefix)s --libdir %(libdir)s %(autogenargs)s" >
+	     autogenargs="--enable-local-install"
+	     autogen-template="ACLOCAL_FLAGS=-I$PREFIX/share/aclocal make -fMakefile.cvs &amp;&amp; %(srcdir)s/configure --prefix %(prefix)s %(autogenargs)s" 
+             supports-non-srcdir-builds="no">
      <branch module="aqbanking" repo="aquamaniac" >
     </branch>
     <dependencies>
       <dep package="libofx"/>
-      <dep package="gwenhywfar-svn"/>
+      <dep package="gwenhywfar-git"/>
       <dep package="gmp"/>
       <dep package="xmlsec"/>
       <dep package="libchipcard"/>
