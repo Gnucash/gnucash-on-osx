@@ -32,8 +32,8 @@
   <repository type="tarball" name="bintray"
               href="https://dl.bintray.com/boostorg/release/"/>
 
-  <include href="https://gitlab.gnome.org/GNOME/gtk-osx/raw/master/modulesets-stable/gtk-osx.modules"/>
- <!--include href="file:///Users/john/Development/GTK-OSX/gtk-osx-build/modulesets-stable/gtk-osx.modules"/-->
+  <!--include href="https://gitlab.gnome.org/GNOME/gtk-osx/raw/master/modulesets-stable/gtk-osx.modules"/-->
+ <include href="file:///Users/john/Development/GTK-OSX/gtk-osx-build/modulesets-stable/gtk-osx.modules"/>
 
   <autotools id="libchipcard" autogen-sh="autoreconf" autogenargs="--enable-local-install">
     <branch module="229/libchipcard-5.1.5rc2.tar.gz" version="5.1.5rc2"
@@ -272,8 +272,8 @@
 
 <cmake id="gnucash"
         cmakeargs="-DGTEST_ROOT=${JHBUILD_SOURCE}/googletest/googletest -DGMOCK_ROOT=${JHBUILD_SOURCE}/googletest/googlemock">
-   <branch module="gnucash/gnucash%20%28stable%29/3.9/gnucash-3.9.tar.bz2"
-           checkoutdir="gnucash-3.9" repo="sourceforge" version="3.9" />
+   <branch module="gnucash/gnucash%20%28stable%29/3.10/gnucash-3.10.tar.bz2"
+           checkoutdir="gnucash-3.10" repo="sourceforge" version="3.10" />
     <dependencies>
       <dep package="meta-gtk-osx-gtk3"/>
       <dep package="libofx"/>
@@ -355,8 +355,8 @@
   <autotools id="gnucash-docs" autogenargs="--disable-scrollkeeper"
 	    autogen-template="%(srcdir)s/%(autogen-sh)s &amp;&amp; %(srcdir)s/configure --prefix %(prefix)s %(autogenargs)s"
 	    makeargs=" html" makeinstallargs="install-html" >
-    <branch  module="gnucash/gnucash%20%28stable%29/3.9/gnucash-docs-3.9.tar.gz"
-	     version="3.9" repo="sourceforge"/>
+    <branch  module="gnucash/gnucash%20%28stable%29/3.10/gnucash-docs-3.10.tar.gz"
+	     version="3.10" repo="sourceforge"/>
   </autotools>
 
   <autotools id="scrollkeeper" autogen-sh="configure">
