@@ -2,7 +2,7 @@ diff --git a/CMakeLists.txt b/CMakeLists.txt
 index e69de29..b53cf7a 100644
 --- a/CMakeLists.txt
 +++ b/CMakeLists.txt
-@@ -0,0 +1,70 @@
+@@ -0,0 +1,71 @@
 +#CMakeLists.txt for wrapping Boost.Build in a gtk-osx jhbuild environment.
 +#Copyright 2018 John Ralls <jralls@ceridwen.us>
 +#This file is part of gtk-osx.
@@ -21,7 +21,7 @@ index e69de29..b53cf7a 100644
 +project (boost)
 +
 +if(NOT LIBRARIES)
-+  set(LIBRARIES date_time;regex;locale;filesystem)
++  set(LIBRARIES date_time;regex;locale;filesystem;system)
 +endif()
 +
 +set(B2_EXE ${CMAKE_SOURCE_DIR}/b2)
@@ -45,6 +45,7 @@ index e69de29..b53cf7a 100644
 +  --build-dir=${CMAKE_BINARY_DIR} --link-shared
 +  toolset=darwin cxxflags=${CMAKE_CXX_FLAGS}
 +  cflags=${CMAKE_C_FLAGS} linkflags=${CMAKE_SHARED_LINKER_FLAGS}
++  cxxstd=17
 +  install)
 +add_custom_target(boost_libs
 +  COMMAND ${B2_EXE} ${BUILD_FLAGS}
