@@ -217,8 +217,8 @@
     </dependencies>
   </autotools>
 
-  <cmake id="boost" cmakeargs="-DLIBRARIES='date_time;regex;locale;filesystem;system'">
-    <branch module="1.68.0/source/boost_1_68_0.tar.bz2" version="1.68.0" 
+  <cmake id="boost" cmakeargs="-DLIBRARIES='date_time;regex;locale;filesystem'">
+    <branch module="1.72.0/source/boost_1_72_0.tar.bz2" version="1.72.0" 
             repo="bintray">
       <patch file="https://raw.githubusercontent.com/gnucash/gnucash-on-osx/master/patches/boost-cmake.patch" strip="1"/>
     </branch>
