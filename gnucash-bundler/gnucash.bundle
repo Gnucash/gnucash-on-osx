@@ -127,10 +127,6 @@
     ${prefix}/lib/guile/*.go
   </data>
 
-  <data recurse="True">
-    ${prefix}/lib/gnucash/scm/*.go
-  </data>
-
   <data>
     ${prefix}/share/aqbanking
   </data>
@@ -145,10 +141,6 @@
 
   <data dest="${bundle}/Contents/Resources/lib/gwenhywfar/" recurse="True">
     ${prefix}/lib/gwenhywfar/*.xml
-  </data>
-
-  <data>
-    ${prefix}/share/ktoblzcheck
   </data>
 
   <data>
