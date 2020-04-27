@@ -217,7 +217,7 @@
     </dependencies>
   </autotools>
 
-  <cmake id="boost" cmakeargs="-DLIBRARIES='date_time;regex;locale;filesystem'">
+  <cmake id="boost" cmakeargs="-DLIBRARIES='date_time;regex;locale;filesystem;system'">
     <branch module="1.68.0/source/boost_1_68_0.tar.bz2" version="1.68.0" 
             repo="bintray">
       <patch file="https://raw.githubusercontent.com/gnucash/gnucash-on-osx/master/patches/boost-cmake.patch" strip="1"/>
@@ -295,8 +295,8 @@
 
 <cmake id="gnucash-unstable"
         cmakeargs="-DGTEST_ROOT=${JHBUILD_SOURCE}/googletest">
-   <branch module="gnucash/gnucash%20%28unstable%29/3.901/gnucash-3.901.tar.bz2"
-           checkoutdir="gnucash-3.901" repo="sourceforge" version="3.901" />
+   <branch module="gnucash/gnucash%20%28unstable%29/3.902/gnucash-3.902.tar.bz2"
+           checkoutdir="gnucash-3.902" repo="sourceforge" version="3.902" />
    
     <dependencies>
       <dep package="meta-gtk-osx-gtk3"/>
@@ -363,10 +363,8 @@
   <autotools id="gnucash-unstable-docs" autogenargs="--disable-scrollkeeper"
 	    autogen-template="%(srcdir)s/%(autogen-sh)s &amp;&amp; %(srcdir)s/configure --prefix %(prefix)s %(autogenargs)s"
 	    makeargs=" html" makeinstallargs="install-html" >
-    <branch  repo="github" module="Gnucash/gnucash-docs.git" revision="master"
-	   checkoutdir="gnucash-docs-git"/>
-    <!--branch  module="gnucash/gnucash%20%28unstable%29/3.901/gnucash-docs-3.901.tar.gz"
-	     version="3.901" repo="sourceforge"/-->
+    <branch  module="gnucash/gnucash%20%28unstable%29/3.902/gnucash-docs-3.902.tar.gz"
+	     version="3.902" repo="sourceforge">
   </autotools>
 
   <autotools id="scrollkeeper" autogen-sh="configure">
