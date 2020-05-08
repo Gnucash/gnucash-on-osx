@@ -364,7 +364,7 @@
 	    autogen-template="%(srcdir)s/%(autogen-sh)s &amp;&amp; %(srcdir)s/configure --prefix %(prefix)s %(autogenargs)s"
 	    makeargs=" html" makeinstallargs="install-html" >
     <branch  module="gnucash/gnucash%20%28unstable%29/3.902/gnucash-docs-3.902.tar.gz"
-	     version="3.902" repo="sourceforge">
+	     version="3.902" repo="sourceforge"/>
   </autotools>
 
   <autotools id="scrollkeeper" autogen-sh="configure">
