@@ -43,7 +43,7 @@ index e69de29..b53cf7a 100644
 +  --prefix=${CMAKE_INSTALL_PREFIX}
 +  ${LIB_ARGS}
 +  --build-dir=${CMAKE_BINARY_DIR} --link-shared
-+  toolset=darwin cxxflags=${CMAKE_CXX_FLAGS}
++  toolset=clang-darwin cxxflags=${CMAKE_CXX_FLAGS}
 +  cflags=${CMAKE_C_FLAGS} linkflags=${CMAKE_SHARED_LINKER_FLAGS}
 +  cxxstd=17
 +  install)
