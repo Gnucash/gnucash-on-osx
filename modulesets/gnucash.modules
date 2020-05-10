@@ -49,7 +49,7 @@
 
   <autotools id="gwenhywfar" autogen-sh="configure"
 	     autogenargs="--with-guis='gtk3' --enable-local-install">
-    <branch module="317/gwenhywfar-5.2.0.tar.gz" version="5.2.0"
+    <branch module="319/gwenhywfar-5.3.0.tar.gz" version="5.3.0"
             repo="aqbanking" >
       <patch file="https://raw.githubusercontent.com/gnucash/gnucash-on-osx/master/patches/gwen-include-file.patch" strip="1"/>
       <patch file="https://raw.githubusercontent.com/gnucash/gnucash-on-osx/master/patches/gwen-macos-bundle-path.patch" strip="1"/>
@@ -79,7 +79,7 @@
   </autotools>
 
   <autotools id="xmlsec" autogenargs="--enable-docs=no">
-    <branch module="lsh123/xmlsec" repo="github" tag="xmlsec-1_2_25"/>
+    <branch module="lsh123/xmlsec" repo="github" tag="xmlsec-1_2_30"/>
     <dependencies>
       <dep package="openssl"/>
     </dependencies>
@@ -129,8 +129,8 @@
   </autotools>
 
   <autotools id="libofx" autogen-sh='configure'>
-    <branch repo="sourceforge" module="libofx/libofx-0.9.14.tar.gz"
-	    version="0.9.14"/>
+    <branch repo="sourceforge" module="libofx/libofx-0.9.15.tar.gz"
+	    version="0.9.15"/>
     <dependencies>
       <dep package="OpenSP"/>
     </dependencies>
@@ -151,19 +151,21 @@
   </autotools>
 
   <autotools id="pgsql">
-    <branch repo="postgres" module="v9.6.17/postgresql-9.6.17.tar.bz2" 
-            version="9.6.17">
-      <patch file="https://raw.githubusercontent.com/gnucash/gnucash-on-osx/master/patches/pgsql-find-int64.patch" strip="1"/>
-
+    <branch repo="postgres" module="v12.2/postgresql-12.2.tar.bz2" 
+            version="12.2"
+            hash="sha256:ad1dcc4c4fc500786b745635a9e1eba950195ce20b8913f50345bb7d5369b5de">
     </branch>
     <dependencies>
       <dep package="openssl"/>
     </dependencies>
   </autotools>
 
+  <!-- The C connector is no longer being developed, users are advised
+       to use the C++ one, but it lacks mysql-configure so
+       libdbd-mysql can't use it. -->
   <cmake id="mysql">
-    <branch repo="csclub" module="Connector-C/mysql-connector-c-6.1.10-src.tar.gz"
-	    version="6.1.10" >
+    <branch repo="csclub" module="Connector-C/mysql-connector-c-6.1.11-src.tar.gz"
+	    version="6.1.11" >
     </branch>
     <dependencies>
       <dep package="cmake"/>
@@ -229,8 +231,8 @@
   </cmake>
 
   <autotools id="guile22" autogen-sh="configure">
-    <branch repo="ftp.gnu.org" module="guile/guile-2.2.6.tar.gz"
-	    version="2.2.6">
+    <branch repo="ftp.gnu.org" module="guile/guile-2.2.7.tar.gz"
+	    version="2.2.7">
      <patch file="https://raw.githubusercontent.com/gnucash/gnucash-on-osx/master/patches/guile-2.2-libguile-Makefile-fixups.patch" strip="1"/>
     </branch>
     <dependencies>
@@ -242,7 +244,7 @@
   </autotools>
 
   <cmake id="googletest" cmakeargs="-DBUILD_GMOCK=OFF" skip-install="True">
-    <branch module="google/googletest" repo="github" tag="release-1.8.0"/>
+    <branch module="google/googletest" repo="github" tag="release-1.10.0"/>
   </cmake>
 
   <autotools id="gnucash-oldstable"
