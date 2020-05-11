@@ -60,7 +60,7 @@ index e69de29..b53cf7a 100644
 +  "done; \n"
 +  "for i in ${CMAKE_INSTALL_PREFIX}/lib/libboost*.dylib; do \n"
 +     "\tfor j in $PREFIX/lib/libboost*.dylib; do \n"
-+        "\t\tinstall_name_tool -change `basename $i` $i $j; \n"
++        "\t\tinstall_name_tool -change "@rpath/$(basename $i)" $i $j; \n"
 +     "\tdone; \n"
 +  "done \n"
 +)
