@@ -87,7 +87,7 @@
 
   <autotools id="aqbanking" autogen-sh="autoreconf" makeargs="-j1"
 	     autogenargs="--enable-local-install">
-    <branch module="283/aqbanking-6.1.4.tar.gz" version="6.1.4"
+    <branch module="328/aqbanking-6.2.1.tar.gz" version="6.2.1"
             repo="aqbanking">
     </branch>
     <dependencies>
