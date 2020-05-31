@@ -62,6 +62,10 @@
   </binary>
 
   <binary loadable="True">
+    ${prefix}/lib/gio
+  </binary>
+
+  <binary loadable="True">
     ${prefix}/lib/gnucash
   </binary>
 
@@ -71,6 +75,10 @@
 
   <binary loadable="True">
     ${prefix}/lib/gwenhywfar
+  </binary>
+
+  <binary dest="${bundle}/Contents/MacOS">
+    ${prefix}/bin/gnucash-cli
   </binary>
 
   <binary dest="${bundle}/Contents/MacOS">
