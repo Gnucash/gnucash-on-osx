@@ -297,8 +297,8 @@
 
 <cmake id="gnucash-unstable"
         cmakeargs="-DGTEST_ROOT=${JHBUILD_SOURCE}/googletest">
-   <branch module="gnucash/gnucash%20%28unstable%29/3.904/gnucash-3.904.tar.bz2"
-           checkoutdir="gnucash-3.904" repo="sourceforge" version="3.904" />
+   <branch module="gnucash/gnucash%20%28unstable%29/3.906/gnucash-3.906.tar.bz2"
+           checkoutdir="gnucash-3.906" repo="sourceforge" version="3.906" />
    
     <dependencies>
       <dep package="meta-gtk-osx-gtk3"/>
@@ -365,8 +365,8 @@
   <autotools id="gnucash-unstable-docs" autogenargs="--disable-scrollkeeper"
 	    autogen-template="%(srcdir)s/%(autogen-sh)s &amp;&amp; %(srcdir)s/configure --prefix %(prefix)s %(autogenargs)s"
 	    makeargs=" html" makeinstallargs="install-html" >
-    <branch  module="gnucash/gnucash%20%28unstable%29/3.904/gnucash-docs-3.904.tar.gz"
-	     version="3.904" repo="sourceforge"/>
+    <branch  module="gnucash/gnucash%20%28unstable%29/3.906/gnucash-docs-3.906.tar.gz"
+	     version="3.906" repo="sourceforge"/>
   </autotools>
 
   <autotools id="scrollkeeper" autogen-sh="configure">
