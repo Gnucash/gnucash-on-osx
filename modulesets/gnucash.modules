@@ -273,7 +273,7 @@
 
 
 <cmake id="gnucash"
-        cmakeargs="-DGTEST_ROOT=${JHBUILD_SOURCE}/googletest/googletest -DGMOCK_ROOT=${JHBUILD_SOURCE}/googletest/googlemock">
+        cmakeargs="-DGTEST_ROOT=${JHBUILD_SOURCE}/googletest/">
    <branch module="gnucash/gnucash%20%28stable%29/4.0/gnucash-4.0.tar.bz2"
            checkoutdir="gnucash-4.0" repo="sourceforge" version="4.0" />
     <dependencies>
