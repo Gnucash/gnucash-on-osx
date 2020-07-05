@@ -338,43 +338,29 @@
     </dependencies>
  </cmake>
 
-  <autotools id="gnucash-docs-git" autogenargs="--disable-scrollkeeper"
-	    autogen-template="%(srcdir)s/%(autogen-sh)s &amp;&amp; %(srcdir)s/configure --prefix %(prefix)s %(autogenargs)s"
+  <cmake id="gnucash-docs-git"
 	    makeargs=" html" makeinstallargs="install-html" >
     <branch  repo="github" module="Gnucash/gnucash-docs.git" revision="master"
 	   checkoutdir="gnucash-docs-git"/>
-    <dependencies>
-      <!-- dep package="scrollkeeper"/ -->
-    </dependencies>
-  </autotools>
+  </cmake>
 
-  <autotools id="gnucash-olddocs" autogenargs="--disable-scrollkeeper"
+  <cmake id="gnucash-olddocs" autogenargs="--disable-scrollkeeper"
 	    autogen-template="%(srcdir)s/%(autogen-sh)s &amp;&amp; %(srcdir)s/configure --prefix %(prefix)s %(autogenargs)s"
 	    makeargs=" html" makeinstallargs="install-html" >
     <branch  module="gnucash/gnucash%20%28stable%29/gnucash-docs-3.11.tar.gz"
 	     version="3.11" repo="sourceforge"/>
-  </autotools>
+  </cmake>
 
-  <autotools id="gnucash-docs" autogenargs="--disable-scrollkeeper"
-	    autogen-template="%(srcdir)s/%(autogen-sh)s &amp;&amp; %(srcdir)s/configure --prefix %(prefix)s %(autogenargs)s"
+  <cmake id="gnucash-docs" 
 	    makeargs=" html" makeinstallargs="install-html" >
     <branch  module="gnucash/gnucash%20%28stable%29/4.0/gnucash-docs-4.0.tar.gz"
 	     version="4.0" repo="sourceforge"/>
-  </autotools>
+  </cmake>
 
-  <autotools id="gnucash-unstable-docs" autogenargs="--disable-scrollkeeper"
-	    autogen-template="%(srcdir)s/%(autogen-sh)s &amp;&amp; %(srcdir)s/configure --prefix %(prefix)s %(autogenargs)s"
+  <cmake id="gnucash-unstable-docs"
 	    makeargs=" html" makeinstallargs="install-html" >
     <branch  module="gnucash/gnucash%20%28unstable%29/3.906/gnucash-docs-3.906.tar.gz"
 	     version="3.906" repo="sourceforge"/>
-  </autotools>
-
-  <autotools id="scrollkeeper" autogen-sh="configure">
-    <branch repo="sourceforge" module="scrollkeeper/scrollkeeper-0.3.14.tar.gz"
-	    version="0.3.14"/>
-    <dependencies>
-       <dep package="gtk-osx-docbook"/>
-    </dependencies>
-  </autotools>
+  </cmake>
 
 </moduleset>
