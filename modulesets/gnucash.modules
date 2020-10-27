@@ -290,7 +290,7 @@
       <dep package="swig"/>
       <dep package="boost"/>
       <dep package="googletest"/>
-      <dep package="webkit1gtk3"/>
+      <dep package="webkit2gtk3"/>
     </dependencies>
 
  </cmake>
@@ -314,7 +314,7 @@
       <dep package="swig"/>
       <dep package="boost"/>
       <dep package="googletest"/>
-      <dep package="webkit1gtk3"/>
+      <dep package="webkit2gtk3"/>
     </dependencies>
  </cmake>
 
@@ -334,7 +334,7 @@
       <dep package="swig"/>
       <dep package="boost"/>
       <dep package="googletest"/>
-      <dep package="webkit1gtk3"/>
+      <dep package="webkit2gtk3"/>
     </dependencies>
  </cmake>
 
