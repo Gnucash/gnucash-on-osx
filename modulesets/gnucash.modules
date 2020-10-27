@@ -339,7 +339,7 @@
  </cmake>
 
   <cmake id="gnucash-docs-git"
-	    makeargs=" html" makeinstallargs="install-html" >
+	    ninjaargs="html" >
     <branch  repo="github" module="Gnucash/gnucash-docs.git" revision="master"
 	   checkoutdir="gnucash-docs-git"/>
   </cmake>
@@ -352,13 +352,13 @@
   </cmake>
 
   <cmake id="gnucash-docs"
-         ninjaargs="html" ninjainstallargs="install-html" >
+         ninjaargs="html">
     <branch  module="gnucash/gnucash%20%28stable%29/4.2/gnucash-docs-4.2.tar.gz"
 	     version="4.2" repo="sourceforge"/>
   </cmake>
 
   <cmake id="gnucash-unstable-docs"
-	    makeargs=" html" makeinstallargs="install-html" >
+	    ninjaargs="html">
     <branch  module="gnucash/gnucash%20%28unstable%29/3.906/gnucash-docs-3.906.tar.gz"
 	     version="3.906" repo="sourceforge"/>
   </cmake>
