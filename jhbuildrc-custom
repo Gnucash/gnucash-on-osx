@@ -1,52 +1,34 @@
 # -*- mode: python -*-
 
-#Uncomment this if you have a completed build and only want to rebuild
-#updated modules instead of everything:
-#
-#build_policy = "updated-deps"
-
-#Select one of these, or use a different one: Do keep the directories
-#separate for stable and unstable as they have different
-#dependencies. 
-prefix = os.path.join(os.environ["HOME"], "gnucash-stable")
-#prefix = os.path.join(os.environ["HOME"], "gnucash-unstable")
-buildroot = os.path.join(prefix, 'build')
-checkoutroot = os.path.join(prefix, 'src')
-
-#Select which modules to build. The only difference is which gnucash
-#module (and all of the dependencies, see above) get built. "
-modules = ["python3", "meta-gtk-osx-bootstrap", "gnucash"]
-#modules = ["python3", "meta-gtk-osx-bootstrap", "gnucash-unstable"]
-#modules = ["python3", "meta-gtk-osx-bootstrap", "gnucash-git"]
-#branches["gnucash-git"] = (None, "maint")
-
-# This will set up the build for your system. The result will run on
-# the same or newer versionss of MacOS for the same archechture.
-setup_sdk()
-
-# To build a GnuCash able to run on older systems you can specify
-# minimum version, SDK, and architecture. Note that only
-# MacOSX10.9.sdk and later can build for earlier MacOS versions, and
-# that all Macs running 10.7 and later are 64-bit. Finally note that
-# GnuCash 2.6.99 and later requuire MacOS X 10.9 or later and 3.900
-# and later require MacOS 10.13 or later. If you need to build with an
-# older SDK see
-# https://wiki.gnome.org/Projects/GTK+/OSX/Building#Building_for_Older_Versions_of_Mac_OS_X
-
-#This will build a 32-bit version for 10.9 and later:
-#setup_sdk("10.9", ["i386"])
-
+prefix = os.environ['PREFIX']
+checkoutroot = os.path.join(os.environ['HOME'], 'gnucash', 'src')
+buildroot = os.path.join(os.environ['HOME'], 'gnucash', 'build')
 moduleset = "https://github.com/gnucash/gnucash-on-osx/raw/master/modulesets/gnucash.modules"
 
-skip.append('icu') # Webkit1 requires icu55, Harfbuzz depends on icu but works fine with icu55.
-append_autogenargs("libofx", "--with-opensp-includes=" + prefix + "/include/OpenSP --with-opensp-libs=" + prefix + "/lib")
+_modules_deps = ['python3', 'meta-gtk-osx-bootstrap', 'meta-gtk-osx-gtk3',
+                'meta-gtk-osx-python-gtk3', 'openSP', 'libofx', 'aqbanking',
+                'libdbi-drivers', 'shared-mime-info', 'iso-codes', 'guile22',
+                'swig', 'boost', 'googletest', 'webkit2gtk3']
+_modules_stable = ['python3', 'meta-gtk-osx-bootstrap',
+                  'gnucash', 'gnucash-docs']
+_modules_stable = ['python3', 'meta-gtk-osx-bootstrap',
+                  'gnucash', 'gnucash-docs']
+_modules_git = ['python3', 'meta-gtk-osx-bootstrap',
+               'gnucash-git', 'gnucash-docs-git']
 
-append_autogenargs("scrollkeeper", "--with-xml-catalog=" + os.path.join(prefix, "etc/xml/catalog"))
+#set modules to the _modules variable above corresponding you what you need.
+modules = _modules_stable
 
-append_autogenargs("OpenSP", "--enable-shared") #To override the global --disable-shared
-append_autogenargs("libdbi-drivers","--with-dbi-incdir=" + prefix + "/include --with-dbi-libdir=" + prefix + "/lib")
-append_autogenargs("libiconv", "--with-libintl-prefix=" + prefix)
+_pypathenv = {'PYTHON':os.path.join(prefix, 'bin', 'python3')}
+module_extra_env['pycairo'] = _pypathenv
+module_extra_env['pygobject3'] = _pypathenv
 
-#Tell fontconfig where to find fonts and to not set a cache directory in prefix:
-append_autogenargs("fontconfig", "--with-default-fonts=/Library/Fonts --with-cache-dir=home")
-module_makecheck["gmp"] = True
+module_extra_env['icu'] = {'CXXFLAGS':os.environ['CXXFLAGS'] + ' -std=c++17'}
+module_extra_env['boost'] = {'CXXFLAGS':os.environ['CXXFLAGS'] + ' -std=c++17'}
+module_makeargs["aqbanking"]="-j1"
+os.environ['CC_FOR_BUILD'] = os.environ['CC']
+os.environ['CPP_FOR_BUILD'] = os.environ['CC']
+os.environ['CFLAGS_FOR_BUILD'] = os.environ['CFLAGS']
+module_cmakeargs['boost'] = '-DCMAKE_CXX_FLAGS="' + os.environ['CXXFLAGS'] + ' -std=c++17"'
+
+setup_sdk()
