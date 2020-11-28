@@ -101,6 +101,14 @@
     ${prefix}/lib/dbd
   </binary>
 
+  <binary dest="${bundle}/Contents/MacOS">
+    ${prefix}/libexec/webkit2gtk-4.0/*
+  </binary>
+
+  <binary loadable="True">
+    ${prefix}/lib/webkit2gtk-4.0
+  </binary>
+  
 <!-- Data to copy in, usually Glade/UI files, images, sounds files
        etc. The destination inside the bundle can be specified if the
        files should end up at a different location, by using the
