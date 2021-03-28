@@ -7,7 +7,7 @@
 	<key>CFBundleExecutable</key>
 	<string>Gnucash</string>
 	<key>CFBundleGetInfoString</key>
-	<string>Gnucash version 4.4-1 © 2020 GnucashContributors</string>
+	<string>Gnucash version 4.5-1 © 2021 GnucashContributors</string>
 	<key>CFBundleIconFile</key>
 	<string>gnucash.icns</string>
 	<key>CFBundleIdentifier</key>
@@ -15,17 +15,17 @@
 	<key>CFBundleInfoDictionaryVersion</key>
 	<string>6.0</string>
 	<key>CFBundleLongVersionString</key>
-	<string>4.4-1 © 2020 Gnucash Contributors</string>
+	<string>4.5-1 © 2021 Gnucash Contributors</string>
 	<key>CFBundleName</key>
 	<string>Gnucash</string>
 	<key>CFBundlePackageType</key>
 	<string>APPL</string>
 	<key>CFBundleShortVersionString</key>
-	<string>4.4-1</string>
+	<string>4.5-1</string>
 	<key>CFBundleSignature</key>
 	<string>????</string>
 	<key>CFBundleVersion</key>
-	<string>4.4-1</string>
+	<string>4.5-1</string>
 	<key>CFBundleDocumentTypes</key>
 	<array>
 	  <dict>
@@ -64,7 +64,7 @@
 	<key>LSApplicationCategoryType</key>
 	<string>public.app-category.finance</string>
 	<key>NSHumanReadableCopyright</key>
-	<string>Copyright 2020 Gnucash Contributors</string>
+	<string>Copyright 2021 Gnucash Contributors</string>
 	<key>NSHighResolutionCapable</key>
 	<true/>
 </dict>
