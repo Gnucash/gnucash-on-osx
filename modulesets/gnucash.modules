@@ -19,6 +19,8 @@
 	      href="http://mirror.csclub.uwaterloo.ca/mysql/Downloads/"/>
   <repository type="tarball" name="gnucash.org"
 	      href="http://www.gnucash.org/pub/gnucash/sources/"/>
+  <repository type="tarball" name="xmlsec"
+	      href="http://www.aleksey.com/xmlsec/download/"/>
   <repository type="git" name="aquamaniac"
               href="https://git.aquamaniac.de/git/"/>
   <repository type="tarball" name="aqbanking"
@@ -79,7 +81,9 @@
   </autotools>
 
   <autotools id="xmlsec" autogenargs="--enable-docs=no">
-    <branch module="lsh123/xmlsec" repo="github" tag="xmlsec-1_2_30"/>
+    <branch module="xmlsec1-1.2.32.tar.gz"
+            repo="xmlsec" version="1.2.32" >
+    </branch>
     <dependencies>
       <dep package="openssl"/>
     </dependencies>
