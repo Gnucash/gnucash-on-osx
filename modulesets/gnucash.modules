@@ -25,6 +25,8 @@
               href="https://git.aquamaniac.de/git/"/>
   <repository type="tarball" name="aqbanking"
               href="https://www.aquamaniac.de/rdm/attachments/download/"/>
+  <repository type="tarball" name="github-tarball"
+	      href="https://github.com/"/>
   <repository type="git" name="github"
 	      href="git://github.com/"/>
   <repository type="tarball" name="openssl"
@@ -229,6 +231,18 @@
       <dep package="icu"/>
     </after>
   </cmake>
+
+  <autotools id="bdw-gc" autogen-sh="configure">
+    <branch repo="github-tarball"
+            module="ivmai/bdwgc/releases/download/v8.0.4/gc-8.0.4.tar.gz"
+            version="8.0.4"/>
+  </autotools>
+
+<autotools id="libunistring" autogen-sh="configure">
+    <branch repo="ftp.gnu.org" module="libunistring/libunistring-0.9.10.tar.gz"
+           version="0.9.10">
+     </branch>
+   </autotools>
 
   <autotools id="guile22" autogen-sh="configure">
     <branch repo="ftp.gnu.org" module="guile/guile-2.2.7.tar.gz"
