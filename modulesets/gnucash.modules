@@ -168,7 +168,8 @@
        libdbd-mysql can't use it. -->
   <cmake id="mysql">
     <branch repo="csclub" module="Connector-C/mysql-connector-c-6.1.11-src.tar.gz"
-	    version="6.1.11" >
+            version="6.1.11" >
+      <patch file="mysql-connector-6.1.11-cmake.patch" strip="1"/>
     </branch>
     <dependencies>
       <dep package="cmake"/>

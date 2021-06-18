@@ -1,0 +1,16 @@
+diff -u /Users/john/Development/Gnucash-Build/Gnucash-4-10.13-x86_64/src/mysql-connector-c-6.1.11-src/cmake/install_macros.cmake\~ /Users/john/Development/Gnucash-Build/Gnucash-4-10.13-x86_64/src/mysql-connector-c-6.1.11-src/cmake/install_macros.cmake
+--- a/cmake/install_macros.cmake	2017-07-12 23:55:32.000000000 -0700
++++ b/cmake/install_macros.cmake	2021-06-17 12:03:41.000000000 -0700
+@@ -362,8 +362,8 @@
+         CONFIGURATIONS Release RelWithDebInfo
+         COMPONENT ${ARG_COMPONENT}
+         OPTIONAL)
+-    ENDIF()
+-  ENDFOREACH()
++    ENDFOREACH()
++  ENDIF()
+ 
+ ENDFUNCTION()
+ 
+
+Diff finished.  Thu Jun 17 12:03:59 2021
