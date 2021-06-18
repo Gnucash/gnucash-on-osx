@@ -59,11 +59,8 @@
     <dependencies>
       <dep package="libgcrypt"/>
       <dep package="gnutls"/>
-    </dependencies>
-    <after>
-      <dep package="meta-gtk-osx-core"/>
       <dep package="meta-gtk-osx-gtk3"/>
-    </after>
+    </dependencies>
   </autotools>
 
   <autotools id="gwenhywfar-git" autogen-template="make -fMakefile.cvs &amp;&amp; %(srcdir)s/configure --prefix %(prefix)s %(autogenargs)s"
@@ -230,7 +227,6 @@
     </branch>
     <after>
       <dep package="icu"/>
-      <dep package="icu55"/>
     </after>
   </cmake>
 
