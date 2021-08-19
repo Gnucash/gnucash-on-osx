@@ -13,6 +13,8 @@
 	      href="http://www.freedesktop.org/software/" /-->
   <repository type='tarball' name='sourceforge'
 	      href="http://downloads.sourceforge.net/"/>
+  <repository type='git' name='sourceforge-git'
+	      href="https://git.code.sf.net/p/"/>
   <repository type="tarball" name="csail"
 	      href="http://groups.csail.mit.edu/mac/ftpdir/"/>
   <repository type="tarball" name="csclub"
@@ -176,17 +178,15 @@
     </dependencies>
   </cmake>
 
-  <autotools id="libdbi" autogen-sh="configure" autogenargs="--disable-docs">
-    <branch repo="sourceforge" module="libdbi/libdbi-0.9.0.tar.gz"
-	    version="0.9.0">
+  <autotools id="libdbi" autogen-sh="autoreconf" autogenargs="--disable-docs">
+    <branch repo="sourceforge-git" module="libdbi/libdbi" >
     </branch>
   </autotools>
 
   <autotools id="libdbi-drivers" autogen-sh='autoreconf'
 	     autogenargs='--with-mysql --with-mysql-libdir=$PREFIX/lib --with-pgsql --with-sqlite3 --disable-docs --disable-dependency-tracking'>
-    <branch repo="sourceforge" version="0.9.0"
-	    module="libdbi-drivers/libdbi-drivers-0.9.0.tar.gz">
-     <patch file="libdbi-drivers-cgreen-include.patch" strip="1"/>
+    <branch repo="sourceforge-git"
+	    module="libdbi-drivers/libdbi-drivers">
     </branch>
     <dependencies>
       <dep package="libdbi"/>
