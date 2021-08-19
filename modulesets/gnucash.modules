@@ -35,8 +35,6 @@
 	      href="https://www.openssl.org/source/"/>
   <repository type="tarball" name="postgres"
               href="https://ftp.postgresql.org/pub/source/"/>
-  <repository type="tarball" name="bintray"
-              href="https://dl.bintray.com/boostorg/release/"/>
 
   <include href="https://gitlab.gnome.org/GNOME/gtk-osx/raw/master/modulesets-stable/gtk-osx.modules"/>
  <!--include href="/Users/john/Development/GTK-OSX/gtk-osx-build/modulesets-stable/gtk-osx.modules"/-->
@@ -224,8 +222,9 @@
   </autotools>
 
   <cmake id="boost" cmakeargs="-DLIBRARIES='date_time;regex;locale;filesystem;program_options'">
-    <branch module="1.73.0/source/boost_1_73_0.tar.bz2" version="1.73.0" 
-            repo="bintray">
+    <branch module="project/boost/1.77.0/boost_1_77_0.tar.bz2" version="1.77.0" 
+            hash="sha256:fc9f85fc030e233142908241af7a846e60630aa7388de9a5fafb1f3a26840854"
+            repo="sourceforge">
       <patch file="boost-cmake.patch" strip="1"/>
     </branch>
     <after>
@@ -239,7 +238,7 @@
             version="8.0.4"/>
   </autotools>
 
-<autotools id="libunistring" autogen-sh="configure">
+  <autotools id="libunistring" autogen-sh="configure">
     <branch repo="ftp.gnu.org" module="libunistring/libunistring-0.9.10.tar.gz"
            version="0.9.10">
      </branch>
