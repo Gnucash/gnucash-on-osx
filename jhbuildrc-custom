@@ -5,15 +5,15 @@ checkoutroot = os.path.join(os.environ['HOME'], 'gnucash', 'src')
 buildroot = os.path.join(os.environ['HOME'], 'gnucash', 'build')
 moduleset = "https://github.com/gnucash/gnucash-on-osx/raw/master/modulesets/gnucash.modules"
 
-_modules_deps = ['python3', 'meta-gtk-osx-bootstrap', 'meta-gtk-osx-gtk3',
+_modules_deps = ['pygments', 'meta-gtk-osx-bootstrap', 'meta-gtk-osx-gtk3',
                 'meta-gtk-osx-python-gtk3', 'openSP', 'libofx', 'aqbanking',
                 'libdbi-drivers', 'shared-mime-info', 'iso-codes', 'guile22',
                 'swig', 'boost', 'googletest', 'webkit2gtk3']
-_modules_stable = ['python3', 'meta-gtk-osx-bootstrap',
+_modules_stable = ['pygments', 'meta-gtk-osx-bootstrap',
                   'gnucash', 'gnucash-docs']
-_modules_stable = ['python3', 'meta-gtk-osx-bootstrap',
+_modules_stable = ['pygments', 'meta-gtk-osx-bootstrap',
                   'gnucash', 'gnucash-docs']
-_modules_git = ['python3', 'meta-gtk-osx-bootstrap',
+_modules_git = ['pygments', 'meta-gtk-osx-bootstrap',
                'gnucash-git', 'gnucash-docs-git']
 
 #set modules to the _modules variable above corresponding you what you need.
