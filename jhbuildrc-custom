@@ -25,6 +25,10 @@ module_extra_env['pygobject3'] = _pypathenv
 
 module_extra_env['icu'] = {'CXXFLAGS':os.environ['CXXFLAGS'] + ' -std=c++17'}
 module_extra_env['boost'] = {'CXXFLAGS':os.environ['CXXFLAGS'] + ' -std=c++17'}
+append_autogenargs("libofx", "--with-opensp-includes=" + prefix + "/include/OpenSP --with-opensp-libs=" + prefix + "/lib")
+
+append_autogenargs("OpenSP", "--enable-shared") #To override the global --disable-shared
+append_autogenargs("libdbi-drivers", "--with-dbi-incdir=" + prefix + "/include --with-dbi-libdir=" + prefix + "/lib")
 module_makeargs["aqbanking"]="-j1"
 os.environ['CC_FOR_BUILD'] = os.environ['CC']
 os.environ['CPP_FOR_BUILD'] = os.environ['CC']
