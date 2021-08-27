@@ -264,7 +264,7 @@
   <autotools id="gnucash-oldstable"
 	     autogen-sh="configure"
 	     autogenargs="--enable-ofx --enable-aqbanking --enable-binreloc --enable-dbi --with-dbi-dbd-dir=$PREFIX/lib/dbd --with-html-engine='webkit'">
-    <branch module="project/gnucash/gnucash%20%28stable%29/3.11/gnucash-3.11.tar.bz2" version="3.11"
+    <branch module="gnucash/gnucash-3.11.tar.bz2" version="3.11"
 	    repo="sourceforge">
     </branch>
     <dependencies>
@@ -288,7 +288,7 @@
 
 <cmake id="gnucash"
         cmakeargs="-DGTEST_ROOT=${JHBUILD_SOURCE}/googletest/">
-   <branch module="gnucash/gnucash%20%28stable%29/4.6/gnucash-4.6.tar.bz2"
+   <branch module="gnucash/gnucash-4.6.tar.bz2"
            checkoutdir="gnucash-4.6" repo="sourceforge" version="4.6" />
     <dependencies>
       <dep package="meta-gtk-osx-gtk3"/>
@@ -311,7 +311,7 @@
 
 <cmake id="gnucash-unstable"
         cmakeargs="-DGTEST_ROOT=${JHBUILD_SOURCE}/googletest">
-   <branch module="gnucash/gnucash%20%28unstable%29/3.906/gnucash-3.906.tar.bz2"
+   <branch module="gnucash/gnucash-3.906.tar.bz2"
            checkoutdir="gnucash-3.906" repo="sourceforge" version="3.906" />
    
     <dependencies>
@@ -361,19 +361,19 @@
   <cmake id="gnucash-olddocs" autogenargs="--disable-scrollkeeper"
 	    autogen-template="%(srcdir)s/%(autogen-sh)s &amp;&amp; %(srcdir)s/configure --prefix %(prefix)s %(autogenargs)s"
 	    makeargs=" html" makeinstallargs="install-html" >
-    <branch  module="gnucash/gnucash%20%28stable%29/gnucash-docs-3.11.tar.gz"
+    <branch  module="gnucash/gnucash-docs-3.11.tar.gz"
 	     version="3.11" repo="sourceforge"/>
   </cmake>
 
   <cmake id="gnucash-docs"
          ninjaargs="html">
-    <branch  module="gnucash/gnucash%20%28stable%29/4.6/gnucash-docs-4.6.tar.gz"
+    <branch  module="gnucash/gnucash-docs-4.6.tar.gz"
 	     version="4.6" repo="sourceforge"/>
   </cmake>
 
   <cmake id="gnucash-unstable-docs"
 	    ninjaargs="html">
-    <branch  module="gnucash/gnucash%20%28unstable%29/3.906/gnucash-docs-3.906.tar.gz"
+    <branch  module="gnucash/gnucash-docs-3.906.tar.gz"
 	     version="3.906" repo="sourceforge"/>
   </cmake>
 
