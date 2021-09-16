@@ -36,8 +36,8 @@
   <repository type="tarball" name="postgres"
               href="https://ftp.postgresql.org/pub/source/"/>
 
-  <include href="https://gitlab.gnome.org/GNOME/gtk-osx/raw/master/modulesets-stable/gtk-osx.modules"/>
- <!--include href="/Users/john/Development/GTK-OSX/gtk-osx-build/modulesets-stable/gtk-osx.modules"/-->
+  <!--include href="https://gitlab.gnome.org/GNOME/gtk-osx/raw/master/modulesets-stable/gtk-osx.modules"/-->
+ <include href="/Users/john/Development/GTK-OSX/gtk-osx-build/modulesets-stable/gtk-osx.modules"/>
 
   <autotools id="libchipcard" autogen-sh="autoreconf" autogenargs="--enable-local-install">
     <branch module="229/libchipcard-5.1.5rc2.tar.gz" version="5.1.5rc2"
@@ -133,7 +133,9 @@
 
   <autotools id="libofx" autogen-sh='configure'>
     <branch repo="sourceforge" module="libofx/libofx-0.10.2.tar.gz"
-	    version="0.10.2"/>
+            version="0.10.2">
+      <patch file="libofx-subtract-gmt-offset.patch" strip="1"/>
+    </branch>
     <dependencies>
       <dep package="OpenSP"/>
     </dependencies>
