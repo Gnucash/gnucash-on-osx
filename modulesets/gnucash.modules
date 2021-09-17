@@ -17,8 +17,6 @@
 	      href="https://git.code.sf.net/p/"/>
   <repository type="tarball" name="csail"
 	      href="http://groups.csail.mit.edu/mac/ftpdir/"/>
-  <repository type="tarball" name="csclub"
-	      href="http://mirror.csclub.uwaterloo.ca/mysql/Downloads/"/>
   <repository type="tarball" name="gnucash.org"
 	      href="http://www.gnucash.org/pub/gnucash/sources/"/>
   <repository type="tarball" name="xmlsec"
@@ -31,13 +29,19 @@
 	      href="https://github.com/"/>
   <repository type="git" name="github"
 	      href="git://github.com/"/>
+  <repository type="tarball" name="github-tarball"
+	      href="https://github.com/"/>
   <repository type="tarball" name="openssl"
 	      href="https://www.openssl.org/source/"/>
   <repository type="tarball" name="postgres"
               href="https://ftp.postgresql.org/pub/source/"/>
 
   <!--include href="https://gitlab.gnome.org/GNOME/gtk-osx/raw/master/modulesets-stable/gtk-osx.modules"/-->
+<<<<<<< HEAD
  <include href="/Users/john/Development/GTK-OSX/gtk-osx-build/modulesets-stable/gtk-osx.modules"/>
+=======
+ <include href="file:///Users/john/Development/GTK-OSX/gtk-osx-build/modulesets-stable/gtk-osx.modules"/>
+>>>>>>> 8720fb1 (Replace mysql connector with mariadb connector.)
 
   <autotools id="libchipcard" autogen-sh="autoreconf" autogenargs="--enable-local-install">
     <branch module="229/libchipcard-5.1.5rc2.tar.gz" version="5.1.5rc2"
@@ -165,6 +169,7 @@
     </dependencies>
   </autotools>
 
+<<<<<<< HEAD
   <!-- The C connector is no longer being developed, users are advised
        to use the C++ one, but it lacks mysql-configure so
        libdbd-mysql can't use it. -->
@@ -172,9 +177,15 @@
     <branch repo="csclub" module="Connector-C/mysql-connector-c-6.1.11-src.tar.gz"
             version="6.1.11" >
       <patch file="mysql-connector-6.1.11-cmake.patch" strip="1"/>
+=======
+  <cmake id="mariadb-connector" cmakeargs="-DWITH_SSL=gnutls">
+    <branch repo="github-tarball" module="mariadb-corporation/mariadb-connector-c/archive/refs/tags/v3.2.4.tar.gz" version="3.2.4"
+            checkoutdir="mariadb-connector-c-3.2.4">
+      <patch file="mysql-connector-fix-includes.patch" strip="1"/>
+>>>>>>> 8720fb1 (Replace mysql connector with mariadb connector.)
     </branch>
     <dependencies>
-      <dep package="cmake"/>
+      <dep package="gnutls"/>
     </dependencies>
   </cmake>
 
@@ -184,13 +195,13 @@
   </autotools>
 
   <autotools id="libdbi-drivers" autogen-sh='autoreconf'
-	     autogenargs='--with-mysql --with-mysql-libdir=$PREFIX/lib --with-pgsql --with-sqlite3 --disable-docs --disable-dependency-tracking'>
+	     autogenargs='--with-mysql --with-mysql-libdir=$PREFIX/lib  --with-mysql-incdir=$PREFIX/include/mariadb/ --with-pgsql --with-sqlite3 --disable-docs --disable-dependency-tracking'>
     <branch repo="sourceforge-git"
 	    module="libdbi-drivers/libdbi-drivers">
     </branch>
     <dependencies>
       <dep package="libdbi"/>
-      <dep package="mysql"/>
+      <dep package="mariadb-connector"/>
       <dep package="pgsql"/>
       <dep package="sqlite"/>
     </dependencies>
@@ -296,7 +307,7 @@
       <dep package="meta-gtk-osx-gtk3"/>
       <dep package="libofx"/>
       <dep package="aqbanking"/>
-      <dep package="mysql"/>
+      <dep package="mariadb-connector"/>
       <dep package="pgsql"/>
       <dep package="sqlite"/>
       <dep package="libdbi-drivers"/>
@@ -320,7 +331,7 @@
       <dep package="meta-gtk-osx-gtk3"/>
       <dep package="libofx"/>
       <dep package="aqbanking"/>
-      <dep package="mysql"/>
+      <dep package="mariadb-connector"/>
       <dep package="pgsql"/>
       <dep package="sqlite"/>
       <dep package="libdbi-drivers"/>

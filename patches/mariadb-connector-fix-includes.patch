@@ -1,0 +1,50 @@
+From 16127f0e99101f87b9762957db2b9b6896c180d8 Mon Sep 17 00:00:00 2001
+From: John Ralls <jralls@ceridwen.us>
+Date: Thu, 16 Sep 2021 21:28:43 -0700
+Subject: [PATCH] mysql-connector fix includes
+
+---
+ zlib/gzlib.c   | 1 +
+ zlib/gzread.c  | 1 +
+ zlib/gzwrite.c | 1 +
+ 3 files changed, 3 insertions(+)
+
+diff --git a/zlib/gzlib.c b/zlib/gzlib.c
+index 4105e6a..7c9801b 100644
+--- a/zlib/gzlib.c
++++ b/zlib/gzlib.c
+@@ -4,6 +4,7 @@
+  */
+ 
+ #include "gzguts.h"
++#include <unistd.h>
+ 
+ #if defined(_WIN32) && !defined(__BORLANDC__) && !defined(__MINGW32__)
+ #  define LSEEK _lseeki64
+diff --git a/zlib/gzread.c b/zlib/gzread.c
+index 956b91e..5900b11 100644
+--- a/zlib/gzread.c
++++ b/zlib/gzread.c
+@@ -4,6 +4,7 @@
+  */
+ 
+ #include "gzguts.h"
++#include <unistd.h>
+ 
+ /* Local functions */
+ local int gz_load OF((gz_statep, unsigned char *, unsigned, unsigned *));
+diff --git a/zlib/gzwrite.c b/zlib/gzwrite.c
+index c7b5651..972f323 100644
+--- a/zlib/gzwrite.c
++++ b/zlib/gzwrite.c
+@@ -4,6 +4,7 @@
+  */
+ 
+ #include "gzguts.h"
++#include <unistd.h>
+ 
+ /* Local functions */
+ local int gz_init OF((gz_statep));
+-- 
+2.30.1 (Apple Git-130)
+
