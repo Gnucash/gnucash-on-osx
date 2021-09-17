@@ -36,12 +36,8 @@
   <repository type="tarball" name="postgres"
               href="https://ftp.postgresql.org/pub/source/"/>
 
-  <!--include href="https://gitlab.gnome.org/GNOME/gtk-osx/raw/master/modulesets-stable/gtk-osx.modules"/-->
-<<<<<<< HEAD
- <include href="/Users/john/Development/GTK-OSX/gtk-osx-build/modulesets-stable/gtk-osx.modules"/>
-=======
- <include href="file:///Users/john/Development/GTK-OSX/gtk-osx-build/modulesets-stable/gtk-osx.modules"/>
->>>>>>> 8720fb1 (Replace mysql connector with mariadb connector.)
+  <include href="https://gitlab.gnome.org/GNOME/gtk-osx/raw/master/modulesets-stable/gtk-osx.modules"/>
+ <!--include href="/Users/john/Development/GTK-OSX/gtk-osx-build/modulesets-stable/gtk-osx.modules"/-->
 
   <autotools id="libchipcard" autogen-sh="autoreconf" autogenargs="--enable-local-install">
     <branch module="229/libchipcard-5.1.5rc2.tar.gz" version="5.1.5rc2"
@@ -169,20 +165,10 @@
     </dependencies>
   </autotools>
 
-<<<<<<< HEAD
-  <!-- The C connector is no longer being developed, users are advised
-       to use the C++ one, but it lacks mysql-configure so
-       libdbd-mysql can't use it. -->
-  <cmake id="mysql">
-    <branch repo="csclub" module="Connector-C/mysql-connector-c-6.1.11-src.tar.gz"
-            version="6.1.11" >
-      <patch file="mysql-connector-6.1.11-cmake.patch" strip="1"/>
-=======
   <cmake id="mariadb-connector" cmakeargs="-DWITH_SSL=gnutls">
     <branch repo="github-tarball" module="mariadb-corporation/mariadb-connector-c/archive/refs/tags/v3.2.4.tar.gz" version="3.2.4"
             checkoutdir="mariadb-connector-c-3.2.4">
       <patch file="mysql-connector-fix-includes.patch" strip="1"/>
->>>>>>> 8720fb1 (Replace mysql connector with mariadb connector.)
     </branch>
     <dependencies>
       <dep package="gnutls"/>
