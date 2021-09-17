@@ -40,7 +40,7 @@
  <!--include href="/Users/john/Development/GTK-OSX/gtk-osx-build/modulesets-stable/gtk-osx.modules"/-->
 
   <autotools id="libchipcard" autogen-sh="autoreconf" autogenargs="--enable-local-install">
-    <branch module="229/libchipcard-5.1.5rc2.tar.gz" version="5.1.5rc2"
+    <branch module="382/libchipcard-5.1.6.tar.gz" version="5.1.6"
             repo="aqbanking">
       <patch file="libchipcard-sdk.patch" strip="1"/>
       <patch file="libchipcard-include.patch" strip="1"/>
