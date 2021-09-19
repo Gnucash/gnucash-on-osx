@@ -53,7 +53,7 @@
 
   <autotools id="gwenhywfar" autogen-sh="configure"
 	     autogenargs="--with-guis='gtk3' --enable-local-install">
-    <branch module="377/gwenhywfar-5.7.1.tar.gz" version="5.7.1"
+    <branch module="384/gwenhywfar-5.7.2.tar.gz" version="5.7.2"
             repo="aqbanking" >
       <patch file="gwen-include-file.patch" strip="1"/>
       <patch file="gwen-macos-bundle-path.patch" strip="1"/>
@@ -90,7 +90,7 @@
 
   <autotools id="aqbanking" autogen-sh="autoreconf" makeargs="-j1"
 	     autogenargs="--enable-local-install">
-    <branch module="379/aqbanking-6.3.1.tar.gz" version="6.3.1"
+    <branch module="386/aqbanking-6.3.2.tar.gz" version="6.3.2"
             repo="aqbanking">
     </branch>
     <dependencies>
