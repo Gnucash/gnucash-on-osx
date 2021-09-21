@@ -29,8 +29,6 @@
 	      href="https://github.com/"/>
   <repository type="git" name="github"
 	      href="git://github.com/"/>
-  <repository type="tarball" name="github-tarball"
-	      href="https://github.com/"/>
   <repository type="tarball" name="openssl"
 	      href="https://www.openssl.org/source/"/>
   <repository type="tarball" name="postgres"
@@ -168,7 +166,7 @@
   <cmake id="mariadb-connector" cmakeargs="-DWITH_SSL=gnutls">
     <branch repo="github-tarball" module="mariadb-corporation/mariadb-connector-c/archive/refs/tags/v3.2.4.tar.gz" version="3.2.4"
             checkoutdir="mariadb-connector-c-3.2.4">
-      <patch file="mysql-connector-fix-includes.patch" strip="1"/>
+      <patch file="mariadb-connector-fix-includes.patch" strip="1"/>
     </branch>
     <dependencies>
       <dep package="gnutls"/>
