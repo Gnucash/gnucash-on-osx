@@ -7,7 +7,7 @@
 	<key>CFBundleExecutable</key>
 	<string>Gnucash</string>
 	<key>CFBundleGetInfoString</key>
-	<string>Gnucash version 4.6-1 © 2021 GnucashContributors</string>
+	<string>Gnucash version 4.7-2 © 2021 GnucashContributors</string>
 	<key>CFBundleIconFile</key>
 	<string>gnucash.icns</string>
 	<key>CFBundleIdentifier</key>
@@ -15,17 +15,17 @@
 	<key>CFBundleInfoDictionaryVersion</key>
 	<string>6.0</string>
 	<key>CFBundleLongVersionString</key>
-	<string>4.6-1 © 2021 Gnucash Contributors</string>
+	<string>4.7-2 © 2021 Gnucash Contributors</string>
 	<key>CFBundleName</key>
 	<string>Gnucash</string>
 	<key>CFBundlePackageType</key>
 	<string>APPL</string>
 	<key>CFBundleShortVersionString</key>
-	<string>4.6-1</string>
+	<string>4.7-2</string>
 	<key>CFBundleSignature</key>
 	<string>????</string>
 	<key>CFBundleVersion</key>
-	<string>4.6-1</string>
+	<string>4.7-2</string>
 	<key>CFBundleDocumentTypes</key>
 	<array>
 	  <dict>

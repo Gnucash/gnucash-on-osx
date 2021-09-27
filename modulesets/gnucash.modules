@@ -285,7 +285,7 @@
 
 <cmake id="gnucash"
         cmakeargs="-DGTEST_ROOT=${JHBUILD_SOURCE}/googletest/">
-   <branch module="gnucash/gnucash-4.6.tar.bz2"
+   <branch module="gnucash/gnucash-4.7.tar.bz2"
            checkoutdir="gnucash-4.7" repo="sourceforge" version="4.7" />
     <dependencies>
       <dep package="meta-gtk-osx-gtk3"/>
