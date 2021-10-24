@@ -163,7 +163,7 @@
     </dependencies>
   </autotools>
 
-  <cmake id="mariadb-connector" cmakeargs="-DWITH_SSL=gnutls">
+  <cmake id="mariadb-connector" cmakeargs="-DWITH_SSL=gnutls -DWITH_MYSQLCOMPAT=ON">
     <branch repo="github-tarball" module="mariadb-corporation/mariadb-connector-c/archive/refs/tags/v3.2.4.tar.gz" version="3.2.4"
             checkoutdir="mariadb-connector-c-3.2.4">
       <patch file="mariadb-connector-fix-includes.patch" strip="1"/>
@@ -179,7 +179,7 @@
   </autotools>
 
   <autotools id="libdbi-drivers" autogen-sh='autoreconf'
-	     autogenargs='--with-mysql --with-mysql-libdir=$PREFIX/lib  --with-mysql-incdir=$PREFIX/include/mariadb/ --with-pgsql --with-sqlite3 --disable-docs --disable-dependency-tracking'>
+	     autogenargs='--with-mysql --with-mysql-libdir=$PREFIX/lib/mariadb/  --with-mysql-incdir=$PREFIX/include/mariadb/ --with-pgsql --with-sqlite3 --disable-docs --disable-dependency-tracking'>
     <branch repo="sourceforge-git"
 	    module="libdbi-drivers/libdbi-drivers">
     </branch>
