@@ -28,7 +28,7 @@
   <repository type="tarball" name="github-tarball"
 	      href="https://github.com/"/>
   <repository type="git" name="github"
-	      href="git://github.com/"/>
+	      href="https://github.com/"/>
   <repository type="tarball" name="openssl"
 	      href="https://www.openssl.org/source/"/>
   <repository type="tarball" name="postgres"
@@ -286,8 +286,8 @@
 
 <cmake id="gnucash"
         cmakeargs="-DGTEST_ROOT=${JHBUILD_SOURCE}/googletest/">
-   <branch module="gnucash/gnucash-4.9.tar.bz2"
-           checkoutdir="gnucash-4.9" repo="sourceforge" version="4.9" />
+   <branch module="gnucash/gnucash-4.10.tar.bz2"
+           checkoutdir="gnucash-4.10" repo="sourceforge" version="4.10" />
     <dependencies>
       <dep package="meta-gtk-osx-gtk3"/>
       <dep package="libofx"/>
@@ -365,8 +365,8 @@
 
   <cmake id="gnucash-docs"
          ninjaargs="html">
-    <branch  module="gnucash/gnucash-docs-4.9.tar.gz"
-	     version="4.9" repo="sourceforge"/>
+    <branch  module="gnucash/gnucash-docs-4.10.tar.gz"
+	     version="4.10" repo="sourceforge"/>
   </cmake>
 
   <cmake id="gnucash-unstable-docs"
