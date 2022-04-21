@@ -130,9 +130,8 @@
   </autotools>
 
   <autotools id="libofx" autogen-sh='configure'>
-    <branch repo="sourceforge" module="libofx/libofx-0.10.2.tar.gz"
-            version="0.10.2">
-      <patch file="libofx-subtract-gmt-offset.patch" strip="1"/>
+    <branch repo="github-tarball" module="libofx/libofx/releases/download/0.10.5/libofx-0.10.5.tar.gz"
+            version="0.10.5">
     </branch>
     <dependencies>
       <dep package="OpenSP"/>
