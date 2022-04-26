@@ -365,7 +365,7 @@
 
   <cmake id="gnucash-docs"
          ninjaargs="html">
-    <branch  module="gnucash/gnucash-docs-4.10.tar.gz"
+    <branch  module="gnucash/gnucash-docs-4.10.1.tar.gz"
 	     version="4.10" repo="sourceforge"/>
   </cmake>
 
@@ -374,5 +374,14 @@
     <branch  module="gnucash/gnucash-docs-3.906.tar.gz"
 	     version="3.906" repo="sourceforge"/>
   </cmake>
+
+  <autotools id="adwaita-3">
+    <branch module="adwaita-icon-theme/3.38/adwaita-icon-theme-3.38.0.tar.xz"
+            version="3.38.0"
+            hash="sha256:6683a1aaf2430ccd9ea638dd4bfe1002bc92b412050c3dba20e480f979faaf97"/>
+    <dependencies>
+      <dep package="librsvg"/>
+    </dependencies>
+  </autotools>
 
 </moduleset>
