@@ -77,12 +77,13 @@
     </after>
   </autotools>
 
-  <autotools id="xmlsec" autogenargs="--enable-docs=no">
+  <autotools id="xmlsec" autogenargs="--enable-docs=no --with-gcrypt --with-gnutls">
     <branch module="xmlsec1-1.2.32.tar.gz"
             repo="xmlsec" version="1.2.32" >
     </branch>
     <dependencies>
       <dep package="openssl"/>
+      <dep package="gnutls"/>
     </dependencies>
   </autotools>
 
