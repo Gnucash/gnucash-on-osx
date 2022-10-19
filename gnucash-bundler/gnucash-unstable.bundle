@@ -195,7 +195,7 @@
     ${project}/Sources
   </data>
 
-  <data dest="${bundle}/Contents/Resources/en.lproj/Gnucash Manual/">
+  <data dest="${bundle}/Contents/Resources/en.lproj/GnuCash Manual/">
     ${prefix}/share/doc/gnucash-docs/C/gnucash-manual/
   </data>
 
@@ -203,7 +203,7 @@
     ${prefix}/share/doc/gnucash-docs/C/gnucash-guide/
   </data>
 
-   <data dest="${bundle}/Contents/Resources/de.lproj/Gnucash Manual/">
+   <data dest="${bundle}/Contents/Resources/de.lproj/GnuCash Manual/">
     ${prefix}/share/doc/gnucash-docs/de/gnucash-manual/
   </data>
 
@@ -211,7 +211,7 @@
     ${prefix}/share/doc/gnucash-docs/de/gnucash-guide/
   </data>
 
-  <data dest="${bundle}/Contents/Resources/it.lproj/Gnucash Manual/">
+  <data dest="${bundle}/Contents/Resources/it.lproj/GnuCash Manual/">
     ${prefix}/share/doc/gnucash-docs/it/gnucash-manual/
   </data>
 
@@ -223,7 +223,7 @@
     ${prefix}/share/doc/gnucash-docs/ja/gnucash-guide/
   </data>
 
-  <data dest="${bundle}/Contents/Resources/pt.lproj/Gnucash Manual/">
+  <data dest="${bundle}/Contents/Resources/pt.lproj/GnuCash Manual/">
     ${prefix}/share/doc/gnucash-docs/pt/gnucash-manual/
   </data>
 
