@@ -21,7 +21,7 @@ index e69de29..b53cf7a 100644
 +project (boost)
 +
 +if(NOT LIBRARIES)
-+  set(LIBRARIES date_time;regex;locale;filesystem;system)
++  set(LIBRARIES atomic;date_time;regex;locale;filesystem;system)
 +endif()
 +
 +set(B2_EXE ${CMAKE_SOURCE_DIR}/b2)
