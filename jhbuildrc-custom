@@ -1,8 +1,15 @@
 # -*- mode: python -*-
 
-prefix = os.environ['PREFIX']
-checkoutroot = os.path.join(os.environ['HOME'], 'gnucash', 'src')
-buildroot = os.path.join(os.environ['HOME'], 'gnucash', 'build')
+setup_sdk()
+
+if 'PREFIX' in os.environ:
+    prefix = os.environ['PREFIX']
+else:
+    prefix = os.path.join(os.environ['HOME'], 'gnucash', 'inst')
+
+checkoutroot = os.path.join(os.path.dirname(prefix), 'src')
+buildroot = os.path.join(os.path.dirname(prefix), 'build')
+print("Building in %s", buildroot)
 moduleset = "https://github.com/gnucash/gnucash-on-osx/raw/master/modulesets/gnucash.modules"
 
 _modules_deps = ['pygments', 'meta-gtk-osx-bootstrap', 'meta-gtk-osx-gtk3',
@@ -35,4 +42,3 @@ os.environ['CPP_FOR_BUILD'] = os.environ['CC']
 os.environ['CFLAGS_FOR_BUILD'] = os.environ['CFLAGS']
 module_cmakeargs['boost'] = '-DCMAKE_CXX_FLAGS="' + os.environ['CXXFLAGS'] + ' -std=c++17"'
 
-setup_sdk()
