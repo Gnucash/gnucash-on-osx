@@ -3,7 +3,7 @@
 setup_sdk()
 
 if 'PREFIX' in os.environ:
-    prefix = os.environ['PREFIX']
+    prefix = os.path.join(os.environ['PREFIX'], 'inst')
 else:
     prefix = os.path.join(os.environ['HOME'], 'gnucash', 'inst')
 
