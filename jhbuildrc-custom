@@ -9,7 +9,6 @@ else:
 
 checkoutroot = os.path.join(os.path.dirname(prefix), 'src')
 buildroot = os.path.join(os.path.dirname(prefix), 'build')
-print("Building in %s", buildroot)
 moduleset = "https://github.com/gnucash/gnucash-on-osx/raw/master/modulesets/gnucash.modules"
 
 _modules_deps = ['pygments', 'meta-gtk-osx-bootstrap', 'meta-gtk-osx-gtk3',
