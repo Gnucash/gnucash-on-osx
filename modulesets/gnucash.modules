@@ -17,8 +17,6 @@
 	      href="https://git.code.sf.net/p/"/>
   <repository type="tarball" name="csail"
 	      href="http://groups.csail.mit.edu/mac/ftpdir/"/>
-  <repository type="tarball" name="gnucash.org"
-	      href="http://www.gnucash.org/pub/gnucash/sources/"/>
   <repository type="tarball" name="xmlsec"
 	      href="http://www.aleksey.com/xmlsec/download/"/>
   <repository type="git" name="aquamaniac"
@@ -173,15 +171,17 @@
     </dependencies>
   </cmake>
 
-  <autotools id="libdbi" autogen-sh="autoreconf" autogenargs="--disable-docs">
-    <branch repo="sourceforge-git" module="libdbi/libdbi" >
+  <autotools id="libdbi" autogen-sh="configure" autogenargs="--disable-docs">
+    <branch repo="sourceforge" module="gnucash/libdbi-0.9.1.tar.gz" version="0.9.1"
+            hash="sha256:870c81447e45ea7f02379dec91ca53f0a28c2438cf88bb3a6491fb4db30db528">
     </branch>
   </autotools>
 
-  <autotools id="libdbi-drivers" autogen-sh='autoreconf'
+  <autotools id="libdbi-drivers" autogen-sh="configure"
 	     autogenargs='--with-mysql --with-mysql-libdir=$PREFIX/lib/mariadb/  --with-mysql-incdir=$PREFIX/include/mariadb/ --with-pgsql --with-sqlite3 --disable-docs --disable-dependency-tracking'>
-    <branch repo="sourceforge-git"
-	    module="libdbi-drivers/libdbi-drivers">
+    <branch repo="sourceforge"
+            module="gnucash/libdbi-drivers-0.9.1.tar.gz" version="0.9.1"
+            hash="sha256:3346b3f09edb2c2464422560ff783f7a7fa1fcd287427f0a8f2db8a1d995acb9">
     </branch>
     <dependencies>
       <dep package="libdbi"/>
