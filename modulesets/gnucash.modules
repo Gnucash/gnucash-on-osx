@@ -254,6 +254,19 @@
     </dependencies>
   </autotools>
 
+  <autotools id="guile30" autogen-sh="configure">
+    <branch repo="ftp.gnu.org" module="guile/guile-3.0.8.tar.gz"
+	    version="3.0.8">
+     <patch file="guile-2.2-libguile-Makefile-fixups.patch" strip="1"/>
+    </branch>
+    <dependencies>
+      <dep package="libunistring"/>
+      <dep package="gmp"/>
+      <dep package="libffi"/>
+      <dep package="bdw-gc"/>
+    </dependencies>
+  </autotools>
+
   <cmake id="googletest" cmakeargs="-DBUILD_GMOCK=OFF" skip-install="True">
     <branch module="google/googletest" repo="github" tag="release-1.10.0"/>
   </cmake>
@@ -321,7 +334,7 @@
       <dep package="libdbi-drivers"/>
       <dep package="shared-mime-info"/>
       <dep package="iso-codes"/>
-      <dep package="guile22"/>
+      <dep package="guile30"/>
       <dep package="swig"/>
       <dep package="boost"/>
       <dep package="googletest"/>
@@ -341,7 +354,7 @@
       <dep package="libdbi-drivers"/>
       <dep package="shared-mime-info"/>
       <dep package="iso-codes"/>
-      <dep package="guile22"/>
+      <dep package="guile30"/>
       <dep package="swig"/>
       <dep package="boost"/>
       <dep package="googletest"/>
