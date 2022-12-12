@@ -211,6 +211,14 @@
     ${prefix}/share/doc/gnucash-docs/de/gnucash-guide/
   </data>
 
+   <data dest="${bundle}/Contents/Resources/fr.lproj/GnuCash Help/">
+    ${prefix}/share/doc/gnucash-docs/C/gnucash-help/
+  </data>
+
+  <data dest="${bundle}/Contents/Resources/fr.lproj/GnuCash Guide/">
+    ${prefix}/share/doc/gnucash-docs/C/gnucash-guide/
+  </data>
+
   <data dest="${bundle}/Contents/Resources/it.lproj/GnuCash Help/">
     ${prefix}/share/doc/gnucash-docs/it/gnucash-help/
   </data>
