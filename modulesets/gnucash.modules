@@ -321,8 +321,8 @@
 
 <cmake id="gnucash-unstable"
         cmakeargs="-DGTEST_ROOT=${JHBUILD_SOURCE}/googletest">
-   <branch module="gnucash/gnucash-3.906.tar.bz2"
-           checkoutdir="gnucash-3.906" repo="sourceforge" version="3.906" />
+   <branch module="gnucash/gnucash-4.900.tar.bz2"
+           checkoutdir="gnucash-4.900" repo="sourceforge" version="4.900" />
    
     <dependencies>
       <dep package="meta-gtk-osx-gtk3"/>
@@ -334,7 +334,7 @@
       <dep package="libdbi-drivers"/>
       <dep package="shared-mime-info"/>
       <dep package="iso-codes"/>
-      <dep package="guile30"/>
+      <dep package="guile22"/>
       <dep package="swig"/>
       <dep package="boost"/>
       <dep package="googletest"/>
@@ -354,7 +354,7 @@
       <dep package="libdbi-drivers"/>
       <dep package="shared-mime-info"/>
       <dep package="iso-codes"/>
-      <dep package="guile30"/>
+      <dep package="guile22"/>
       <dep package="swig"/>
       <dep package="boost"/>
       <dep package="googletest"/>
@@ -383,8 +383,8 @@
 
   <cmake id="gnucash-unstable-docs"
 	    ninjaargs="html">
-    <branch  module="gnucash/gnucash-docs-3.906.tar.gz"
-	     version="3.906" repo="sourceforge"/>
+    <branch  module="gnucash/gnucash-docs-4.900.tar.gz"
+	     version="4.900" repo="sourceforge"/>
   </cmake>
 
   <autotools id="adwaita-3">

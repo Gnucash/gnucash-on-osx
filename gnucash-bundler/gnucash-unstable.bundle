@@ -120,7 +120,11 @@
   </data>
 
   <data>
-    ${prefix}/bin/gnc-*
+    ${prefix}/bin/finance-quote-wrapper
+  </data>
+
+  <data>
+    ${prefix}/bin/gnc-fq-update
   </data>
 
   <data>
@@ -209,6 +213,14 @@
 
   <data dest="${bundle}/Contents/Resources/de.lproj/GnuCash Guide/">
     ${prefix}/share/doc/gnucash-docs/de/gnucash-guide/
+  </data>
+
+   <data dest="${bundle}/Contents/Resources/fr.lproj/GnuCash Manual/">
+    ${prefix}/share/doc/gnucash-docs/C/gnucash-manual/
+  </data>
+
+  <data dest="${bundle}/Contents/Resources/fr.lproj/GnuCash Guide/">
+    ${prefix}/share/doc/gnucash-docs/C/gnucash-guide/
   </data>
 
   <data dest="${bundle}/Contents/Resources/it.lproj/GnuCash Manual/">
