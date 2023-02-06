@@ -321,8 +321,8 @@
 
 <cmake id="gnucash-unstable"
         cmakeargs="-DGTEST_ROOT=${JHBUILD_SOURCE}/googletest">
-   <branch module="gnucash/gnucash-4.900.tar.bz2"
-           checkoutdir="gnucash-4.900" repo="sourceforge" version="4.900" />
+   <branch module="gnucash/gnucash-4.901.tar.bz2"
+           checkoutdir="gnucash-4.901" repo="sourceforge" version="4.901" />
    
     <dependencies>
       <dep package="meta-gtk-osx-gtk3"/>
