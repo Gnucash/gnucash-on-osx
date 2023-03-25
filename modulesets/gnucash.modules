@@ -218,9 +218,9 @@
     </dependencies>
   </autotools>
 
-  <cmake id="boost" cmakeargs="-DLIBRARIES='date_time;regex;locale;filesystem;program_options'">
-    <branch module="boost/boost_1_77_0.tar.bz2" version="1.77.0" 
-            hash="sha256:fc9f85fc030e233142908241af7a846e60630aa7388de9a5fafb1f3a26840854"
+  <cmake id="boost" cmakeargs="-DLIBRARIES='date_time;regex;locale;filesystem;program_options;system'">
+    <branch module="boost/boost_1_81_0.tar.bz2" version="1.81.0" 
+            hash="sha256:71feeed900fbccca04a3b4f2f84a7c217186f28a940ed8b7ed4725986baf99fa"
             repo="sourceforge">
       <patch file="boost-cmake.patch" strip="1"/>
     </branch>
@@ -298,8 +298,8 @@
 
 <cmake id="gnucash"
         cmakeargs="-DGTEST_ROOT=${JHBUILD_SOURCE}/googletest/">
-   <branch module="gnucash/gnucash-4.13.tar.bz2"
-           checkoutdir="gnucash-4.13" repo="sourceforge" version="4.12" />
+   <branch module="gnucash/gnucash-4.14.tar.bz2"
+           checkoutdir="gnucash-4.14" repo="sourceforge" version="4.14" />
     <dependencies>
       <dep package="meta-gtk-osx-gtk3"/>
       <dep package="libofx"/>
@@ -377,8 +377,8 @@
 
   <cmake id="gnucash-docs"
          ninjaargs="html">
-    <branch  module="gnucash/gnucash-docs-4.13.tar.gz"
-	     version="4.13" repo="sourceforge"/>
+    <branch  module="gnucash/gnucash-docs-4.14.tar.gz"
+	     version="4.14" repo="sourceforge"/>
   </cmake>
 
   <cmake id="gnucash-unstable-docs"
