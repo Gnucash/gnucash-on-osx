@@ -38,7 +38,7 @@
        this bundle file is located. The application name and bundle
        identifier are taken from the plist file.
   -->
-  <plist>${project}/Info.plist</plist>
+  <plist>${project}/Info-unstable.plist</plist>
 
   <main-binary>${prefix}/bin/gnucash</main-binary>
 
@@ -120,7 +120,11 @@
   </data>
 
   <data>
-    ${prefix}/bin/gnc-*
+    ${prefix}/bin/finance-quote-wrapper
+  </data>
+
+  <data>
+    ${prefix}/bin/gnc-fq-update
   </data>
 
   <data>
@@ -195,32 +199,32 @@
     ${project}/Sources
   </data>
 
-  <data dest="${bundle}/Contents/Resources/en.lproj/GnuCash Help/">
-    ${prefix}/share/doc/gnucash-docs/C/gnucash-help/
+  <data dest="${bundle}/Contents/Resources/en.lproj/GnuCash Manual/">
+    ${prefix}/share/doc/gnucash-docs/C/gnucash-manual/
   </data>
 
   <data dest="${bundle}/Contents/Resources/en.lproj/GnuCash Guide/">
     ${prefix}/share/doc/gnucash-docs/C/gnucash-guide/
   </data>
 
-   <data dest="${bundle}/Contents/Resources/de.lproj/GnuCash Help/">
-    ${prefix}/share/doc/gnucash-docs/de/gnucash-help/
+   <data dest="${bundle}/Contents/Resources/de.lproj/GnuCash Manual/">
+    ${prefix}/share/doc/gnucash-docs/de/gnucash-manual/
   </data>
 
   <data dest="${bundle}/Contents/Resources/de.lproj/GnuCash Guide/">
     ${prefix}/share/doc/gnucash-docs/de/gnucash-guide/
   </data>
 
-   <data dest="${bundle}/Contents/Resources/fr.lproj/GnuCash Help/">
-    ${prefix}/share/doc/gnucash-docs/C/gnucash-help/
+   <data dest="${bundle}/Contents/Resources/fr.lproj/GnuCash Manual/">
+    ${prefix}/share/doc/gnucash-docs/C/gnucash-manual/
   </data>
 
   <data dest="${bundle}/Contents/Resources/fr.lproj/GnuCash Guide/">
     ${prefix}/share/doc/gnucash-docs/C/gnucash-guide/
   </data>
 
-  <data dest="${bundle}/Contents/Resources/it.lproj/GnuCash Help/">
-    ${prefix}/share/doc/gnucash-docs/it/gnucash-help/
+  <data dest="${bundle}/Contents/Resources/it.lproj/GnuCash Manual/">
+    ${prefix}/share/doc/gnucash-docs/it/gnucash-manual/
   </data>
 
   <data dest="${bundle}/Contents/Resources/it.lproj/GnuCash Guide/">
@@ -231,8 +235,8 @@
     ${prefix}/share/doc/gnucash-docs/ja/gnucash-guide/
   </data>
 
-  <data dest="${bundle}/Contents/Resources/pt.lproj/GnuCash Help/">
-    ${prefix}/share/doc/gnucash-docs/pt/gnucash-help/
+  <data dest="${bundle}/Contents/Resources/pt.lproj/GnuCash Manual/">
+    ${prefix}/share/doc/gnucash-docs/pt/gnucash-manual/
   </data>
 
   <data dest="${bundle}/Contents/Resources/pt.lproj/GnuCash Guide/">

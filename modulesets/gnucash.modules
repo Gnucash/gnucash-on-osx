@@ -271,35 +271,10 @@
     <branch module="google/googletest" repo="github" tag="release-1.10.0"/>
   </cmake>
 
-  <autotools id="gnucash-oldstable"
-	     autogen-sh="configure"
-	     autogenargs="--enable-ofx --enable-aqbanking --enable-binreloc --enable-dbi --with-dbi-dbd-dir=$PREFIX/lib/dbd --with-html-engine='webkit'">
-    <branch module="gnucash/gnucash-3.11.tar.bz2" version="3.11"
-	    repo="sourceforge">
-    </branch>
-    <dependencies>
-      <dep package="meta-gtk-osx-core"/>
-      <dep package="libofx"/>
-      <dep package="aqbanking"/>
-      <dep package="libgnomecanvas"/>
-      <dep package="goffice"/>
-      <dep package="libdbi-drivers"/>
-      <dep package="shared-mime-info"/>
-      <dep package="iso-codes"/>
-      <dep package="guile22"/>
-      <dep package="sqlite"/>
-    </dependencies>
-    <after>
-      <dep package="meta-gtk-osx-webkit"/>
-    </after>
-
-  </autotools>
-
-
 <cmake id="gnucash"
         cmakeargs="-DGTEST_ROOT=${JHBUILD_SOURCE}/googletest/">
-   <branch module="gnucash/gnucash-4.14.tar.bz2"
-           checkoutdir="gnucash-4.14" repo="sourceforge" version="4.14" />
+   <branch module="gnucash/gnucash-5.0.tar.bz2"
+           checkoutdir="gnucash-5.0" repo="sourceforge" version="5.0" />
     <dependencies>
       <dep package="meta-gtk-osx-gtk3"/>
       <dep package="libofx"/>
@@ -377,8 +352,8 @@
 
   <cmake id="gnucash-docs"
          ninjaargs="html">
-    <branch  module="gnucash/gnucash-docs-4.14.tar.gz"
-	     version="4.14" repo="sourceforge"/>
+    <branch  module="gnucash/gnucash-docs-5.0.tar.gz"
+	     version="5.0" repo="sourceforge"/>
   </cmake>
 
   <cmake id="gnucash-unstable-docs"
