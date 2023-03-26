@@ -38,7 +38,7 @@
        this bundle file is located. The application name and bundle
        identifier are taken from the plist file.
   -->
-  <plist>${project}/Info-unstable.plist</plist>
+  <plist>${project}/Info.plist</plist>
 
   <main-binary>${prefix}/bin/gnucash</main-binary>
 
