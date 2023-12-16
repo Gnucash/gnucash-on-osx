@@ -261,8 +261,8 @@
 
 <cmake id="gnucash"
         cmakeargs="-DGTEST_ROOT=${JHBUILD_SOURCE}/googletest/">
-   <branch module="gnucash/gnucash-5.4-1.tar.bz2"
-           checkoutdir="gnucash-5.4" repo="sourceforge" version="5.4" />
+   <branch module="gnucash/gnucash-5.5.tar.bz2"
+           checkoutdir="gnucash-5.5" repo="sourceforge" version="5.5" />
     <dependencies>
       <dep package="meta-gtk-osx-gtk3"/>
       <dep package="libofx"/>
@@ -340,8 +340,8 @@
 
   <cmake id="gnucash-docs"
          ninjaargs="html">
-    <branch  module="gnucash/gnucash-docs-5.4.tar.gz"
-	     version="5.4" repo="sourceforge"/>
+    <branch  module="gnucash/gnucash-docs-5.5.tar.gz"
+	     version="5.5" repo="sourceforge"/>
   </cmake>
 
   <cmake id="gnucash-unstable-docs"
