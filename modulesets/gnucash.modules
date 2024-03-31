@@ -153,19 +153,20 @@
   </autotools>
 
   <autotools id="pgsql">
-    <branch repo="postgres" module="v12.2/postgresql-12.2.tar.bz2" 
-            version="12.2"
-            hash="sha256:ad1dcc4c4fc500786b745635a9e1eba950195ce20b8913f50345bb7d5369b5de">
+    <branch repo="postgres" module="v16.2/postgresql-16.2.tar.bz2" 
+            version="16.2"
+            hash="sha256:446e88294dbc2c9085ab4b7061a646fa604b4bec03521d5ea671c2e5ad9b2952">
     </branch>
     <dependencies>
       <dep package="openssl"/>
+      <dep package="icu"/>
     </dependencies>
   </autotools>
 
   <cmake id="mariadb-connector" cmakeargs="-DWITH_SSL=gnutls -DWITH_MYSQLCOMPAT=ON">
-    <branch repo="github-tarball" module="mariadb-corporation/mariadb-connector-c/archive/refs/tags/v3.2.4.tar.gz" version="3.2.4"
-            checkoutdir="mariadb-connector-c-3.2.4">
-      <patch file="mariadb-connector-fix-includes.patch" strip="1"/>
+    <branch repo="github-tarball" module="mariadb-corporation/mariadb-connector-c/archive/refs/tags/v3.3.9.tar.gz" version="3.3.9"
+            checkoutdir="mariadb-connector-c-3.3.9">
+      <!-- patch file="mariadb-connector-fix-includes.patch" strip="1"/ -->
     </branch>
     <dependencies>
       <dep package="gnutls"/>
@@ -261,8 +262,8 @@
 
 <cmake id="gnucash"
         cmakeargs="-DGTEST_ROOT=${JHBUILD_SOURCE}/googletest/">
-   <branch module="gnucash/gnucash-5.5.tar.bz2"
-           checkoutdir="gnucash-5.5" repo="sourceforge" version="5.5" />
+   <branch module="gnucash/gnucash-5.6.tar.bz2"
+           checkoutdir="gnucash-5.6" repo="sourceforge" version="5.6" />
     <dependencies>
       <dep package="meta-gtk-osx-gtk3"/>
       <dep package="libofx"/>
@@ -340,8 +341,8 @@
 
   <cmake id="gnucash-docs"
          ninjaargs="html">
-    <branch  module="gnucash/gnucash-docs-5.5.tar.gz"
-	     version="5.5" repo="sourceforge"/>
+    <branch  module="gnucash/gnucash-docs-5.6.tar.gz"
+	     version="5.6" repo="sourceforge"/>
   </cmake>
 
   <cmake id="gnucash-unstable-docs"
