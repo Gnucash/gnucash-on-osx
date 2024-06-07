@@ -27,8 +27,6 @@
 	      href="https://github.com/"/>
   <repository type="git" name="github"
 	      href="https://github.com/"/>
-  <repository type="tarball" name="openssl"
-	      href="https://www.openssl.org/source/"/>
   <repository type="tarball" name="postgres"
               href="https://ftp.postgresql.org/pub/source/"/>
 
@@ -138,12 +136,6 @@
     </dependencies>
   </autotools>
 
-  <autotools id="pcre" autogenargs="--enable-unicode-properties"
-	     autogen-sh="configure">
-    <branch repo="sourceforge" module="pcre/pcre-8.32.tar.bz2"
-	    version="8.32"/>
-  </autotools>
-
   <autotools id="swig" autogen-sh="configure">
     <branch repo="sourceforge" module="swig/swig-4.0.1.tar.gz"
 	    version="4.0.1"/>
@@ -193,23 +185,9 @@
     </dependencies>
    </autotools>
 
-  <autotools id="libgnomecanvas" autogen-sh="configure">
-    <branch module="libgnomecanvas/2.26/libgnomecanvas-2.26.0.tar.bz2" 
-	    version="2.26.0" md5sum="9bbc635e5ae70e63af071af74ba7e72f"/>
-    <dependencies>
-      <dep package="libart_lgpl"/>
-      <dep package="libglade"/>
-      <dep package="meta-gtk-osx-freetype"/>
-    </dependencies>
-    <after>
-      <dep package="meta-gtk-osx-bootstrap"/>
-      <dep package="meta-gtk-osx-core"/>
-    </after>
-  </autotools>
-
   <cmake id="boost" cmakeargs="-DLIBRARIES='date_time;regex;locale;filesystem;program_options;system'">
-    <branch module="boost/boost_1_83_0.tar.bz2" version="1.83.0" 
-            hash="sha256:6478edfe2f3305127cffe8caf73ea0176c53769f4bf1585be237eb30798c3b8e"
+    <branch module="boost/boost_1_85_0.tar.bz2" version="1.85.0" 
+
             repo="sourceforge">
       <patch file="boost-cmake.patch" strip="1"/>
     </branch>
@@ -312,13 +290,6 @@
             checkoutdir="gnucash-docs-git"/>
  </cmake>
 
-  <cmake id="gnucash-olddocs" autogenargs="--disable-scrollkeeper"
-	    autogen-template="%(srcdir)s/%(autogen-sh)s &amp;&amp; %(srcdir)s/configure --prefix %(prefix)s %(autogenargs)s"
-	    makeargs=" html" makeinstallargs="install-html" >
-    <branch  module="gnucash/gnucash-docs-3.11.tar.gz"
-	     version="3.11" repo="sourceforge"/>
-  </cmake>
-
   <cmake id="gnucash-docs"
          ninjaargs="html">
     <branch  module="gnucash/gnucash-docs-5.6.tar.gz"
@@ -330,14 +301,5 @@
     <branch  module="gnucash/gnucash-docs-4.903.tar.gz"
 	     version="4.903" repo="sourceforge"/>
   </cmake>
-
-  <autotools id="adwaita-3">
-    <branch module="adwaita-icon-theme/3.38/adwaita-icon-theme-3.38.0.tar.xz"
-            version="3.38.0"
-            hash="sha256:6683a1aaf2430ccd9ea638dd4bfe1002bc92b412050c3dba20e480f979faaf97"/>
-    <dependencies>
-      <dep package="librsvg"/>
-    </dependencies>
-  </autotools>
 
 </moduleset>
