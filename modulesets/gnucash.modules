@@ -255,6 +255,7 @@
    
     <dependencies>
       <dep package="meta-gnucash-dependencies"/>
+      <dep package="shared-mime-info"/>
     </dependencies>
  </cmake>
 
@@ -270,11 +271,12 @@
  <metamodule id="meta-gnucash-dependencies">
    <dependencies>
       <dep package="meta-gtk-osx-gtk3"/>
-      <dep package="meta-gtk-osx-python3-gtk3"/>
       <dep package="libofx"/>
       <dep package="aqbanking"/>
+      <dep package="mariadb-connector"/>
+      <dep package="pgsql"/>
+      <dep package="sqlite"/>
       <dep package="libdbi-drivers"/>
-      <dep package="shared-mime-info"/>
       <dep package="iso-codes"/>
       <dep package="guile22"/>
       <dep package="swig"/>
@@ -290,16 +292,22 @@
             checkoutdir="gnucash-docs-git"/>
  </cmake>
 
-  <cmake id="gnucash-docs"
-         ninjaargs="html">
-    <branch  module="gnucash/gnucash-docs-5.6.tar.gz"
-	     version="5.6" repo="sourceforge"/>
-  </cmake>
+ <cmake id="gnucash-olddocs" autogenargs="--disable-scrollkeeper"
+        autogen-template="%(srcdir)s/%(autogen-sh)s &amp;&amp; %(srcdir)s/configure --prefix %(prefix)s %(autogenargs)s"
+        makeargs=" html" makeinstallargs="install-html" >
+   <branch  module="gnucash/gnucash-docs-4.14.tar.gz"
+            version="4.14" repo="sourceforge"/>
+ </cmake>
 
-  <cmake id="gnucash-unstable-docs"
-	    ninjaargs="html">
-    <branch  module="gnucash/gnucash-docs-4.903.tar.gz"
-	     version="4.903" repo="sourceforge"/>
-  </cmake>
+ <cmake id="gnucash-docs"
+        ninjaargs="html">
+   <branch  module="gnucash/gnucash-docs-5.6.tar.gz"
+            version="5.6" repo="sourceforge"/>
+ </cmake>
 
+ <cmake id="gnucash-unstable-docs"
+        ninjaargs="html">
+   <branch  module="gnucash/gnucash-docs-4.903.tar.gz"
+            version="4.903" repo="sourceforge"/>
+ </cmake>
 </moduleset>
