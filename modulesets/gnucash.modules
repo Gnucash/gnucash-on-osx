@@ -74,8 +74,8 @@
   </autotools>
 
   <autotools id="xmlsec" autogenargs="--enable-docs=no --with-gcrypt --with-gnutls">
-    <branch module="xmlsec1-1.3.2.tar.gz"
-            repo="xmlsec" version="1.3.2" >
+    <branch module="xmlsec1-1.3.4.tar.gz"
+            repo="xmlsec" version="1.3.4" >
     </branch>
     <dependencies>
       <dep package="openssl"/>
@@ -240,8 +240,8 @@
 
 <cmake id="gnucash"
         cmakeargs="-DGTEST_ROOT=${JHBUILD_SOURCE}/googletest/">
-   <branch module="gnucash/gnucash-5.6.tar.bz2"
-           checkoutdir="gnucash-5.6" repo="sourceforge" version="5.6" />
+   <branch module="gnucash/gnucash-5.7.tar.bz2"
+           checkoutdir="gnucash-5.7" repo="sourceforge" version="5.7" />
     <dependencies>
       <dep package="meta-gnucash-dependencies"/>
     </dependencies>
@@ -301,8 +301,8 @@
 
  <cmake id="gnucash-docs"
         ninjaargs="html">
-   <branch  module="gnucash/gnucash-docs-5.6.tar.gz"
-            version="5.6" repo="sourceforge"/>
+   <branch  module="gnucash/gnucash-docs-5.7.tar.gz"
+            version="5.7" repo="sourceforge"/>
  </cmake>
 
  <cmake id="gnucash-unstable-docs"
