@@ -11,33 +11,31 @@ checkoutroot = os.path.join(os.path.dirname(prefix), 'src')
 buildroot = os.path.join(os.path.dirname(prefix), 'build')
 moduleset = "https://github.com/gnucash/gnucash-on-osx/raw/master/modulesets/gnucash.modules"
 
-_modules_deps = ['pygments', 'meta-gtk-osx-bootstrap', 'meta-gtk-osx-gtk3',
-                'meta-gtk-osx-python-gtk3', 'openSP', 'libofx', 'aqbanking',
-                'libdbi-drivers', 'shared-mime-info', 'iso-codes', 'guile22',
-                'swig', 'boost', 'googletest', 'webkit2gtk3']
+_modules_deps = ['pygments', 'meta-gtk-osx-bootstrap',
+                 'meta-gnucash-dependencies']
 _modules_stable = ['pygments', 'meta-gtk-osx-bootstrap',
-                  'gnucash', 'gnucash-docs']
-_modules_stable = ['pygments', 'meta-gtk-osx-bootstrap',
-                  'gnucash', 'gnucash-docs']
+                   'meta-gnucash-dependencies', 'gnucash', 'gnucash-docs']
 _modules_git = ['pygments', 'meta-gtk-osx-bootstrap',
-               'gnucash-git', 'gnucash-docs-git']
+                'meta-gnucash-dependencies','gnucash-git', 'gnucash-docs-git']
 
 #set modules to the _modules variable above corresponding you what you need.
 modules = _modules_stable
 
 _pypathenv = {'PYTHON':os.path.join(prefix, 'bin', 'python3')}
-module_extra_env['pycairo'] = _pypathenv
-module_extra_env['pygobject3'] = _pypathenv
 
-module_extra_env['icu'] = {'CXXFLAGS':os.environ['CXXFLAGS'] + ' -std=c++17'}
-module_extra_env['boost'] = {'CXXFLAGS':os.environ['CXXFLAGS'] + ' -std=c++17'}
-append_autogenargs("libofx", "--with-opensp-includes=" + prefix + "/include/OpenSP --with-opensp-libs=" + prefix + "/lib")
+    append_autogenargs("fontconfig", "--with-default-fonts=/System/Library/Fonts/Supplemental --with-add-fonts=/System/Library/Fonts,/Library/Fonts --with-cache-dir=home")
 
-append_autogenargs("OpenSP", "--enable-shared") #To override the global --disable-shared
-append_autogenargs("libdbi-drivers", "--with-dbi-incdir=" + prefix + "/include --with-dbi-libdir=" + prefix + "/lib")
-module_makeargs["aqbanking"]="-j1"
 os.environ['CC_FOR_BUILD'] = os.environ['CC']
 os.environ['CPP_FOR_BUILD'] = os.environ['CC']
 os.environ['CFLAGS_FOR_BUILD'] = os.environ['CFLAGS']
-module_cmakeargs['boost'] = '-DCMAKE_CXX_FLAGS="' + os.environ['CXXFLAGS'] + ' -std=c++17"'
 
+module_extra_env['pycairo'] = _pypathenv
+module_extra_env['pygobject3'] = _pypathenv
+module_extra_env['icu'] = {'CXXFLAGS':os.environ['CXXFLAGS'] + ' -std=c++17'}
+module_extra_env['boost'] = {'CXXFLAGS':os.environ['CXXFLAGS'] + ' -std=c++17'}
+module_extra_env['mariadb-connector'] = {'CFLAGS':os.environ['CFLAGS'] + ' -std=c99'} # -Wno-deprecated-non-prototype'}
+module_extra_env['OpenSP'] = {'CXXFLAGS':os.environ['CXXFLAGS'] + ' -std=c++03'}
+module_extra_env['libchipcard'] = {'CXXFLAGS':os.environ['CXXFLAGS'] + ' -std=c++03'}
+
+module_cmakeargs['boost'] = '-DCMAKE_CXX_FLAGS="' + os.environ['CXXFLAGS'] + ' -std=c++17"'
+module_cmakeargs["mariadb-connector"] = "-DCMAKE_INSTALL_NAME_DIR=" + os.path.join(prefix, 'lib', 'mariadb')
