@@ -271,18 +271,19 @@
 
  <metamodule id="meta-gnucash-dependencies">
    <dependencies>
-      <dep package="meta-gtk-osx-gtk3"/>
-      <dep package="libofx"/>
       <dep package="aqbanking"/>
-      <dep package="mariadb-connector"/>
-      <dep package="pgsql"/>
-      <dep package="sqlite"/>
-      <dep package="libdbi-drivers"/>
-      <dep package="iso-codes"/>
-      <dep package="guile22"/>
-      <dep package="swig"/>
       <dep package="boost"/>
       <dep package="googletest"/>
+      <dep package="guile22"/>
+      <dep package="iso-codes"/>
+      <dep package="libdbi-drivers"/>
+      <dep package="libofx"/>
+      <dep package="mariadb-connector"/>
+      <dep package="meta-gtk-osx-gtk3"/>
+      <dep package="pgsql"/>
+      <dep package="shared-mime-info"/>
+      <dep package="sqlite"/>
+      <dep package="swig"/>
       <dep package="webkit2gtk3"/>
    </dependencies>
  </metamodule>
