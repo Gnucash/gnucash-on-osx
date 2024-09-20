@@ -77,6 +77,10 @@
     ${prefix}/lib/gwenhywfar
   </binary>
 
+  <binary loadable="True">
+    ${prefix}/lib/mariadb
+  </binary>
+
   <binary dest="${bundle}/Contents/MacOS">
     ${prefix}/bin/gnucash-cli
   </binary>
