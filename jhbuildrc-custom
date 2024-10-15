@@ -23,7 +23,7 @@ modules = _modules_stable
 
 _pypathenv = {'PYTHON':os.path.join(prefix, 'bin', 'python3')}
 
-    append_autogenargs("fontconfig", "--with-default-fonts=/System/Library/Fonts/Supplemental --with-add-fonts=/System/Library/Fonts,/Library/Fonts --with-cache-dir=home")
+append_autogenargs("fontconfig", "--with-default-fonts=/System/Library/Fonts/Supplemental --with-add-fonts=/System/Library/Fonts,/Library/Fonts --with-cache-dir=home")
 
 os.environ['CC_FOR_BUILD'] = os.environ['CC']
 os.environ['CPP_FOR_BUILD'] = os.environ['CC']
