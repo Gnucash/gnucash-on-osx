@@ -209,7 +209,8 @@
     </after>
   </cmake>
 
-  <autotools id="bdw-gc" autogen-sh="configure">
+  <autotools id="bdw-gc" autogen-sh="configure"
+             autogenargs="--enable-large-config">
     <branch repo="github-tarball"
             module="ivmai/bdwgc/releases/download/v8.2.6/gc-8.2.6.tar.gz"
             version="82.6"/>
