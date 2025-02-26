@@ -294,6 +294,7 @@
       <dep package="libdbi-drivers"/>
       <dep package="libofx"/>
       <dep package="mariadb-connector"/>
+      <dep package="meta-gtk-osx-bootstrap"/>
       <dep package="meta-gtk-osx-gtk3"/>
       <dep package="pgsql"/>
       <dep package="shared-mime-info"/>
