@@ -57,12 +57,14 @@
     </dependencies>
   </autotools>
 
-  <autotools id="gwenhywfar" autogen-sh="configure"
+  <autotools id="gwenhywfar" autogen-sh="autoreconf"
 	     autogenargs="--with-guis='gtk3' --enable-local-install">
     <branch module="529/gwenhywfar-5.12.0.tar.gz" version="5.12.0"
             repo="aqbanking" >
       <patch file="gwen-include-file.patch" strip="1"/>
       <patch file="gwen-macos-bundle-path.patch" strip="1"/>
+      <patch file="gwenhywfar-5.12.0-libgcrypt-config.patch" strip="1"/>
+      <patch file="gwenhywfar-5.12.0-endianfns.patch" strip="1"/>
     </branch>
     <dependencies>
       <dep package="libgcrypt"/>
