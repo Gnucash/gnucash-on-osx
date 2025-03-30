@@ -1,0 +1,23 @@
+--- a/configure.ac	2024-12-17 10:57:39
++++ b/configure.ac	2025-02-22 12:43:49
+@@ -678,12 +678,15 @@
+     ;;
+   *)
+     AM_PATH_LIBGCRYPT("$NEED_LIBGCRYPT_API:$NEED_LIBGCRYPT_VERSION",
+-                      [have_gcrypt="yes"], [have_gcrypt="no"])
+-    if test "$have_gcrypt" != "yes"; then
+-      AC_MSG_ERROR([
++                      [], [
++      PKG_CHECK_MODULES([LIBGCRYPT], [libgcrypt >= ${NEED_LIBGCRYPT_VERSION}], [
++      AC_SUBST(LIBGCRYPT_CFLAGS)
++      AC_SUBST(LIBGCRYPT_LIBS)
++      ],
++      [AC_MSG_ERROR([
+     **** Libgcrypt is required for Gwenhywfar. Please install it (including devel packages)
+-    **** (at least version $NEED_LIBGCRYPT_VERSION using API $NEED_LIBGCRYPT_API is required.)])
+-    fi
++    **** (at least version $NEED_LIBGCRYPT_VERSION using API $NEED_LIBGCRYPT_API is required.)])])
++    ])
+     ;;
+ esac
+ 
