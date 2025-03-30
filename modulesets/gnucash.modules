@@ -256,8 +256,8 @@
 
 <cmake id="gnucash"
         cmakeargs="-DGTEST_ROOT=${JHBUILD_SOURCE}/googletest/">
-   <branch module="gnucash/gnucash-5.10.tar.bz2"
-           checkoutdir="gnucash-5.10" repo="sourceforge" version="5.10" />
+   <branch module="gnucash/gnucash-5.11.tar.bz2"
+           checkoutdir="gnucash-5.11" repo="sourceforge" version="5.11" />
     <dependencies>
       <dep package="meta-gnucash-dependencies"/>
       <dep package="shared-mime-info-2.2"/>
@@ -321,8 +321,8 @@
 
  <cmake id="gnucash-docs"
         ninjaargs="html">
-   <branch  module="gnucash/gnucash-docs-5.10.tar.gz"
-            version="5.10" repo="sourceforge"/>
+   <branch  module="gnucash/gnucash-docs-5.11.tar.gz"
+            version="5.11" repo="sourceforge"/>
  </cmake>
 
  <cmake id="gnucash-unstable-docs"
