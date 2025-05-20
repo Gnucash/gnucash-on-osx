@@ -170,7 +170,7 @@
   </autotools>
 
   <cmake id="mariadb-connector"
-         cmakeargs="-DWITH_MYSQLCOMPAT=ON -DWITH_ICONV=ON -DWITH_UNIT_TESTS=OFF -DWITH_EXTERNAL_ZLIB=ON -DWITH_SSL=gnutls -DDEFAULT_SSL_VERIFY_SERVER_CERT=OFF -DMACOSX_RPATH=ON">
+         cmakeargs="-DWITH_MYSQLCOMPAT=ON -DWITH_ICONV=ON -DWITH_UNIT_TESTS=OFF -DWITH_EXTERNAL_ZLIB=ON -DWITH_SSL=OPENSSL -DDEFAULT_SSL_VERIFY_SERVER_CERT=OFF -DMACOSX_RPATH=ON">
     <branch repo="github-tarball" module="mariadb-corporation/mariadb-connector-c/archive/refs/tags/v3.4.0.tar.gz" version="3.4.0"
             checkoutdir="mariadb-connector-c-3.4.0">
       <!-- patch file="mariadb-connector-fix-includes.patch" strip="1"/ -->
