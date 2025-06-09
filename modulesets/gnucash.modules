@@ -33,8 +33,8 @@
               href="https://gitlab.freedesktop.org/xdg/shared-mime-info/-/archive/"
               type="tarball" />
 
-  <include href="https://gitlab.gnome.org/GNOME/gtk-osx/raw/master/modulesets-stable/gtk-osx.modules"/>
- <!--include href="/Users/john/Development/GTK-OSX/gtk-osx-build/modulesets-stable/gtk-osx.modules"/-->
+  <!--include href="https://gitlab.gnome.org/GNOME/gtk-osx/raw/master/modulesets-stable/gtk-osx.modules"/-->
+ <include href="/Users/john/Development/GTK-OSX/gtk-osx-build/modulesets-stable/gtk-osx.modules"/>
 
   <meson id="shared-mime-info-2.2">
     <branch module="2.2/shared-mime-info-2.2.tar.bz2"
@@ -158,10 +158,12 @@
     </dependencies>
   </autotools>
 
-  <autotools id="pgsql">
+  <autotools id="pgsql"
+             autogenargs="ac_cv_func_strchrnul=no">
     <branch repo="postgres" module="v16.3/postgresql-16.3.tar.bz2" 
             version="16.3"
             hash="sha256:331963d5d3dc4caf4216a049fa40b66d6bcb8c730615859411b9518764e60585">
+      <patch file="pgsql-16.3-strchrnul.patch" strip="1"/>
     </branch>
     <dependencies>
       <dep package="openssl"/>

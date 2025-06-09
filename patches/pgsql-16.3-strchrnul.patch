@@ -1,0 +1,34 @@
+diff -u /Users/john/Development/Gnucash-git-11.0-arm64/src/postgresql-16.3/src/port/snprintf.c\~ /Users/john/Development/Gnucash-git-11.0-arm64/src/postgresql-16.3/src/port/snprintf.c
+--- .3/src/port/snprintf.c	2024-05-06 13:21:25
++++ .3/src/port/snprintf.c	2025-06-09 11:51:03
+@@ -345,9 +345,9 @@
+  * casting away const internally, so we don't follow that detail.
+  */
+ #ifndef HAVE_STRCHRNUL
+-
++#define STRCHRNUL strchrnul_local
+ static inline const char *
+-strchrnul(const char *s, int c)
++strchrnul_local(const char *s, int c)
+ {
+ 	while (*s != '\0' && *s != c)
+ 		s++;
+@@ -355,6 +355,7 @@
+ }
+ 
+ #else
++#define STRCHRNUL strchrnul
+ 
+ /*
+  * glibc's <string.h> declares strchrnul only if _GNU_SOURCE is defined.
+@@ -411,7 +412,7 @@
+ 		if (*format != '%')
+ 		{
+ 			/* Scan to next '%' or end of string */
+-			const char *next_pct = strchrnul(format + 1, '%');
++			const char *next_pct = STRCHRNUL(format + 1, '%');
+ 
+ 			/* Dump literal data we just scanned over */
+ 			dostr(format, next_pct - format, target);
+
+Diff finished.  Mon Jun  9 11:53:35 2025
