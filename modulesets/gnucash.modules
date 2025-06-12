@@ -33,8 +33,8 @@
               href="https://gitlab.freedesktop.org/xdg/shared-mime-info/-/archive/"
               type="tarball" />
 
-  <!--include href="https://gitlab.gnome.org/GNOME/gtk-osx/raw/master/modulesets-stable/gtk-osx.modules"/-->
- <include href="/Users/john/Development/GTK-OSX/gtk-osx-build/modulesets-stable/gtk-osx.modules"/>
+  <include href="https://gitlab.gnome.org/GNOME/gtk-osx/raw/master/modulesets-stable/gtk-osx.modules"/>
+ <!--include href="/Users/john/Development/GTK-OSX/gtk-osx-build/modulesets-stable/gtk-osx.modules"/-->
 
   <meson id="shared-mime-info-2.2">
     <branch module="2.2/shared-mime-info-2.2.tar.bz2"
@@ -301,7 +301,7 @@
       <dep package="meta-gtk-osx-bootstrap"/>
       <dep package="meta-gtk-osx-gtk3"/>
       <dep package="pgsql"/>
-      <dep package="shared-mime-info"/>
+      <dep package="shared-mime-info-2.2"/>
       <dep package="sqlite"/>
       <dep package="swig"/>
       <dep package="webkit2gtk3"/>
