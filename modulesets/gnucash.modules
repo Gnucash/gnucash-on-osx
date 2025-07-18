@@ -213,12 +213,12 @@
     </after>
   </cmake>
 
-  <autotools id="bdw-gc" autogen-sh="configure"
-             autogenargs="--enable-large-config">
+  <cmake id="bdw-gc" autogen-sh="configure"
+             cmakeargs="-Denable_large_config">
     <branch repo="github-tarball"
             module="ivmai/bdwgc/releases/download/v8.2.6/gc-8.2.6.tar.gz"
             version="82.6"/>
-  </autotools>
+  </cmake>
 
   <autotools id="libunistring" autogen-sh="configure">
     <branch repo="ftp.gnu.org" module="libunistring/libunistring-1.2.tar.gz"
@@ -226,23 +226,10 @@
      </branch>
    </autotools>
 
-  <autotools id="guile22" autogen-sh="configure">
-    <branch repo="ftp.gnu.org" module="guile/guile-2.2.7.tar.gz"
-	    version="2.2.7">
-     <patch file="guile-2.2-libguile-Makefile-fixups.patch" strip="1"/>
-    </branch>
-    <dependencies>
-      <dep package="libunistring"/>
-      <dep package="gmp"/>
-      <dep package="libffi"/>
-      <dep package="bdw-gc"/>
-    </dependencies>
-  </autotools>
-
   <autotools id="guile30" autogen-sh="configure">
-    <branch repo="ftp.gnu.org" module="guile/guile-3.0.9.tar.gz"
-	    version="3.0.9">
-     <patch file="guile-2.2-libguile-Makefile-fixups.patch" strip="1"/>
+    <branch repo="ftp.gnu.org" module="guile/guile-3.0.10.tar.gz"
+	    version="3.0.10">
+     <patch file="guile-3.0.10-build-with-C23.patch" strip="1"/>
     </branch>
     <dependencies>
       <dep package="libunistring"/>
@@ -258,8 +245,8 @@
 
 <cmake id="gnucash"
         cmakeargs="-DGTEST_ROOT=${JHBUILD_SOURCE}/googletest/">
-   <branch module="gnucash/gnucash-5.11.tar.bz2"
-           checkoutdir="gnucash-5.11" repo="sourceforge" version="5.11" />
+   <branch module="gnucash/gnucash-5.12.tar.bz2"
+           checkoutdir="gnucash-5.12" repo="sourceforge" version="5.12" />
     <dependencies>
       <dep package="meta-gnucash-dependencies"/>
       <dep package="shared-mime-info-2.2"/>
@@ -323,8 +310,8 @@
 
  <cmake id="gnucash-docs"
         ninjaargs="html">
-   <branch  module="gnucash/gnucash-docs-5.11.tar.gz"
-            version="5.11" repo="sourceforge"/>
+   <branch  module="gnucash/gnucash-docs-5.12.tar.gz"
+            version="5.12" repo="sourceforge"/>
  </cmake>
 
  <cmake id="gnucash-unstable-docs"
