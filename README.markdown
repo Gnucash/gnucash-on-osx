@@ -21,38 +21,19 @@ on your system.
 ##### Procedure #####
 1. Change the file versions in dependencies.txt to match the versions
    in the build you just made.
-2. Perform the following:
+   Change GNC_VERSION in depstarball.sh to match the current or next
+   release as appropriate. If that's not changing consider adding a
+   suffix (e.g. 5.13-1) so that the new and old can coexist on sourceforge.
+2. Build the dependencies:
    ```
    cd /Users/runner
    jhbuild --prefix /Users/runner/gnucash bootstrap-gtk-osx
    jhbuild --prefix /Users/runner/gnucash --moduleset=/Path/to/gnucash-on-osx/modules/gnucash.modules build meta-gnucash-dependencies
-   cd gnucash/inst
-   xargs < /Path/to/gnucash-on-osx/dependencies.txt tar -rf ~/gnucash-<version>-mac-dependencies.tar
-   jhbuild --prefix /Users/runner/gnucash shell
-   xz ~/gnucash-<version>-mac-dependencies.tar
    ```
-##### Testing the tarball #####
-While still in the jhbuild shell:
-```
-cd /Users/runner/gnucash
-mkdir parked
-mkdir gc-tarball
-cd gc-tarball
-tar -xf gnucash-<version>-mac-dependencies.tar.xz
-cd ../inst
-mv lib ../parked
-mv include ../parked
-mv share ../parked
-ln -s /Users/runner/gnucash/gc-tarball/include .
-ln -s /Users/runner/gnucash/gc-tarball/lib .
-ln -s /Users/runner/gnucash/gc-tarball/share .
-cd ../src
-git clone https://github.com/gnucash/gnucash
-mkdir ../build/gnucash-git && cd ../build/gnucash-git
-```
-Configure, build, and test GnuCash. If things go wrong then you need
-to figure out what's missing, add it to `dependencies.txt`, regenerate
-the tarball, untar it in `gc-tarball` and try again.
+3. Run `depstarball.sh`. It uses absolute paths so it can be run from
+   any directory. If GnuCash compiles and all the tests pass,
+   proceed. If not then diagnose the problem, adjust dependencies.txt
+   as needed, and try again.
 
 ##### Finish up #####
 1. Upload the result to the Dependencies folder in GnuCash's
@@ -60,4 +41,4 @@ the tarball, untar it in `gc-tarball` and try again.
 2. Change the dependencies file URI in
    `gnucash-git/.github/workflows/macos-tests.yaml` to match the file you
    just made, commit the result, and push it.
-3. Commit and push any changes you made to `dependencies.txt`.
+3. Commit and push any changes you made to `dependencies.txt` and `depstarball.sh`.
