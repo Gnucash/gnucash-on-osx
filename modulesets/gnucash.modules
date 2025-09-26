@@ -59,7 +59,7 @@
 
   <autotools id="gwenhywfar" autogen-sh="autoreconf"
 	     autogenargs="--with-guis='gtk3' --enable-local-install">
-    <branch module="533/gwenhywfar-5.12.1.tar.gz" version="5.12.1"
+    <branch module="539/gwenhywfar-5.12.2.tar.gz" version="5.12.2"
             repo="aqbanking" >
       <patch file="gwen-include-file.patch" strip="1"/>
       <patch file="gwen-macos-bundle-path.patch" strip="1"/>
@@ -139,8 +139,8 @@
   </autotools>
 
   <autotools id="libofx" autogen-sh='configure'>
-    <branch repo="github-tarball" module="libofx/libofx/releases/download/0.10.5/libofx-0.10.5.tar.gz"
-            version="0.10.5">
+    <branch repo="github-tarball" module="libofx/libofx/releases/download/0.10.9/libofx-0.10.9.tar.gz"
+            version="0.10.9">
     </branch>
     <dependencies>
       <dep package="OpenSP"/>
