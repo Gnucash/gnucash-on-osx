@@ -39,6 +39,7 @@
        identifier are taken from the plist file.
   -->
   <plist>${project}/Info.plist</plist>
+  <entitlements>${project}/gnucash.entitlements.plist</entitlements>
 
   <main-binary>${prefix}/bin/gnucash</main-binary>
 
@@ -148,7 +149,7 @@
   </data>
 
   <data recurse="True">
-    ${prefix}/lib/guile/*.go
+    ${prefix}/lib/guile/3.0/*.go
   </data>
 
   <data>
