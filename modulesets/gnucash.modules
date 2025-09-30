@@ -227,6 +227,7 @@
     <branch repo="ftp.gnu.org" module="guile/guile-3.0.10.tar.gz"
 	    version="3.0.10">
      <patch file="guile-3.0.10-build-with-C23.patch" strip="1"/>
+     <patch file="guile-3.0.10-pthread-jit-write-protect.patch" strip="1"/>
     </branch>
     <dependencies>
       <dep package="libunistring"/>
