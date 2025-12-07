@@ -1,0 +1,11 @@
+diff -u /Users/john/Development/Gnucash-git-11.0-arm64/src/aqbanking-6.8.0/src/libs/cli/Makefile.am\~ /Users/john/Development/Gnucash-git-11.0-arm64/src/aqbanking-6.8.0/src/libs/cli/Makefile.am
+--- a/src/libs/cli/Makefile.am	2025-12-02 13:19:20
++++ b/src/libs/cli/Makefile.am	2025-12-07 12:55:44
+@@ -1,4 +1,4 @@
+-AM_CPPFLAGS = $(gwenhywfar_includes) -I..
++AM_CPPFLAGS = $(gwenhywfar_includes) -I.. -I$(top_srcdir)/src/libs -I$(top_builddir)/src/libs
+ 
+ noinst_LTLIBRARIES=libaqcli.la
+ 
+
+Diff finished.  Sun Dec  7 12:56:03 2025
