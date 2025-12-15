@@ -59,10 +59,9 @@
 
   <autotools id="gwenhywfar" autogen-sh="autoreconf"
 	     autogenargs="--with-guis='gtk3' --enable-local-install">
-    <branch module="626/gwenhywfar-5.14.0.tar.gz" version="5.14.0"
-            hash="sha256:85b1e711dcab1911f70ba9e6f8696b4b0b7134cbec66c57c5bf1122ec1284bfb"
+    <branch module="630/gwenhywfar-5.14.1.tar.gz" version="5.14.1"
+            hash="sha256:8916feaa99cb954f963f2cba8dd2dffe57cacf7f284daf00eab071aad6fe2ab3"
             repo="aqbanking" >
-      <patch file="gwenhywfar-5.14.0-w_hsplitter.patch" strip="1"/>
       <patch file="gwen-include-file.patch" strip="1"/>
       <patch file="gwen-macos-bundle-path.patch" strip="1"/>
     </branch>
@@ -99,10 +98,9 @@
 
   <autotools id="aqbanking" autogen-sh="autoreconf" makeargs="-j1"
 	     autogenargs="--enable-local-install">
-    <branch module="627/aqbanking-6.8.0.tar.gz" version="6.8.0"
-            hash="sha256:4428857b00514d8781b09be2c23442ad657e213fbd09f49040e47c6d568a01f7"
+    <branch module="643/aqbanking-6.8.3.tar.gz" version="6.8.3"
+            hash="sha256:8281b5620dda71b3d13bfa2d0cf3258c45b5c23e00a507e77baa7acbb3a3318b"
             repo="aqbanking">
-      <patch file="aqbanking-6.8.0-cli-makefile.patch" strip="1" />
     </branch>
     <dependencies>
       <dep package="gwenhywfar"/>
