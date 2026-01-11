@@ -96,8 +96,8 @@
 
   <autotools id="aqbanking" autogen-sh="autoreconf" makeargs="-j1"
 	     autogenargs="--enable-local-install">
-    <branch module="643/aqbanking-6.8.3.tar.gz" version="6.8.3"
-            hash="sha256:8281b5620dda71b3d13bfa2d0cf3258c45b5c23e00a507e77baa7acbb3a3318b"
+    <branch module="646/aqbanking-6.8.4.tar.gz" version="6.8.4"
+            hash="sha256:53e297a202312dffae1091eaaa86e46a699febe0947857606bc2535adfdbf191"
             repo="aqbanking">
     </branch>
     <dependencies>
