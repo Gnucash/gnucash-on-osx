@@ -190,6 +190,7 @@
     <branch repo="sourceforge"
             module="gnucash/libdbi-drivers-0.9.1.tar.gz" version="0.9.1"
             hash="sha256:3346b3f09edb2c2464422560ff783f7a7fa1fcd287427f0a8f2db8a1d995acb9">
+      <patch file="libdbi-drivers-cgreen.patch" strip="1"/>
     </branch>
     <dependencies>
       <dep package="libdbi"/>
