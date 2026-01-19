@@ -1,0 +1,14 @@
+diff -r -u libdbi-drivers-0.9.1.orig/tests/cgreen/src/constraint.c libdbi-drivers-0.9.1/tests/cgreen/src/constraint.c
+--- a/tests/cgreen/src/constraint.c	2026-01-14 08:32:39
++++ b/tests/cgreen/src/constraint.c	2026-01-14 06:58:22
+@@ -101,7 +101,10 @@
+ 
+     constraint->parameter = parameter;
+     constraint->compare = &compare_using_matcher;
++#pragma clang diagnostic push
++#pragma clang diagnostic ignored "-Wincompatible-function-pointer-types"
+     constraint->test = &test_with_matcher;
++#pragma clang diagnostic pop
+     constraint->name = matcher_name;
+     constraint->expected = (intptr_t)matcher_function;
+     return constraint;
