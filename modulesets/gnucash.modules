@@ -9,8 +9,6 @@
 	      href="http://www.kernel.org/pub/linux/"/>
   <repository type='tarball' name='ftp.gnu.org'
 	      href="ftp://ftp.gnu.org/gnu/"/>
-  <!--repository type='tarball' name='www.freedesktop.org'
-	      href="http://www.freedesktop.org/software/" /-->
   <repository type='tarball' name='sourceforge'
 	      href="http://downloads.sourceforge.net/"/>
   <repository type='git' name='sourceforge-git'
@@ -149,8 +147,8 @@
   </autotools>
 
   <autotools id="swig" autogen-sh="configure">
-    <branch repo="sourceforge" module="swig/swig-4.2.1.tar.gz"
-	    version="4.2.1"/>
+    <branch repo="sourceforge" module="swig/swig-4.4.1.tar.gz"
+	    version="4.4.1"/>
     <dependencies>
       <dep package="pcre"/>
     </dependencies>
@@ -171,9 +169,11 @@
 
   <cmake id="mariadb-connector"
          cmakeargs="-DWITH_MYSQLCOMPAT=ON -DWITH_ICONV=ON -DWITH_UNIT_TESTS=OFF -DWITH_EXTERNAL_ZLIB=ON -DWITH_SSL=OPENSSL -DDEFAULT_SSL_VERIFY_SERVER_CERT=OFF -DMACOSX_RPATH=ON">
-    <branch repo="github-tarball" module="mariadb-corporation/mariadb-connector-c/archive/refs/tags/v3.4.0.tar.gz" version="3.4.0"
-            checkoutdir="mariadb-connector-c-3.4.0">
-      <!-- patch file="mariadb-connector-fix-includes.patch" strip="1"/ -->
+    <branch module="mariadb-corporation/mariadb-connector-c/archive/refs/tags/v3.4.8.tar.gz"
+            version="3.4.8"
+            checkoutdir="mariadb-connector-c-3.4.8"
+            repo="github-tarball">
+      <patch file="mariadb-clang-asm.patch" strip="1"/>
     </branch>
     <dependencies>
       <dep package="gnutls"/>
@@ -202,7 +202,7 @@
    </autotools>
 
   <cmake id="boost" cmakeargs="-DLIBRARIES='date_time;regex;locale;filesystem;program_options;system'">
-    <branch module="boost/boost_1_85_0.tar.bz2" version="1.85.0" 
+    <branch module="boost/boost_1_90_0.tar.bz2" version="1.90.0" 
 
             repo="sourceforge">
       <patch file="boost-cmake.patch" strip="1"/>
@@ -215,13 +215,13 @@
   <cmake id="bdw-gc" 
              cmakeargs="-Denable_large_config=true -DCMAKE_MACOSX_RPATH=true -DCMAKE_INSTALL_NAME_DIR=&quot;${JHBUILD_PREFIX}/lib&quot; -DCMAKE_INSTALL_LIBDIR:PATH=lib">
     <branch repo="github-tarball"
-            module="ivmai/bdwgc/releases/download/v8.2.6/gc-8.2.6.tar.gz"
-            version="82.6"/>
+            module="ivmai/bdwgc/releases/download/v8.2.12/gc-8.2.12.tar.gz"
+            version="8.2.12"/>
   </cmake>
 
   <autotools id="libunistring" autogen-sh="configure">
-    <branch repo="ftp.gnu.org" module="libunistring/libunistring-1.2.tar.gz"
-           version="1.2">
+    <branch repo="ftp.gnu.org" module="libunistring/libunistring-1.4.2.tar.gz"
+           version="1.4.2">
      </branch>
    </autotools>
 
@@ -240,11 +240,13 @@
   </autotools>
 
   <cmake id="googletest" cmakeargs="-DBUILD_GMOCK=OFF" skip-install="True">
-    <branch module="google/googletest" repo="github" tag="release-1.10.0"/>
+    <branch module="google/googletest/releases/download/v1.17.0/googletest-1.17.0.tar.gz"
+            repo="github-tarball"
+            version="1.17.0"/>
   </cmake>
 
 <cmake id="gnucash"
-        cmakeargs="-DGTEST_ROOT=${JHBUILD_SOURCE}/googletest/">
+        cmakeargs="-DGTEST_ROOT=${JHBUILD_SOURCE}/googletest-1.17.0/">
    <branch module="gnucash/gnucash-5.15.tar.bz2"
            checkoutdir="gnucash-5.15" repo="sourceforge" version="5.15" />
     <dependencies>
@@ -255,10 +257,10 @@
  </cmake>
 
 <cmake id="gnucash-unstable"
-        cmakeargs="-DGTEST_ROOT=${JHBUILD_SOURCE}/googletest">
+        cmakeargs="-DGTEST_ROOT=${JHBUILD_SOURCE}/googletest-1.17.0/">
    <branch module="gnucash/gnucash-4.904.tar.bz2"
            checkoutdir="gnucash-4.904" repo="sourceforge" version="4.904" />
-   
+
     <dependencies>
       <dep package="meta-gnucash-dependencies"/>
       <dep package="shared-mime-info-2.2"/>
@@ -266,7 +268,7 @@
  </cmake>
 
  <cmake id="gnucash-git"
-        cmakeargs="-DCMAKE_INSTALL_RPATH_USE_LINK_PATH=ON -DGTEST_ROOT=${JHBUILD_SOURCE}/googletest">
+        cmakeargs="-DCMAKE_INSTALL_RPATH_USE_LINK_PATH=ON -DGTEST_ROOT=${JHBUILD_SOURCE}/googletest-1.17.0/">
    <branch repo="github" module="Gnucash/gnucash.git" revision="stable"
 	   checkoutdir="gnucash-git"/>
     <dependencies>
