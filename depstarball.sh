@@ -4,7 +4,7 @@ if [ -z "$JHBUILD_PREFIX" ]; then
     exit -1
 fi
 
-GC_VERSION="5.13"
+GC_VERSION="5.15"
 SRC_URI="https://github.com/gnucash/gnucash"
 #Paths:
 ROOT_DIR="/Users/runner/gnucash"

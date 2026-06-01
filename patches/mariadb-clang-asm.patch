@@ -1,0 +1,12 @@
+--- a/libmariadb/ma_context.c	2025-10-06 05:06:21
++++ b/libmariadb/ma_context.c	2026-04-17 14:36:52
+@@ -637,6 +637,9 @@
+ 
+ 
+ #ifdef MY_CONTEXT_USE_AARCH64_GCC_ASM
++#ifdef __clang__
++#define asm(x) __asm(x)
++#endif
+ 
+ /* According to ARM, the instruction BTI [J][C] is a NOP in ARMv8
+ implementations that do not support it. However, the built-in assembler
