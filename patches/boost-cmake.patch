@@ -45,7 +45,7 @@ index e69de29..b53cf7a 100644
 +  --build-dir=${CMAKE_BINARY_DIR} --link-shared
 +  toolset=clang-darwin cxxflags=${CMAKE_CXX_FLAGS}
 +  cflags=${CMAKE_C_FLAGS} linkflags=${CMAKE_SHARED_LINKER_FLAGS}
-+  cxxstd=17
++  cxxstd=${CXXSTD}
 +  install)
 +add_custom_target(boost_libs
 +  COMMAND ${B2_EXE} ${BUILD_FLAGS}
