@@ -23,14 +23,25 @@ on your system.
    in the build you just made.
    Change GNC_VERSION in depstarball.sh to match the current or next
    release as appropriate. If that's not changing consider adding a
-   suffix (e.g. 5.13-1) so that the new and old can coexist on sourceforge.
+   suffix (e.g. 5.13-1) so that the new and old can coexist on
+   sourceforge.
+2. If you're reusing the build directory from a previous build, clean
+   it:
+   ```
+   rm -rf /Users/runner/gnucash/inst/* /Users/runner/gnucash/build
+   /Users/runner/gnucash/src
+   ```
 2. Build the dependencies:
    ```
    cd /Users/runner
    jhbuild --prefix /Users/runner/gnucash bootstrap-gtk-osx
    jhbuild --prefix /Users/runner/gnucash --moduleset=/Path/to/gnucash-on-osx/modules/gnucash.modules build meta-gnucash-dependencies
    ```
-3. Run `depstarball.sh`. It uses absolute paths so it can be run from
+3. Start a jhbuild shell:
+   ```
+    jhbuild --prefix /Users/runner/gnucash --moduleset=/Path/to/gnucash-on-osx/modules/gnucash.modules shell
+   ```
+4. Run `depstarball.sh`. It uses absolute paths so it can be run from
    any directory. If GnuCash compiles and all the tests pass,
    proceed. If not then diagnose the problem, adjust dependencies.txt
    as needed, and try again.
