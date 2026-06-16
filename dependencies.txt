@@ -91,10 +91,10 @@ lib/libharfbuzz-icu.dylib lib/libharfbuzz-icu.0.dylib
 lib/libharfbuzz.dylib lib/libharfbuzz.0.dylib
 lib/libhogweed.dylib lib/libhogweed.7.dylib lib/libhogweed.7.0.dylib
 lib/libiconv.dylib lib/libiconv.2.dylib
-lib/libicudata.dylib lib/libicudata.73.dylib lib/libicudata.73.2.dylib
-lib/libicui18n.dylib lib/libicui18n.73.dylib lib/libicui18n.73.2.dylib
-lib/libicuio.dylib lib/libicuio.73.dylib lib/libicuio.73.2.dylib
-lib/libicuuc.dylib lib/libicuuc.73.dylib lib/libicuuc.73.2.dylib
+lib/libicudata.dylib lib/libicudata.78.dylib lib/libicudata.78.3.dylib
+lib/libicui18n.dylib lib/libicui18n.78.dylib lib/libicui18n.78.3.dylib
+lib/libicuio.dylib lib/libicuio.78.dylib lib/libicuio.78.3.dylib
+lib/libicuuc.dylib lib/libicuuc.78.dylib lib/libicuuc.78.3.dylib
 lib/libintl.dylib lib/libintl.8.dylib
 lib/libjavascriptcoregtk-4.0.dylib lib/libjavascriptcoregtk-4.0.18.dylib lib/libjavascriptcoregtk-4.0.18.18.4.dylib
 lib/libjpeg.dylib lib/libjpeg.62.dylib lib/libjpeg.62.4.0.dylib
