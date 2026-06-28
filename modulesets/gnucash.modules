@@ -29,8 +29,8 @@
               href="https://gitlab.freedesktop.org/xdg/shared-mime-info/-/archive/"
               type="tarball" />
 
- <include href="https://gitlab.gnome.org/GNOME/gtk-osx/raw/master/modulesets-stable/gtk-osx.modules"/>
- <!--include href="/Users/john/Development/GTK-OSX/gtk-osx-build/modulesets-stable/gtk-osx.modules"/-->
+ <!--include href="https://gitlab.gnome.org/GNOME/gtk-osx/raw/master/modulesets-stable/gtk-osx.modules"/-->
+ <include href="/Users/john/Development/GTK-OSX/gtk-osx-build/modulesets-stable/gtk-osx.modules"/>
 
   <meson id="shared-mime-info-2.2">
     <branch module="2.2/shared-mime-info-2.2.tar.bz2"
@@ -94,8 +94,8 @@
 
   <autotools id="aqbanking" autogen-sh="autoreconf" makeargs="-j1"
 	     autogenargs="--enable-local-install">
-    <branch module="652/aqbanking-6.9.1.tar.gz" version="6.9.1"
-            hash="sha256:fc94a2bebfbb4fc26b98dc93c8fa36a8026298cd7995f79821c480db35587f6b"
+    <branch module="654/aqbanking-6.9.2.tar.gz" version="6.9.2"
+            hash="sha256:244b5f7a139f829928f5cdc3f5f7488517b3e8aa63625a92741c3efc1892bb3f"
             repo="aqbanking">
     </branch>
     <dependencies>
@@ -148,6 +148,7 @@
 
   <autotools id="swig" autogen-sh="configure">
     <branch repo="sourceforge" module="swig/swig-4.4.1.tar.gz"
+            hash="sha256:40162a706c56f7592d08fd52ef5511cb7ac191f3593cf07306a0a554c6281fcf"
 	    version="4.4.1"/>
     <dependencies>
       <dep package="pcre"/>
@@ -247,8 +248,8 @@
 
 <cmake id="gnucash"
         cmakeargs="-DGTEST_ROOT=${JHBUILD_SOURCE}/googletest-1.17.0/">
-   <branch module="gnucash/gnucash-5.15.tar.bz2"
-           checkoutdir="gnucash-5.15" repo="sourceforge" version="5.15" />
+   <branch module="gnucash/gnucash-5.16.tar.bz2"
+           checkoutdir="gnucash-5.16" repo="sourceforge" version="5.16" />
     <dependencies>
       <dep package="meta-gnucash-dependencies"/>
       <dep package="shared-mime-info-2.2"/>
@@ -312,8 +313,8 @@
 
  <cmake id="gnucash-docs"
         ninjaargs="html">
-   <branch  module="gnucash/gnucash-docs-5.15.tar.gz"
-            version="5.15" repo="sourceforge"/>
+   <branch  module="gnucash/gnucash-docs-5.16.tar.gz"
+            version="5.16" repo="sourceforge"/>
  </cmake>
 
  <cmake id="gnucash-unstable-docs"
